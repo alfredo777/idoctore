@@ -3,9 +3,9 @@
      <div class="row">
       <center>
        <% @all_post_options.each do |data|%>
-       <div class="large-4 columns">
+       <div class="large-4 columns" style="background:#E0F8EC; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
        <h4 class="subheader">Diagnósticos</h4>   
-           <div class="panel">
+           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
 	         <% data[:diagnostics].each do |dt|%>
 				   <div class="slide-p" >
 				     <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
@@ -15,9 +15,9 @@
 	         <%end%>
 	       </div>
        </div>
-       <div class="large-4 columns">  
+       <div class="large-4 columns" style="background:#F6D8CE; padding:15px; ; min-height:350px; border:solid 4px #81BEF7;">  
          <h4 class="subheader">Signos Vitales</h4>    
-         <div class="panel">
+           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
          <% data[:user_signs].each do |vs|%>
 		     <div class="slide-p" >
 			    <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
@@ -27,9 +27,9 @@
          <%end%>
          </div>
        </div>
-       <div class="large-4 columns">    
+       <div class="large-4 columns" style="background:#F5F6CE; padding:10px; ; min-height:350px; border:solid 4px #81BEF7;">    
         <h4 class="subheader">Archivos de Análisis</h4>  
-         <div class="panel">
+           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
          <% data[:single_file].each do |an| %>
 			     <div class="slide-p" >
 				   <%= link_to visualizer_path(an.id, :type => 'analisis'), remote: true do %>
@@ -42,3 +42,5 @@
        <%end%>
        </center>
      </div>
+
+     <%= will_paginate @all_post_options %>

@@ -17,6 +17,8 @@ class DiagnosticsController < ApplicationController
   end
   
   def all_create
+    require 'will_paginate/array'
+
     interactors = []
     @user = current_user
     user_signs = VitalSign.where(:owner_by => current_user.id).order('created_at DESC')
@@ -27,7 +29,7 @@ class DiagnosticsController < ApplicationController
         diagnostics: diagnostics,
         single_file: single_file
       )
-    @all_post_options = interactors
+    @all_post_options = interactors.paginate(:page => params[:page], :per_page => 4)
     puts @all_post_options
   end
 

@@ -22,7 +22,8 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
-  def show   
+  def show 
+  require 'will_paginate/array'  
    @user = User.find(params[:id])
    @user_vital_signs = @user.vital_signs.last(5)
    @user_diagnostics = @user.diagnostics.last(5)
