@@ -1,0 +1,41 @@
+  <h3>Vital Signs</h3>
+  <p>
+  <strong>Weight:</strong>
+  <%= vs.weight %>
+</p>
+
+<p>
+  <strong>Blood pressure up:</strong>
+  <%= vs.blood_pressure_up %>
+</p>
+
+<p>
+  <strong>Blood pressure down:</strong>
+  <%= vs.blood_pressure_down %>
+</p>
+
+<p>
+  <strong>Pulse:</strong>
+  <%= vs.pulse %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= vs.height %>
+</p>
+
+<p>
+  <strong>Breathing:</strong>
+  <%= vs.breathing %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= vs.temperature %>
+</p>
+<p>
+  <strong>Signs taken per:</strong>
+  <%=  link_to "#{vs.owner}", user_path(vs.owner_by), target: '_blank' if vs.owner_by != nil%>
+  <%=   "#{vs.owner}" if vs.owner_by == nil%>
+
+</p>

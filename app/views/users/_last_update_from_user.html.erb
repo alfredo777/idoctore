@@ -1,0 +1,47 @@
+<p>Últimas actualizaciones del Paciente</p>
+<hr>
+<div class="left margin-regular">
+<table>
+  <thead>
+    <tr>
+    <th width="300">Signos Vitales</th>
+    </tr>
+  </thead>
+   <tbody>
+    <% @user_vital_signs.reverse.each do |vs| %>
+    	<%= render partial: '/vital_signs/show', locals: {vs: vs}%>
+    <%end%>
+   </tbody>
+</table>
+</div>
+
+<div class="left margin-regular">
+<table>
+  <thead>
+    <tr>
+    <th width="300">Diagnósticos</th>
+    </tr>
+  </thead>
+   <tbody>
+     <% @user_diagnostics.reverse.each do |dt| %>
+        <%= render partial: '/diagnostics/show', locals: {dt: dt}%>
+     <%end%>
+  </tbody>
+</table>
+</div>
+
+<div class="left margin-regular">
+<table>
+  <thead>
+    <tr>
+    <th width="300">Análisis Clínicos</th>
+    </tr>
+  </thead>
+   <tbody>
+  </tbody>
+</table>
+</div>
+<hr>
+<% if current_user.role == 'doctor' %>
+<p>Cítas recientes</p>
+<%end%>

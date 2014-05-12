@@ -1,0 +1,45 @@
+<%#= session[:user] = nil %>
+<%= favicon_link_tag('favicon.ico')%>
+<% if flash[:notice] != nil %>
+<div data-alert class="alert-box" id="alert_box_simple">
+<%= flash[:notice] %>
+</div>
+<script type="text/javascript">
+	setTimeout(function(){
+		$('#alert_box_simple').hide();
+	}, 3000);
+</script>
+<%end%>
+<div class="fixed" style="margin-bottom:50px !important;">
+      <nav class="top-bar">
+      <center>
+       <div class='large-10'>
+        <ul class="title-area">
+        <li class="name">
+		  <a href="<%= root_path%>"><dt><h3 style="color:#A4A4A4;" class="left"> I </h3><h3 class="left" style="color:#424242;">Doctore</h3></dt></a>
+		</li>
+		</ul>
+	    <section class="top-bar-section">
+
+		  <% if session_status == false %>
+		   <ul class="right nav-doctor">
+			  <li><a href="#" id="whoare" data-target="whoare_a" class="white">¿Quienes somos?</a></li>
+			  <li><a href="#" id="whodo" data-target="what_we_do_a" class="white">¿Que hacemos?</a></li>
+			  <li><a href="#" id="banefits" data-target="banefits_a" class="white">Beneficios</a></li>
+			  <li><a href="#" id="price"  data-target="price_a" class="white">Precios</a></li>
+			  <li></li>
+		   </ul>
+		  <%else%>
+		   <ul class="right">
+		     <li ><%= link_to  "Usuarios", users_path, :class => 'white' %></li>
+		     <li ><%= link_to  "#{current_user.name}", user_path(current_user.id), :class => 'white' %></li>
+		     <li ><%= link_to  "Salir", sign_out_path(:id => current_user.id), :class => 'white' %></li>
+		    </ul>
+		  <%end%>
+		</section>
+		</div>
+		</center>
+	    </nav>
+</div>
+
+

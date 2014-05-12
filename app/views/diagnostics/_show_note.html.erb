@@ -1,0 +1,11 @@
+<% dt.notes.reverse.each do |note|%>
+ <hr> 
+  <div class="row">
+   <p><b>Note:</b> <%= simple_format(note.content) %></p>
+   <p><b>New treatment:</b> <%= simple_format(note.new_treatment) %></p>
+   <p><b>By Doctor:</b> <%= link_to "#{note.user.name}", user_path(note.user.id)%></p>
+   <p><b>Vital signs:</b> <%= note.vital_signs.created_at%></p>
+   <p><b>Analysis: </b> <%= note.last_analysis %></p>
+   <p><b>Created: </b> <%= note.created_at %></p>
+  </div>
+<%end%>

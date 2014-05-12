@@ -1,0 +1,34 @@
+// Place all the styles related to the diagnostics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.inconsequential {
+ background:#0B3B2E;
+ color:#fff;
+ padding: 5px;
+ width: 200px;
+ float:left;
+ }
+ .serious {
+ background:#DF7401;
+ color:#fff;
+ padding: 5px;
+ width: 200px;
+ float:left;
+ }
+
+.outstanding {
+ background:#FACC2E;
+ color:#fff;
+ padding: 5px;
+ width: 200px;
+ float:left;
+ }
+.chronic {
+ background:#610B4B;
+ color:#fff;
+ padding: 5px;
+ width: 200px;
+ float:left;
+ }
+

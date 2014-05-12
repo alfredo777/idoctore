@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  last_analysis: 1
+  last_signs: 1
+  new_treatment: MyText
+
+two:
+  content: MyText
+  last_analysis: 1
+  last_signs: 1
+  new_treatment: MyText

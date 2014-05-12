@@ -1,0 +1,35 @@
+<%= form_tag('/vital_signs/create_from_user') do -%>
+  <%= hidden_field_tag 'user_id', @user.id %>
+  <%= hidden_field_tag 'owner_by', current_user.id %>
+  <div class="field">
+    <%= label_tag 'weight' %><br>
+    <%= number_field_tag 'weight' %>
+  </div>
+  <div class="field">
+    <%= label_tag 'blood_pressure_up' %><br>
+    <%= number_field_tag 'blood_pressure_up' %>
+  </div>
+  <div class="field">
+    <%= label_tag 'blood_pressure_down' %><br>
+    <%= number_field_tag 'blood_pressure_down' %>
+  </div>
+  <div class="field">
+    <%= label_tag 'pulse' %><br>
+    <%= number_field_tag 'pulse' %>
+  </div>
+  <div class="field">
+    <%= label_tag 'height' %><br>
+    <%= number_field_tag 'height' %>
+  </div>
+  <div class="field">
+    <%= label_tag 'breathing' %><br>
+    <%= number_field_tag 'breathing' %>
+  </div>
+  <div class="field">
+    <%= label_tag 'temperature' %><br>
+    <%= number_field_tag 'temperature' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Crear signos vitales', :class => 'button' %>
+  </div>
+<% end %>

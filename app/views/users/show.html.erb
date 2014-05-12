@@ -1,0 +1,74 @@
+  <div class="row ">
+    <p class="red-back"><%= @user.name %></p>
+
+    <div class=" right-profile-menu actualization-back " >
+    <div class="left large-2 ">
+      <%= image_tag("#{@user.avatar}", :class => 'imge_in_circle avatar_circle') if @user.avatar != nil %>
+      <% case @user.sex %>
+       <% when 'male' %>
+         <%= image_tag('/assets/users/man.png', :class => 'imge_in_circle avatar_circle') if @user.avatar == nil %>
+       <% when 'female' %>
+         <%= image_tag('/assets/users/wooman.png', :class => 'imge_in_circle avatar_circle') if @user.avatar == nil %>
+      <%end%>
+    </div>
+    <div class="left large-5"> 
+    <p>Sexo: <%= @user.sex %></p>
+    <p>Edad: <%= @user.date_of_birth %></p>
+    <a data-reveal-id="patient_modal" >Actualizar Paciente</a>
+    </div>
+    <div class="right large-5"> 
+      <ul class="side-nav ">
+        <li class="acordion-lile"><%= link_to 'Pascientes', patients_path %></li>
+        <li class="acordion-lile"><a href="#">Diagnosticos</a></li>
+        <li class="acordion-lile"><a href="#">Historial</a></li>
+        <li class="acordion-lile"><a href="#">Medicamentos</a></li>
+        <li class="acordion-lile"><a href="#panel2-1">Calendario</a></li>
+        <li class="acordion-lile"><%= link_to 'Editar mi perfíl', edit_user_path(current_user.id)%></li>
+       </ul>
+    </div>
+   </div>
+    <div id="patient_modal" class="reveal-modal" data-reveal>
+       <dl class="tabs black-bg" data-tab>
+        <dd class="active"><a href="#panel2-1">Diagnostico</a></dd>
+        <dd><a href="#panel2-2">Anotación</a></dd>
+        <dd><a href="#panel2-3">Agregar Análisis Clínico</a></dd>
+        <dd><a href="#panel2-4">Mandar mensaje</a></dd>
+        <dd><a href="#panel2-5">Signos Vitales</a></dd>
+        <dd><a href="#panel2-6">Notas</a></dd>
+
+
+      </dl>
+      <div class="tabs-content">
+        <div class="content active" id="panel2-1">
+          <p><%=render partial: '/diagnostics/form'%></p>
+        </div>
+        <div class="content" id="panel2-2">
+          <p>Second panel content goes here...</p>
+        </div>
+        <div class="content" id="panel2-3">
+          <p>Third panel content goes here...</p>
+        </div>
+        <div class="content" id="panel2-4">
+          <p>Fourth panel content goes here...</p>
+        </div>
+         <div class="content" id="panel2-5">
+          <p><%=render partial: '/vital_signs/form', locals: {user: @user}%></p>
+        </div>
+        <div class="content" id="panel2-6">
+          <p><%=render partial: '/diagnostics/form_for_add_note' %></p>
+        </div>
+      </div>
+        <a class="close-reveal-modal">&#215;</a>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actualization-back ">
+    <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs} %>
+    <div id="container_of_parts" ></div>
+
+    </div>
+  </div>
+
+

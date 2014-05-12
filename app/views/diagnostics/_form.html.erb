@@ -1,0 +1,54 @@
+<%= form_tag('/diagnostics/create_from_user') do -%>
+  <div class="field">
+    <%= hidden_field_tag 'user_id', @user.id %>
+    <%= hidden_field_tag 'owner_by', current_user.id %>
+    <%= hidden_field_tag 'vital_signs', @user.vital_signs.last.id %>
+  </div>
+  <div class="field">
+    <%= label_tag 'interrogation' %><br>
+    <%= text_area_tag 'interrogation', nil, rows: 10, cols: 25 %>
+  </div>
+  <div class="field">
+    <%= label_tag 'physical_examination' %><a class="link_to_t" data-target='physical_examination'>No es necesario</a><br>
+    <%= text_area_tag 'physical_examination', nil, rows: 10, cols: 25  %>
+  </div>
+  <div class="field">
+    <%= label_tag 'diagnostic_or_clinical_problem' %><br>
+    <%= text_area_tag 'diagnostic_or_clinical_problem', nil, rows: 10, cols: 25  %>
+  </div>
+  <div class="field">
+    <%= label_tag 'list_of_laboratory_studies' %><a class="link_to_t" data-target='list_of_laboratory_studies'>No es necesario</a><br>
+    <%= text_area_tag 'list_of_laboratory_studies', nil, rows: 10, cols: 25  %>
+  </div>
+  <div class="field">
+    <%= label_tag 'required_therapies' %><a class="link_to_t" data-target='required_therapies'>No es necesario</a><br>
+    <%= text_area_tag 'required_therapies', nil, rows: 10, cols: 25  %>
+  </div>
+  <div class="field">
+    <%= label_tag 'suggested_treatments' %><br>
+    <%= text_area_tag 'suggested_treatments', nil, rows: 10, cols: 25  %>
+  </div>
+
+  <div class="row">
+    <div class="large-3 columns" ><%= label_tag 'chronic'%>
+  <%= check_box_tag 'chronic' %></div>
+  <div class="large-3 columns" ><%= label_tag 'outstanding'%>
+  <%= check_box_tag 'outstanding' %></div>
+  <div class="large-3  columns" ><%= label_tag 'serious'%>
+  <%= check_box_tag 'serious' %></div>
+  <div class="large-3  columns" ><%= label_tag 'inconsequential'%>
+  <%= check_box_tag 'inconsequential' %></div>
+
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Finalizar Diagnóstico', :class => 'button' %>
+  </div>
+<% end %>
+<script type="text/javascript">
+ $('.link_to_t').click(function() {
+
+    var target = $(this).data('target');
+    var to = '#'+target;
+    $(to).toggle();
+   });
+</script>

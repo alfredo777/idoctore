@@ -1,0 +1,95 @@
+<div class="raw_index">
+   <div class="row">
+   <div class="large-7 left">
+   <h4 style='color:#9E9A9A;'><b>Mira el video</b></h4>
+   <iframe style="opacity:0.4; filter:alpha(opacity=40);" src="//player.vimeo.com/video/90558460?title=0&amp;byline=0&amp;portrait=0&amp;color=65d992" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/90558460">Nervo Style 1 / Live Tour Visuals</a> from <a href="http://vimeo.com/user2408484">FutureDeluxe</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+   </div>
+	<div class="large-4 right">
+	    <fieldset>
+	       <legend>Ingresa</legend>
+	       <%= form_tag('/users/create_session') do -%>
+  
+			  <p  style='color:#1c80cf;'><%=  'Email' %></p>
+			  <%= email_field_tag 'email' %>
+			   <p  style='color:#1c80cf;'><%=  'Password' %></p>
+			  <%= password_field_tag 'password' %>
+			  
+			  <div><%= submit_tag 'Iniciar', :class => 'button' %></div>
+		  <% end -%>
+		  <%= link_to 'Registrate', new_user_path %></br>
+		  <%= link_to '¿Olvidaste tu contraseña?', missing_password_path %></br>
+	    </fieldset>
+	</div>
+    </div>
+</div>
+</br>
+<div id="whoare_a" class="row">
+ <h2>¿Quienes somos?</h2>
+ <ul class="small-block-grid-2">
+ <li><p class="panel">Somos una red especializada en manejo de información para para doctores y pacientes, mediante herramientas especializadas y desarrolladas de acuerdo a las especifiaciones legales del expediente médico.</p></li>
+ <li ><%=image_tag('banner3.jpeg', :class => 'th small-10')%></li>
+ </ul>
+</div>
+<hr>
+<div id="what_we_do_a" class="row">
+ <h2>¿Qué hacemos?</h2>
+  <ul class="small-block-grid-2">
+   <li><p class="panel">Proporcionamos heramientas para el manejo personalizado de los perfiles médicos de cada persona.</p></li>
+   <li ><%=image_tag('banner4.png', :class => 'th small-10')%></center></li>
+  </ul>
+</div>
+<hr>
+<div id="banefits_a" class="row">
+  <div class="medium-4 columns">
+    <h3><a>Lleva control total de tus citas médicas.</a></h3>
+    <p>Maneja tu agenta online sencillamente, eficazmente y sin necesidad de ningún otro médio de comunicación, manteniendo comunicación 27 / 7 con tus pacientes.</p>
+
+    <p><a class="small secondary button">Agenda →</a></p>
+
+  </div>
+  <div class="medium-4 columns">
+    <h3><a>Lleva un expediente médico.</a></h3>
+    <p>De una manera mas sencilla que nunca podras diagnósticar y generar recetas médicas para cada uno de tus pacientes, respaldando tus datos, con opcciones de edición, nunca más te preocuparas por la forma de llevar el expediente y los análisis clínicos.</p>
+
+    <p><a  class="small secondary button">Expediente →</a></p>
+
+  </div>
+  <div class="medium-4 columns">
+    <h3><a>Dale a tu paciente seguridad.</a></h3>
+    <p>En nuestra plataforma tu paciente lleva su expediente en la bolsa 24 / 7, para enmergencias, en cualquier parte del mundo tu lo acompañas. </p>
+
+    <p><a class="small secondary button">Pasciente →</a></p>
+  </div>
+</div>
+<hr>
+<div id="price_a" class="row">
+	<ul class=" medium-4 pricing-table columns">
+	  <li class="title">Bronce</li>
+	  <li class="price">$1300 MXN</li>
+	  <li class="description">Todos los serivicios durante 12 meses.</li>
+	  <li class="bullet-item">Hasta 100 pascientes.</li>
+	  <li class="bullet-item">20gb de Almacenamiento</li>
+	  <li class="cta-button"><a class="button" href="#">Compralo</a></li>
+	</ul>
+	<ul class=" medium-4 pricing-table columns">
+	  <li class="title">Plata</li>
+	  <li class="price">$2100 MXN</li>
+	  <li class="description">Todos los serivicios durante 12 meses.</li>
+	  <li class="bullet-item">Hasta 300 pascientes.</li>
+	  <li class="bullet-item">70gb de Almacenamiento</li>
+	  <li class="cta-button"><a class="button" href="#">Compralo</a></li>
+	</ul>
+	<ul class=" medium-4 pricing-table columns">
+	  <li class="title">Oro</li>
+	  <li class="price">$3300 MXN</li>
+	  <li class="description">Todos los serivicios durante 12 meses.</li>
+	  <li class="bullet-item">Hasta 1000 pascientes.</li>
+	  <li class="bullet-item">150gb de Almacenamiento</li>
+	  <li class="cta-button"><a class="button" href="#">Compralo</a></li>
+	</ul>
+</div>
+<div class="foop">
+ <div style="padding:35px;">Todos los derechos reservados 2014 © IDoctore</div> 
+</div>
+
+

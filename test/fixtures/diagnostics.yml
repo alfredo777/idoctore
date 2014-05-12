@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  interrogation: MyText
+  physical_examination: MyText
+  diagnostic_or_clinical_problem: MyText
+  list_of_laboratory_studies: MyText
+  required_therapies: MyText
+  suggested_treatments: MyText
+
+two:
+  user_id: 1
+  interrogation: MyText
+  physical_examination: MyText
+  diagnostic_or_clinical_problem: MyText
+  list_of_laboratory_studies: MyText
+  required_therapies: MyText
+  suggested_treatments: MyText

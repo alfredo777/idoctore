@@ -1,0 +1,37 @@
+<h1>Listing vital_signs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Weight</th>
+      <th>Blood pressure up</th>
+      <th>Blood pressure down</th>
+      <th>Pulse</th>
+      <th>Height</th>
+      <th>Breathing</th>
+      <th>Temperature</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vital_signs.each do |vital_sign| %>
+      <tr>
+        <td><%= vital_sign.weight %></td>
+        <td><%= vital_sign.blood_pressure_up %></td>
+        <td><%= vital_sign.blood_pressure_down %></td>
+        <td><%= vital_sign.pulse %></td>
+        <td><%= vital_sign.height %></td>
+        <td><%= vital_sign.breathing %></td>
+        <td><%= vital_sign.temperature %></td>
+        <td><%= link_to 'Show', vital_sign %></td>
+        <td><%= link_to 'Edit', edit_vital_sign_path(vital_sign) %></td>
+        <td><%= link_to 'Destroy', vital_sign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vital sign', new_vital_sign_path %>
