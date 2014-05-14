@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
  
 
+  get 'conversations/create'
+
+  get 'conversations/destroy'
+
+  get 'appointments/create'
+
+  get 'appointments/move'
+
+  get 'appointments/destroy'
+
   resources :diagnostics do 
     collection do
       post 'create_from_user'
@@ -41,6 +51,7 @@ Rails.application.routes.draw do
   get '/change_password', :to => 'users#change_password', :as => :change_password
   get '/missing_password', :to => 'users#missing_password', :as => :missing_password
   get '/terms_and_conditions', :to => 'static_views#terms_and_conditions', :as => :terms_and_conditions
+  get '/users/:id/diagnostics', :to => 'users#diagnostics', :as => :diagnostics_users
 
   #home
 

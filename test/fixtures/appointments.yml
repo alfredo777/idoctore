@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  solictude: MyString
+  accepted: false
+  dateandour: 2014-05-13 18:39:03
+  place: MyString
+
+two:
+  solictude: MyString
+  accepted: false
+  dateandour: 2014-05-13 18:39:03
+  place: MyString

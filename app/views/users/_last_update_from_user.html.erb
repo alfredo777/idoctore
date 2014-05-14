@@ -4,7 +4,7 @@
 <table>
   <thead>
     <tr>
-    <th width="300">Signos Vitales</th>
+    <th width="300"><%= t('vital_signs.vital_signs')%></th>
     </tr>
   </thead>
    <tbody>
@@ -13,21 +13,24 @@
     <%end%>
    </tbody>
 </table>
+<p><a class="small secondary button"><%= t('simple.see_more')%> →</a></p>
 </div>
 
 <div class="left margin-regular">
 <table>
   <thead>
     <tr>
-    <th width="300">Diagnósticos</th>
+    <th width="300"><%= t('diagnostics.diagnostics')%></th>
     </tr>
   </thead>
    <tbody>
      <% @user_diagnostics.reverse.each do |dt| %>
-        <%= render partial: '/diagnostics/show', locals: {dt: dt}%>
+        <%= render partial: '/diagnostics/show', locals: {dt: dt , all_options: false}%>
      <%end%>
   </tbody>
 </table>
+<p><%= link_to t('simple.see_more' + '  →'), diagnostics_users_path(@user.id) , :class => 'small secondary button'%> </p>
+
 </div>
 
 <div class="left margin-regular">
@@ -40,6 +43,8 @@
    <tbody>
   </tbody>
 </table>
+<p><a class="small secondary button"><%= t('simple.see_more')%> →</a></p>
+
 </div>
 <hr>
 <% if current_user.role == 'doctor' %>

@@ -1,0 +1,108 @@
+--- 
+es: 
+  diagnostics: 
+    chronic: Cronico
+    diagnostic_or_clinical_problem: "Diagnostico o problema clínico"
+    diagnostics: Diagnosticos
+    end_diagnostic: "Finalizar Diagnostico"
+    inconsequential: "Sin consecuencias"
+    interrogation: Entrevista
+    list_of_laboratory_studies: "Listado de estudios de laboratorio"
+    outstanding: Relevante
+    physical_examination: "Examen físico"
+    required_therapies: "Terapias requeridas"
+    serious: Serio
+    suggested_treatments: "Tratamientos sugeridos"
+    simple_link_required_therapies: Terapias
+    simple_link_physical_examination: 'Examenes físicos'
+    simple_link_list_of_laboratory_studies: 'Estudios de laboratorio'
+    level_of_problem: 'Gravedad del Problema'
+    fields: 'Rubros a completar'
+    diagnostic_created_in: 'Diagnóstico creado'
+    title: Diagnostico
+    request_deletion: 'Solicitar Eliminar'
+    print_options: 'Opcciones de impresión'
+  forms_tabs: 
+    analysis: Análisis
+    diagnosis: Diagnostico
+    note: Nota
+    vital_signs: "Signos Vitales"
+  landing_page: 
+    benefits: Beneficios
+    benefits_x: Beneficios
+    prices: Precios
+    prices_x: Precios
+    we_do: "¿Que hacemos?"
+    we_do_x: "Proporcionamos heramientas para el manejo personalizado de los perfiles médicos de cada persona."
+    who_we_are: "¿Quienes Somos?"
+    who_we_are_x: "Somos una red especializada en manejo de información para para doctores y pacientes, mediante herramientas especializadas y desarrolladas de acuerdo a las especifiaciones legales del expediente médico."
+  menu: 
+    benefits: Beneficios
+    prices: Precios
+    we_do: "¿Que hacemos?"
+    who_we_are: "¿Quienes Somos?"
+  notes: 
+    diagnostics: "Diagnostico al que pertenece"
+    new_treatment: "Nuevo tratamiento"
+    note: Nota
+    viatal_signs: "Signos vitales por fecha"
+  tabs_from_menu_user: 
+    diagnostics: Diagnosticos
+    medical_record: "Historia Clínica"
+    my_calendar: Calendario
+    patients: Pacientes
+    prescribed_treatments: "Tratamientos indicados"
+    record: "Historial médico"
+    treatment: 'Tratamientos'
+  user: 
+    accept_terms: "Acepto los"
+    confirm_password: "Confirma tu contraseña"
+    confirmed_token: "Se ha validado satisfactoriamete el usuario."
+    create_session: "Sessión Creada"
+    create_user: "Se ha creado correctamente el usuario, se le ha mandado un email con las instrucciones de confirmación."
+    create_user_by_invite: "Se ha agregado satisfactoriamente el miembro de la red."
+    edit_profile: "Editar perfil"
+    email: Email
+    error_create_user_by_invite: "El usuario no ha podido ser creado."
+    error_solicitude_user_by_invite: "La relación doctor paciente ya existe"
+    existe_user_invite_accepted: "Has agregado al Doctor a tu lista de doctores."
+    exit: Salir
+    female: Mujer
+    last_pacient_actualice: "Últimas actualizaciones del paciente."
+    login: Ingresa
+    mail_to_change_password: "Se ha enviado correctamente el mail para cambio de contraseñas"
+    male: Hombre
+    missing_password: "¿Olvidastes tu contraseña?"
+    missing_password_title: "Cambia tu contraseña"
+    name: Nombre
+    non_terms_accepted: "El usuario no ha aceptado los terminos y no puede ingresar."
+    p_register: "Recuerda confirmar tu cuenta despues de registrarte."
+    p_send_instruccions: "Se te enviará un email con el las instrucciones para que puedas cambiar tu contraseña. "
+    password: Contraseña
+    password_non_safe: "No se ha guardado correctamente la contraseña."
+    register: Registrate
+    register_button: Registrar
+    reset_password: "Se ha agregado satisfactoriamente el miembro de la red."
+    satify_change_password: "Se ha guardado correctamente tu contraseña porfavor inicia sesión en ingresar."
+    send_instructions: "Enviar instrucciones"
+    session_in_course: "Sessión ya está en curso"
+    sex: Sexo
+    site: "del Sitio"
+    solicitud_user_by_invite: "Se ha enviando una solicitud de doctor paciente al usuario."
+    tegister_title: Registro
+    terms_and_conditions: "Términos y condiciones"
+    user_non_terms_error: "No se puede crear el usuario si no acepta los términos y condiciones del sitio."
+    user_password_error: "No se ha podido agregar el usuario debido a que la validación de password no coincide."
+    user_simple_error: "Hemos tenido un error al crear el usuario."
+    users: Usuarios
+  vital_signs: 
+    blood_pressure_down: "Presión arterial inferior"
+    blood_pressure_up: "Presión arterial superior"
+    breathing: Respiración
+    height: Estatura
+    pulse: Pulso
+    temperature: "Temperatura corporal"
+    vital_signs: "Signos Vitales"
+    weight: Peso
+  simple:
+    see_more: 'Ver más'

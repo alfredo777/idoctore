@@ -1,0 +1,17 @@
+<h3><%= t('diagnostics.diagnostics')%> - <%= @user.name %></h3>
+<center>
+<table>
+  <thead>
+    <tr>
+    <th width="300"><%= t('diagnostics.diagnostics')%></th>
+    <th width="300"> <%= t('diagnostics.request_deletion')%></th>
+    <th width="300"> <%= t('diagnostics.print_options')%></th>
+    </tr>
+  </thead>
+   <tbody>
+     <% @diagnostics.reverse.each do |dt| %>
+        <%= render partial: '/diagnostics/show', locals: {dt: dt, all_options: true}%>
+     <%end%>
+  </tbody>
+</table>
+</center>

@@ -1,63 +1,80 @@
  <tr>
-  <td> <a data-reveal-id="diagnostico_<%=dt.id%>"> Diagnóstico creado <%= dt.created_at %></a> </td>
+  <td> <a data-reveal-id="diagnostico_<%=dt.id%>"> <%= t('diagnostics.diagnostic_created_in')%> <%= dt.created_at %></a> </td>
+  <% if all_options %>
+   <% if dt.owner_by == current_user.id  &&  dt.owner_by != nil %> 
+   <td>
+     <ul class="button-group">
+      <li><a href="#" class="small button">Errado</a></li>
+      <li><a href="#" class="small button">Cambio</a></li>
+      <li><a href="#" class="small button">Otra</a></li>
+     </ul>
+   </td>
+   <td>
+     <ul class="button-group [radius round]">
+      <li><a href="#" class="small button [secondary alert success]">Imprimir</a></li>
+      <li><a href="#" class="small button [secondary alert success]">Imprimir Receta</a></li>
+    </ul>
+   </td>
+   <%end%>
+  <%end%>
  <tr>
 
  <div id="diagnostico_<%=dt.id%>" class="reveal-modal" data-reveal>
-     <h2>Diagnostico </h2><i> Dr: <%= dt.owner %></i>
+     <h2><%= t('diagnostics.title')%>  </h2><i> Dr: <%= dt.owner %></i>
 
      <h3>Problem clasification</h3>
      <div class="row">
        <% if dt.chronic %>
-       <p class="chronic"><%=  'Chronic'  %></p>
+       <p class="chronic"><%=  t('diagnostics.chronic')  %></p>
        <%end%>
        <% if dt.outstanding %>
-       <p class="outstanding"><%=  'Outstanding'if dt.outstanding %></p>
+       <p class="outstanding"><%=  t('diagnostics.outstanding') %></p>
        <%end%>
        <% if dt.serious  %>
-        <p class="serious"><%=  'Serious' if dt.serious %></p>
+        <p class="serious"><%=  t('diagnostics.serious') %></p>
        <%end%>
        <% if dt.inconsequential  %>
-          <p class="inconsequential"><%=  'Inconsequential' %></p>
+          <p class="inconsequential"><%=  t('diagnostics.inconsequential') %></p>
        <%end%>
      </div>
-     <% if dt.interrogation != nil %>
+     <% if !dt.interrogation.empty? %>
      <div class="">
-      <h3><%= 'Interrogation'%></h3>
+      <h3><%= t('diagnostics.interrogation')%></h3>
        <p align='justify'><%= simple_format(dt.interrogation)%></p>
      </div>
      <%end%>
-      <% if dt.physical_examination != nil %>
+      <% if !dt.physical_examination.empty? %>
      <div class="">
-      <h3><%= 'Physical examination'%></h3>
+      <h3><%= t('diagnostics.physical_examination')%></h3>
        <p align='justify'><%= simple_format(dt.physical_examination)%></p>
      </div>
      <%end%>
 
-     <% if dt.diagnostic_or_clinical_problem != nil %>
+     <% if !dt.diagnostic_or_clinical_problem.empty? %>
      <div class="">
-      <h3><%= 'Diagnostic or clinical problem'%></h3>
+      <h3><%= t('diagnostics.diagnostic_or_clinical_problem')%></h3>
        <p align='justify'><%= simple_format(dt.diagnostic_or_clinical_problem)%></p>
      </div>
      <%end%>
 
-      <% if dt.list_of_laboratory_studies != nil %>
+      <% if !dt.list_of_laboratory_studies.empty? %>
      <div class="">
-      <h3><%= 'List of laboratory studies'%></h3>
+      <h3><%= t('diagnostics.list_of_laboratory_studies') %></h3>
        <p align='justify'><%= simple_format(dt.list_of_laboratory_studies)%></p>
      </div>
      <%end%>
 
-      <% if dt.required_therapies != nil %>
+      <% if !dt.required_therapies.empty? %>
      <div class="">
-      <h3><%= 'Required therapies'%></h3>
+      <h3><%= t('diagnostics.required_therapies') %></h3>
        <p align='justify'><%= simple_format(dt.required_therapies)%></p>
      </div>
      <%end%>
 
 
-      <% if dt.suggested_treatments != nil %>
+      <% if !dt.suggested_treatments.empty? %>
      <div class="">
-      <h3><%= 'Suggested treatments'%></h3>
+      <h3><%=  t('diagnostics.suggested_treatments')%></h3>
        <p align='justify'><%= simple_format(dt.suggested_treatments)%></p>
      </div>
      <%end%>

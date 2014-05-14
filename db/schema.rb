@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512182448) do
+ActiveRecord::Schema.define(version: 20140514205305) do
+
+  create_table "appointments", force: true do |t|
+    t.string   "solictude"
+    t.boolean  "accepted"
+    t.datetime "dateandour"
+    t.string   "place"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clinical_analyses", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "diagnostic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "delete_histories", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "owner_id"
+    t.text     "delete_content"
+    t.string   "causes"
+    t.text     "justify"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "diagnostics", force: true do |t|
     t.integer  "user_id"
@@ -39,6 +66,14 @@ ActiveRecord::Schema.define(version: 20140512182448) do
     t.boolean  "accepted_request", default: false
   end
 
+  create_table "message_user_to_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "to_user_id"
+    t.string   "converstion_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notes", force: true do |t|
     t.text     "content"
     t.integer  "last_analysis"
@@ -53,6 +88,14 @@ ActiveRecord::Schema.define(version: 20140512182448) do
   create_table "sessions", force: true do |t|
     t.integer  "user_id"
     t.datetime "caduce"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "single_files", force: true do |t|
+    t.string   "name"
+    t.string   "archive"
+    t.string   "pass"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

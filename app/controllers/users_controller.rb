@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_filter :loggin_filter, only: [:index, :show, :edit]
   # GET /users
   # GET /users.json
+
+  ######### vistas de consulta ########
   def index
     @users = User.all
   end
@@ -12,6 +14,15 @@ class UsersController < ApplicationController
   def show   
    @user_vital_signs = @user.vital_signs.last(5)
    @user_diagnostics = @user.diagnostics.last(5)
+  end
+
+  def diagnostics
+    @user=User.find(params[:id])
+    @diagnostics = @user.diagnostics.paginate(:page => params[:page], :per_page => 30)
+    
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /users/new
@@ -64,6 +75,8 @@ class UsersController < ApplicationController
     end
   end
 
+  ####### validaciones de creación registro y ejecución #########
+
   def register
       pass_a = "#{params[:password]}"
       pass_b = "#{params[:confirm_password]}"
@@ -81,19 +94,19 @@ class UsersController < ApplicationController
          @user.save
           if @user.save 
             @mailer = UserMailer.welcome_email(@user, @user.confirmed_token).deliver
-            flash[:notice] = 'Se ha creado correctamente el usuario, se le ha mandado un email con las instrucciones de confirmación.'
+            flash[:notice] =  t('user.create_user')
             redirect_to users_path
             else
-            flash[:notice] = 'Hemos tenido un error al crear el usuario.'
+            flash[:notice] = t('user.user_simple_error')
             redirect_to :back
 
           end
          else
-           flash[:notice] = 'No se ha podido agregar el usuario debido a que la validación de password no coincide.'
+           flash[:notice] = t('user.user_password_error')
            redirect_to :back
          end
        else
-          flash[:notice] = 'No se puede crear el usuario si no acepta los términos y condiciones del sitio.'
+          flash[:notice] = t('user.user_non_terms_error')
           redirect_to :back
       end
   end
@@ -108,9 +121,9 @@ class UsersController < ApplicationController
               @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @user_new.id)  
                @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
  
-              flash[:notice] = 'Se ha enviando una solicitud de doctor paciente al usuario'
+              flash[:notice] = t('user.solicitud_user_by_invite')
             else
-              flash[:notice] = 'La relación doctor paciente ya existe'
+              flash[:notice] = t('user.error_solicitude_user_by_invite')
 
            end
        else
@@ -128,9 +141,9 @@ class UsersController < ApplicationController
           if @user.save 
               @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
               redirect_to patients_path(current_user.id)
-              flash[:notice] = 'Se ha agregado satisfactoriamente el miembro de la red.'
+              flash[:notice] = t('user.create_user_by_invite')
               else
-              flash[:notice] = 'El usuario no ha podido ser creado.'
+              flash[:notice] = t('user.error_create_user_by_invite')
           end
       end
   end
@@ -139,7 +152,7 @@ class UsersController < ApplicationController
      @invity_by = User.find(params[:secret_key])
      @user.confirmed_token = nil
      @user.save
-     flash[:notice] = 'Has agregado al Doctor a tu lista de doctores.'
+     flash[:notice] = t('user.existe_user_invite_accepted')
      redirect_to user_path(@user)
   end
 
@@ -151,15 +164,15 @@ class UsersController < ApplicationController
       @time_expire = Time.now + 6.hours
       @session = Session.create(:user_id => @user.id, :caduce => @time_expire)
         respond_to do |format|
-           format.html { redirect_to @user, notice: 'Sessión Creada' }
+           format.html { redirect_to @user, notice: t('user.create_session') }
         end
        else
         respond_to do |format|
-           format.html { redirect_to users_path, notice: 'Sessión ya está en curso' }
+           format.html { redirect_to users_path, notice: t('user.session_in_course') }
         end
       end
       else
-        flash[:notice] = 'No se han aceptado los términos y condiciones del sitio.'
+        flash[:notice] = t('user.non_terms_accepted')
         redirect_to root_path 
     end
   end
@@ -181,7 +194,7 @@ class UsersController < ApplicationController
     @user.confirmed_token = nil
     @user.confirmed = true
     @user.save
-    flash[:notice] = 'Se ha agregado satisfactoriamente el miembro de la red.'
+    flash[:notice] = t('user.confirmed_token')
       if @user != nil
            redirect_to sign_in_path
       else
@@ -202,7 +215,7 @@ class UsersController < ApplicationController
             @dp.save
           end
 
-        flash[:notice] = 'Se ha agregado satisfactoriamente el miembro de la red.'
+        flash[:notice] = t('user.reset_password')
         
         respond_to do |format|
           format.html
@@ -218,7 +231,7 @@ class UsersController < ApplicationController
     @user.confirmed_token = random_to_token
     @user.save
     @mailer = UserMailer.missing_password(@user, @user.confirmed_token).deliver
-    flash[:notice] = 'Se ha enviado un mail con las instrucciones para el cambio de constraseña.'
+    flash[:notice] = t('user.mail_to_change_password')
     redirect_to root_path
   end
 
@@ -227,14 +240,14 @@ class UsersController < ApplicationController
         @user.hashed_password = "#{params[:password]}"
         @user.save
         if @user.save
-              flash[:notice] = 'Se ha guardado correctamente tu contraseña porfavor inicia sesión en ingresar.'
+              flash[:notice] = t('user.satify_change_password')
               redirect_to sign_in_path
            else
-            flash[:notice] = 'No se ha guardado correctamente la contraseña.'
+            flash[:notice] =  t('user.password_non_safe')
             redirect_to :back
         end
   end
- 
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

@@ -23,17 +23,17 @@
 
 		  <% if session_status == false %>
 		   <ul class="right nav-doctor">
-			  <li><a href="#" id="whoare" data-target="whoare_a" class="white">¿Quienes somos?</a></li>
-			  <li><a href="#" id="whodo" data-target="what_we_do_a" class="white">¿Que hacemos?</a></li>
-			  <li><a href="#" id="banefits" data-target="banefits_a" class="white">Beneficios</a></li>
-			  <li><a href="#" id="price"  data-target="price_a" class="white">Precios</a></li>
+			  <li><a href="#" id="whoare" data-target="whoare_a" class="white"><%= t('menu.who_we_are')%></a></li>
+			  <li><a href="#" id="whodo" data-target="what_we_do_a" class="white"><%= t('menu.we_do')%></a></li>
+			  <li><a href="#" id="banefits" data-target="banefits_a" class="white"><%= t('menu.benefits')%></a></li>
+			  <li><a href="#" id="price"  data-target="price_a" class="white"><%= t('menu.prices')%></a></li>
 			  <li></li>
 		   </ul>
 		  <%else%>
 		   <ul class="right">
-		     <li ><%= link_to  "Usuarios", users_path, :class => 'white' %></li>
+		     <li ><%= link_to  t('user.users'), users_path, :class => 'white' %></li>
 		     <li ><%= link_to  "#{current_user.name}", user_path(current_user.id), :class => 'white' %></li>
-		     <li ><%= link_to  "Salir", sign_out_path(:id => current_user.id), :class => 'white' %></li>
+		     <li ><%= link_to  t('user.exit'), sign_out_path(:id => current_user.id), :class => 'white' %></li>
 		    </ul>
 		  <%end%>
 		</section>

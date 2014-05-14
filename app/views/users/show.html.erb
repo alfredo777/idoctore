@@ -18,29 +18,21 @@
     </div>
     <div class="right large-5"> 
       <ul class="side-nav ">
-        <li class="acordion-lile"><%= link_to 'Pascientes', patients_path %></li>
-        <li class="acordion-lile"><a href="#">Diagnosticos</a></li>
-        <li class="acordion-lile"><a href="#">Historial</a></li>
-        <li class="acordion-lile"><a href="#">Medicamentos</a></li>
-        <li class="acordion-lile"><a href="#panel2-1">Calendario</a></li>
+        <% if @user.id == current_user.id && current_user.role == 'doctor' %><li class="acordion-lile"><%= link_to t('tabs_from_menu_user.patients'), patients_path %></li><%end%>
+        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.record')%></a></li>
+        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.medical_record')%></a></li>
+        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.treatment')%></a></li>
         <li class="acordion-lile"><%= link_to 'Editar mi perfíl', edit_user_path(current_user.id)%></li>
        </ul>
     </div>
    </div>
     <div id="patient_modal" class="reveal-modal" data-reveal>
-       <dl class="tabs black-bg" data-tab>
-        <dd class="active"><a href="#panel2-1">Diagnostico</a></dd>
-        <dd><a href="#panel2-2">Anotación</a></dd>
-        <dd><a href="#panel2-3">Agregar Análisis Clínico</a></dd>
-        <dd><a href="#panel2-4">Mandar mensaje</a></dd>
-        <dd><a href="#panel2-5">Signos Vitales</a></dd>
-        <dd><a href="#panel2-6">Notas</a></dd>
-
-
-      </dl>
+      <%= render partial: '/layout_parts/post_menu'%>
       <div class="tabs-content">
         <div class="content active" id="panel2-1">
-          <p><%=render partial: '/diagnostics/form'%></p>
+        <%#= debug @user %>
+        <%#= debug current_user %>
+          <p><%=render partial: '/diagnostics/form', locals: {user: @user, owner: current_user}%></p>
         </div>
         <div class="content" id="panel2-2">
           <p>Second panel content goes here...</p>
