@@ -52,7 +52,15 @@ class User < ActiveRecord::Base
       id_patients.push(idp.patient_id)
     end
     @users = User.find(id_patients)
+  end
 
+  def create_adanced_key
+    if self.advanced_key == nil
+       o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+       string = (0...110).map { o[rand(o.length)] }.join
+       self.advanced_key = string 
+       self.save
+    end
   end
 
 end

@@ -15,9 +15,12 @@ Rails.application.routes.draw do
     collection do
       post 'create_from_user'
       post 'add_note'
+      post 'destroy'
     end
   end
-
+  get 'cie10', :to => 'diagnostics#cie10', :as =>  :cie10
+  get 'plain_show/:id', :to => 'diagnostics#plain_show', :as => :plain_show
+  get 'qrcode_view/:id', :to => 'diagnostics#qrcode_view', :as => :qrcode_view
   resources :sessions
   
   resources :users do 
@@ -40,10 +43,9 @@ Rails.application.routes.draw do
   end
 
 
-
   get 'users/:id/my_patients', :to => 'users#patients', :as => :patients
-  
-   
+  get 'post_id/:id', :to => 'static_views#post',:as => :post_in
+
   get 'sign_in', :to => 'users#session_new', :as => :sign_in
   get 'sign_out', :to => 'users#destroy_session', :as => :sign_out
   get '/confirmed_token/:confirmed_token', :to => 'users#confirmed_token', :as => :confirmed_token

@@ -1,0 +1,36 @@
+@media print {
+  .e {
+  width: 100px;
+  height: 100px;
+  background: blue;
+} 
+}
+
+.qrcode {
+  width:400px;
+  height:400px;
+  position:relative;
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+
+  td {
+     border-width: 0;
+     border-style: none;
+     border-color: #0000ff;
+     border-collapse: collapse;
+     padding: 0;
+     margin: 0;
+     width: 20px;
+     height: 10px;
+
+    &.black {
+      background-color: #000;
+    }
+    
+    &.white {
+      background-color: #fff;
+    }
+  }
+}

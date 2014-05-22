@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514205305) do
+ActiveRecord::Schema.define(version: 20140517203137) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 20140514205305) do
     t.boolean  "serious"
     t.boolean  "inconsequential"
     t.integer  "vital_signs"
+    t.string   "qrcode"
+  end
+
+  create_table "diseases", force: true do |t|
+    t.string   "name"
+    t.string   "id_from_icd10"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "doctor_patients", force: true do |t|
@@ -64,6 +72,16 @@ ActiveRecord::Schema.define(version: 20140514205305) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "accepted_request", default: false
+  end
+
+  create_table "medicines", force: true do |t|
+    t.string   "name"
+    t.string   "laboratoy"
+    t.text     "indications"
+    t.date     "init_date"
+    t.date     "finish_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "message_user_to_users", force: true do |t|
@@ -120,6 +138,7 @@ ActiveRecord::Schema.define(version: 20140514205305) do
     t.string   "sex"
     t.boolean  "terms"
     t.date     "date_of_birth"
+    t.string   "advanced_key"
   end
 
   create_table "vital_signs", force: true do |t|

@@ -5,10 +5,10 @@
 .simple_background {background: url('/assets/medicine2.jpg') !important; width:100%; height:800px; background-repeat:no; background-size: 100% 100%; color:#fff;}
 
 .white {color:#ffffff !important;}
-.grey-background {background: #F8F8F8; margin-top:45px;}
+.grey-background { background-image: url('/assets/light_2X.png'); margin-top:45px;}
 .padding-l {padding-left:3px;}
 .slide {height:80px; background:#000;}
-.white-back {background: #ffffff;}
+.white-back {background: transparent;}
 .w80 {width:80%; padding:.5%; margin-left:10%; margin-right:9.5%; margin-top:15px; margin-bottom:15px;}
 .w80-b {width:80%; padding:.5%; margin-left:10%; margin-right:9.5%; margin-top:50px; margin-bottom:1px;}
 .black-bg {
@@ -100,4 +100,34 @@ ul{
 }
 .margin-regular{
   margin:7px;
+}
+.previous_page{
+  padding:8px;
+  background:#eee;
+  color:#000;
+}
+.next_page{
+  padding:8px;
+  background:#eee;
+  color:#000;
+}
+em{
+  background:#eee;
+  padding:8px;
+  height:33px;
+  width:33px;
+
+}
+.pagination{
+  & a{
+   background:#008cba;
+   padding:8px;
+   height:33px;
+   width:33px;
+   color:#fff;
+  }
+}
+.pol300{
+  max-height: 300px;
+  overflow:auto;
 }

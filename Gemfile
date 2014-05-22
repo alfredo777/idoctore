@@ -35,6 +35,10 @@ gem 'carrierwave'
 # paginate
 gem 'will_paginate', '~> 3.0'
 
+# QR
+gem 'rqrcode'
+gem  'rmagick'
+gem 'rqrcode-with-patches'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

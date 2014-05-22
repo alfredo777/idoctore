@@ -1,0 +1,424 @@
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "appointments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "solictude" varchar(255), "accepted" boolean, "dateandour" datetime, "place" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.7ms)[0m  CREATE TABLE "clinical_analyses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "user_id" integer, "diagnostic_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "delete_histories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "owner_id" integer, "delete_content" text, "causes" varchar(255), "justify" text, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "diagnostics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "interrogation" text, "physical_examination" text, "diagnostic_or_clinical_problem" text, "list_of_laboratory_studies" text, "required_therapies" text, "suggested_treatments" text, "created_at" datetime, "updated_at" datetime, "owner_by" integer, "chronic" boolean, "outstanding" boolean, "serious" boolean, "inconsequential" boolean, "vital_signs" integer, "qrcode" varchar(255)) 
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "doctor_patients" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "doctor_id" integer, "patient_id" integer, "created_at" datetime, "updated_at" datetime, "accepted_request" boolean DEFAULT 'f') [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "message_user_to_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "to_user_id" integer, "converstion_id" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "last_analysis" integer, "last_signs" integer, "new_treatment" text, "created_at" datetime, "updated_at" datetime, "diagnostic_id" integer, "user_id" integer) [0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "caduce" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "single_files" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "archive" varchar(255), "pass" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "hashed_password" varchar(255), "salt" varchar(255), "email" varchar(255), "register" date, "confirmed_token" varchar(255), "confirmed" boolean DEFAULT 'f', "description" text, "role" varchar(255), "resume" text, "last_loggin" datetime, "admin" boolean DEFAULT 'f', "birthday" date, "created_at" datetime, "updated_at" datetime, "avatar" varchar(255), "sex" varchar(255), "terms" boolean, "date_of_birth" date) 
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "vital_signs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "weight" integer, "blood_pressure_up" integer, "blood_pressure_down" integer, "pulse" integer, "height" integer, "breathing" integer, "temperature" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime, "owner_by" integer) [0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140515174231')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140430211612')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140501040845')
+  [1m[36m (2.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140502034504')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140502180036')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140505005651')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140507030304')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140509185545')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140511191303')
+  [1m[36m (1.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140511193137')[0m
+  [1m[35m (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140511220615')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512004240')[0m
+  [1m[35m (1.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512004704')
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512005157')[0m
+  [1m[35m (5.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512005243')
+  [1m[36m (13.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512005411')[0m
+  [1m[35m (11.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512005500')
+  [1m[36m (20.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512035250')[0m
+  [1m[35m (14.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512172911')
+  [1m[36m (5.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512182448')[0m
+  [1m[35m (8.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140512221217')
+  [1m[36m (9.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140512221404')[0m
+  [1m[35m (6.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140513233902')
+  [1m[36m (7.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140513234327')[0m
+  [1m[35m (10.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140514205305')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "appointments"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "appointments" ("solictude", "accepted", "dateandour", "place", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2014-05-13 18:39:03.000000', 'MyString', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "appointments" ("solictude", "accepted", "dateandour", "place", "created_at", "updated_at", "id") VALUES ('MyString', 'f', '2014-05-13 18:39:03.000000', 'MyString', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "clinical_analyses"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "clinical_analyses" ("title", "user_id", "diagnostic_id", "created_at", "updated_at", "id") VALUES ('MyString', 1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "clinical_analyses" ("title", "user_id", "diagnostic_id", "created_at", "updated_at", "id") VALUES ('MyString', 1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "delete_histories"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "delete_histories" ("user_id", "owner_id", "delete_content", "causes", "justify", "created_at", "updated_at", "id") VALUES (1, 1, 'MyText', 'MyString', 'MyText', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "delete_histories" ("user_id", "owner_id", "delete_content", "causes", "justify", "created_at", "updated_at", "id") VALUES (1, 1, 'MyText', 'MyString', 'MyText', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "diagnostics"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "diagnostics" ("user_id", "interrogation", "physical_examination", "diagnostic_or_clinical_problem", "list_of_laboratory_studies", "required_therapies", "suggested_treatments", "created_at", "updated_at", "id") VALUES (1, 'MyText', 'MyText', 'MyText', 'MyText', 'MyText', 'MyText', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "diagnostics" ("user_id", "interrogation", "physical_examination", "diagnostic_or_clinical_problem", "list_of_laboratory_studies", "required_therapies", "suggested_treatments", "created_at", "updated_at", "id") VALUES (1, 'MyText', 'MyText', 'MyText', 'MyText', 'MyText', 'MyText', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "doctor_patients"[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "doctor_patients" ("doctor_id", "patient_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "doctor_patients" ("doctor_id", "patient_id", "created_at", "updated_at", "id") VALUES (1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "message_user_to_users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "message_user_to_users" ("user_id", "to_user_id", "converstion_id", "created_at", "updated_at", "id") VALUES (1, 1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)[0m
+  [1m[35mFixture Insert (0.0ms)[0m  INSERT INTO "message_user_to_users" ("user_id", "to_user_id", "converstion_id", "created_at", "updated_at", "id") VALUES (1, 1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "notes"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "notes" ("content", "last_analysis", "last_signs", "new_treatment", "created_at", "updated_at", "id") VALUES ('MyText', 1, 1, 'MyText', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "notes" ("content", "last_analysis", "last_signs", "new_treatment", "created_at", "updated_at", "id") VALUES ('MyText', 1, 1, 'MyText', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "sessions"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "sessions" ("user_id", "caduce", "created_at", "updated_at", "id") VALUES (1, '2014-04-30 23:08:45.000000', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "sessions" ("user_id", "caduce", "created_at", "updated_at", "id") VALUES (1, '2014-04-30 23:08:45.000000', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "single_files"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "single_files" ("name", "archive", "pass", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "single_files" ("name", "archive", "pass", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "hashed_password", "salt", "email", "register", "confirmed_token", "confirmed", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2014-04-30', 'MyString', 'f', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "hashed_password", "salt", "email", "register", "confirmed_token", "confirmed", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2014-04-30', 'MyString', 'f', '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "vital_signs"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "vital_signs" ("weight", "blood_pressure_up", "blood_pressure_down", "pulse", "height", "breathing", "temperature", "created_at", "updated_at", "id") VALUES (1, 1, 1, 1, 1, 1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 980190962)
+  [1m[36mFixture Insert (0.0ms)[0m  [1mINSERT INTO "vital_signs" ("weight", "blood_pressure_up", "blood_pressure_down", "pulse", "height", "breathing", "temperature", "created_at", "updated_at", "id") VALUES (1, 1, 1, 1, 1, 1, 1, '2014-05-15 18:50:15', '2014-05-15 18:50:15', 298486374)[0m
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------
+AppointmentsControllerTest: test_should_get_create
+--------------------------------------------------
+Processing by AppointmentsController#create as HTML
+  Rendered appointments/create.html.erb within layouts/application (2.6ms)
+  Rendered layout_parts/_heather.html.erb (11.8ms)
+Completed 200 OK in 6331ms (Views: 6330.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+AppointmentsControllerTest: test_should_get_destroy
+---------------------------------------------------
+Processing by AppointmentsController#destroy as HTML
+  Rendered layout_parts/_heather.html.erb (0.5ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------------
+AppointmentsControllerTest: test_should_get_move
+------------------------------------------------
+Processing by AppointmentsController#move as HTML
+  Rendered layout_parts/_heather.html.erb (0.4ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+ConversationsControllerTest: test_should_get_create
+---------------------------------------------------
+Processing by ConversationsController#create as HTML
+  Rendered layout_parts/_heather.html.erb (0.6ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------------
+ConversationsControllerTest: test_should_get_destroy
+----------------------------------------------------
+Processing by ConversationsController#destroy as HTML
+  Rendered layout_parts/_heather.html.erb (0.5ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------------
+DiagnosticsControllerTest: test_should_create_diagnostic
+--------------------------------------------------------
+  [1m[35mDiagnostic Load (0.3ms)[0m  SELECT  "diagnostics".* FROM "diagnostics"  WHERE "diagnostics"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "diagnostics"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------------
+DiagnosticsControllerTest: test_should_destroy_diagnostic
+---------------------------------------------------------
+  [1m[35mDiagnostic Load (0.1ms)[0m  SELECT  "diagnostics".* FROM "diagnostics"  WHERE "diagnostics"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "diagnostics"[0m
+Processing by DiagnosticsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+Completed 404 Not Found in 0ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------
+DiagnosticsControllerTest: test_should_get_edit
+-----------------------------------------------
+  [1m[35mDiagnostic Load (0.1ms)[0m  SELECT  "diagnostics".* FROM "diagnostics"  WHERE "diagnostics"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------------
+DiagnosticsControllerTest: test_should_get_index
+------------------------------------------------
+  [1m[36mDiagnostic Load (0.1ms)[0m  [1mSELECT  "diagnostics".* FROM "diagnostics"  WHERE "diagnostics"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+DiagnosticsControllerTest: test_should_get_new
+----------------------------------------------
+  [1m[35mDiagnostic Load (0.1ms)[0m  SELECT  "diagnostics".* FROM "diagnostics"  WHERE "diagnostics"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------------------
+DiagnosticsControllerTest: test_should_show_diagnostic
+------------------------------------------------------
+  [1m[36mDiagnostic Load (0.1ms)[0m  [1mSELECT  "diagnostics".* FROM "diagnostics"  WHERE "diagnostics"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------------
+DiagnosticsControllerTest: test_should_update_diagnostic
+--------------------------------------------------------
+  [1m[35mDiagnostic Load (0.1ms)[0m  SELECT  "diagnostics".* FROM "diagnostics"  WHERE "diagnostics"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------------
+SessionsControllerTest: test_should_create_session
+--------------------------------------------------
+  [1m[36mSession Load (0.3ms)[0m  [1mSELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "sessions"
+Processing by SessionsController#create as HTML
+  Parameters: {"session"=>{"caduce"=>"2014-04-30 23:08:45 UTC", "user_id"=>"1"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "sessions" ("caduce", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["caduce", "2014-04-30 23:08:45.000000"], ["created_at", "2014-05-15 18:50:22.141343"], ["updated_at", "2014-05-15 18:50:22.141343"], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sessions/980190963
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "sessions"
+  [1m[36m (0.7ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------
+SessionsControllerTest: test_should_destroy_session
+---------------------------------------------------
+  [1m[36mSession Load (0.1ms)[0m  [1mSELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "sessions"
+Processing by SessionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mSession Load (0.0ms)[0m  [1mSELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "sessions" WHERE "sessions"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/sessions
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "sessions"[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+SessionsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[35mSession Load (0.1ms)[0m  SELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by SessionsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mSession Load (0.1ms)[0m  [1mSELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+SessionsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mSession Load (0.1ms)[0m  SELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by SessionsController#index as HTML
+Completed 500 Internal Server Error in 1ms
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-------------------------------------------
+SessionsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mSession Load (0.1ms)[0m  [1mSELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------------
+SessionsControllerTest: test_should_show_session
+------------------------------------------------
+  [1m[35mSession Load (0.1ms)[0m  SELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by SessionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mSession Load (0.0ms)[0m  [1mSELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------
+SessionsControllerTest: test_should_update_session
+--------------------------------------------------
+  [1m[35mSession Load (0.1ms)[0m  SELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by SessionsController#update as HTML
+  Parameters: {"session"=>{"caduce"=>"2014-04-30 23:08:45 UTC", "user_id"=>"1"}, "id"=>"980190962"}
+  [1m[36mSession Load (0.0ms)[0m  [1mSELECT  "sessions".* FROM "sessions"  WHERE "sessions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/sessions/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+StaticViewsControllerTest: test_should_get_about_us
+---------------------------------------------------
+Processing by StaticViewsController#about_us as HTML
+  Rendered layout_parts/_heather.html.erb (0.5ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------
+StaticViewsControllerTest: test_should_get_home
+-----------------------------------------------
+Processing by StaticViewsController#home as HTML
+  Rendered layout_parts/_heather.html.erb (0.4ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------
+StaticViewsControllerTest: test_should_get_prices
+-------------------------------------------------
+Processing by StaticViewsController#prices as HTML
+  Rendered layout_parts/_heather.html.erb (0.4ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+StaticViewsControllerTest: test_should_get_register
+---------------------------------------------------
+Processing by StaticViewsController#register as HTML
+  Rendered layout_parts/_heather.html.erb (0.4ms)
+Completed 200 OK in 3ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+UsersControllerTest: test_should_create_user
+--------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"confirmed"=>false, "confirmed_token"=>"MyString", "email"=>"MyString", "hashed_password"=>"[FILTERED]", "name"=>"MyString", "register"=>"2014-04-30", "salt"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" = 'MyString' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  Rendered users/_form_register.html.erb (2.5ms)
+  Rendered layout_parts/_heather.html.erb (0.5ms)
+Completed 200 OK in 57ms (Views: 24.0ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+UsersControllerTest: test_should_destroy_user
+---------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.0ms)[0m  SELECT COUNT(*) FROM "users"
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------
+UsersControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Redirected to http://test.host/
+Filter chain halted as :loggin_filter rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------
+UsersControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by UsersController#index as HTML
+Redirected to http://test.host/
+Filter chain halted as :loggin_filter rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by UsersController#new as HTML
+  Rendered users/_form_register.html.erb (0.9ms)
+  Rendered layout_parts/_heather.html.erb (0.5ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------
+UsersControllerTest: test_should_show_user
+------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Redirected to http://test.host/
+Filter chain halted as :loggin_filter rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------
+UsersControllerTest: test_should_update_user
+--------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"confirmed"=>false, "confirmed_token"=>"MyString", "email"=>"MyString", "hashed_password"=>"[FILTERED]", "name"=>"MyString", "register"=>"2014-04-30", "salt"=>"MyString"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users"  WHERE ("users"."email" = 'MyString' AND "users"."id" != 980190962) LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 23ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------
+VitalSignsControllerTest: test_should_create_vital_sign
+-------------------------------------------------------
+  [1m[35mVitalSign Load (0.2ms)[0m  SELECT  "vital_signs".* FROM "vital_signs"  WHERE "vital_signs"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "vital_signs"[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------------
+VitalSignsControllerTest: test_should_destroy_vital_sign
+--------------------------------------------------------
+  [1m[35mVitalSign Load (0.1ms)[0m  SELECT  "vital_signs".* FROM "vital_signs"  WHERE "vital_signs"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "vital_signs"[0m
+Processing by VitalSignsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+Completed 500 Internal Server Error in 0ms
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------------------
+VitalSignsControllerTest: test_should_get_edit
+----------------------------------------------
+  [1m[35mVitalSign Load (0.1ms)[0m  SELECT  "vital_signs".* FROM "vital_signs"  WHERE "vital_signs"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by VitalSignsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  Rendered vital_signs/_form.html.erb (1.3ms)
+Completed 500 Internal Server Error in 4ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-----------------------------------------------
+VitalSignsControllerTest: test_should_get_index
+-----------------------------------------------
+  [1m[36mVitalSign Load (0.1ms)[0m  [1mSELECT  "vital_signs".* FROM "vital_signs"  WHERE "vital_signs"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by VitalSignsController#index as HTML
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------
+VitalSignsControllerTest: test_should_get_new
+---------------------------------------------
+  [1m[35mVitalSign Load (0.1ms)[0m  SELECT  "vital_signs".* FROM "vital_signs"  WHERE "vital_signs"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by VitalSignsController#new as HTML
+  Rendered vital_signs/_form.html.erb (0.7ms)
+Completed 500 Internal Server Error in 2ms
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-----------------------------------------------------
+VitalSignsControllerTest: test_should_show_vital_sign
+-----------------------------------------------------
+  [1m[36mVitalSign Load (0.1ms)[0m  [1mSELECT  "vital_signs".* FROM "vital_signs"  WHERE "vital_signs"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by VitalSignsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------
+VitalSignsControllerTest: test_should_update_vital_sign
+-------------------------------------------------------
+  [1m[35mVitalSign Load (0.1ms)[0m  SELECT  "vital_signs".* FROM "vital_signs"  WHERE "vital_signs"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

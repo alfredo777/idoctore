@@ -1,0 +1,40 @@
+//special buttons for menu
+
+//places
+
+.corner-button{
+	margin-top:5px;
+	margin-left: 5%;
+	position:absolute;
+
+}
+
+// efects
+.tool_button{
+  background:#ffffff;
+  border-radius: 50%;
+   & :hover {
+     background:#D8D8D8;
+     border-radius: 50%;
+
+   }
+}
+
+.stock_menu{
+  background:#ffffff;
+  border-radius: 50%;
+  margin:5px;
+  border: solid 5px #eee;
+  float:left;
+  padding:-2px;
+  width:59px;
+
+  & :hover {
+     background: #eee;
+     border-radius: 50%;
+     margin-top:-2px;
+     cursor: pointer !important;
+
+  }
+}
+

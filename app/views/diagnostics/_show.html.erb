@@ -4,15 +4,13 @@
    <% if dt.owner_by == current_user.id  &&  dt.owner_by != nil %> 
    <td>
      <ul class="button-group">
-      <li><a href="#" class="small button">Errado</a></li>
-      <li><a href="#" class="small button">Cambio</a></li>
-      <li><a href="#" class="small button">Otra</a></li>
+      <li> <a data-reveal-id="diagnostico_lok<%=dt.id%>" class="small button">Solicitud de borrado</a></li>
      </ul>
    </td>
    <td>
      <ul class="button-group [radius round]">
-      <li><a href="#" class="small button [secondary alert success]">Imprimir</a></li>
-      <li><a href="#" class="small button [secondary alert success]">Imprimir Receta</a></li>
+      <li><a href="#" class="small button [secondary alert success]"  onclick="printDiv(diagnostico_<%=dt.id%>, <%=current_user.hash%>, <%= dt.user_id %>)">Imprimir</a></li>
+      <li><a href="#" class="small button [secondary alert success]" onclick="printTherapy(qr_<%=dt.id%>, suggested_treatments<%=dt.id%>, <%=dt.user_id%>, diagnostic_<%=dt.id%>, name_<%= dt.id %>, key_<%=dt.id%> )">Imprimir Receta</a></li>
     </ul>
    </td>
    <%end%>
@@ -20,7 +18,9 @@
  <tr>
 
  <div id="diagnostico_<%=dt.id%>" class="reveal-modal" data-reveal>
-     <h2><%= t('diagnostics.title')%>  </h2><i> Dr: <%= dt.owner %></i>
+
+     <h2><%= t('diagnostics.title')%>  </h2><i id="name_<%= dt.id %>"> Dr: <%= link_to "#{dt.owner}", user_path(dt.user_id) %></i><div id ="qr_<%=dt.id%>"class="right"><%= render partial: '/diagnostics/qrcode', locals:{qr: dt.qrcode_exec, dt: dt} %></div>
+
 
      <h3>Problem clasification</h3>
      <div class="row">
@@ -51,7 +51,7 @@
      <%end%>
 
      <% if !dt.diagnostic_or_clinical_problem.empty? %>
-     <div class="">
+     <div id="diagnostic_<%=dt.id%>">
       <h3><%= t('diagnostics.diagnostic_or_clinical_problem')%></h3>
        <p align='justify'><%= simple_format(dt.diagnostic_or_clinical_problem)%></p>
      </div>
@@ -65,7 +65,7 @@
      <%end%>
 
       <% if !dt.required_therapies.empty? %>
-     <div class="">
+     <div id="therapies_<%=dt.id%>">
       <h3><%= t('diagnostics.required_therapies') %></h3>
        <p align='justify'><%= simple_format(dt.required_therapies)%></p>
      </div>
@@ -73,7 +73,7 @@
 
 
       <% if !dt.suggested_treatments.empty? %>
-     <div class="">
+     <div id="suggested_treatments<%=dt.id%>">
       <h3><%=  t('diagnostics.suggested_treatments')%></h3>
        <p align='justify'><%= simple_format(dt.suggested_treatments)%></p>
      </div>
@@ -89,4 +89,15 @@
       <%end%>
 
       <a class="close-reveal-modal">&#215;</a>
+
+       <p id="key_<%=dt.id%>" style="font-size:8px;"> <%= find_advance_key(dt.owner_by)if current_user.id = dt.owner_by%></p>
+  </div>
+
+  <div class="reveal-modal" id="diagnostico_lok<%=dt.id%>" data-reveal>
+        <div class="row">
+        <p class="panel">Para eliminar un diagnostico del expediente es necesario que justifique su eliminación porfavor ingrese los datos al siguiente cuestionario.</p>
+        <%= render partial: '/diagnostics/form_for_delete_diagnostic', locals:{dt: dt
+          }%>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
   </div>

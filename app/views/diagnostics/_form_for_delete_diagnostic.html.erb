@@ -1,0 +1,12 @@
+
+<%= form_tag('/diagnostics/destroy') do -%>
+    <%= hidden_field_tag 'diagnostic', dt.id %>
+	<%= hidden_field_tag 'user_id', @user.id %>
+	<%= hidden_field_tag 'owner_id', current_user.id %>
+	<%= label_tag 'Justify'%>
+	<%= text_area_tag 'causes',nil, rows: 15 %>
+	<%= label_tag 'Select a cause'%>
+
+	<%= select_tag "justify", options_for_select([ "Error", "New diagnostic", 'Other' ]) %>
+	<%= submit_tag 'Destroy', :class => 'button' %>
+<%end%>

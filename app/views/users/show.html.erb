@@ -1,4 +1,17 @@
-  <div class="row ">
+  <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user} %>
+  <div class="row">
+   <div class="left large-3" style="display:none;"> 
+      <ul class="side-nav ">
+        <% if @user.id == current_user.id && current_user.role == 'doctor' %><li class="acordion-lile"><%= link_to t('tabs_from_menu_user.patients'), patients_path %></li><%end%>
+        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.record')%></a></li>
+        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.medical_record')%></a></li>
+        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.treatment')%></a></li>
+        <li class="acordion-lile"><%= link_to 'Editar mi perfíl', edit_user_path(current_user.id)%></li>
+       </ul>
+    </div>
+  </div>
+  <div class="row">
+
     <p class="red-back"><%= @user.name %></p>
 
     <div class=" right-profile-menu actualization-back " >
@@ -14,53 +27,21 @@
     <div class="left large-5"> 
     <p>Sexo: <%= @user.sex %></p>
     <p>Edad: <%= @user.date_of_birth %></p>
-    <a data-reveal-id="patient_modal" >Actualizar Paciente</a>
-    </div>
-    <div class="right large-5"> 
-      <ul class="side-nav ">
-        <% if @user.id == current_user.id && current_user.role == 'doctor' %><li class="acordion-lile"><%= link_to t('tabs_from_menu_user.patients'), patients_path %></li><%end%>
-        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.record')%></a></li>
-        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.medical_record')%></a></li>
-        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.treatment')%></a></li>
-        <li class="acordion-lile"><%= link_to 'Editar mi perfíl', edit_user_path(current_user.id)%></li>
-       </ul>
+
     </div>
    </div>
-    <div id="patient_modal" class="reveal-modal" data-reveal>
-      <%= render partial: '/layout_parts/post_menu'%>
-      <div class="tabs-content">
-        <div class="content active" id="panel2-1">
-        <%#= debug @user %>
-        <%#= debug current_user %>
-          <p><%=render partial: '/diagnostics/form', locals: {user: @user, owner: current_user}%></p>
-        </div>
-        <div class="content" id="panel2-2">
-          <p>Second panel content goes here...</p>
-        </div>
-        <div class="content" id="panel2-3">
-          <p>Third panel content goes here...</p>
-        </div>
-        <div class="content" id="panel2-4">
-          <p>Fourth panel content goes here...</p>
-        </div>
-         <div class="content" id="panel2-5">
-          <p><%=render partial: '/vital_signs/form', locals: {user: @user}%></p>
-        </div>
-        <div class="content" id="panel2-6">
-          <p><%=render partial: '/diagnostics/form_for_add_note' %></p>
-        </div>
-      </div>
-        <a class="close-reveal-modal">&#215;</a>
-
-    </div>
-  </div>
 
   <div class="row">
-    <div class="actualization-back ">
-    <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs} %>
-    <div id="container_of_parts" ></div>
-
-    </div>
+    <center>
+      <div class="actualization-back" style="width:97%;">
+        <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs} %>
+      <div id="container_of_parts" ></div>
+      </div>
+    </center>
   </div>
+
+     <div id='close_page_slider' style="display:none;"><%= image_tag('menu/close.png')%></div>     
+     <div id="left_hide" style="display:none;" ></div>
+
 
 

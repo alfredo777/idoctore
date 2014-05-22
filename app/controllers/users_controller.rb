@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def diagnostics
     @user=User.find(params[:id])
-    @diagnostics = @user.diagnostics.paginate(:page => params[:page], :per_page => 30)
+    @diagnostics = @user.diagnostics.paginate(:page => params[:page], :per_page => 10)
     
     respond_to do |format|
       format.html
@@ -168,7 +168,8 @@ class UsersController < ApplicationController
         end
        else
         respond_to do |format|
-           format.html { redirect_to users_path, notice: t('user.session_in_course') }
+           session[:user] = @user.id
+           format.html { redirect_to @user, notice: t('user.session_in_course') }
         end
       end
       else

@@ -41,6 +41,7 @@ es:
     prices: Precios
     we_do: "¿Que hacemos?"
     who_we_are: "¿Quienes Somos?"
+    login: Ingresa
   notes: 
     diagnostics: "Diagnostico al que pertenece"
     new_treatment: "Nuevo tratamiento"
@@ -95,6 +96,7 @@ es:
     user_password_error: "No se ha podido agregar el usuario debido a que la validación de password no coincide."
     user_simple_error: "Hemos tenido un error al crear el usuario."
     users: Usuarios
+    init: Iniciar
   vital_signs: 
     blood_pressure_down: "Presión arterial inferior"
     blood_pressure_up: "Presión arterial superior"
@@ -106,3 +108,6 @@ es:
     weight: Peso
   simple:
     see_more: 'Ver más'
+  will_paginate:
+    previous_label: 'Anterior'
+    next_label: 'Siguiente'

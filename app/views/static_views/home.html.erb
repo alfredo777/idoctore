@@ -1,26 +1,12 @@
 <div class="raw_index">
    <div class="row">
-   <div class="large-7 left">
-   <h4 style='color:#9E9A9A;'><b>Mira el video</b></h4>
-   <iframe style="opacity:0.4; filter:alpha(opacity=40);" src="//player.vimeo.com/video/90558460?title=0&amp;byline=0&amp;portrait=0&amp;color=65d992" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/90558460">Nervo Style 1 / Live Tour Visuals</a> from <a href="http://vimeo.com/user2408484">FutureDeluxe</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+	   <center>
+		   <div class="large-10 flex-video widescreen vimeo" style="max-height:300px;">
+				   <h4 style='color:#9E9A9A;'><b>Mira el video</b></h4>
+				   <iframe style="opacity:0.4; filter:alpha(opacity=40);" src="//player.vimeo.com/video/90558460?title=0&amp;byline=0&amp;portrait=0&amp;color=65d992" width="300" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/90558460">Nervo Style 1 / Live Tour Visuals</a> from <a href="http://vimeo.com/user2408484">FutureDeluxe</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+		   </div>
+	   </center>
    </div>
-	<div class="large-4 right">
-	    <fieldset>
-	       <legend>Ingresa</legend>
-	       <%= form_tag('/users/create_session') do -%>
-  
-			  <p  style='color:#1c80cf;'><%=  'Email' %></p>
-			  <%= email_field_tag 'email' %>
-			   <p  style='color:#1c80cf;'><%=  'Password' %></p>
-			  <%= password_field_tag 'password' %>
-			  
-			  <div><%= submit_tag 'Iniciar', :class => 'button' %></div>
-		  <% end -%>
-		  <%= link_to 'Registrate', new_user_path %></br>
-		  <%= link_to '¿Olvidaste tu contraseña?', missing_password_path %></br>
-	    </fieldset>
-	</div>
-    </div>
 </div>
 </br>
 <div id="whoare_a" class="row">
@@ -90,6 +76,25 @@
 </div>
 <div class="foop">
  <div style="padding:35px;">Todos los derechos reservados 2014 © IDoctore</div> 
+</div>
+
+<div id="loggin_modal" class="large-4 reveal-modal" data-reveal>
+	    <fieldset>
+	       <legend><%= t('user.login') %></legend>
+	       <%= form_tag('/users/create_session') do -%>
+  
+			  <p  style='color:#1c80cf;'><%=  t('user.mail') %></p>
+			  <%= email_field_tag 'email' %>
+			   <p  style='color:#1c80cf;'><%=  t('user.password') %></p>
+			  <%= password_field_tag 'password' %>
+			  
+			  <div><%= submit_tag t('user.init'), :class => 'button' %></div>
+		  <% end -%>
+		  <%= link_to t('user.register'), new_user_path %></br>
+		  <%= link_to t('user.missing_password'), missing_password_path %></br>
+	    </fieldset>
+
+	    <a class="close-reveal-modal">&#215;</a>
 </div>
 
 

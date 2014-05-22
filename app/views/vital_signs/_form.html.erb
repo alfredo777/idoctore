@@ -1,35 +1,117 @@
+
+<div class="row">
 <%= form_tag('/vital_signs/create_from_user') do -%>
   <%= hidden_field_tag 'user_id', @user.id %>
   <%= hidden_field_tag 'owner_by', current_user.id %>
-  <div class="field">
-    <%= label_tag 'weight' %><br>
-    <%= number_field_tag 'weight' %>
+  <div class="row">
+  <div class="large-10 columns">
+     <%= label_tag 'weight' %>
+    <div class="large-6 left">
+      <div id="sweight" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden">
+      </div>
+    </div>
+    <div class="large-2 left" style="margin-left:35px;">
+    <%= number_field_tag 'weight', 0 %>
+    </div>
+</div>
+<div class="large-10 columns ">
+    <%= label_tag 'blood_pressure_up' %>
+    <div class="large-6 left">
+      <div id="sblood_pressure_up" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden">
+      </div>
+    </div>
+    <div class="large-2 left" style="margin-left:35px;">
+    <%= number_field_tag 'blood_pressure_up', 0 %>
+    </div>
+</div>
+<div class="large-10 columns">
+    <%= label_tag 'blood_pressure_down' %>
+      <div class="large-6 left">
+      <div id="sblood_pressure_down" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden">
+        </div>
+      </div>
+      <div class="large-2 left" style="margin-left:35px;">
+        <%= number_field_tag 'blood_pressure_down', 0 %>
+      </div>
+</div>
+<div class="large-10 columns">
+    <%= label_tag 'pulse' %>
+      <div class="large-6 left">
+      <div id="spulse" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden">
+        </div>
+      </div>
+      <div class="large-2 left" style="margin-left:35px;">
+         <%= number_field_tag 'pulse' %>
+      </div>
+</div>
+<div class="large-10 columns">
+    <%= label_tag 'height' %>
+      <div class="large-6 left">
+      <div id="sheight" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden">
+        </div>
+      </div>
+      <div class="large-2 left" style="margin-left:35px;">
+         <%= number_field_tag 'height' %>
+      </div>
   </div>
-  <div class="field">
-    <%= label_tag 'blood_pressure_up' %><br>
-    <%= number_field_tag 'blood_pressure_up' %>
+
+<div class="large-10 columns">
+    <%= label_tag 'breathing' %>
+     <div class="large-6 left">
+      <div id="sbreathing" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden">
+        </div>
+      </div>
+      <div class="large-2 left" style="margin-left:35px;">
+        <%= number_field_tag 'breathing' %>
+      </div>
   </div>
-  <div class="field">
-    <%= label_tag 'blood_pressure_down' %><br>
-    <%= number_field_tag 'blood_pressure_down' %>
-  </div>
-  <div class="field">
-    <%= label_tag 'pulse' %><br>
-    <%= number_field_tag 'pulse' %>
-  </div>
-  <div class="field">
-    <%= label_tag 'height' %><br>
-    <%= number_field_tag 'height' %>
-  </div>
-  <div class="field">
-    <%= label_tag 'breathing' %><br>
-    <%= number_field_tag 'breathing' %>
-  </div>
-  <div class="field">
-    <%= label_tag 'temperature' %><br>
-    <%= number_field_tag 'temperature' %>
+<div class="large-10 columns">
+    <%= label_tag 'temperature' %>
+      <div class="large-6 left">
+      <div id="stemperature" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+        <input type="hidden">
+        </div>
+      </div>
+      <div class="large-2 left" style="margin-left:35px;">
+        <%= number_field_tag 'temperature' %>
+      </div>
   </div>
   <div class="actions">
     <%= submit_tag 'Crear signos vitales', :class => 'button' %>
   </div>
 <% end %>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $(document).foundation();
+    SelfSlider('sweight', 'weight');
+    SelfSlider('sblood_pressure_up','blood_pressure_up');
+    SelfSlider('sblood_pressure_down', 'blood_pressure_down');
+    SelfSlider('spulse', 'pulse');
+    SelfSlider('sheight', 'height');
+    SelfSlider('sbreathing','breathing');
+    SelfSlider('stemperature', 'temperature');
+ });
+</script>
+

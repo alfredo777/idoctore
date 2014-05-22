@@ -17,4 +17,12 @@ class StaticViewsController < ApplicationController
 
   def about_us
   end
+
+  def post
+    @user = User.find(params[:id])
+    @type = params[:type]
+    respond_to do |f|
+      f.js
+    end
+  end
 end

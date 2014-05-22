@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="panel">
+    <h3><%= t('diagnostics.level_of_problem')%></h3>
+  </div>
+    <div class="large-3 columns" ><%= label_tag t('diagnostics.chronic')%>
+    <%= check_box_tag 'chronic' %></div>
+    <div class="large-3 columns" ><%= label_tag t('diagnostics.outstanding')%>
+    <%= check_box_tag 'outstanding' %></div>
+    <div class="large-3  columns" ><%= label_tag t('diagnostics.serious')%>
+    <%= check_box_tag 'serious' %></div>
+    <div class="large-3  columns" ><%= label_tag t('diagnostics.inconsequential')%>
+    <%= check_box_tag 'inconsequential' %></div>
+</div>
+<div class="row">
+  <div class="panel">
+   <h3><%= t('diagnostics.fields')%></h3>
+  </div>
+  <div id="form_for_diagnostic" class="swMain"> 
+   <%= render partial: '/diagnostics/steps_for_create/list_of_steps'%>
+   <div id="step-1">
+     <%= render partial: '/diagnostics/steps_for_create/step_1', locals: {user: user, owner: owner}%>
+   </div>
+   <div id="step-2">
+     <%= render partial: '/diagnostics/steps_for_create/step_2'%>
+   </div>
+   <div id="step-3">
+     <%= render partial: '/diagnostics/steps_for_create/step_3'%>
+   </div>
+   <div id="step-4">
+     <%= render partial: '/diagnostics/steps_for_create/step_4'%>
+   </div>
+ </div>
+</div>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+   $('.link_to_t').click(function() {
+    var target = $(this).data('target');
+    var to = '#'+target;
+    $(to).toggle();
+   });
+      // Initialize Smart Wizard
+        $('#form_for_diagnostic').smartWizard();
+   }); 
+</script>

@@ -1,0 +1,38 @@
+#pageslide {
+    /* These styles MUST be included. Do not change. */
+    display: none;
+    position: absolute;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    z-index: 999999;
+    
+    /* Specify the width of your pageslide here */
+    width: 95%;
+    padding: 20px;
+    
+    /* These styles are optional, and describe how the pageslide will look */
+    /*background-color: #fff;*/
+    color: #FFFFFF !important;
+    background-image: url('/assets/leather_2X.png');
+
+
+}
+
+#close_page_slider{
+    display: block;
+    position: absolute;
+    position: fixed  !important;
+    top: 0;
+    height: 100%;
+    z-index: 999999;
+    width: 5%;
+    padding: 20px;
+    background-color: #000;
+    color: #FFF;
+    float:left;
+    left:0;
+}
+#close_page_slider:hover{
+    background-color: #eee;
+}

@@ -1,70 +1,12 @@
-<%= form_tag('/diagnostics/create_from_user') do -%>
-<ul class="button-group">
-  <a class="link_to_t button [secondary alert success]" data-target='required_therapies_content'><%= t('diagnostics.simple_link_required_therapies')%></a>
-  <a class="link_to_t button [secondary alert success]" data-target='physical_examination_content'><%= t('diagnostics.simple_link_physical_examination')%></a>
-  <a class="link_to_t button [secondary alert success]" data-target='list_of_laboratory_studies_content'><%= t('diagnostics.simple_link_list_of_laboratory_studies')%></a>
-  <%= submit_tag t('diagnostics.end_diagnostic'), :class => 'button' %>
-</ul>
-  <div class="row">
-    <div class="panel">
-      <h3><%= t('diagnostics.level_of_problem')%></h3>
-    </div>
-      <div class="large-3 columns" ><%= label_tag t('diagnostics.chronic')%>
-      <%= check_box_tag 'chronic' %></div>
-      <div class="large-3 columns" ><%= label_tag t('diagnostics.outstanding')%>
-      <%= check_box_tag 'outstanding' %></div>
-      <div class="large-3  columns" ><%= label_tag t('diagnostics.serious')%>
-      <%= check_box_tag 'serious' %></div>
-      <div class="large-3  columns" ><%= label_tag t('diagnostics.inconsequential')%>
-      <%= check_box_tag 'inconsequential' %></div>
-  </div>
-  <div class="row">
-    <div class="panel">
-     <h3><%= t('diagnostics.fields')%></h3>
-    </div>
 
-  <div class="large-6 columns">
-    <div class="field">
-      <%= hidden_field_tag 'user_id', user.id %>
-      <%= hidden_field_tag 'owner_by', owner.id %>
-      <%= hidden_field_tag 'vital_signs', user.vital_signs.last.id if user.vital_signs.count != 0%>
-    </div>
-    <div class="field">
-      <b><%= label_tag t('diagnostics.interrogation') %></b><br>
-      <%= text_area_tag 'interrogation', nil, rows: 10, cols: 25 %>
-    </div>
-    <div class="field">
-       <b><%= label_tag t('diagnostics.diagnostic_or_clinical_problem') %></b><br>
-      <%= text_area_tag 'diagnostic_or_clinical_problem', nil, rows: 10, cols: 25  %>
-    </div>
-    <div class="field" >
-       <b><%= label_tag t('diagnostics.suggested_treatments') %></b><br>
-      <%= text_area_tag 'suggested_treatments', nil, rows: 10, cols: 25  %>
-    </div>
-  </div>
-  <div class="large-6 columns" style="margin-top:0px;">
-    <div class="field" style="display:none;" id="physical_examination_content">
-       <b><%= label_tag t('diagnostics.physical_examination') %></b><br>
-      <%= text_area_tag 'physical_examination', nil, rows: 10, cols: 25  %>
-    </div>
-    <div class="field" style="display:none; margin:0px;" id="list_of_laboratory_studies_content">
-       <b><%= label_tag t('diagnostics.list_of_laboratory_studies') %></b><br>
-      <%= text_area_tag 'list_of_laboratory_studies', nil, rows: 10, cols: 25  %>
-    </div>
-    <div class="field" style="display:none; margin:0px;" id="required_therapies_content">
-       <b><%= label_tag t('diagnostics.required_therapies') %></b><br>
-      <%= text_area_tag 'required_therapies', nil, rows: 10, cols: 25  %>
-    </div>
-  </div>
-  </div>
-
-
+<div id="tools" style="display:none;">
+<%= render partial: '/diagnostics/cie10_search'%>
+</div>
+<%= form_tag('/diagnostics/create_from_user',  :id => 'create_diagnostic') do -%>
+<%= render partial: '/diagnostics/steps_for_create/final_render_step', locals: { user: user, owner: owner}%>
 <% end %>
-<script type="text/javascript">
- $('.link_to_t').click(function() {
 
-    var target = $(this).data('target');
-    var to = '#'+target;
-    $(to).toggle();
-   });
-</script>
+<div class="link_to_t corner-button tool_button" data-target='tools'>
+  <%= image_tag('tools_d.png', width: 60, height: 60)%>
+</div>
+

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :validate_accepted_patient
   helper_method :status_if_request_patient_doctor_exist
   helper_method :random_to_token
+  helper_method :find_advance_key
 
 
   def current_user
@@ -50,5 +51,13 @@ class ApplicationController < ActionController::Base
      rand = (0...50).map { o[rand(o.length)] }.join
      string = rand
   end
+
+  def find_advance_key(id)
+    @user = User.find(id)
+    @user.create_adanced_key
+    @user.advanced_key
+  end
+
+
 
 end

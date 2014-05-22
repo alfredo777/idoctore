@@ -1,6 +1,9 @@
 class Diagnostic < ActiveRecord::Base
+
 	belongs_to :user
     has_many :notes
+
+    
    
 	def owner
 		if self.owner_by != nil
@@ -18,4 +21,13 @@ class Diagnostic < ActiveRecord::Base
 	def signs
 		@sign = VitalSign.find(self.vital_signs)
 	end 
+
+	def qrcode_exec
+		 @qr = RQRCode::QRCode.new(self.qrcode, size: 5)
+	end
+    		 
+    def create_image_qr
+		require 'rqrcode/export/svg'
+		image = RQRCode::QRCode.new(self.qrcode).as_svg(:module_size => 2)
+    end
 end

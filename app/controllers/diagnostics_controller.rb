@@ -1,13 +1,17 @@
 class DiagnosticsController < ApplicationController
-
+  layout 'panel', only: [:create_d]
   def create_from_user
     @diagnistic = Diagnostic.create(user_id: params[:user_id], interrogation: params[:interrogation], physical_examination: params[:physical_examination], diagnostic_or_clinical_problem: params[:diagnostic_or_clinical_problem], list_of_laboratory_studies: params[:list_of_laboratory_studies], required_therapies: params[:required_therapies], suggested_treatments: params[:suggested_treatments], owner_by: params[:owner_by], chronic: params[:chronic], outstanding: params[:outstanding], serious: params[:serious], inconsequential: params[:inconsequential], vital_signs: params[:vital_signs])
+    url = "http://#{HOST}/plain_show/#{@diagnistic.id}"
+    @diagnistic.update_attribute :qrcode, url.to_s
+
+
     if @diagnistic.save
       flash[:notice] = 'Se ha creado correctamente el diagnóstico'
-      redirect_to :back
+      redirect_to user_path(params[:user_id])
     else
       flash[:notice] = 'El diagnóstico no pudo ser creado'
-      redirect_to :back
+      redirect_to user_path(params[:user_id])
     end
   end
 
@@ -19,6 +23,64 @@ class DiagnosticsController < ApplicationController
     else
     redirect_to :back
     flash[:notice] = 'No se pudo crear la nota'
+    end
+  end
+
+  def destroy
+    @diagnostic = Diagnostic.find(params[:diagnostic])
+
+    @compending = " User: #{@diagnostic.user_id} | Iterrogation: #{@diagnostic.interrogation} | physical_examination:  #{@diagnostic.physical_examination} |  diagnostic_or_clinical_problem: #{@diagnostic.diagnostic_or_clinical_problem} | list_of_laboratory_studies: #{@diagnostic.list_of_laboratory_studies} | required_therapies: #{@diagnostic.required_therapies} | suggested_treatments: #{@diagnostic.suggested_treatments} | created_at: #{@diagnostic.created_at} | owner_by: #{@diagnostic.owner_by}  | chronic: #{@diagnostic.chronic} | outstanding: #{@diagnostic.outstanding} |  serious: #{@diagnostic.serious} | inconsequential: #{@diagnostic.inconsequential} | vital_signs: #{@diagnostic.vital_signs}"
+    @dh =  DeleteHistory.create(user_id: params[:user_id], owner_id: params[:owner_id], delete_content: @compending, causes: params[:causes], justify: params[:justify])
+    @diagnostic.notes.destroy_all
+    @diagnostic.destroy 
+
+    flash[:notice] = 'Se ha eliminado correctamente el diagnostico.'
+    redirect_to :back
+  end
+  
+  def plain_show
+    @diagnostic = Diagnostic.find(params[:id])
+    respond_to do |f|
+      f.html
+    end
+  end
+
+  def qrcode_view
+    @diagnostic = Diagnostic.find(params[:id])
+     
+     respond_to do |format|
+        format.html 
+        format.png 
+      end
+  end
+
+  def cie10
+    require 'csv'
+    posible_results = []
+    @url = Rails.root.join("public", "/data_bases/cie10.csv")
+    puts @url
+    @rescue = params[:rescue_name]
+    puts "#{@rescue}"
+    CSV.foreach("#{Rails.root}/public/data_bases/cie10.csv") do |csv|
+       code = csv[0]
+       descript = csv[1]
+       dsc = descript.downcase.to_s
+       ds = descript.to_s
+
+
+       @include =  dsc.include? params[:rescue_name].to_s
+  
+       if @include 
+         posible_results.push([code,ds])
+       end
+    end
+
+    puts "#{posible_results}"
+    
+    @results = posible_results
+    
+    respond_to do |format|
+      format.js
     end
   end
 end
