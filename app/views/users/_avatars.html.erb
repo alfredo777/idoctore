@@ -1,0 +1,10 @@
+<center>
+<%= image_tag("#{user.avatar.gigant}", :class => 'th') if user.avatar?  %>
+<% case user.sex %>
+<% when 'male' %>
+ <%= image_tag('/assets/users/man.png', :class => 'th') if !user.avatar?  %>
+<% when 'female' %>
+ <%= image_tag('/assets/users/wooman.png', :class => 'th') if !user.avatar? %>
+<%end%>
+</center>
+  

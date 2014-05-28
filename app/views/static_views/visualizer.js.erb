@@ -1,0 +1,9 @@
+<% case @type %>
+<% when 'signs'%>
+$('#left_hide').html('<%= escape_javascript(render(partial: "/vital_signs/remoted_signs", locals: {vs: @find}))%>');
+$.pageslide({ direction: 'left', href:'#left_hide' })
+<% when 'diacnostic'%>
+$('#left_hide').html('<%= escape_javascript(render(partial: "/diagnostics/remote_diagnostic", locals: {dt: @find}))%>');
+$.pageslide({ direction: 'left', href:'#left_hide' })
+<% when 'analisis'%>
+<%end %>

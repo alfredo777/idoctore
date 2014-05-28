@@ -1,0 +1,83 @@
+<ul class="button-group [radius round]">
+	<li>
+    <%= link_to 'Imprimir', diagnostics_print_path(dt.id), :class => 'small button [secondary alert success]'%>
+    <%= link_to 'Imprimir Receta', printing_threatment_path(dt.id ), :class => 'small button [secondary alert success]'%>
+</ul>
+<div style="overflow:auto; height: 700px;">
+<div id="content_<%=dt.id%>" style="max-width:1100px;">
+
+	<div style="height: auto;  !important;">
+	<h2><%= t('diagnostics.title')%>  </h2><i id="name_<%= dt.id %>"> Dr: <%= link_to "#{dt.owner}", user_path(dt.user_id) %></i><div id ="qr_<%=dt.id%>"class="right"><%= render partial: '/diagnostics/qrcode', locals:{qr: dt.qrcode_exec, dt: dt} %></div>
+
+	<h3>Clasifiación del problema</h3>
+	<div class="row">
+	<% if dt.chronic %>
+	<p class="chronic"><%=  t('diagnostics.chronic')  %></p>
+	<%end%>
+	<% if dt.outstanding %>
+	<p class="outstanding"><%=  t('diagnostics.outstanding') %></p>
+	<%end%>
+	<% if dt.serious  %>
+	<p class="serious"><%=  t('diagnostics.serious') %></p>
+	<%end%>
+	<% if dt.inconsequential  %>
+	<p class="inconsequential"><%=  t('diagnostics.inconsequential') %></p>
+	<%end%>
+	</div>
+	<% if !dt.interrogation.empty? %>
+	<div class="">
+	<h3><%= t('diagnostics.interrogation')%></h3>
+	<p align='justify'><%= simple_format(dt.interrogation)%></p>
+	</div>
+	<%end%>
+	<% if !dt.physical_examination.empty? %>
+	<div class="">
+	<h3><%= t('diagnostics.physical_examination')%></h3>
+	<p align='justify'><%= simple_format(dt.physical_examination)%></p>
+	</div>
+	<%end%>
+
+	<% if !dt.diagnostic_or_clinical_problem.empty? %>
+	<div id="diagnostic_<%=dt.id%>">
+	<h3><%= t('diagnostics.diagnostic_or_clinical_problem')%></h3>
+	<p align='justify'><%= simple_format(dt.diagnostic_or_clinical_problem)%></p>
+	</div>
+	<%end%>
+
+	<% if !dt.list_of_laboratory_studies.empty? %>
+	<div class="">
+	<h3><%= t('diagnostics.list_of_laboratory_studies') %></h3>
+	<p align='justify'><%= simple_format(dt.list_of_laboratory_studies)%></p>
+	</div>
+	<%end%>
+
+	<% if !dt.required_therapies.empty? %>
+	<div id="therapies_<%=dt.id%>">
+	<h3><%= t('diagnostics.required_therapies') %></h3>
+	<p align='justify'><%= simple_format(dt.required_therapies)%></p>
+	</div>
+	<%end%>
+
+
+	<% if !dt.suggested_treatments.empty? %>
+	<div id="suggested_treatments<%=dt.id%>">
+	<h3><%=  t('diagnostics.suggested_treatments')%></h3>
+	<p align='justify'><%= simple_format(dt.suggested_treatments)%></p>
+	</div>
+	<%end%>
+
+	<% if dt.vital_signs != nil %>
+	<%= render partial: '/vital_signs/remoted_signs', locals: {vs: dt.signs}%>
+	<%end%>
+
+	<% if dt.notes != nil %>
+	<%= render partial: '/diagnostics/show_note', locals:{dt: dt
+	} %>
+	<%end%>
+
+
+	<p id="key_<%=dt.id%>" style="font-size:8px;"> <%= find_advance_key(dt.owner_by)if current_user.id = dt.owner_by%></p>
+	</div>
+
+</div>
+</div>

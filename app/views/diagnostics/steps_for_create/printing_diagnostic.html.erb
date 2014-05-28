@@ -1,0 +1,7 @@
+<%= render partial: '/diagnostics/remote_diagnostic', locals: {dt: @diagnostic}%>
+<script>
+$(document).ready(function(){
+	 	printDiv(content_<%=@diagnostic.id%>, <%=current_user.hash%>, <%= @diagnostic.user_id %>);
+
+ });
+</script>
