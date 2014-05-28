@@ -1,6 +1,6 @@
 
 <div class="row">
-<%= form_tag('/vital_signs/create_from_user') do -%>
+<%= form_tag('/vital_signs/create_from_user', :id => 'vital_signs') do -%>
   <%= hidden_field_tag 'user_id', @user.id %>
   <%= hidden_field_tag 'owner_by', current_user.id %>
   <div class="row">
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="large-2 left" style="margin-left:35px;">
-    <%= number_field_tag 'weight', 0 %>
+    <%= number_field_tag 'weight', 0, :class => 'required' %>
     </div>
 </div>
 <div class="large-10 columns ">
@@ -112,6 +112,8 @@
     SelfSlider('sheight', 'height');
     SelfSlider('sbreathing','breathing');
     SelfSlider('stemperature', 'temperature');
+
+    ValidateFormIn('vital_signs', 'weight' );
  });
 </script>
 

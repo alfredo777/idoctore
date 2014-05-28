@@ -2,9 +2,15 @@
 
 class AvatarUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+  
+  version :gigant do
+     process :resize_to_fill => [150, 150]
+  end
+
+  version :modern do
+     process :resize_to_fill => [45, 45]
+  end
 
   storage :file
 
@@ -12,10 +18,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def filename
-    o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
-    rand = (0...150).map { o[rand(o.length)] }.join
-     "#{rand}.png" if original_filename
+  def extension_white_list
+      %w(jpg jpeg gif ico png)
   end
 
 end

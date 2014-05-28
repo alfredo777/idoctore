@@ -25,4 +25,20 @@ class StaticViewsController < ApplicationController
       f.js
     end
   end
+
+  def visualizer
+    case params[:type]
+     when 'signs'
+        @find = VitalSign.find(params[:id])
+     when 'diacnostic'
+        @find = Diagnostic.find(params[:id])
+     when 'analisis'
+    end
+       
+    @type = params[:type]
+    
+    respond_to do |f|
+      f.js
+    end
+  end
 end

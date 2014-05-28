@@ -37,7 +37,8 @@ gem 'will_paginate', '~> 3.0'
 
 # QR
 gem 'rqrcode'
-gem  'rmagick'
+gem 'rmagick'
+gem "mini_magick"
 gem 'rqrcode-with-patches'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

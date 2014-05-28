@@ -15,20 +15,12 @@
     <p class="red-back"><%= @user.name %></p>
 
     <div class=" right-profile-menu actualization-back " >
-    <div class="left large-2 ">
-      <%= image_tag("#{@user.avatar}", :class => 'imge_in_circle avatar_circle') if @user.avatar != nil %>
-      <% case @user.sex %>
-       <% when 'male' %>
-         <%= image_tag('/assets/users/man.png', :class => 'imge_in_circle avatar_circle') if @user.avatar == nil %>
-       <% when 'female' %>
-         <%= image_tag('/assets/users/wooman.png', :class => 'imge_in_circle avatar_circle') if @user.avatar == nil %>
-      <%end%>
+    <div class="large-3 left">
+    <%= render partial: '/users/avatars', locals: {user: @user}%>
     </div>
-    <div class="left large-5"> 
-    <p>Sexo: <%= @user.sex %></p>
-    <p>Edad: <%= @user.date_of_birth %></p>
-
-    </div>
+    <p>Sexo: <%= @user.sex if @user.sex != nil %></p>
+    <p>Edad: <%= @user.ageu %></p>
+    <%= link_to 'Editar Usuario', edit_user_path(@user) if @user.id == current_user.id%>
    </div>
 
   <div class="row">
@@ -40,8 +32,6 @@
     </center>
   </div>
 
-     <div id='close_page_slider' style="display:none;"><%= image_tag('menu/close.png')%></div>     
-     <div id="left_hide" style="display:none;" ></div>
 
 
 

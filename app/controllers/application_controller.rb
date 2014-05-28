@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
 
   def current_user
-  	@user = User.find(session[:user]) if session[:user] != nil
+  	@iuser = User.find(session[:user]) if session[:user] != nil
   end
 
   def session_status
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   def validate_accepted_patient(im, patient)
    @dp = DoctorPatient.find_by_doctor_id_and_patient_id(im.id,patient.id)
    if @dp != nil
-   @dp.accepted_request
+     @dp.accepted_request
      else
      false
    end

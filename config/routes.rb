@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'cie10', :to => 'diagnostics#cie10', :as =>  :cie10
   get 'plain_show/:id', :to => 'diagnostics#plain_show', :as => :plain_show
   get 'qrcode_view/:id', :to => 'diagnostics#qrcode_view', :as => :qrcode_view
+  get 'printing_diagnostic/:id', :to => 'diagnostics#printing_diagnostic', :as => :diagnostics_print
+  get 'printing_threatment/:id', :to => 'diagnostics#printing_threatment', :as => :printing_threatment
   resources :sessions
   
   resources :users do 
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
       post 'change_password'
       post 'change_missing_password'
       post 'existent_user_recive_invitation'
+      post '/:id/actualize', :to => 'users#actualize',:as => :user_update
+
     end
   end
 
@@ -45,6 +49,9 @@ Rails.application.routes.draw do
 
   get 'users/:id/my_patients', :to => 'users#patients', :as => :patients
   get 'post_id/:id', :to => 'static_views#post',:as => :post_in
+  get 'load_view/:id', :to => 'static_views#visualizer',:as => :visualizer
+
+
 
   get 'sign_in', :to => 'users#session_new', :as => :sign_in
   get 'sign_out', :to => 'users#destroy_session', :as => :sign_out
@@ -54,6 +61,9 @@ Rails.application.routes.draw do
   get '/missing_password', :to => 'users#missing_password', :as => :missing_password
   get '/terms_and_conditions', :to => 'static_views#terms_and_conditions', :as => :terms_and_conditions
   get '/users/:id/diagnostics', :to => 'users#diagnostics', :as => :diagnostics_users
+  get '/users/:id/actualize', :to => 'users#actualize',:as => :user_update
+
+
 
   #home
 

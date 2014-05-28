@@ -1,7 +1,9 @@
 <tr>
-  <td><a  data-reveal-id="signos_vitales_<%=vs.id%>">Signos del <%= vs.created_at %></a></td>
+  <td>
+     <div class="slide-p" >
+    <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
+       Signos del <%= vs.created_at %>
+    <%end%>
+    </div>
+  </td>
 </tr>
- <div id="signos_vitales_<%=vs.id%>" class="reveal-modal" data-reveal>
- <%= render partial: '/vital_signs/remoted_signs', locals: {vs: vs} %>
-  <a class="close-reveal-modal">&#215;</a>
- </div>

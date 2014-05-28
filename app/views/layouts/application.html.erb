@@ -15,9 +15,13 @@
   </head>
   <%=render partial: 'layout_parts/heather', :locals => {:title => 'DM'}%>
   <body class="grey-background">
-    <div class="raw white-back w80">
+ 
+    <div id="containert" class="raw white-back w80">
     <%= yield %>
-    <%= javascript_include_tag "application" %>
+    <div id='close_page_slider' style="display:none;"><%= image_tag('menu/close.png')%></div>     
+    <div id="left_hide" style="display:none;" ></div>
     </div>
+   <%= javascript_include_tag "application" %>
+
   </body>
 </html>

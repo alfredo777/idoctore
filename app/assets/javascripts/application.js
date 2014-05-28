@@ -18,18 +18,14 @@
 
 $(function(){ $(document).foundation(); });
 
-
-
-      
-
  $(document).ready(function() {
 
 	 $('.nav-doctor a').click(function (e){
 	 	e.preventDefault();
 	 	var target = $(this).data('target'),
-	 		offset = $('#' + target).offset(),
-	 		top = offset.top;
-	 	console.log(top);
+	 		 offset = $('#' + target).offset(),
+	 		 top = offset.top;
+	 	//console.log(top);
 	  $('html, body').animate({
 	  	scrollTop: top - 50
 	  })
@@ -48,7 +44,6 @@ $(function(){ $(document).foundation(); });
  function printTherapy(qr, treatments, user_id, general_d, user_name, user_token){
  	 	 var url = "/users/"+user_id+"/diagnostics"
          var qr_c =  $(qr).html();
-         //var theraphy_c =  $('#'+theraphy).html();
          var general_d_c = $(general_d).html();
          var treatments_c =  $(treatments).html();
          var user_name_c = $(user_name).html();
@@ -128,6 +123,35 @@ function SelfSlider(id_s, id_in){
               $('#'+id_s).foundation('slider', 'set_value', 20);
             });
 }  
+
+function ValidateFormIn(id, validate_ids){
+   
+    $('#'+id).bind("keyup keypress", function(e) {
+	  var code = e.keyCode || e.which; 
+	  if (code  == 13) {               
+	    e.preventDefault();
+	    return false;
+	  }
+	});
+
+   $("#"+id+" :input").each(function(){
+    var input = $(this);
+    var clases = $(input).attr('class');
+
+    if(clases == 'required'){
+    	 //console.log(clases);
+         //console.log($(input).attr('id'));
+         
+         var value = $(input).val();
+         if (value == null){
+
+         }
+
+    } 
+   
+   });
+
+ }
 
 
 

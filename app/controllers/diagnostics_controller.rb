@@ -54,6 +54,20 @@ class DiagnosticsController < ApplicationController
       end
   end
 
+  def printing_diagnostic
+    @diagnostic = Diagnostic.find(params[:id])
+    respond_to do |format|
+      format.html
+   end
+  end
+
+  def printing_threatment
+    @diagnostic = Diagnostic.find(params[:id])
+    respond_to do |format|
+      format.html
+     end
+  end
+
   def cie10
     require 'csv'
     posible_results = []

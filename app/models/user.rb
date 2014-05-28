@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
    validates_presence_of :email
    #validates_format_of   :email, :with => /^[\-a-z0-9]+$/
 
+   mount_uploader :avatar, AvatarUploader
+
    after_create do 
        self.register = Time.now
        self.last_loggin = Time.now
@@ -60,6 +62,15 @@ class User < ActiveRecord::Base
        string = (0...110).map { o[rand(o.length)] }.join
        self.advanced_key = string 
        self.save
+    end
+  end
+
+  def ageu
+    if self.birthday != nil
+    @age = (Date.today.to_time - self.birthday.to_time)/1.year 
+    "#{@age.round(2)} años"
+    else
+    "Actualiza tu fecha de nacimiento"
     end
   end
 

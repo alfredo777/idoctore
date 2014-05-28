@@ -5,33 +5,28 @@
     <li class='bacground-solider'>
     <% if validate_accepted_patient(current_user,user) %>
       <%= link_to user_path(user.id) do %>
-      <%= image_tag("#{user.avatar}", :class => 'imge_in_circle avatar_circle') if user.avatar != nil %>
-        <% case user.sex %>
-         <% when 'male' %>
-           <%= image_tag('/assets/users/man.png', :class => 'imge_in_circle avatar_circle') if user.avatar == nil %>
-         <% when 'female' %>
-           <%= image_tag('/assets/users/wooman.png', :class => 'imge_in_circle avatar_circle') if user.avatar == nil %>
-        <%end%>
+      <div class="large-11">
+       <br/>
+          <%= render partial: '/users/avatars', locals: {user: user}%>
           <center><%= truncate( user.name, :length => 25 )%></center>
       <%end%>
           <center><% if user.role == 'patient' %><span class="success label"><%= 'Es tu paciente' %></span><%end%></center>
           <center><% if user.role == 'doctor' %><span class="success label"><%= 'Es tu doctor'%></span><%end%></center>
+      </div>
 
         <%else%>
+       <div class="large-11">
+       <br/>
+        <%= render partial: '/users/avatars', locals: {user: user}%>
 
-        <%= image_tag("#{user.avatar}", :class => 'imge_in_circle avatar_circle') if user.avatar != nil %>
-        <% case user.sex %>
-         <% when 'male' %>
-           <%= image_tag('/assets/users/man.png', :class => 'imge_in_circle avatar_circle') if user.avatar == nil %>
-         <% when 'female' %>
-           <%= image_tag('/assets/users/wooman.png', :class => 'imge_in_circle avatar_circle') if user.avatar == nil %>
-        <%end%>
         <center><%= truncate( user.name, :length => 25 )%></center>
         <center><p><%= status_if_request_patient_doctor_exist(current_user, user).html_safe %></p></center>
         <div id="modal_<%=user.id%>" class="reveal-modal" data-reveal>
              <%= render partial: '/users/invite_patient', locals: {email: user.email, name: user.name, sex: user.sex} %>
               <a class="close-reveal-modal">&#215;</a>
         </div>
+       </div>
+
     <%end%>
    </li>
   <%end%>
