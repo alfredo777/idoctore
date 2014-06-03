@@ -1,0 +1,29 @@
+<% if current_user.role == 'doctor' %>
+      <%= form_tag('/users/send_request_cite') do -%>
+        <%= label_tag 'Fecha de la cita' %>
+        <%= date_field_tag 'init_time_date', ''%>
+        <%= label_tag 'Hora de la cita' %>
+        <%= time_field_tag 'init_time_hour', Date.today.strftime('%d/%m/%Y')%>
+        <%= label_tag 'Razón' %>
+        <%= text_area_tag 'request', '', rows: 10, cols: 25  %>
+        <%= label_tag 'Confirmación' %>
+        <%= hidden_field_tag 'doctor_id', current_user.id %>
+        <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
+        <div><%= submit_tag 'Solicitar Cita', :class => 'button' %></div>
+      <%end%>
+  <%else%>
+    <div class="panel">
+    	<p>Para agendar una cita usted debe solicitarla despues en cuanto la cita se aceptada por el doctor usted podrá visualizarla en color verde.</p>
+    </div>
+    <%= form_tag('/users/send_request_cite') do -%>
+      <%= label_tag 'Fecha de la cita' %>
+      <%= date_field_tag 'init_time_date', ''%>
+      <%= label_tag 'Hora de la cita' %>
+      <%= time_field_tag 'init_time_hour', Date.today.strftime('%d/%m/%Y')%>
+      <%= label_tag 'Razón' %>
+      <%= text_area_tag 'request', '', rows: 10, cols: 25  %>
+      <%= label_tag 'Confirmación' %>
+      <%= hidden_field_tag 'doctor_id', @user.id %>
+      <div><%= submit_tag 'Solicitar Cita', :class => 'button' %></div>
+    <%end%>
+<%end%>

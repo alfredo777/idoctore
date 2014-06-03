@@ -1,0 +1,8 @@
+<h6><b>Cambiar fechas</b></h6>
+  <%= form_tag("/users/cites/#{cite.id}/change") do -%>
+        <%= label_tag 'Fecha de la cita' %>
+        <%= date_field_tag 'init_time_date', Date.today.strftime('%d/%m/%Y')%>
+        <%= label_tag 'Hora de la cita' %>
+        <%= time_field_tag 'init_time_hour'%>
+        <div><%= submit_tag 'Cambiar Fecha', :class => 'button' %></div>
+  <%end%>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  init_time: 2014-05-28 17:19:25
+  finish_time: 
+  request: MyText
+  confirmed_by_doctor: false
+
+two:
+  init_time: 2014-05-28 17:19:25
+  finish_time: 
+  request: MyText
+  confirmed_by_doctor: false

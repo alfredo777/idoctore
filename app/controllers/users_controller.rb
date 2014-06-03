@@ -17,6 +17,10 @@ class UsersController < ApplicationController
    @user = User.find(params[:id])
    @user_vital_signs = @user.vital_signs.last(5)
    @user_diagnostics = @user.diagnostics.last(5)
+   @personal_cites = @user.doctor_cites
+   @other_cites = @user.cite_doctors
+   @tasks =  @other_cites + @personal_cites
+   @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 
   def diagnostics
@@ -185,7 +189,9 @@ class UsersController < ApplicationController
 
   def destroy_session
      @s = Session.find_by_user_id(params[:id])
+     if @s != nil
      @s.destroy
+     end
      session[:user] = nil
      redirect_to root_path
   end
@@ -253,8 +259,71 @@ class UsersController < ApplicationController
             redirect_to :back
         end
   end
-
   
+  #### crear cita
+
+  def send_request_cite
+    #CiteDoctor.create
+
+    date =  params[:init_time_date] + ' ' +params[:init_time_hour]
+
+      case  current_user.role 
+        when 'doctor'
+        ###### cite auto confirmed #####
+        @cite = CiteDoctor.create( init_time: date, request: params[:request], confirmed_by_doctor: true, user_id: params[:user_id], doctor_id: params[:doctor_id])
+           date2 = @cite.init_time + 50.minutes
+           @cite.finish_time = date2
+        @cite.save
+         when 'patient'
+        ###### cite not confirmed solicite by other #######
+        @cite = CiteDoctor.create( init_time: date, request: params[:request], confirmed_by_doctor: false, user_id: current_user.id, doctor_id: params[:doctor_id])
+          date2 = @cite.init_time + 50.minutes
+          @cite.finish_time = date2
+        @cite.save
+      end
+
+      
+      if @cite.save  
+        flash[:notice] = 'Se a solicitado la cita correctamente.'
+        redirect_to :back
+      end
+
+  end
+
+  def responce_cite
+  end
+
+  def options_change_cite
+     @cite = CiteDoctor.find(params[:ident_i])
+     @type = params[:type]
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update_cites
+    @cite = CiteDoctor.find(params[:id])
+    date =  params[:init_time_date] + ' ' +params[:init_time_hour]
+    @cite.init_time = date
+    date2 = @cite.init_time + 50.minutes
+    @cite.finish_time = date2
+    @cite.save
+
+    if @cite.save
+        flash[:notice] = 'Se a actualizado la cita correctamente.'
+        redirect_to :back
+    else
+        flash[:notice] = 'Cambios no actualizados.'
+        redirect_to :back
+    end
+
+  end
+
+  #### crear notificaciones
+
+  def create_notice_cite
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517203137) do
+ActiveRecord::Schema.define(version: 20140603001922) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20140517203137) do
     t.string   "place"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "cite_doctors", force: true do |t|
+    t.datetime "init_time"
+    t.datetime "finish_time"
+    t.text     "request"
+    t.boolean  "confirmed_by_doctor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "doctor_id"
   end
 
   create_table "clinical_analyses", force: true do |t|
@@ -90,6 +101,8 @@ ActiveRecord::Schema.define(version: 20140517203137) do
     t.string   "converstion_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cite_doctor_id"
+    t.text     "message"
   end
 
   create_table "notes", force: true do |t|
@@ -101,6 +114,15 @@ ActiveRecord::Schema.define(version: 20140517203137) do
     t.datetime "updated_at"
     t.integer  "diagnostic_id"
     t.integer  "user_id"
+  end
+
+  create_table "notices", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "receiver_id"
+    t.string   "typex"
+    t.integer  "typex_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", force: true do |t|

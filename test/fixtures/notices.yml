@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  receiver_id: 1
+  typex: MyString
+  typex_id: 1
+
+two:
+  user_id: 1
+  receiver_id: 1
+  typex: MyString
+  typex_id: 1

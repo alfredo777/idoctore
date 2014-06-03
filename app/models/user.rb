@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
-   has_one :session
+   has_one  :session
    has_many :vital_signs
    has_many :diagnostics
    has_many :notes
+   has_many :cite_doctors
+
    ##### validamos por email #####
    
    validates_uniqueness_of :email
@@ -74,4 +76,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def doctor_cites
+   @cites =  CiteDoctor.where(:doctor_id =>  self.id)
+  end
+  
 end

@@ -1,0 +1,7 @@
+<% case @type %>
+	<% when  'change_cite' %> 
+		$('#change<%= @cite.id %>').html('<%= escape_javascript(render(partial: "/users/dates/update_dates", locals: {cite: @cite}))%>');
+	<% when  'messages' %>
+	    $('#change<%= @cite.id %>').html('<%= escape_javascript(render(partial: "/users/dates/messages", locals: {cite: @cite}))%>');
+	<% when  'cancel' %>
+<%end%>

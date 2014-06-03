@@ -7,6 +7,7 @@ gem 'rails', '4.1.0'
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -35,6 +36,8 @@ gem 'carrierwave'
 # paginate
 gem 'will_paginate', '~> 3.0'
 
+#calendar
+gem "watu_table_builder", :require => "table_builder"
 # QR
 gem 'rqrcode'
 gem 'rmagick'

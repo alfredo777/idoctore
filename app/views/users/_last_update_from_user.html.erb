@@ -48,5 +48,45 @@
 </div>
 <hr>
 <% if current_user.role == 'doctor' %>
-<p>Cítas recientes</p>
+<div class="row">
+<div class="large-6 left columns">
+<% if current_user.role == 'doctor' %>
+<a href="#" data-reveal-id="modal_to_create_cite" >Agendar Cita</a>
+<%else%>
+<a href="#" data-reveal-id="modal_to_create_cite" >Solicitar Cita</a>
 <%end%>
+<div class="large-10">
+<div class="left">
+<%= link_to "&#8592; Mes anterior".html_safe, :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+</div>
+<%= h  @date.strftime( '%B'+'-'+'%Y')  %>
+<div class="right">
+<%= link_to "Mes siguiente &#8594;".html_safe, :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
+</div>
+</div>
+
+<%= calendar_for(tasks, :year => @date.year, :month => @date.month) do |t| %>
+  <%= t.head('mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun') %>
+  <%= t.day(:day_method => :init_time) do |day, tasks| %>
+    <%= day.day %>
+    <div class="smal-3">
+    <% tasks.each do |task| %>
+      <% if task.confirmed_by_doctor %>
+       <%= image_tag('bullet_green.png')%>
+      <%else%>
+        <%= image_tag('bullet_red.png')%>
+      <%end%>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>
+<%end%>
+</div>
+<div class="large-6 left columns">
+  <%= render partial: '/users/dates/list_of_dates', locals: {tasks: tasks}%>
+</div>
+</div>
+<div id="modal_to_create_cite" class="reveal-modal" data-reveal>
+  <%= render partial: '/users/dates/form_for_date' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
