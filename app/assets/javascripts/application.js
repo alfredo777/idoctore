@@ -156,3 +156,5 @@ function ValidateFormIn(id, validate_ids){
 
 
 
+//= require websocket_rails/main
+

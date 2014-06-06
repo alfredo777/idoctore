@@ -43,6 +43,11 @@ gem 'rqrcode'
 gem 'rmagick'
 gem "mini_magick"
 gem 'rqrcode-with-patches'
+
+
+#web sockets 
+gem 'redis'
+gem 'puma'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

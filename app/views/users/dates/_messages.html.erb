@@ -1,3 +1,13 @@
 <h6><b>Mensajes</b></h6>
-   <%= form_tag('/users/send_request_cite') do -%>
+   <%= form_tag("/messages/create", remote: true) do -%>
+     <%= text_field_tag 'message'%>
+     <%= hidden_field_tag 'user_id', current_user.id %>
+     <%= hidden_field_tag 'cite_id', cite.id %>
    <%end%>
+   <div id="content_message_<%=cite.id%>" class="messages_content">
+      <div id="new_messages_<%=cite.id%>"></div>
+      <%= render partial: '/users/dates/list_of_messages', locals: {messages: messages}%>
+   </div>
+   <div id="pag_messages_<%=cite.id%>">
+    <%= link_to 'Cargar más', paginate_messages_path(:ident_i => cite.id, pages: 1), remote: true %>
+   </div>

@@ -131,3 +131,10 @@ em{
   max-height: 300px;
   overflow:auto;
 }
+
+.messages_content{
+  min-height:200px;
+  max-height:400px;
+  overflow-y: auto; 
+  overflow-x: hidden;
+}

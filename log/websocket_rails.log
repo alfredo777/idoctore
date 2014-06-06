@@ -1,0 +1,14 @@
+# Logfile created on 2014-06-04 12:36:14 -0500 by logger.rb/44203
+I [2014-06-04 12:36:14.840] [[32mConnectionManager[0m] Connection opened: #<Connection::8a2999a3945c5787773b>
+I [2014-06-04 12:36:34.841] [[32mConnectionManager[0m] Connection closed: #<Connection::8a2999a3945c5787773b>
+I [2014-06-04 12:36:36.761] [[32mConnectionManager[0m] Connection closed: #<Connection::8a2999a3945c5787773b>
+I [2014-06-04 13:07:19.889] [[32mSynchronization[0m] Server Registered: jN2YF6SDWgdwBcJ4aSh9jw
+I [2014-06-04 13:15:39.580] [[32mSynchronization[0m] Server Removed: jN2YF6SDWgdwBcJ4aSh9jw
+I [2014-06-04 13:15:39.583] [[32mSynchronization[0m] Server Removed: jN2YF6SDWgdwBcJ4aSh9jw
+I [2014-06-04 13:15:43.760] [[32mSynchronization[0m] Server Registered: GWNt84-lSGdtrEe218TecA
+I [2014-06-04 14:53:05.696] [[32mSynchronization[0m] Server Removed: GWNt84-lSGdtrEe218TecA
+I [2014-06-04 14:53:05.699] [[32mSynchronization[0m] Server Removed: GWNt84-lSGdtrEe218TecA
+I [2014-06-04 14:53:05.699] [[32mSynchronization[0m] Server Removed: GWNt84-lSGdtrEe218TecA
+I [2014-06-04 14:53:05.700] [[32mSynchronization[0m] Server Removed: GWNt84-lSGdtrEe218TecA
+I [2014-06-04 14:53:05.700] [[32mSynchronization[0m] Server Removed: GWNt84-lSGdtrEe218TecA
+I [2014-06-04 14:53:05.700] [[32mSynchronization[0m] Server Removed: GWNt84-lSGdtrEe218TecA

@@ -1,0 +1,11 @@
+      <div class="row">
+       <div class="left">
+    	 <div class="left" style="margin-left:20px; width:55px;"><%= link_to image_tag(mtou.user.avatar.modern, :class => 'th'), user_path(mtou.user.id) if mtou.user.avatar.url != nil  %> <%= link_to image_tag('users/avatar_chat.png', :class => 'th'), user_path(mtou.user.id) if mtou.user.avatar.url == nil  %>
+    	     <div style="font-size:6px;"><%= mtou.user.name %></div>
+    	 </div> 
+    	 <div class="left" style="margin-left:14px; min-width:220px; max-width:340px; text-align:justify;">
+          <div class="lef"> <%=simple_format(mtou.message) %> </div>
+         </div>
+    	</div>
+      </div>
+      <hr>

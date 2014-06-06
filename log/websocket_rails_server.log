@@ -1,0 +1,48 @@
+Writing PID to /Users/macdejarda/Documents/doctor-mind/idoctore/tmp/pids/websocket_rails.pid
+Thin web server (v1.6.2 codename Doc Brown)
+Maximum connections set to 1024
+Listening on 0.0.0.0:3245, CTRL+C to stop
+Exiting!
+/Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:290:in `rescue in establish_connection': Error connecting to Redis on 127.0.0.1:6379 (ECONNREFUSED) (Redis::CannotConnectError)
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:285:in `establish_connection'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:79:in `block in connect'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:257:in `with_reconnect'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:78:in `connect'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:304:in `ensure_connected'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:191:in `block in process'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:270:in `logging'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:190:in `process'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:96:in `call'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:1284:in `block in sismember'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:37:in `block in synchronize'
+	from /Users/macdejarda/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:37:in `synchronize'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:1283:in `sismember'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/synchronization.rb:132:in `generate_server_token'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/synchronization.rb:73:in `synchronize!'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/synchronization.rb:29:in `synchronize!'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/connection_manager.rb:37:in `block (2 levels) in initialize'
+Writing PID to /Users/macdejarda/Documents/doctor-mind/idoctore/tmp/pids/websocket_rails.pid
+Thin web server (v1.6.2 codename Doc Brown)
+Maximum connections set to 1024
+Listening on 0.0.0.0:3245, CTRL+C to stop
+Exiting!
+/Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:290:in `rescue in establish_connection': Error connecting to Redis on 127.0.0.1:6379 (ECONNREFUSED) (Redis::CannotConnectError)
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:285:in `establish_connection'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:79:in `block in connect'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:257:in `with_reconnect'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:78:in `connect'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:304:in `ensure_connected'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:191:in `block in process'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:270:in `logging'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:190:in `process'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis/client.rb:96:in `call'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:1284:in `block in sismember'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:37:in `block in synchronize'
+	from /Users/macdejarda/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:37:in `synchronize'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/redis-3.0.7/lib/redis.rb:1283:in `sismember'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/synchronization.rb:132:in `generate_server_token'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/synchronization.rb:73:in `synchronize!'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/synchronization.rb:29:in `synchronize!'
+	from /Users/macdejarda/.rvm/gems/ruby-2.1.1/gems/websocket-rails-0.7.0/lib/websocket_rails/connection_manager.rb:37:in `block (2 levels) in initialize'

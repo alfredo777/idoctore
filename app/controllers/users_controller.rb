@@ -125,14 +125,15 @@ class UsersController < ApplicationController
        @u = User.find_by_email(params[:email])
        if @u != nil
            @dp_find = DoctorPatient.where(:doctor_id => current_user.id, :patient_id => @u.id)  
-
-           if @dp != nil
-              @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @user_new.id)  
-               @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
- 
-              flash[:notice] = t('user.solicitud_user_by_invite')
+            
+           if @dp_find != nil
+               @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @u.id)  
+               #@mailer = UserMailer.invite_user_email(current_user ,@u, @u.confirmed_token).deliver
+               redirect_to :back
+               flash[:notice] = t('user.solicitud_user_by_invite')
             else
-              flash[:notice] = t('user.error_solicitude_user_by_invite')
+               redirect_to :back
+               flash[:notice] = t('user.error_solicitude_user_by_invite')
 
            end
        else
@@ -296,10 +297,14 @@ class UsersController < ApplicationController
   def options_change_cite
      @cite = CiteDoctor.find(params[:ident_i])
      @type = params[:type]
+     @messages = @cite.message_user_to_users.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
+     
     respond_to do |format|
       format.js
     end
   end
+
+
 
   def update_cites
     @cite = CiteDoctor.find(params[:id])
@@ -324,6 +329,10 @@ class UsersController < ApplicationController
   def create_notice_cite
   end
 
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -345,7 +354,7 @@ class UsersController < ApplicationController
       if current_user.id == @user.id
       else
          if validate_accepted_patient(current_user, @user)
-          flash[:notice] = "Bienbenido al perfíl de tu paciente #{@user.name}"
+          #flash[:notice] = "Bienbenido al perfíl de tu paciente #{@user.name}"
          else
           flash[:notice] = 'El  usuario al que intentabas ingresar no es tu paciente.'
           redirect_to user_path(current_user.id)
@@ -353,6 +362,7 @@ class UsersController < ApplicationController
 
       end 
     end
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     #def user_params

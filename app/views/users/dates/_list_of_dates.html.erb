@@ -3,8 +3,8 @@
       <dl class="accordion" data-accordion="myAccordionGroup">
        <% tasks.reverse.each do |t| %>
         <dd>
-          <a href="#panel<%=t.id%>c"><%= t.init_time.strftime('%d'+'/'+'%m'+'/'+'%Y'+' de las '+'%H'+':'+'%M') %> a las <%= t.finish_time.strftime('%H'+':'+'%M') %> </a>
-          <div id="panel<%=t.id%>c" class="content">
+          <a class="geto" data-geto="panel<%=t.id%>c"><%= t.init_time.strftime('%d'+'/'+'%m'+'/'+'%Y'+' de las '+'%H'+':'+'%M') %> a las <%= t.finish_time.strftime('%H'+':'+'%M') %> </a>
+          <div id="panel<%=t.id%>c" class="content ">
             <%= t.request %>
             <div class="panel">
              <h6>
@@ -16,7 +16,7 @@
              </h6>
             </div>
              <ul class="inline-list">
-                <li><%=link_to "Mensajes", change_cite_path(:type => 'messages', :ident_i => t.id), remote: true%></li>
+              <li ><%= link_to 'Mensaje', change_cite_path(:type => 'messages', :ident_i => t.id), remote: true %></li>
                 <li><%=link_to "Cambiar Fecha", change_cite_path(:type => 'change_cite', :ident_i => t.id), remote: true%></li>
                 <li><a href="#">Cancelar</a></li>
              </ul>

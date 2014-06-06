@@ -65,6 +65,8 @@ GEM
     minitest (5.3.4)
     multi_json (1.10.1)
     polyglot (0.3.4)
+    puma (2.8.2)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -86,6 +88,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    redis (3.0.7)
     rmagick (2.13.2)
     rqrcode (0.4.2)
     rqrcode-with-patches (0.5.4)
@@ -137,7 +140,9 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
+  puma
   rails (= 4.1.0)
+  redis
   rmagick
   rqrcode
   rqrcode-with-patches

@@ -1,0 +1,6 @@
+//paginate methods
+$('#content_message_<%=@cite.id%>').append('<%= escape_javascript(render(partial: "/users/dates/list_of_messages", locals: {cite: @cite, messages: @messages}))%>');
+$('#pag_messages_<%=@cite.id%>').html('<%= link_to 'Cargar más', paginate_messages_path(:ident_i => @cite.id, pages: @page), remote: true %>');
+// scroll to bot
+var objDiv = document.getElementById("content_message_<%=@cite.id%>");
+objDiv.scrollTop = objDiv.scrollHeight;
