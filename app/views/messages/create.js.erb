@@ -1,1 +1,6 @@
 $("#message").val('');
+ <% if @m %> 
+ $('#message_error').hide();
+  <% else %>
+ $('#message_error').show();
+ <%end%>

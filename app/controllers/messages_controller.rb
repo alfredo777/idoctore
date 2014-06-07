@@ -7,26 +7,30 @@ class MessagesController < ApplicationController
    #### crear message
 
   def create
-  	#response.headers["Content-Type"] = "text/javascript"
+  	response.headers["Content-Type"] = "text/javascript"
     @cite = CiteDoctor.find(params[:cite_id])
+    @m = !params[:message].empty?
+    if @m
 
-    if @cite.user_id == current_user.id
-       puts "paciente"
-       @to_id = @cite.doctor_id
-        else
-       puts "doctor"
-       @to_id = @cite.user_id
+	    if @cite.user_id == current_user.id
+	       puts "paciente"
+	       @to_id = @cite.doctor_id
+	        else
+	       puts "doctor"
+	       @to_id = @cite.user_id
+	    end
+
+	    @message = MessageUserToUser.new
+	    @message.user_id = current_user.id
+	    @message.to_user_id = @to_id 
+	    @message.cite_doctor_id = @cite.id
+	    @message.message = params[:message]
+	    @message.save
+	    json_parce_for_chat = {message_act: @message.to_json, user_x: @message.user.to_json}
+	    $redis.publish('messages.create', json_parce_for_chat.to_json)
+   
+      
     end
-
-    @message = MessageUserToUser.new
-    @message.user_id = current_user.id
-    @message.to_user_id = @to_id 
-    @message.cite_doctor_id = @cite.id
-    @message.message = params[:message]
-    @message.save
-    json_parce_for_chat = {message_act: @message.to_json, user_x: @message.user.to_json}
-    $redis.publish('messages.create', json_parce_for_chat.to_json)
-
   end
 
   def paginate_messages

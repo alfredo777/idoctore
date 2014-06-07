@@ -41,7 +41,9 @@
 		</center>
 	    </nav>
 </div>
+  <% if current_user %>
   <div id="chat_notice_<%=current_user.id%>" style="margin-top:100px; position:fixed; height:auto; margin-left:50px; display:none; z-index:99999;" class="large-3">
   </div>
+  <%end%>
 
 
