@@ -52,6 +52,7 @@ es:
     medical_record: "Historia Clínica"
     my_calendar: Calendario
     patients: Pacientes
+    doctors: Doctores
     prescribed_treatments: "Tratamientos indicados"
     record: "Historial médico"
     treatment: 'Tratamientos'

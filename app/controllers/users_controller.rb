@@ -1,12 +1,19 @@
 class UsersController < ApplicationController
+  #################################################################################################
+
+                  ########### USER CONTROLLER I DOCTORE ###############
+
+
+  #################################################################################################
+  ############## filters #####################
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :loggin_filter, only: [:index, :show, :edit]
   before_filter :filter_to_update, only: [:edit, :actualize]
   before_filter :filter_view_pofile, only: [:show, :diagnostics]
-  # GET /users
-  # GET /users.json
 
-  ######### vistas de consulta ########
+
+  #################################################################################################
+  ######### views methods ########
   def index
     @users = User.all
   end
@@ -42,8 +49,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
+#################################################################################################
+  ########### update methods #############
   def actualize
     @user = User.find(params[:id])
     if params[:email] != nil
@@ -73,18 +80,8 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
-  end
-
-  ####### validaciones de creación registro y ejecución #########
+#################################################################################################
+  ####### create user methods or invite #########
 
   def register
       pass_a = "#{params[:password]}"
@@ -141,14 +138,14 @@ class UsersController < ApplicationController
            @user_new.name = params[:name]
            @user_new.email = params[:email]
            @user_new.sex = params[:sex]
-           @user_new.hashed_password = rand(2000..3000)
+           @user_new.hashed_password = SecureRandom.hex(20) 
            @user_new.role = "patient"
            @user_new.confirmed_token = random_to_token
            @user_new.confirmed = false
            @user_new.save
               ###### add patient to user interface ##### 
                @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @user_new.id)   
-          if @user.save 
+          if @user_new.save 
               @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
               redirect_to patients_path(current_user.id)
               flash[:notice] = t('user.create_user_by_invite')
@@ -166,40 +163,27 @@ class UsersController < ApplicationController
      redirect_to user_path(@user)
   end
 
-  def create_session
-    @user = User.find_by_email(params[:email])
-    if @user.terms == true
-      if @user.session == nil
-      session[:user] = @user.id
-      @time_expire = Time.now + 6.hours
-      @session = Session.create(:user_id => @user.id, :caduce => @time_expire)
-        respond_to do |format|
-           format.html { redirect_to @user, notice: t('user.create_session') }
-        end
-       else
-        respond_to do |format|
-           session[:user] = @user.id
-           format.html { redirect_to @user, notice: t('user.session_in_course') }
-        end
-      end
-      else
-        flash[:notice] = t('user.non_terms_accepted')
-        redirect_to root_path 
+  def actualize_invitation_non_mail
+     @invite = DoctorPatient.find_by_doctor_id_and_patient_id(params[:doctor],current_user.id)
+     @invite.accepted_request = true
+     @invite.save
+     flash[:notice] = 'Has aceptado al usuario en tu lista de doctores.'
+     redirect_to :back
+  end
+
+  def delete_relation_doctor_patient
+    case current_user.role
+      when 'patient'
+       @invite = DoctorPatient.find_by_doctor_id_and_patient_id(params[:other],current_user.id)
+      when 'doctor'
+       @invite = DoctorPatient.find_by_doctor_id_and_patient_id(current_user.id,params[:other])
     end
+     @invite.destroy
+     flash[:notice] = 'Se ha eliminado correctamente la relación.'
+     redirect_to :back 
   end
 
-  def destroy_session
-     @s = Session.find_by_user_id(params[:id])
-     if @s != nil
-     @s.destroy
-     end
-     session[:user] = nil
-     redirect_to root_path
-  end
 
-  def session_new
-
-  end
 
   def confirmed_token
     @user = User.find_by_confirmed_token(params[:confirmed_token])
@@ -214,6 +198,9 @@ class UsersController < ApplicationController
            redirect_to root_path
       end
   end
+
+  #################################################################################################
+  ######## password methods ##########
 
   def reset_password
         @user = User.find_by_confirmed_token(params[:confirmed_token])
@@ -261,7 +248,8 @@ class UsersController < ApplicationController
         end
   end
   
-  #### crear cita
+  #################################################################################################
+  #### methos for cites ##########
 
   def send_request_cite
     #CiteDoctor.create
@@ -292,6 +280,11 @@ class UsersController < ApplicationController
   end
 
   def responce_cite
+    @cite = CiteDoctor.find(params[:ident_i])
+    @cite.confirmed_by_doctor = true
+    @cite.save
+
+    
   end
 
   def options_change_cite
@@ -324,15 +317,46 @@ class UsersController < ApplicationController
 
   end
 
+#################################################################################################  
+  ######### session methods ############
+  def create_session
+    @user = User.find_by_email(params[:email])
+     if @user.terms == true
+        password_cript(params[:password], @user)
+      else
+        flash[:notice] = t('user.non_terms_accepted')
+        redirect_to root_path 
+    end
+  end
+
+  def destroy_session
+     session[:user] = nil
+     redirect_to root_path
+  end
+
+  def session_new
+
+  end
+#################################################################################################
   #### crear notificaciones
 
   def create_notice_cite
   end
 
+#################################################################################################
+  ######## methods from delete #########
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
 
-
-
+#################################################################################################
+ ####### private methods #########
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -362,10 +386,23 @@ class UsersController < ApplicationController
 
       end 
     end
-    
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    #def user_params
-    #  params.require(:user).permit(:name, :hashed_password, :salt, :email, :register, :confirmed_token, :confirmed, :)
-    #end   
+    def password_cript(password, member)
+      sha256 = Digest::SHA256.new
+      digest = sha256.update password
+      backend_validate = member.w_digest(digest)
+      puts "#{backend_validate}"
+
+      if  backend_validate == true
+          session[:user] = "#{member.id}"
+          redirect_to user_path(member.id)
+          flash[:notice] = t('user.create_session')
+        else
+          session[:user] = nil
+          flash[:notice] = "El usuario o la contraseña son incorrectos."
+          redirect_to root_path
+      end
+      puts "#{session[:member]}"
+    end
+    
 end

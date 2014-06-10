@@ -17,10 +17,46 @@ class User < ActiveRecord::Base
        self.register = Time.now
        self.last_loggin = Time.now
        self.salt = generate_salt
-       self.save
+       password = self.hashed_password
+       encripted = Digest::SHA2.hexdigest(password)
+        if self.hashed_password != encripted
+               self.hashed_password = encripted
+               self.save
+        end
        puts "creando el usuario #{email}"
+   end
+
+   after_destroy do 
+
+        @dp = DoctorPatient.where(doctor_id: self.id)
+        @dpx = DoctorPatient.where(patient_id: self.id)
+        @dpx.each do |idp|
+          idp.destroy
+        end
+        @dp.each do |idp|
+         idp.destroy
+        end
+         
+        ux = self.cite_doctors
+        ux.destroy_all
+
+        uz = self.notes
+        uz.destroy_all
+
+        uy = self.diagnostics
+        uy.destroy_all
+
+        uv = self.vital_signs
+        uv.destroy_all
+
+        uw = self.notes
+        uw.destroy_all
+
+        se = self.session
+        se.destroy_all
 
    end
+
 
   def generate_salt
        o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
@@ -28,16 +64,25 @@ class User < ActiveRecord::Base
        salt = string
   end 
 
-    
-  def password
-        password = self.hashed_password
-		if password.present?
-		 self.encrypt_password(password, self.salt)
-		end 
+  def encripted_codification
+      Digest::SHA2.hexdigest( self.salt + self.hashed_password.to_s + secure_key ) 
   end
 
-  def encrypt_password(password, salt) 
-   	Digest::SHA2.hexdigest(password + "localemsimpledrifle" + salt)
+  def secure_key
+     "ragnarockdoctoremlorempacut582958209580293fknfndfs3491389341849849u35u41u31uiifnsfbnifacghrtf"
+  end
+
+  def w_digest(passtd)
+     cript = Digest::SHA2.hexdigest( self.salt + passtd.to_s + secure_key )
+     compare_acces(cript, encripted_codification )
+  end
+
+  def compare_acces(cript, decript)
+    if cript ==  decript
+        true
+      else
+        false
+    end
   end
 
   def patients
@@ -53,7 +98,7 @@ class User < ActiveRecord::Base
     id_patients = []
     @dp = DoctorPatient.where(patient_id: self.id)
     @dp.each do |idp|
-      id_patients.push(idp.patient_id)
+      id_patients.push(idp.doctor_id)
     end
     @users = User.find(id_patients)
   end

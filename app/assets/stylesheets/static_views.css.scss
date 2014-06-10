@@ -138,3 +138,21 @@ em{
   overflow-y: auto; 
   overflow-x: hidden;
 }
+
+.skull_skin{
+  background-image: url('/assets/skulls.png');
+  height:400px;
+  opacity: 0.78;
+  filter: alpha(opacity=78); /* For IE8 and earlier */
+}
+
+.jumps{
+
+
+  
+}
+.jumps:hover{
+    margin-top:-15px !important;
+    cursor:pointer;
+}
+

@@ -28,24 +28,46 @@ class ApplicationController < ActionController::Base
   	 end  
   end
   
-  def validate_accepted_patient(im, patient)
-   @dp = DoctorPatient.find_by_doctor_id_and_patient_id(im.id,patient.id)
-   if @dp != nil
-     @dp.accepted_request
-     else
-     false
+  def validate_accepted_patient(im, other)
+
+   case current_user.role 
+     when'patient'
+         @dp = DoctorPatient.find_by_doctor_id_and_patient_id(other.id,im.id)
+
+     when 'doctor'
+         @dp = DoctorPatient.find_by_doctor_id_and_patient_id(im.id,other.id)
+         
    end
+
+    if @dp != nil
+       @dp.accepted_request
+      else
+       false
+    end
+
   end
 
-  def status_if_request_patient_doctor_exist(im, patient)
-   @dp = DoctorPatient.find_by_doctor_id_and_patient_id(im.id,patient.id)
-   if @dp != nil
-     @n = '<span class="label"> Solicitud enviada </span>'
-     else
-     @n = "<a data-reveal-id="+"modal_#{patient.id}"+"><span class=' patient_#{patient.id} secondary label '"+"id=#{patient.id}"+">No hay solicitud (Add) </span></a>"
+  def status_if_request_patient_doctor_exist(im, other)
+   case current_user.role 
+     when'patient'
+      @dp = DoctorPatient.find_by_doctor_id_and_patient_id(other.id,im.id)
+
+      if @dp != nil
+       @n = '<a href="/local_confirm_relation?doctor='+"#{other.id}"+'"><span class="label">Aceptar solicitud</span></a>'
+       else
+       @n = "<a data-reveal-id="+"modal_#{other.id}"+"><span class=' patient_#{other.id} secondary label '"+"id=#{other.id}"+">No hay solicitud (Add) </span></a>"
+      end
+
+     when 'doctor'
+     @dp = DoctorPatient.find_by_doctor_id_and_patient_id(im.id,other.id)
+     if @dp != nil
+       @n = '<span class="label"> Solicitud enviada </span>'
+       else
+       @n = "<a data-reveal-id="+"modal_#{other.id}"+"><span class=' patient_#{other.id} secondary label '"+"id=#{other.id}"+">No hay solicitud (Add) </span></a>"
+     end
    end
   end
-
+  
   def random_to_token
      o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
      rand = (0...50).map { o[rand(o.length)] }.join

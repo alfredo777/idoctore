@@ -9,7 +9,7 @@
      var avatar = user.avatar;
 
      if (avatar.url != null){
-     		var avatar = '/uploads/user/avatar/'+user.id+ '/modern_avatar.jpg'
+     		var avatar =  avatar.modern.url
     	 }else{
      		var avatar = '/assets/users/avatar_chat.png'
      }
@@ -24,7 +24,7 @@
 	      $('#chat_notice_'+message.to_user_id).prepend(link_notice);
 	     setTimeout(function(){
 	     	     $('#chat_notice_'+message.to_user_id).hide();
-	     }, 6000);
+	     }, 8000);
 
 	     $('#'+identiter).click(function(){
 	         $('.'+identiter).remove();

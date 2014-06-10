@@ -30,6 +30,8 @@ Rails.application.routes.draw do
       post 'create_notice_cite'
       post '/cites/:id/change', :to => 'users#update_cites', :as => :update_cites
       post 'create_message_cite'
+      post 'actualize_invitation_non_mail'
+      post 'delete_relation_doctor_patient'
     end
   end
 
@@ -41,8 +43,6 @@ Rails.application.routes.draw do
       end
   end
   get '/paginate_messages', :to => 'messages#paginate_messages', :as => :paginate_messages
-  #get '/messages/events', :to => 'messages#events', :as => :message_events
-
   resources :vital_signs do 
      collection do 
         post 'create_from_user'
@@ -66,6 +66,9 @@ Rails.application.routes.draw do
   get '/users/:id/diagnostics', :to => 'users#diagnostics', :as => :diagnostics_users
   get '/users/:id/actualize', :to => 'users#actualize',:as => :user_update
   get '/options_change_cite', :to => 'users#options_change_cite', :as => :change_cite
+  get '/local_confirm_relation', :to => 'users#actualize_invitation_non_mail', :as => :local_confirm_relation
+  get '/local_delete_relation', :to => 'users#delete_relation_doctor_patient', :as => :local_delete_relation
+
 
 
 

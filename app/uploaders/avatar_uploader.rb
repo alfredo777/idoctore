@@ -22,4 +22,5 @@ class AvatarUploader < CarrierWave::Uploader::Base
       %w(jpg jpeg gif ico png)
   end
 
+
 end

@@ -1,5 +1,24 @@
-<h2>Lista de usuarios</h2>
+<!--<h2>Lista de usuarios</h2>
 <div class=" row white-back">
-  <%= render partial: '/users/call_users', locals: { users: @users } %>
-</div>
+  <%#= render partial: '/users/call_users', locals: { users: @users } %>
+</div>-->
+
+<% case current_user.role %>
+   <% when 'doctor' %>
+	<a class="right"data-reveal-id="myPatients" >Nuevo paciente</a>
+	<h2>Lista de pacientes</h2>
+
+	<div id="myPatients" class="reveal-modal" data-reveal>
+	  <%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
+	   <a class="close-reveal-modal">&#215;</a>
+	</div>
+	<div class=" row white-back">
+	  <%= render partial: '/users/call_users', locals: { users: current_user.patients } %>
+	</div>
+	<% when 'patient'%>
+	<h2>Lista de doctores</h2>
+	<div class=" row white-back">
+	  <%= render partial: '/users/call_users', locals: { users: current_user.doctors } %>
+	</div>
+<%end%>
 

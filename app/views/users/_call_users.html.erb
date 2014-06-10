@@ -1,12 +1,12 @@
 <ul>
 <% users.each do |user| %>
-  <% if user != current_user %>
 
+  <% if user != current_user %>
     <li class='bacground-solider'>
+    <%= link_to 'Eliminar Relación', local_delete_relation_path(other: user.id)%>
     <% if validate_accepted_patient(current_user,user) %>
       <%= link_to user_path(user.id) do %>
       <div class="large-11">
-       <br/>
           <%= render partial: '/users/avatars', locals: {user: user}%>
           <center><%= truncate( user.name, :length => 25 )%></center>
       <%end%>
