@@ -32,7 +32,7 @@
 		  <%else%>
 		   <ul class="right">
 		     <li ><%= link_to  t('tabs_from_menu_user.patients'), users_path, :class => 'white' if current_user.role == 'doctor' %><%= link_to  t('tabs_from_menu_user.doctors'), users_path, :class => 'white' if current_user.role == 'patient' %></li>
-		     <li ><%= link_to  "#{current_user.name}", user_path(current_user.id), :class => 'white' %></li>
+		     <li ><%= link_to  "#{current_user.name}", clear_cache_user_path(user: current_user), :class => 'white' %></li>
 		     <li ><%= link_to  t('user.exit'), sign_out_path(:id => current_user.id), :class => 'white' %></li>
 		    </ul>
 		  <%end%>

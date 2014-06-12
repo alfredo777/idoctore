@@ -68,6 +68,8 @@ Rails.application.routes.draw do
   get '/options_change_cite', :to => 'users#options_change_cite', :as => :change_cite
   get '/local_confirm_relation', :to => 'users#actualize_invitation_non_mail', :as => :local_confirm_relation
   get '/local_delete_relation', :to => 'users#delete_relation_doctor_patient', :as => :local_delete_relation
+  get '/clear_cache_user', :to => 'users#clear_cache_user', :as => :clear_cache_user
+
 
 
 

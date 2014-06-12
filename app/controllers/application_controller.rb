@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :status_if_request_patient_doctor_exist
   helper_method :random_to_token
   helper_method :find_advance_key
-
+  helper_method :expires_now
 
   def current_user
   	@iuser = User.find(session[:user]) if session[:user] != nil
@@ -79,6 +79,7 @@ class ApplicationController < ActionController::Base
     @user.create_adanced_key
     @user.advanced_key
   end
+
 
 
 

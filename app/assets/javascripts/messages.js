@@ -1,5 +1,6 @@
 (function() {
   var source;
+
   source = new EventSource('/messages/events');
   source.addEventListener('messages.create', function(e) {
      var m = $.parseJSON(e.data).message_act;

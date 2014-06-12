@@ -10,12 +10,14 @@ class UsersController < ApplicationController
   before_filter :loggin_filter, only: [:index, :show, :edit]
   before_filter :filter_to_update, only: [:edit, :actualize]
   before_filter :filter_view_pofile, only: [:show, :diagnostics]
-
+  before_filter :set_cache_buster
 
   #################################################################################################
   ######### views methods ########
   def index
     @users = User.all
+
+    render stream: true
   end
 
   # GET /users/1
@@ -28,6 +30,8 @@ class UsersController < ApplicationController
    @other_cites = @user.cite_doctors
    @tasks =  @other_cites + @personal_cites
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+
+   render stream: true
   end
 
   def diagnostics
@@ -49,6 +53,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def clear_cache_user
+    Rails.cache.clear
+    @user = params[:user]
+    redirect_to user_path(@user)
+  end
+
 #################################################################################################
   ########### update methods #############
   def actualize
@@ -65,7 +75,7 @@ class UsersController < ApplicationController
       @user.birthday = params[:birthday]
     end
 
-    if params[:password] != nil
+    if !params[:password].nil? && !params[:password].empty? 
         if params[:password] == params[:confirm_password]
           @user.hashed_password = params[:password]
         end
@@ -237,7 +247,7 @@ class UsersController < ApplicationController
 
   def change_password
         @user = User.find(params[:id])
-        @user.hashed_password = "#{params[:password]}"
+        @user.hashed_password = Digest::SHA2.hexdigest("#{params[:password]}")
         @user.save
         if @user.save
               flash[:notice] = t('user.satify_change_password')
@@ -404,5 +414,11 @@ class UsersController < ApplicationController
       end
       puts "#{session[:member]}"
     end
+
+     def set_cache_buster
+      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+     end
     
 end

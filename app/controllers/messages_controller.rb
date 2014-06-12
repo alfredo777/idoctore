@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
+  before_filter :set_cache_buster
+
   include ActionController::Live
-  
+
   def show
   	response.headers['Content-Type'] = 'text/javascript'
   end
@@ -29,8 +31,8 @@ class MessagesController < ApplicationController
 	    json_parce_for_chat = {message_act: @message.to_json, user_x: @message.user.to_json}
 	    $redis.publish('messages.create', json_parce_for_chat.to_json)
    
-      
     end
+
   end
 
   def paginate_messages
@@ -52,12 +54,17 @@ class MessagesController < ApplicationController
 	      response.stream.write("data: #{data}\n\n")
 	    end
 	  end
+
 		rescue IOError
 		  logger.info "Stream closed"
 		ensure
 		  redis.quit
 		  response.stream.close
 	end
-
+    def set_cache_buster
+      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    end
 
 end
