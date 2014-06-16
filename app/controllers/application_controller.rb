@@ -79,8 +79,6 @@ class ApplicationController < ActionController::Base
     @user.create_adanced_key
     @user.advanced_key
   end
-
-
-
+  
 
 end

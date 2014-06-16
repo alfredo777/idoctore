@@ -1,17 +1,20 @@
  <div class="row">
+   <% if current_user.role == 'doctor' %>
     <%= link_to post_in_path(user.id, :type => 'diagnostic'), remote: true  do %>
       <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
 		   <%= image_tag('menu/diagnostic.png', width: 60, height: 60)%>
 	   </div>
 	<%end%>
-	    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
-	 		    <%= image_tag('menu/analisis2.png', width: 60, height: 60)%>
-		</div>
+
     <%= link_to post_in_path(user.id, :type => 'note'), remote: true  do %>
 	    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
 			 <%= image_tag('menu/note.png', width: 60, height: 60)%>
 	    </div>
 	<%end%>
+	<%end%>
+		<div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
+	 		 <%= image_tag('menu/analisis2.png', width: 60, height: 60)%>
+		</div>
 	 <%= link_to post_in_path(user.id, :type => 'vital_signs'), remote: true  do %>
 	    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
 	 			<%= image_tag('menu/plus.png', width: 60, height: 60)%>

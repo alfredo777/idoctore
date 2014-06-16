@@ -15,14 +15,18 @@ class UsersController < ApplicationController
   #################################################################################################
   ######### views methods ########
   def index
+    flash[:notice] = nil
+
     @users = User.all
 
-    render stream: true
   end
 
   # GET /users/1
   # GET /users/1.json
   def show   
+    flash[:notice] = nil
+
+
    @user = User.find(params[:id])
    @user_vital_signs = @user.vital_signs.last(5)
    @user_diagnostics = @user.diagnostics.last(5)
@@ -31,7 +35,6 @@ class UsersController < ApplicationController
    @tasks =  @other_cites + @personal_cites
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
 
-   render stream: true
   end
 
   def diagnostics
@@ -262,8 +265,6 @@ class UsersController < ApplicationController
   #### methos for cites ##########
 
   def send_request_cite
-    #CiteDoctor.create
-
     date =  params[:init_time_date] + ' ' +params[:init_time_hour]
 
       case  current_user.role 
@@ -280,22 +281,23 @@ class UsersController < ApplicationController
           @cite.finish_time = date2
         @cite.save
       end
-
       
       if @cite.save  
         flash[:notice] = 'Se a solicitado la cita correctamente.'
         redirect_to :back
       end
-
   end
 
   def responce_cite
     @cite = CiteDoctor.find(params[:ident_i])
     @cite.confirmed_by_doctor = true
-    @cite.save
+    @cite.save   
 
-    
+    respond_to do |format|
+     format.js
+    end 
   end
+
 
   def options_change_cite
      @cite = CiteDoctor.find(params[:ident_i])
@@ -306,9 +308,7 @@ class UsersController < ApplicationController
       format.js
     end
   end
-
-
-
+  
   def update_cites
     @cite = CiteDoctor.find(params[:id])
     date =  params[:init_time_date] + ' ' +params[:init_time_hour]
@@ -325,6 +325,12 @@ class UsersController < ApplicationController
         redirect_to :back
     end
 
+  end
+
+  def cancel_cite
+     @cite = CiteDoctor.find(params[:ident_i])
+     @cite.destroy
+     redirect_to :back
   end
 
 #################################################################################################  

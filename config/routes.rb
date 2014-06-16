@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
- 
+  ######## home page #######
+
+  root 'static_views#home'
+
+  ######## diagnostics #########
+
   resources :diagnostics do 
     collection do
       post 'create_from_user'
@@ -7,13 +12,19 @@ Rails.application.routes.draw do
       post 'destroy'
     end
   end
+
   get 'cie10', :to => 'diagnostics#cie10', :as =>  :cie10
   get 'plain_show/:id', :to => 'diagnostics#plain_show', :as => :plain_show
   get 'qrcode_view/:id', :to => 'diagnostics#qrcode_view', :as => :qrcode_view
   get 'printing_diagnostic/:id', :to => 'diagnostics#printing_diagnostic', :as => :diagnostics_print
   get 'printing_threatment/:id', :to => 'diagnostics#printing_threatment', :as => :printing_threatment
-  resources :sessions
+
+  ####### sessions #########
   
+  resources :sessions
+
+  ######### users resources to posting ########
+
   resources :users do 
     collection do 
       post 'register'
@@ -26,7 +37,7 @@ Rails.application.routes.draw do
       post 'existent_user_recive_invitation'
       post '/:id/actualize', :to => 'users#actualize',:as => :user_update
       post 'send_request_cite'
-      post 'responce_cite'
+      post 'responce_cite', :as => :responce_cite
       post 'create_notice_cite'
       post '/cites/:id/change', :to => 'users#update_cites', :as => :update_cites
       post 'create_message_cite'
@@ -34,6 +45,27 @@ Rails.application.routes.draw do
       post 'delete_relation_doctor_patient'
     end
   end
+
+  #######user parts#######
+    get 'sign_in', :to => 'users#session_new', :as => :sign_in
+    get 'sign_out', :to => 'users#destroy_session', :as => :sign_out
+    get '/confirmed_token/:confirmed_token', :to => 'users#confirmed_token', :as => :confirmed_token
+    get '/reset_password/:confirmed_token', :to => 'users#reset_password', :as => :reset_password
+    get '/change_password', :to => 'users#change_password', :as => :change_password
+    get '/missing_password', :to => 'users#missing_password', :as => :missing_password
+    get '/terms_and_conditions', :to => 'static_views#terms_and_conditions', :as => :terms_and_conditions
+    get '/users/:id/diagnostics', :to => 'users#diagnostics', :as => :diagnostics_users
+    get '/users/:id/actualize', :to => 'users#actualize',:as => :user_update
+    get '/options_change_cite', :to => 'users#options_change_cite', :as => :change_cite
+    get '/local_confirm_relation', :to => 'users#actualize_invitation_non_mail', :as => :local_confirm_relation
+    get '/local_delete_relation', :to => 'users#delete_relation_doctor_patient', :as => :local_delete_relation
+    get '/clear_cache_user', :to => 'users#clear_cache_user', :as => :clear_cache_user
+    get 'responce_cite', :to => 'users#responce_cite', :as => :responce_cite
+    get 'cancel_cite', :to => 'users#cancel_cite', :as => :cancel_cite
+    get 'users/:id/my_patients', :to => 'users#patients', :as => :patients
+
+  
+  ####### comunication parts ########
 
   resources :messages do 
       collection do 
@@ -49,43 +81,12 @@ Rails.application.routes.draw do
      end
   end
 
-
-  get 'users/:id/my_patients', :to => 'users#patients', :as => :patients
+  #######vistas estaticas ##########
   get 'post_id/:id', :to => 'static_views#post',:as => :post_in
   get 'load_view/:id', :to => 'static_views#visualizer',:as => :visualizer
-
-
-
-  get 'sign_in', :to => 'users#session_new', :as => :sign_in
-  get 'sign_out', :to => 'users#destroy_session', :as => :sign_out
-  get '/confirmed_token/:confirmed_token', :to => 'users#confirmed_token', :as => :confirmed_token
-  get '/reset_password/:confirmed_token', :to => 'users#reset_password', :as => :reset_password
-  get '/change_password', :to => 'users#change_password', :as => :change_password
-  get '/missing_password', :to => 'users#missing_password', :as => :missing_password
-  get '/terms_and_conditions', :to => 'static_views#terms_and_conditions', :as => :terms_and_conditions
-  get '/users/:id/diagnostics', :to => 'users#diagnostics', :as => :diagnostics_users
-  get '/users/:id/actualize', :to => 'users#actualize',:as => :user_update
-  get '/options_change_cite', :to => 'users#options_change_cite', :as => :change_cite
-  get '/local_confirm_relation', :to => 'users#actualize_invitation_non_mail', :as => :local_confirm_relation
-  get '/local_delete_relation', :to => 'users#delete_relation_doctor_patient', :as => :local_delete_relation
-  get '/clear_cache_user', :to => 'users#clear_cache_user', :as => :clear_cache_user
-
-
-
-
-
-  #home
-
-  root 'static_views#home'
-
-  #satic_views
-
   get 'static_views/home'
-
   get 'static_views/prices'
-
   get 'static_views/register'
-
   get 'static_views/about_us'
 
 end
