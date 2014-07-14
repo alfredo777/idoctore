@@ -24,16 +24,21 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show   
-    flash[:notice] = nil
-
-
    @user = User.find(params[:id])
    @user_vital_signs = @user.vital_signs.last(5)
    @user_diagnostics = @user.diagnostics.last(5)
+   @user_files = @user.single_files.last(5)
    @personal_cites = @user.doctor_cites
    @other_cites = @user.cite_doctors
    @tasks =  @other_cites + @personal_cites
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+
+
+   @cronic = @user.diagnostics.where(:chronic => true).count
+   @outstanding = @user.diagnostics.where(:outstanding => true).count
+   @serious = @user.diagnostics.where(:serious => true).count
+   @inconsequential = @user.diagnostics.where(:inconsequential => true).count
+
 
   end
 

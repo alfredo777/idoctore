@@ -1,6 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require highcharts
+//= require highcharts/highcharts-more
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
@@ -79,20 +83,7 @@ $(function(){ $(document).foundation(); });
 		return strAccentsOut;
  }
 
-$(document).ready(function(){
-  $('.slide-p').click(function(){
-     $('#close_page_slider').show();
-  });
-  $('#close_page_slider').click(function(){
-     $('#close_page_slider').hide();
-  });
 
-	$( "#create_diagnostic" ).submit(function( event ) {
-	   document.getElementById('pageslide').remove();
-	   $(this).submit();
-	});
-
-});
 
 function SelfSlider(id_s, id_in){
         $('#'+id_s).on('change', function() {
@@ -140,4 +131,14 @@ function ValidateFormIn(id, validate_ids){
 
  }
 
+function readURL(input) {
+   if (input.files && input.files[0]) {
+       var reader = new FileReader();
+       reader.onload = function(e) {
+           $('#blah').attr('src', e.target.result);
+       }
+
+       reader.readAsDataURL(input.files[0]);
+   }
+}
 

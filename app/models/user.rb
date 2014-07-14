@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
    has_many :diagnostics
    has_many :notes
    has_many :cite_doctors
+   has_many :single_files
 
    ##### validamos por email #####
    

@@ -33,6 +33,7 @@ class StaticViewsController < ApplicationController
      when 'diacnostic'
         @find = Diagnostic.find(params[:id])
      when 'analisis'
+        @find = SingleFile.find(params[:id])
     end
        
     @type = params[:type]

@@ -45,26 +45,34 @@ class MessagesController < ApplicationController
   end
 
 	def events
-	  response.headers["Content-Type"] = "text/event-stream"
-	  start = Time.zone.now
-	  redis = Redis.new
-	  redis.psubscribe('messages.*') do |on|
-	    on.pmessage do |pattern, event, data|
-	      response.stream.write("event: #{event}\n")
-	      response.stream.write("data: #{data}\n\n")
-	    end
-	  end
-
-		rescue IOError
-		  logger.info "Stream closed"
-		ensure
-		  redis.quit
-		  response.stream.close
+	 response.headers["Content-Type"] = "text/event-stream"
+	 sse = SSE.new(response.stream, retry: 300, event: "event-name")
+	 start = Time.zone.now
+	 redis = Redis.new
+	   ticker = Thread.new { loop { sse.write 0; sleep 5 } }
+     sender = Thread.new do
+		  redis.psubscribe('messages.*') do |on|
+		    on.pmessage do |pattern, event, data|
+		      response.stream.write("event: #{event}\n")
+		      response.stream.write("data: #{data}\n\n")
+		    end
+		  end
+		 end
+		  ticker.join
+      sender.join
+	 rescue IOError
+	  logger.info "Stream closed"
+	 ensure
+	 	Thread.kill(ticker) if ticker
+    Thread.kill(sender) if sender
+	  redis.quit
+	  response.stream.close
 	end
-    def set_cache_buster
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
+
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
 
 end

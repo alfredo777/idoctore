@@ -48,6 +48,15 @@ gem 'rqrcode-with-patches'
 #web sockets 
 gem 'redis'
 gem 'puma'
+
+#3djs
+#gem "d3-rails"
+gem "highcharts-rails", "~> 3.0.0"
+
+#### file upload 
+gem 'jquery-fileupload-rails'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

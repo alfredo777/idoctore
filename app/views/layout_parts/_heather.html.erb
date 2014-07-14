@@ -1,10 +1,10 @@
 <%#= session[:user] = nil %>
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 <%= favicon_link_tag('favicon.ico')%>
-<% if notice %>
+<% if flash[:notice] %>
 <div data-alert class="alert-box" id="alert_box_simple">
-  <%= notice %>
+  <%= notice  %>
 </div>
-
 <% end %>
 <script type="text/javascript">
 	setTimeout(function(){
@@ -17,25 +17,25 @@
       <center>
        <div class='large-10'>
         <ul class="title-area">
-        <li class="name">
-		  <a href="<%= root_path%>"><dt><h3 style="color:#A4A4A4;" class="left"> I </h3><h3 class="left" style="color:#424242;">Doctore</h3></dt></a>
+        <li class="name" style="margin-top: -8px;">
+		  <a href="<%= root_path%>"  class="cursive" style="margin-top:-5px;"><dt><h2 style="color:#A4A4A4;" class="left cursive"> I </h2><h2 class="left cursive" style="color:#086A87;">Doctore</h2></dt></a>
 		</li>
 		</ul>
 	    <section class="top-bar-section">
 
 		  <% if session_status == false %>
 		   <ul class="right nav-doctor">
-			  <li><a href="#" id="whoare" data-target="whoare_a" class="white"><%= t('menu.who_we_are')%></a></li>
-			  <li><a href="#" id="whodo" data-target="what_we_do_a" class="white"><%= t('menu.we_do')%></a></li>
-			  <li><a href="#" id="banefits" data-target="banefits_a" class="white"><%= t('menu.benefits')%></a></li>
-			  <li><a href="#" id="price"  data-target="price_a" class="white"><%= t('menu.prices')%></a></li>
-			  <li><a href="#" id="price"  data-reveal-id="loggin_modal" class="white"><%= t('menu.login')%></a></li>
+			  <li><a href="#" id="whoare" data-target="whoare_a" ><%= t('menu.who_we_are')%></a></li>
+			  <li><a href="#" id="whodo" data-target="what_we_do_a" ><%= t('menu.we_do')%></a></li>
+			  <li><a href="#" id="banefits" data-target="banefits_a" ><%= t('menu.benefits')%></a></li>
+			  <li><a href="#" id="price"  data-target="price_a" ><%= t('menu.prices')%></a></li>
+			  <li><a href="#" id="price"  data-reveal-id="loggin_modal" ><%= t('menu.login')%></a></li>
 		   </ul>
 		  <%else%>
 		   <ul class="right">
-		     <li ><%= link_to  t('tabs_from_menu_user.patients'), users_path, :class => 'white' if current_user.role == 'doctor' %><%= link_to  t('tabs_from_menu_user.doctors'), users_path, :class => 'white' if current_user.role == 'patient' %></li>
-		     <li ><%= link_to  "#{current_user.name}", user_path(current_user.id), :class => 'white' %></li>
-		     <li ><%= link_to  t('user.exit'), sign_out_path(:id => current_user.id), :class => 'white' %></li>
+		     <li ><%= link_to  t('tabs_from_menu_user.patients'), users_path if current_user.role == 'doctor' %><%= link_to  t('tabs_from_menu_user.doctors'), users_path if current_user.role == 'patient' %></li>
+		     <li ><%= link_to  "#{current_user.name}", user_path(current_user.id) %></li>
+		     <li ><%= link_to  t('user.exit'), sign_out_path(:id => current_user.id) %></li>
 		    </ul>
 		  <%end%>
 		</section>

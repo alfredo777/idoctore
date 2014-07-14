@@ -1,4 +1,6 @@
   <script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
+  <script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
+
   <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user} %>
   <div class="row">
    <div class="left large-3" style="display:none;"> 
@@ -22,11 +24,13 @@
     <p>Sexo: <%= @user.sex if @user.sex != nil %></p>
     <p>Edad: <%= @user.ageu %></p>
     <%= link_to 'Editar Usuario', edit_user_path(@user) if @user.id == current_user.id%>
+    <div id="chart_sics" data-valuesfc='[<%=@cronic%>, <%= @outstanding %>, <%=@serious%>, <%=@inconsequential%>]'></div>
    </div>
 
-  <div class="row">
+  <div class="row ">
     <center>
-      <div class="actualization-back" style="width:97%;">
+      <p class="red-back" style="width:97%;">Últimas actualizaciones del Usuario</p>
+      <div class="actualization-back w_background" style="width:97%;">
         <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs, tasks: @tasks} %>
       <div id="container_of_parts" ></div>
       </div>

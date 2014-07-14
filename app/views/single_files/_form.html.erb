@@ -1,0 +1,14 @@
+<center>
+<%= form_tag('/single_files/upload_file', :id => 'upload_file', :multipart => true) do -%>
+  <div style="width:500px;">
+  <%= file_field_tag 'file', :class => 'custom-file-input'  %>
+  </div>
+  <%= hidden_field_tag 'user_id', @user.id%>
+  <%= hidden_field_tag 'creator_id', current_user.id%>
+
+ <div><%= submit_tag 'Subir archivo', :class => 'button' %></div>
+<%end%>
+<div id="load" style="display:none;">
+<%= image_tag('loader.GIF')%>
+</div>
+</center>

@@ -19,9 +19,11 @@
 
 
     <div id="container" class="raw white-back w80">
-    <%= yield %>
+
     <div id='close_page_slider' style="display:none;"><%= image_tag('menu/close.png')%></div>     
     <div id="left_hide" style="display:none;" ></div>
+    <%= yield %>
+  
 
     </div>
    <%= javascript_include_tag "application" %>

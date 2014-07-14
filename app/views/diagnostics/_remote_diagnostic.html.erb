@@ -65,14 +65,15 @@
 	<p align='justify'><%= simple_format(dt.suggested_treatments)%></p>
 	</div>
 	<%end%>
-
 	<% if dt.vital_signs != nil %>
-	<%= render partial: '/vital_signs/remoted_signs', locals: {vs: dt.signs}%>
+		<% if !VitalSign.exists?(dt.vital_signs) %>
+		<%else%>
+		<%= render partial: '/vital_signs/remoted_signs', locals: {vs: dt.signs}%>
+		<%end%>
 	<%end%>
 
 	<% if dt.notes != nil %>
-	<%= render partial: '/diagnostics/show_note', locals:{dt: dt
-	} %>
+	<%= render partial: '/diagnostics/show_note', locals:{dt: dt} %>
 	<%end%>
 
 

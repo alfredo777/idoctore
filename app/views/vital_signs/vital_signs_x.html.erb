@@ -1,0 +1,20 @@
+<h3><%= t('diagnostics.diagnostics')%> - <%= link_to "#{@user.name}", user_path(@user.id) %></h3>
+<div class="margin-regular">
+<center>
+<table>
+  <thead>
+    <tr>
+    <th width="300"><%= t('vital_signs.vital_signs')%></th>
+    </tr>
+  </thead>
+   <tbody>
+    <% @user_vital_signs.reverse.each do |vs| %>
+      <%= render partial: '/vital_signs/show', locals: {vs: vs}%>
+    <%end%>
+   </tbody>
+</table>
+<ul class="pagination">
+  <%= will_paginate @user_vital_signs %>
+</ul>
+</div>
+</center>

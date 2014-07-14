@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140603001922) do
+ActiveRecord::Schema.define(version: 20140626210140) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -138,6 +138,8 @@ ActiveRecord::Schema.define(version: 20140603001922) do
     t.string   "pass"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "creator_id"
   end
 
   create_table "users", force: true do |t|

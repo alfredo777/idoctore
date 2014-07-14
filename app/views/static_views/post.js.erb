@@ -5,5 +5,6 @@
 	$('#pageslide').html('<%= escape_javascript(render(partial: "/diagnostics/form_for_add_note", locals: {user: @user, owner: current_user}))%>');
 <% when 'vital_signs' %>
 	$('#pageslide').html('<%= escape_javascript(render(partial: "/vital_signs/form", locals: {user: @user, owner: current_user}))%>');
-	//$('#pageslide').toggle();
+<% when 'upload_file' %>
+	$('#pageslide').html('<%= escape_javascript(render(partial: "/single_files/form", locals: {user: @user, owner: current_user}))%>');
 <% end %>

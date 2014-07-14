@@ -1,5 +1,3 @@
-<p>Últimas actualizaciones del Paciente</p>
-<hr>
 <div class="left margin-regular">
 <table>
   <thead>
@@ -13,7 +11,7 @@
     <%end%>
    </tbody>
 </table>
-<p><a class="small secondary button"><%= t('simple.see_more')%> →</a></p>
+<p><%= link_to t('simple.see_more') + '  →', vital_signs_inx_path(@user.id) , :class => 'small secondary button'%></p>
 </div>
 
 <div class="left margin-regular">
@@ -29,7 +27,7 @@
      <%end%>
   </tbody>
 </table>
-<p><%= link_to t('simple.see_more' + '  →'), diagnostics_users_path(@user.id) , :class => 'small secondary button'%> </p>
+<p><%= link_to t('simple.see_more') + '  →', diagnostics_users_path(@user.id) , :class => 'small secondary button'%> </p>
 
 </div>
 
@@ -41,6 +39,9 @@
     </tr>
   </thead>
    <tbody>
+   <% @user_files.reverse.each do |an| %>
+        <%= render partial: '/single_files/show', locals: {an: an}%>
+   <%end%>
   </tbody>
 </table>
 <p><a class="small secondary button"><%= t('simple.see_more')%> →</a></p>
