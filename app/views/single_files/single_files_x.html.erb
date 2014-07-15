@@ -1,0 +1,21 @@
+<h3><%= t('diagnostics.diagnostics')%> - <%= link_to "#{@user.name}", user_path(@user.id) %></h3>
+<div class=" margin-regular">
+<center>
+
+<table>
+  <thead>
+    <tr>
+    <th width="300">Análisis Clínicos</th>
+    </tr>
+  </thead>
+   <tbody>
+   <% @single_files.reverse.each do |an| %>
+        <%= render partial: '/single_files/show', locals: {an: an}%>
+   <%end%>
+  </tbody>
+</table>
+<ul class="pagination">
+  <%= will_paginate @single_files %>
+</ul>
+</center>
+</div>

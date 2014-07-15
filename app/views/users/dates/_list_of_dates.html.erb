@@ -4,7 +4,9 @@
        <% tasks.reverse.each do |t| %>
         <div id="confirmed_by_doctor_<%=t.id%>">
           <% if !t.confirmed_by_doctor %>
-                <div class="right" style="padding:13px; font-size:10px; margin-left:-10px;"> <%= link_to 'Confirmar', responce_cite_path(ident_i: t.id), remote: true %></div>
+                <div class="right" style="padding:13px; font-size:10px; margin-left:-10px;"> <%= link_to 'Confirmar', responce_cite_path(ident_i: t.id), remote: true if current_user.id == t.capt_requester.id %>
+                    <%= 'Pendiente' if current_user.id != t.capt_requester.id %>
+                </div>
              <%else%>
                 <div class="right" style="padding:13px; font-size:10px; margin-left:-10px; color:#088A4B;"> Confirmada </div>
           <%end%>
@@ -27,7 +29,7 @@
              <ul class="inline-list">
               <li ><%= link_to 'Mensaje', change_cite_path(:type => 'messages', :ident_i => t.id), remote: true %></li>
                 <li><%=link_to "Cambiar Fecha", change_cite_path(:type => 'change_cite', :ident_i => t.id), remote: true%></li>
-                <li><a data-confirm="¿Estas seguro de querer cancelar la cita?" href="/cancel_cite?ident_i=18">Cancelar</a></li>
+                <li><a data-confirm="¿Estas seguro de querer cancelar la cita?" href="/cancel_cite?ident_i=<%=t.id%>">Cancelar</a></li>
              </ul>
 
              <div id="change<%=t.id%>"></div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626210140) do
+ActiveRecord::Schema.define(version: 20140715022648) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20140626210140) do
     t.integer  "typex_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "checked"
   end
 
   create_table "sessions", force: true do |t|

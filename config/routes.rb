@@ -28,6 +28,17 @@ Rails.application.routes.draw do
     end
   end
   
+  get '/my_single_files/:id', :to => 'single_files#single_files_x', :as => :single_files_inx
+
+
+  ######## vital signs ##########
+  resources :vital_signs do 
+     collection do 
+        post 'create_from_user'
+     end
+  end
+
+  get '/my_vital_signs/:id', :to => 'vital_signs#vital_signs_x', :as => :vital_signs_inx
 
   ####### sessions #########
   
@@ -87,14 +98,7 @@ Rails.application.routes.draw do
 
   get '/paginate_messages', :to => 'messages#paginate_messages', :as => :paginate_messages
 
-  ######## vital signs ##########
-  resources :vital_signs do 
-     collection do 
-        post 'create_from_user'
-     end
-  end
 
-  get '/my_vital_signs/:id', :to => 'vital_signs#vital_signs_x', :as => :vital_signs_inx
 
   #######vistas estaticas ##########
   get 'post_id/:id', :to => 'static_views#post',:as => :post_in

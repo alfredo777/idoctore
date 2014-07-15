@@ -24,7 +24,7 @@
       <%= text_area_tag 'request', '', rows: 10, cols: 25  %>
       <% if @user.id == current_user.id %>
             <%= label_tag 'Con el doctor:' %>
-            <%= select_tag "user_id", options_from_collection_for_select(current_user.doctors, "id", "name") %>
+            <%= select_tag "doctor_id", options_from_collection_for_select(current_user.doctors, "id", "name") %>
         <%else%>
            <p><b>Doctor asignado automáticamente.</b></p>
            <%= hidden_field_tag 'doctor_id', @user.id %>

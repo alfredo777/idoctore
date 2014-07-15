@@ -32,8 +32,7 @@ class UsersController < ApplicationController
    @other_cites = @user.cite_doctors
    @tasks =  @other_cites + @personal_cites
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
-
-
+   @notices = @user.my_request_from_notice.last(5)
    @cronic = @user.diagnostics.where(:chronic => true).count
    @outstanding = @user.diagnostics.where(:outstanding => true).count
    @serious = @user.diagnostics.where(:serious => true).count

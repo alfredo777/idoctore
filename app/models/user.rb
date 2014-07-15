@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
    has_many :notes
    has_many :cite_doctors
    has_many :single_files
+   has_many :notices
 
    ##### validamos por email #####
    
@@ -124,6 +125,10 @@ class User < ActiveRecord::Base
 
   def doctor_cites
    @cites =  CiteDoctor.where(:doctor_id =>  self.id)
+  end
+
+  def my_request_from_notice
+    @notices = Notice.where(:receiver_id => self.id)
   end
   
 end
