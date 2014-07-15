@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715022648) do
+ActiveRecord::Schema.define(version: 20140715162719) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20140715022648) do
     t.string   "title"
     t.integer  "user_id"
     t.integer  "diagnostic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cupons", force: true do |t|
+    t.string   "institution"
+    t.string   "indentifier_random"
+    t.boolean  "used"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -83,6 +92,14 @@ ActiveRecord::Schema.define(version: 20140715022648) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "accepted_request", default: false
+  end
+
+  create_table "manager_users", force: true do |t|
+    t.string   "email"
+    t.string   "password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "medicines", force: true do |t|

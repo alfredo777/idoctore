@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
 
   ######## home page #######
 
@@ -64,6 +65,14 @@ Rails.application.routes.draw do
       post 'create_message_cite'
       post 'actualize_invitation_non_mail'
       post 'delete_relation_doctor_patient'
+
+      ############# admin users #############
+
+      post 'admin_user_loggin'
+      post 'admin_user_create'
+      post 'admin_user_destroy'
+      post 'admin_user_cupons'
+
     end
   end
 
@@ -107,5 +116,17 @@ Rails.application.routes.draw do
   get 'static_views/prices'
   get 'static_views/register'
   get 'static_views/about_us'
+
+  ######## Admin ############
+
+  get 'admin/users', :as => :admin_users
+
+  get 'admin/cupons', :as => :admin_cupons
+
+  get 'admin/payments', :as =>  :admin_payments
+
+  get 'admin/', :to => 'admin#stats', :as => :admin_stats
+
+  get 'admin/loggin', :as => :admin_loggin
 
 end

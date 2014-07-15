@@ -374,7 +374,20 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+#################################################################################################
+######### Admin Methods ##########
 
+def admin_user_loggin
+end
+
+def admin_user_create
+end
+
+def admin_user_destroy
+end
+
+def admin_user_cupons
+end
 #################################################################################################
  ####### private methods #########
   private

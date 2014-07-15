@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
    has_many :cite_doctors
    has_many :single_files
    has_many :notices
+   has_many :cupons
 
    ##### validamos por email #####
    
