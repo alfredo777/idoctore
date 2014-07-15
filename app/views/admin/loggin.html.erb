@@ -1,0 +1,23 @@
+<div class="row collapse">
+<h1>Bienbenido al administrador de Idoctore</h1>
+<div class="large-8 left">
+  <fieldset>
+    <legend>Formulario de Ingreso</legend>
+		<%= form_tag('/users/admin_user_loggin') do -%>
+		  
+		  <%= label_tag 'email' %>
+		  <%= email_field_tag 'email' %>
+		  <%= label_tag 'identificador' %>
+		  <%= password_field_tag 'identify' %>
+		  <%= label_tag 'password' %>
+		  <%= password_field_tag 'password' %>
+		  
+		  <div><%= submit_tag 'Iniciar', :class => 'button' %></div>
+		<% end -%>	
+  </fieldset>
+</div>
+<div class="large-4 left" style="margin-top:60px;">
+	<center><%= image_tag('key.png')%></center>
+</div>
+
+</div>

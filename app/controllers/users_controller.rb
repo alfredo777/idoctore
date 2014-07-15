@@ -435,9 +435,28 @@ end
           flash[:notice] = "El usuario o la contraseña son incorrectos."
           redirect_to root_path
       end
-      puts "#{session[:member]}"
+      puts "#{session[:user]}"
     end
+    
 
+    def password_cript_admin(password, admin, identify )
+      sha256 = Digest::SHA256.new
+      digest = sha256.update password
+      backend_validate = admin.w_digest(digest)
+      puts "#{backend_validate}"
+
+      if  backend_validate == true
+          session[:user] = "#{admin.id}"
+          redirect_to user_path(admin.id)
+          flash[:notice] = t('user.create_session')
+        else
+          session[:user] = nil
+          flash[:notice] = "El usuario o la contraseña son incorrectos."
+          redirect_to root_path
+      end
+      puts "#{session[:admin]}"
+    end
+    
      def set_cache_buster
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
       response.headers["Pragma"] = "no-cache"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715162719) do
+ActiveRecord::Schema.define(version: 20140715180210) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 20140715162719) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "identify"
+    t.boolean  "seller"
   end
 
   create_table "medicines", force: true do |t|
