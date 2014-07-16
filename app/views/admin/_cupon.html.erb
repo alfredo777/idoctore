@@ -1,0 +1,54 @@
+<table>
+  <thead>
+    <tr>
+	    <th width="300">Institución</th>
+	    <th width="200"> Código del Cúpon</th>
+	    <th width="100"> Usuario asignado</th>
+	    <th width="100"> Estatus de uso</th>
+	    <th width="200"> Tiraje</th>
+	    <th width="100"> Administrador que lo generó</th>
+	    <th width="100"> Vendedor</th>
+	    <th width="100"> Email Asignado</th>
+	    <th width="100"> Precio del tiraje</th>
+    </tr>
+  </thead>
+   <tbody >
+    <% cupons.each do |cupon| %>
+	<tr>
+     <td> 
+	   <%= cupon.institution %>
+	 </td>
+	 <td> 
+	   <%= cupon.indentifier_random %>
+	 </td>
+	  <td> 
+	   <%= cupon.user_id %>
+	 </td>
+	 <td> 
+	   <%= cupon.used %>
+	 </td>
+	 <td> 
+	   <%= cupon.printing %>
+	 </td>
+	 <td> 
+	   <%= cupon.manager_user_id %>
+	 </td>
+	 <td> 
+	   <%= cupon.assigned %>
+	 </td>
+	 <td> 
+	   <%= cupon.email_corroborate %>
+	 </td>
+	 <td> 
+	   $<%= cupon.price %> MX
+	 </td>
+	
+	</tr>
+    <%end%>
+   </tbody>
+</table>
+<% if actpaginate %>
+<ul class="pagination">
+  <%= will_paginate cupons %>
+</ul>
+<%end%>

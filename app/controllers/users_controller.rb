@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   ######### views methods ########
   def index
     flash[:notice] = nil
-
     @users = User.all
 
   end
@@ -378,6 +377,8 @@ class UsersController < ApplicationController
 ######### Admin Methods ##########
 
 def admin_user_loggin
+  @admin = ManagerUser.find_by_email(params[:email])
+  password_cript_admin( params[:password], @admin, params[:identify] )
 end
 
 def admin_user_create
@@ -387,7 +388,29 @@ def admin_user_destroy
 end
 
 def admin_user_cupons
+  printing = SecureRandom.hex(9)
+  identify = params[:identify]
+  params[:quanty].to_i.times do
+   @cupon = Cupon.create(indentifier_random: SecureRandom.hex(4), institution: params[:institution], used: false, printing: printing, manager_user_id: session[:admin], assigned: identify, price: params[:price] )
+  end
+
+  if @cupon.save
+    flash[:notice] = 'Cupónes creados correctamente'
+  else
+    flash[:notice] = 'Cupónes no creados'
+  end
+
+  redirect_to admin_cupons_path
 end
+
+def search_cupons
+    @cupons = Cupon.where(printing: params[:printing])
+    respond_to do |format|
+      format.js
+    end
+end
+
+
 #################################################################################################
  ####### private methods #########
   private
@@ -395,7 +418,8 @@ end
     def set_user
       @user = User.find(params[:id])
     end
-    
+#################################################################################################
+######## filtros ###########
     def filter_to_update
       @user = User.find(params[:id])
       if @user.id ==  current_user.id
@@ -419,7 +443,8 @@ end
 
       end 
     end
-
+#########################################################################################
+############# validadores de password ##################
     def password_cript(password, member)
       sha256 = Digest::SHA256.new
       digest = sha256.update password
@@ -442,21 +467,21 @@ end
     def password_cript_admin(password, admin, identify )
       sha256 = Digest::SHA256.new
       digest = sha256.update password
-      backend_validate = admin.w_digest(digest)
+      backend_validate = admin.reiciber_params_loggin(digest, identify)
       puts "#{backend_validate}"
 
       if  backend_validate == true
-          session[:user] = "#{admin.id}"
-          redirect_to user_path(admin.id)
+          session[:admin] = "#{admin.id}"
+          redirect_to admin_path
           flash[:notice] = t('user.create_session')
         else
-          session[:user] = nil
+          session[:admin] = nil
           flash[:notice] = "El usuario o la contraseña son incorrectos."
-          redirect_to root_path
+          redirect_to admin_loggin_path
       end
       puts "#{session[:admin]}"
     end
-    
+
      def set_cache_buster
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
       response.headers["Pragma"] = "no-cache"

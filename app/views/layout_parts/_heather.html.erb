@@ -24,6 +24,12 @@
 	    <section class="top-bar-section">
 
 		  <% if session_status == false %>
+		   
+		   <% if session[:admin] != nil %>
+		    <ul class="right">
+			  <li><%= link_to 'Salir', "#{admin_end_session_path}" %></li>
+			</ul>
+		    <%else%>
 		   <ul class="right nav-doctor">
 			  <li><a href="#" id="whoare" data-target="whoare_a" ><%= t('menu.who_we_are')%></a></li>
 			  <li><a href="#" id="whodo" data-target="what_we_do_a" ><%= t('menu.we_do')%></a></li>
@@ -31,6 +37,8 @@
 			  <li><a href="#" id="price"  data-target="price_a" ><%= t('menu.prices')%></a></li>
 			  <li><a href="#" id="price"  data-reveal-id="loggin_modal" ><%= t('menu.login')%></a></li>
 		   </ul>
+
+		   <%end%>
 		  <%else%>
 		   <ul class="right">
 		     <li ><%= link_to  t('tabs_from_menu_user.patients'), users_path if current_user.role == 'doctor' %><%= link_to  t('tabs_from_menu_user.doctors'), users_path if current_user.role == 'patient' %></li>

@@ -9,9 +9,11 @@ class ApplicationController < ActionController::Base
   helper_method :random_to_token
   helper_method :find_advance_key
   helper_method :expires_now
-
+ 
   def current_user
+    if  User.exists?(session[:user])
   	@iuser = User.find(session[:user]) if session[:user] != nil
+    end
   end
 
   def session_status

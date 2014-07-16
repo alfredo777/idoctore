@@ -5,6 +5,7 @@ class AdminController < ApplicationController
   end
 
   def cupons
+  	@cupons = Cupon.paginate(:page => params[:page], :per_page => 120).order('created_at DESC')
   end
 
   def payments
@@ -14,6 +15,11 @@ class AdminController < ApplicationController
   end
 
   def loggin
+  end
+
+  def end_session
+  	session[:admin] = nil
+  	redirect_to root_path
   end
 
 private

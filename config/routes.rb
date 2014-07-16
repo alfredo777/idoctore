@@ -72,7 +72,7 @@ Rails.application.routes.draw do
       post 'admin_user_create'
       post 'admin_user_destroy'
       post 'admin_user_cupons'
-
+      post 'search_cupons'
     end
   end
 
@@ -93,6 +93,9 @@ Rails.application.routes.draw do
     get 'responce_cite', :to => 'users#responce_cite', :as => :responce_cite
     get 'cancel_cite', :to => 'users#cancel_cite', :as => :cancel_cite
     get 'users/:id/my_patients', :to => 'users#patients', :as => :patients
+
+  ######## admin get for user parts ##########
+    get 'users/search_cupons' 
 
   
   ####### comunication parts ########
@@ -120,13 +123,10 @@ Rails.application.routes.draw do
   ######## Admin ############
 
   get 'admin/users', :as => :admin_users
-
   get 'admin/cupons', :as => :admin_cupons
-
   get 'admin/payments', :as =>  :admin_payments
-
-  get 'admin/', :to => 'admin#stats', :as => :admin_stats
-
+  get 'admin/', :to => 'admin#stats', :as => :admin
   get 'admin/loggin', :as => :admin_loggin
+  get '/admins_session_destroy', :to => 'admin#end_session', :as => :admin_end_session
 
 end

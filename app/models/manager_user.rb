@@ -8,10 +8,10 @@ class ManagerUser < ActiveRecord::Base
        self.salt = generate_salt
        password = self.password
        encripted = Digest::SHA2.hexdigest(password)
-       identify_encripted = Digest::SHA2.hexdigest(self.identify)
-        if self.hashed_password != encripted
-               self.hashed_password = encripted
-               self.identify = identify_encripted
+       #identify_encripted = Digest::SHA2.hexdigest(self.identify)
+        if self.password != encripted
+               self.password = encripted
+               #self.identify = identify_encripted
                self.save
         end
        puts "creando el usuario #{email}"
@@ -22,12 +22,12 @@ class ManagerUser < ActiveRecord::Base
    end 
 
    def codificate_encripter
-      Digest::SHA2.hexdigest( self.salt + self.hashed_password.to_s + self.identify ) 
+      Digest::SHA2.hexdigest( self.salt + self.password.to_s + self.identify.to_s ) 
    end
 
    def reiciber_params_loggin(pass, ident)
-      cript = Digest::SHA2.hexdigest( self.salt + pass + ident ) 
-      compare_acces(cript, codificate_encripter )
+      cript = Digest::SHA2.hexdigest( self.salt + pass.to_s + ident.to_s ) 
+      validates_acces(cript, codificate_encripter )
    end
 
    def validates_acces(enc, paramx)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140715180210) do
+ActiveRecord::Schema.define(version: 20140716173358) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -48,6 +48,11 @@ ActiveRecord::Schema.define(version: 20140715180210) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "printing"
+    t.integer  "manager_user_id"
+    t.integer  "assigned"
+    t.string   "email_corroborate"
+    t.integer  "price"
   end
 
   create_table "delete_histories", force: true do |t|

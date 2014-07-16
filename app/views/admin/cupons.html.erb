@@ -1,3 +1,35 @@
 <%= render partial: '/admin/menu'%>
-<h1>Admin#cupons</h1>
-<p>Find me in app/views/admin/cupons.html.erb</p>
+<h1>Administrador de Cupones</h1>
+<a id="cuponera"> Creador de cupones </a>
+
+  <fieldset id="cuponera_search" class="large-3" >
+    <legend>Buscador de cupones</legend>
+	<%= form_tag '/users/search_cupons', remote: true do %>
+	     <%= text_field_tag 'printing' %>
+	     <%= submit_tag 'buscar',  :class =>  'button right' %>
+	<%end%>
+ </fieldset>
+  <fieldset id="cuponera_view" style="display:none;">
+    <legend>Creador</legend>
+		<%= form_tag('/users/admin_user_cupons') do -%>
+		   <p>Institutción</p>
+		   <%= text_field_tag 'institution' %>
+		   <p>Cantidad</p>
+		   <%= number_field_tag 'quanty', 100%>
+		   <p>Identificador del vendedor al que se le van a asignar los cupones</p>
+		   <%= number_field_tag 'identify'%>
+		   <p>Precio del tiraje</p>
+		   <%= number_field_tag 'price'%>
+		   <%= submit_tag 'Generar',  :class =>  'button right'%>
+		<%end%>
+  </fieldset>
+   <div id="cupons_view">
+	 <%= render partial: '/admin/cupon', locals: {cupons: @cupons, actpaginate: true}%>
+   </div>
+
+<script type="text/javascript">
+	$('#cuponera').click(function(){
+		$('#cuponera_view').toggle();
+	    $('#cuponera_search').toggle();
+	})
+</script>
