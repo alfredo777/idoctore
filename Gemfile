@@ -48,7 +48,6 @@ gem 'rqrcode'
 gem "mini_magick"
 gem 'rqrcode-with-patches'
 
-
 #web sockets 
 gem 'redis'
 gem 'puma'
