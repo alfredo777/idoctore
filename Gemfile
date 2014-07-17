@@ -7,7 +7,7 @@ gem 'rails', '4.1.0'
 gem 'sqlite3'
 #database
 group :production do
-gem 'pg'
+	gem 'pg'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -44,7 +44,7 @@ gem 'will_paginate', '~> 3.0'
 gem "watu_table_builder", :require => "table_builder"
 # QR
 gem 'rqrcode'
-gem 'rmagick'
+#gem 'rmagick'
 gem "mini_magick"
 gem 'rqrcode-with-patches'
 
