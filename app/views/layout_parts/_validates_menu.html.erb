@@ -1,0 +1,35 @@
+<% if ifcurrentuser %> 
+  <% if user.id == current_user.id %>
+	  <%= link_to post_in_path(user.id, :type => 'upload_file'), remote: true  do %>
+		<div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
+	 		 <%= image_tag('menu/analisis2.png', width: 60, height: 60)%>
+		</div>
+	  <%end%>
+	  <%= link_to post_in_path(user.id, :type => 'vital_signs'), remote: true  do %>
+	    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
+	 			<%= image_tag('menu/plus.png', width: 60, height: 60)%>
+	    </div>
+	  <%end%>
+  <%end%>
+<%else%>
+  <%= link_to post_in_path(user.id, :type => 'diagnostic'), remote: true  do %>
+      <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
+		   <%= image_tag('menu/diagnostic.png', width: 60, height: 60)%>
+	   </div>
+  <%end%>
+  <%= link_to post_in_path(user.id, :type => 'note'), remote: true  do %>
+	    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
+			 <%= image_tag('menu/note.png', width: 60, height: 60)%>
+	    </div>
+  <%end%>
+  <%= link_to post_in_path(user.id, :type => 'upload_file'), remote: true  do %>
+	<div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
+ 		 <%= image_tag('menu/analisis2.png', width: 60, height: 60)%>
+	</div>
+  <%end%>
+  <%= link_to post_in_path(user.id, :type => 'vital_signs'), remote: true  do %>
+    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
+ 			<%= image_tag('menu/plus.png', width: 60, height: 60)%>
+    </div>
+  <%end%>
+<%end%>

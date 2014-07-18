@@ -1,0 +1,24 @@
+	<% if user.id == current_user.id %>
+  	<a href="#" data-target="notice_dropdown">
+  	   <div id="notice_for_user" class="notices"></div>
+  	</a>
+	  <div id="arrow_notice" style="margin-left:95% !important; margin-top:38px; width:100px; display:none;">
+    	<div class="flecha-up" ></div>
+    </div>
+    <ul id="notice_dropdown" class="wrapper-dropdown" style="left:70% !important; top:50px; display:none;">	
+      <% notices.each do |u| %>
+         <%= link_to "/options_change_cite?ident_i=#{u.congruence.cite_doctor_id}&amp;type=messages" , remote: true  do %>
+            <li>
+              <div class="left" style="width:20%;"> <%= image_tag(u.user.avatar.modern) %> </div><div class="left" style="width:77%; margin-left:5px; text-align:justify;">El usuario <%= "#{u.user.name}" %> le ha enviado un mensane.</div>
+               <hr>
+            </li>
+         <%end%>
+       <%end%>
+    </ul>
+  <%end%>
+    <script>
+      $('#notice_for_user').click(function(){
+      	 $('#notice_dropdown').toggle();
+      	 $('#arrow_notice').toggle();
+      })
+    </script>

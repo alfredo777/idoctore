@@ -5,7 +5,9 @@
   <div class="row">
    <div class="left large-3" style="display:none;"> 
       <ul class="side-nav ">
-        <% if @user.id == current_user.id && current_user.role == 'doctor' %><li class="acordion-lile"><%= link_to t('tabs_from_menu_user.patients'), patients_path %></li><%end%>
+        <% if @user.id == current_user.id && current_user.role == 'doctor' %>
+           <li class="acordion-lile"><%= link_to t('tabs_from_menu_user.patients'), patients_path %></li>
+        <%end%>
         <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.record')%></a></li>
         <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.medical_record')%></a></li>
         <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.treatment')%></a></li>
@@ -13,20 +15,12 @@
        </ul>
     </div>
   </div>
+
+
   <div class="row">
-
-    <p class="red-back"><%= @user.name %></p>
-
-    <div class=" right-profile-menu actualization-back " >
-    <div class="large-3 left">
-    <%= render partial: '/users/avatars', locals: {user: @user}%>
-    </div>
-    <p>Sexo: <%= @user.sex if @user.sex != nil %></p>
-    <p>Edad: <%= @user.ageu %></p>
-    <%= link_to 'Editar Usuario', edit_user_path(@user) if @user.id == current_user.id%>
-    <div id="chart_sics" data-valuesfc='[<%=@cronic%>, <%= @outstanding %>, <%=@serious%>, <%=@inconsequential%>]'></div>
-   </div>
-
+  <%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
+  
+  </div>
   <div class="row ">
     <center>
       <p class="red-back" style="width:97%;">Últimas actualizaciones del Usuario</p>

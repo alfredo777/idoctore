@@ -1,0 +1,9 @@
+    <p class="red-back"><%= user.name %></p>
+    <div class=" right-profile-menu actualization-back " >
+    <div class="large-3 left">
+   		 <%= render partial: '/users/avatars', locals: {user: user}%>
+    </div>
+    <p>Sexo: <%= user.sex if user.sex != nil %></p>
+    <p>Edad: <%= user.ageu %></p>
+    <%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>
+    <div id="chart_sics" data-valuesfc='[<%=cronic%>, <%= outstanding %>, <%=serious%>, <%=inconsequential%>]'></div>
