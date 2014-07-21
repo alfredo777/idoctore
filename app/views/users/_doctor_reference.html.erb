@@ -1,0 +1,14 @@
+   <div style="width:80%; position:absolute;">
+	    <p class="red-back">Doctor: <%= user.name %></p>
+	    <div class=" right-profile-menu actualization-back " >
+		    <div class="large-3 left">
+		   		 <%= render partial: '/users/avatars', locals: {user: user}%>
+		    </div>
+	    	<%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>
+        </div>
+    <div class=" right-profile-menu actualization-back " >
+      <center>
+  		 <%= render partial: '/users/calendar_for_user',  locals: {user: user, tasks: tasks,  date: @date}%>
+  	  </center>
+     </div>
+   </div>

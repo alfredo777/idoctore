@@ -1,0 +1,72 @@
+<div class="row">
+<div class="large-6 left columns">
+<dl class="sub-nav">
+  <dd id="calendar_tab" class="active"><a >Calendario</a></dd>
+  <dd id="calendar_message" ><a>Mensajes</a></dd>
+</dl>
+  <div id="message_load" style="display:none;">
+    <div class="panel callout radius">
+     <p>En este momento no has cargado ninguna conversación ve a tus consultas y carga los mensajes de cada una de ellas.</p>
+    </div>
+  </div> 
+  <div id="calendar-init">
+    <% if current_user.role == 'doctor' %>
+    <a href="#" data-reveal-id="modal_to_create_cite" >Agendar Cita</a>
+    <%else%>
+    <a href="#" data-reveal-id="modal_to_create_cite" >Solicitar Cita</a>
+    <%end%>
+    <div class="large-10">
+      <div class="left">
+      <%= link_to "&#8592; Mes anterior".html_safe, :month => (date.beginning_of_month-1).strftime("%Y-%m-01") %>
+      </div>
+      <%= h  date.strftime( '%B'+'-'+'%Y')  %>
+      <div class="right">
+      <%= link_to "Mes siguiente &#8594;".html_safe, :month => (date.end_of_month+1).strftime("%Y-%m-01") %>
+      </div>
+    </div>
+
+      <%= calendar_for(tasks, :year => date.year, :month => date.month) do |t| %>
+        <%= t.head('lun', 'mar', 'mier', 'jue', 'vier', 'sab', 'dom') %>
+         <%= t.day(:day_method => :init_time) do |day, tasks| %>
+           <%= day.day %>
+           <div class="smal-3">
+            <% tasks.each do |task| %>
+              <% if task.confirmed_by_doctor %>
+               <a class="geto" data-geto='panel<%=task.id%>c'><%= image_tag('bullet_green.png')%></a>
+              <%else%>
+                <a class="geto" data-geto='panel<%=task.id%>c'><%= image_tag('bullet_red.png')%></a>
+              <%end%>
+            <% end %>
+           </div>
+         <% end %>
+        <% end %>
+  </div>
+</div>
+<div class="large-6 left columns">
+  <%= render partial: '/users/dates/list_of_dates', locals: {tasks: tasks}%>
+</div>
+</div>
+<div id="modal_to_create_cite" class="reveal-modal" data-reveal>
+  <%= render partial: '/users/dates/form_for_date' %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<script type="text/javascript">
+   $('#calendar_message').click(function(){
+       $('#calendar_tab').removeClass('active');
+       $('#calendar_message').addClass('active');
+       $('#message_load').show();
+       $('#calendar-init').hide();
+
+   });
+   $('#calendar_tab').click(function(){
+       $('#calendar_message').removeClass('active');
+       $('#calendar_tab').addClass('active');
+       $('#message_load').hide();
+       $('#calendar-init').show();
+   });
+
+   $('.geto').click(function(){
+     var element = $(this).data('geto');
+     $('#'+element).slideToggle('slide');
+   });
+</script>

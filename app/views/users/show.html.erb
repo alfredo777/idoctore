@@ -1,5 +1,4 @@
   <script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
-  <script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
 
   <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices} %>
   <div class="row">
@@ -17,19 +16,21 @@
   </div>
 
 
-  <div class="row">
-  <%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
-  
-  </div>
-  <div class="row ">
-    <center>
-      <p class="red-back" style="width:97%;">Últimas actualizaciones del Usuario</p>
-      <div class="actualization-back w_background" style="width:97%;">
-        <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs, tasks: @tasks} %>
-      <div id="container_of_parts" ></div>
-      </div>
-    </center>
-  </div>
+  <% if @user.role == 'patient' %>
+    <script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
+       <%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
+    </div>
+      <center>
+        <p class="red-back" style="width:100%;">Últimas actualizaciones del Usuario</p>
+        <div class="actualization-back w_background" style="width:100%;">
+          <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs, tasks: @tasks} %>
+        <div id="container_of_parts" ></div>
+      </center>
+    <%else%>
+        <%= render partial: '/users/doctor_reference', locals: {user: @user, tasks: @tasks} %>
+  <%end%>
+
+ 
 
 
 

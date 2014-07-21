@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716173358) do
+ActiveRecord::Schema.define(version: 20140718210221) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20140716173358) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "accepted_request", default: false
+  end
+
+  create_table "institutions", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "logo_string"
+    t.text     "study_or_do"
+    t.boolean  "recipe_appears"
+    t.boolean  "appears_in_diagnostic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "manager_users", force: true do |t|
@@ -188,6 +199,7 @@ ActiveRecord::Schema.define(version: 20140716173358) do
     t.boolean  "terms"
     t.date     "date_of_birth"
     t.string   "advanced_key"
+    t.string   "college"
   end
 
   create_table "vital_signs", force: true do |t|
