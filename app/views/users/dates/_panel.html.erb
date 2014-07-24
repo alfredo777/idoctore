@@ -1,0 +1,19 @@
+<div id="panel<%=t.id%>c" class="content ">
+  <%= t.request %>
+  <div class="panel">
+   <h6>
+     <small>
+       Paciente: <%= t.user.name %></br>
+       Doctor: <%= t.capt_requester.name %></br>
+       Status: <%= 'Confirmada' if t.confirmed_by_doctor == true %><%= 'Sin Confirmar' if !t.confirmed_by_doctor == true %></br>
+    </small>
+   </h6>
+  </div>
+   <ul class="inline-list">
+    <li ><%= link_to 'Mensaje', change_cite_path(:type => 'messages', :ident_i => t.id), remote: true %></li>
+      <li><%=link_to "Cambiar Fecha", change_cite_path(:type => 'change_cite', :ident_i => t.id), remote: true%></li>
+      <li><a data-confirm="¿Estas seguro de querer cancelar la cita?" href="/cancel_cite?ident_i=<%=t.id%>">Cancelar</a></li>
+   </ul>
+
+   <div id="change<%=t.id%>"></div>
+</div>

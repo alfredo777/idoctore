@@ -41,6 +41,19 @@ Rails.application.routes.draw do
 
   get '/my_vital_signs/:id', :to => 'vital_signs#vital_signs_x', :as => :vital_signs_inx
 
+  ################# intituciones ##############
+  
+  get 'institutions/create', :as => :institution_create
+
+  post 'institutions/create'
+
+  get 'institutions/update'
+
+  get 'institutions/delete'
+
+  get 'institutions/new', :as => :institutions_new
+
+
   ####### sessions #########
   
   resources :sessions
@@ -110,8 +123,7 @@ Rails.application.routes.draw do
 
   get '/paginate_messages', :to => 'messages#paginate_messages', :as => :paginate_messages
 
-
-
+  
   #######vistas estaticas ##########
   get 'post_id/:id', :to => 'static_views#post',:as => :post_in
   get 'load_view/:id', :to => 'static_views#visualizer',:as => :visualizer

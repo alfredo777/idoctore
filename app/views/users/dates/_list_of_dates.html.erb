@@ -14,26 +14,18 @@
         <dd>
 
           <a class="geto" data-geto="panel<%=t.id%>c"><%= t.init_time.strftime('%d'+'/'+'%m'+'/'+'%Y'+' de las '+'%H'+':'+'%M') %> a las <%= t.finish_time.strftime('%H'+':'+'%M') %></a>
-
+          <% case %>
+          <% when current_user.id ==  t.user.id %>
+            <%= render partial: '/users/dates/panel', locals: {t: t}%> 
+          <% when  current_user.id == t.capt_requester.id %>
+                <%= render partial: '/users/dates/panel', locals: {t: t}%> 
+          <%else%>
           <div id="panel<%=t.id%>c" class="content ">
-            <%= t.request %>
-            <div class="panel">
-             <h6>
-               <small>
-                 Paciente: <%= t.user.name %></br>
-                 Doctor: <%= t.capt_requester.name %></br>
-                 Status: <%= 'Confirmada' if t.confirmed_by_doctor == true %><%= 'Sin Confirmar' if !t.confirmed_by_doctor == true %></br>
-              </small>
-             </h6>
-            </div>
-             <ul class="inline-list">
-              <li ><%= link_to 'Mensaje', change_cite_path(:type => 'messages', :ident_i => t.id), remote: true %></li>
-                <li><%=link_to "Cambiar Fecha", change_cite_path(:type => 'change_cite', :ident_i => t.id), remote: true%></li>
-                <li><a data-confirm="¿Estas seguro de querer cancelar la cita?" href="/cancel_cite?ident_i=<%=t.id%>">Cancelar</a></li>
-             </ul>
-
-             <div id="change<%=t.id%>"></div>
+               <div class="panel">
+                 La cita que usted quiere visualizar no le pertenece.
+               </div>
           </div>
+          <%end%>
         </dd>
         <%end%>
       </dl>

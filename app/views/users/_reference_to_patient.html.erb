@@ -1,7 +1,7 @@
     <p class="red-back"><%= user.name %></p>
     <div class=" right-profile-menu actualization-back " >
     <div class="large-3 left">
-   		 <%= render partial: '/users/avatars', locals: {user: user}%>
+   		 <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
     </div>
     <p>Sexo: <%= user.sex if user.sex != nil %></p>
     <p>Edad: <%= user.ageu %></p>

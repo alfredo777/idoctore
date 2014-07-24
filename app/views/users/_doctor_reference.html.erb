@@ -2,13 +2,21 @@
 	    <p class="red-back">Doctor: <%= user.name %></p>
 	    <div class=" right-profile-menu actualization-back " >
 		    <div class="large-3 left">
-		   		 <%= render partial: '/users/avatars', locals: {user: user}%>
+		   		 <%= render partial: '/users/avatars', locals: {user: user , edit: false}%>
+		   		 <center>
+		   			 <%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>
+		   		 </center>
 		    </div>
-	    	<%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>
+		    <div class="large-7 left">
+		      	<%= render partial: '/users/doctor_info', locals: {user: user}%>
         </div>
-    <div class=" right-profile-menu actualization-back " >
-      <center>
-  		 <%= render partial: '/users/calendar_for_user',  locals: {user: user, tasks: tasks,  date: @date}%>
-  	  </center>
-     </div>
+       </div>
+
+    <div class=" right-profile-menu actualization-back "  >
+	    <div style="margin-top:10px;">
+	      <center>
+	  		 <%= render partial: '/users/calendar_for_user',  locals: {user: user, tasks: tasks,  date: @date}%>
+	  	  </center>
+	  	</div>
+    </div>
    </div>

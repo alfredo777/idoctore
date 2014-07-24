@@ -1,3 +1,4 @@
+<%= render partial: '/users/avatars', locals: {user: @user, edit: true}%>
 <%= form_tag("/users/#{@user.id}/actualize", :multipart => true) do -%>
   <%= label_tag 'avatar' %>
   <%= file_field_tag 'file'  %>
@@ -7,6 +8,12 @@
   <%= email_field_tag 'email', @user.email  %>
   <%= label_tag 'birthday' %>
   <%= date_field_tag 'birthday', Date.today.strftime('%d/%m/%Y')%>
+  <%= label_tag 'Cedula profesional' %>
+  <%= text_field_tag 'cadre_card', @user.cadre_card%>
+  <%= label_tag 'Dirección del consultorio' %>
+  <%= text_area_tag 'street_addres', @user.street_addres%>
+  <%= label_tag 'Universidad en la que estudio' %>
+  <%= text_field_tag 'college', @user.college%>
   <br/>
   <h3>Cambiar password</h3>
   <%= label_tag 'password' %>
@@ -15,3 +22,19 @@
   <%= password_field_tag 'confirm_password', nil %>
   <div><%= submit_tag 'Actualizar', :class => 'button' %></div>
 <% end -%>
+
+<script>
+  function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#file").change(function(){
+        readURL(this);
+    });          
+</script>

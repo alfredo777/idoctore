@@ -7,7 +7,7 @@
     <% if validate_accepted_patient(current_user,user) %>
       <%= link_to user_path(user.id) do %>
       <div class="large-11">
-          <%= render partial: '/users/avatars', locals: {user: user}%>
+          <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
           <center><%= truncate( user.name, :length => 25 )%></center>
       <%end%>
           <center><% if user.role == 'patient' %><span class="success label"><%= 'Es tu paciente' %></span><%end%></center>
@@ -17,7 +17,7 @@
         <%else%>
        <div class="large-11">
        <br/>
-        <%= render partial: '/users/avatars', locals: {user: user}%>
+        <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
 
         <center><%= truncate( user.name, :length => 25 )%></center>
         <center><p><%= status_if_request_patient_doctor_exist(current_user, user).html_safe %></p></center>

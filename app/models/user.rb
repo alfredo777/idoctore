@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
    has_many :single_files
    has_many :notices
    has_many :cupons
+   has_many :institutions
 
    ##### validamos por email #####
    

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718210221) do
+ActiveRecord::Schema.define(version: 20140721230611) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -200,6 +200,8 @@ ActiveRecord::Schema.define(version: 20140718210221) do
     t.date     "date_of_birth"
     t.string   "advanced_key"
     t.string   "college"
+    t.string   "cadre_card"
+    t.text     "street_addres"
   end
 
   create_table "vital_signs", force: true do |t|

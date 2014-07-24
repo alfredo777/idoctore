@@ -91,6 +91,17 @@ class UsersController < ApplicationController
        @user.avatar = params[:file]   
     end
 
+    if params[:college] != nil
+      @user.college = params[:college]
+    end
+
+    if params[:cadre_card] != nil
+      @user.cadre_card = params[:cadre_card]
+    end
+    
+    if params[:street_addres] != nil
+      @user.street_addres = params[:street_addres]
+    end
     @user.save
     flash[:notice] = 'Se ha actualizado el usuario.'
     redirect_to user_path(@user.id)
