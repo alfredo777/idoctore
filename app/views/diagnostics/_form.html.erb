@@ -5,8 +5,9 @@
 <%= form_tag('/diagnostics/create_from_user',  :id => 'create_diagnostic') do -%>
 <%= render partial: '/diagnostics/steps_for_create/final_render_step', locals: { user: user, owner: owner}%>
 <% end %>
-
+<!--
 <div class="link_to_t corner-button tool_button" data-target='tools'>
-  <%= image_tag('tools_d.png', width: 60, height: 60)%>
+  <%#= image_tag('tools_d.png', width: 60, height: 60)%>
 </div>
+-->
 

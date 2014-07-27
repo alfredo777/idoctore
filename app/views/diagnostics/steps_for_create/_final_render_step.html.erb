@@ -15,31 +15,94 @@
   <div class="panel">
    <h3><%= t('diagnostics.fields')%></h3>
   </div>
-  <div id="form_for_diagnostic" class="swMain"> 
-   <%= render partial: '/diagnostics/steps_for_create/list_of_steps'%>
-   <div id="step-1">
+  <div id="form_for_diagnostic" > 
+   <div id="step-1" class="PageForm">
      <%= render partial: '/diagnostics/steps_for_create/step_1', locals: {user: user, owner: owner}%>
    </div>
-   <div id="step-2">
+   <div id="step-2" style="display:none;" class="PageForm">
      <%= render partial: '/diagnostics/steps_for_create/step_2'%>
    </div>
-   <div id="step-3">
+   <div id="step-3" style="display:none;" class="PageForm">
      <%= render partial: '/diagnostics/steps_for_create/step_3'%>
    </div>
-   <div id="step-4">
+   <div id="step-4" style="display:none;" class="PageForm">
      <%= render partial: '/diagnostics/steps_for_create/step_4'%>
    </div>
  </div>
+  <div>
+  <a class="link_to_t button alert" data-target='tools'>Herramientas</a>
+   <a class="button secondary left" id="prev" data-target="step-1"> &#8592 Anterior</a>
+   <a class="button secondary left" id="next" data-target="step-2">Siguiente &#8594</a>
+   <%= submit_tag 'Crear', :class => 'button right', :style=>"display:none;", :id=>'create' %>
+  </div>
 </div>
 
 <script type="text/javascript">
-   $(document).ready(function() {
+   $('#prev').click(function(){
+        var target = $(this).data('target');
+
+        if (target == 'step-1'){
+        TargetTo(this, 'interrogation', target, 'step-1', 'step-2', false, 'prev');
+        }
+        if (target == 'step-2'){
+        TargetTo(this, 'diagnostic_or_clinical_problem', target, 'step-1', 'step-3', false, 'prev');
+        }
+        if (target == 'step-3'){
+        TargetTo(this, 'suggested_treatments', target, 'step-2', 'step-4', true, 'prev');
+        }
+
+   });
+
+  $('#next').click(function(){
+        var target = $(this).data('target');
+
+        if (target == 'step-2'){
+        TargetTo(this, 'interrogation', target, 'step-1', 'step-3', false, 'next');
+        }
+
+        if (target == 'step-3'){
+        TargetTo(this, 'diagnostic_or_clinical_problem', target, 'step-2', 'step-4', false, 'next');
+        }
+
+        if (target == 'step-4'){
+        TargetTo(this, 'suggested_treatments', target, '' , '', true, 'next');
+        }
+   });
+
    $('.link_to_t').click(function() {
     var target = $(this).data('target');
     var to = '#'+target;
     $(to).toggle();
    });
-      // Initialize Smart Wizard
-        $('#form_for_diagnostic').smartWizard();
-   }); 
+
+   function TargetTo(targ, validates, target, prev, next, finalx, typee){
+        console.log(target);
+        console.log(targ)
+        if (!$.trim($('#'+validates).val())){
+            alert('Campo Vacio No puede continuar');
+          }else{
+           $('.PageForm').hide();
+           $('#' + target).show();
+           if (typee == 'prev'){
+             $('#prev').data('target', prev);
+             $('#next').data('target', next);
+              if (finalx == true){
+                $('#next').show();
+                $('#create').hide();
+              }
+           }
+           if (typee == 'next') {
+             $('#prev').data('target', prev);
+             $('#next').data('target', next);
+              if (finalx == true){
+                $('#next').hide();
+                $('#prev').data('target', 'step-3');
+                $('#create').show();
+              }
+          }
+
+        }
+    
+   }
+
 </script>

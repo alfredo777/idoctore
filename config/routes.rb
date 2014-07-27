@@ -44,13 +44,10 @@ Rails.application.routes.draw do
   ################# intituciones ##############
   
   get 'institutions/create', :as => :institution_create
-
   post 'institutions/create'
-
   get 'institutions/update'
-
-  get 'institutions/delete'
-
+  get 'institutions/delete', :as => :institution_delete
+  post 'institutions/delete'
   get 'institutions/new', :as => :institutions_new
 
 

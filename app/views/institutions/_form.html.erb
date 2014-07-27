@@ -1,2 +1,16 @@
-<%= form_tag("/users/#{@user.id}/actualize", :multipart => true) do -%>
-<%end%>
+<div class="large-3 left">
+	<fieldset>
+	    <legend>Formulario de institución</legend>
+				<%= form_tag("/institutions/create", :multipart => true) do -%>
+				  <%= label_tag 'Nombre de la institución' %>
+				  <%= text_field_tag 'name' %>
+				  <%= label_tag 'Logo de la institución' %>
+				  <%= file_field_tag 'file'  %>
+				  <%= label_tag 'Actividades que realizó' %>
+				  <%= text_area_tag 'study_or_do' %>
+		      <p> ¿Aparece en la receta?: <%= check_box_tag 'recipe_appears' %>	</p>	  
+		      <p> ¿Aparece en el diagnóstico?: <%= check_box_tag 'appears_in_diagnostic' %>	</p>	  
+				  <%= submit_tag 'Agregar Institución', :class => 'button right'%>
+				<%end%>
+	</fieldset>
+</div>

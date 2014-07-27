@@ -1,2 +1,28 @@
 <h1>Intituciones</h1>
 <p>Manejo de las Instituciones en la cuales me he desempeñado.</p>
+
+<%= render partial: '/institutions/form' %>
+
+<div class="large-7 left" style="margin-left:20px;">
+<table>
+  <thead>
+    <tr>
+      <th width="200">Logo</th>
+      <th width="150">Nombre</th>
+      <th width="150">Trabajo desempeñado</th>
+      <th width="150">Opciones</th>
+
+    </tr>
+   </thead>
+    <% @institutions.reverse.each do |i|%>
+   <body>
+	    <tr>
+	  	  <td><%= image_tag(i.logo_string.profile) %></td>
+	  		<td><%= i.name %></td>
+	  		<td><%= i.study_or_do %></td>
+	  		<td> <center><%=  link_to 'Eliminar', institution_delete_path(delete_act: i.id) %></center></td>
+		</tr>
+   </body>
+    <%end%>
+</table>
+</div>

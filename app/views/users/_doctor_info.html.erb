@@ -4,20 +4,29 @@
 		<li><b>Cedula Profecional:</b> <%= user.cadre_card%></li>
 		<li class="locality"><b>Dirección Laboral:</b> <%= user.street_addres%></li>
 	</ul>
-<div style="width:60px; float:left;  margin-left:10px;">
-	<center>
-		<%= link_to institutions_new_path do %>
-			<%= link_to image_tag('users/iconos_menu/portfolio.png'), institutions_new_path, :class => 'stock_menu' %>
-			<%= link_to 'Instituciones', institutions_new_path, :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'%>
-		<%end%>
-    </center>
-</div>
-<div style="width:60px; float:left; margin-left:10px;">
-	<center>
-		<%= link_to institutions_new_path do %>
-			<%= link_to image_tag('concept/heart.png'), institutions_new_path, :class => 'stock_menu' %>
-			<%= link_to 'Diagnosticos', institutions_new_path, :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'%>
-		<%end%>
-    </center>
+<div>
+<% if user.id == current_user.id && current_user.role == 'doctor'%>
+	<div style="width:60px; float:left;  margin-left:10px;">
+		<center>
+			<%= link_to institutions_new_path do %>
+				<%= link_to image_tag('users/iconos_menu/portfolio.png'), institutions_new_path, :class => 'stock_menu' %>
+				<%= link_to 'Instituciones', institutions_new_path, :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'%>
+			<%end%>
+	    </center>
+	</div>
+	<div style="width:60px; float:left; margin-left:10px;">
+		<center>
+			<%= link_to institutions_new_path do %>
+				<%= link_to image_tag('concept/heart.png'), institutions_new_path, :class => 'stock_menu' %>
+				<%= link_to 'Diagnosticos', institutions_new_path, :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'%>
+			<%end%>
+	    </center>
+	</div>
+	<%else%>
+	<h4>Instituciones en las que he colaborado</h4>
+	<% user.institutions.each do |i|%>
+	 	<%= image_tag(i.logo_string.diagnostic) %>
+	<%end%>
+<%end%>
 </div>
 
