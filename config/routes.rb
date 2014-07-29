@@ -15,11 +15,13 @@ Rails.application.routes.draw do
     end
   end
 
+
   get 'cie10', :to => 'diagnostics#cie10', :as =>  :cie10
   get 'plain_show/:id', :to => 'diagnostics#plain_show', :as => :plain_show
   get 'qrcode_view/:id', :to => 'diagnostics#qrcode_view', :as => :qrcode_view
   get 'printing_diagnostic/:id', :to => 'diagnostics#printing_diagnostic', :as => :diagnostics_print
   get 'printing_threatment/:id', :to => 'diagnostics#printing_threatment', :as => :printing_threatment
+  get '/all_create', :to => 'diagnostics#all_create', :as => :all_create 
 
   ####### analisis #########
 

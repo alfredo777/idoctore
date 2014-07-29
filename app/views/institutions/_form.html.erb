@@ -2,15 +2,25 @@
 	<fieldset>
 	    <legend>Formulario de institución</legend>
 				<%= form_tag("/institutions/create", :multipart => true) do -%>
-				  <%= label_tag 'Nombre de la institución' %>
-				  <%= text_field_tag 'name' %>
-				  <%= label_tag 'Logo de la institución' %>
+				  <%= label_tag 'Nombre de la institución (obligatorio)' %>
+				  <%= text_field_tag 'name', '',:class => 'valitx', 'data-target' => 'message_error_name','data-message' => 'El campo del nombre no puede quedar vacio.'  %>
+				   <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+				  <%= label_tag 'Logo de la institución (obligatorio)' %>
 				  <%= file_field_tag 'file'  %>
-				  <%= label_tag 'Actividades que realizó' %>
-				  <%= text_area_tag 'study_or_do' %>
+				  <%= label_tag 'Actividades que realizó (obligatorio)' %>
+				  <%= text_area_tag 'study_or_do', '',:class => 'valitx', 'data-target' => 'message_error_study_or_do', 'data-message' => 'El campo del las actividades que realizastes en la institución no puede quedar vacio.' %>
+				  <small id="message_error_study_or_do" class="error" style="margin-top: -16px; display:none;"></small>
 		      <p> ¿Aparece en la receta?: <%= check_box_tag 'recipe_appears' %>	</p>	  
 		      <p> ¿Aparece en el diagnóstico?: <%= check_box_tag 'appears_in_diagnostic' %>	</p>	  
 				  <%= submit_tag 'Agregar Institución', :class => 'button right'%>
 				<%end%>
 	</fieldset>
 </div>
+
+<script>
+	$(document).ready(function(){
+		VAlForValitx('name');
+	    VAlForValitx('study_or_do');
+
+	});
+</script>

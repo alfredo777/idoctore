@@ -3,13 +3,16 @@
   <%= label_tag 'avatar' %>
   <%= file_field_tag 'file'  %>
   <%= label_tag 'name' %>
-  <%= text_field_tag 'name', @user.name %>
+  <%= text_field_tag 'name', @user.name, :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+  <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
   <%= label_tag 'email' %>
-  <%= email_field_tag 'email', @user.email  %>
+  <%= email_field_tag 'email', @user.email, :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'  %>
+  <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
   <%= label_tag 'birthday' %>
   <%= date_field_tag 'birthday', Date.today.strftime('%d/%m/%Y')%>
   <%= label_tag 'Cedula profesional' %>
-  <%= text_field_tag 'cadre_card', @user.cadre_card%>
+  <%= text_field_tag 'cadre_card', @user.cadre_card, :class => 'valitx', 'data-message' => 'El de la cedula email no puede quedar vacio.', 'data-target' => 'message_error_cadre_card' %>
+  <small id="message_error_cadre_card" class="error" style="margin-top: -16px; display:none;"></small>
   <%= label_tag 'Dirección del consultorio' %>
   <%= text_area_tag 'street_addres', @user.street_addres%>
   <%= label_tag 'Universidad en la que estudio' %>
@@ -36,5 +39,11 @@
     }
     $("#file").change(function(){
         readURL(this);
-    });          
+  }); 
+
+  $(document).ready(function(){
+    VAlForValitx('name');
+    VAlForValitx('email');
+    VAlForValitx('cadre_card');
+  });         
 </script>

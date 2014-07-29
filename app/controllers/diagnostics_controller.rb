@@ -1,5 +1,6 @@
 class DiagnosticsController < ApplicationController
   layout 'panel', only: [:create_d]
+
   def create_from_user
     @diagnistic = Diagnostic.create(user_id: params[:user_id], interrogation: params[:interrogation], physical_examination: params[:physical_examination], diagnostic_or_clinical_problem: params[:diagnostic_or_clinical_problem], list_of_laboratory_studies: params[:list_of_laboratory_studies], required_therapies: params[:required_therapies], suggested_treatments: params[:suggested_treatments], owner_by: params[:owner_by], chronic: params[:chronic], outstanding: params[:outstanding], serious: params[:serious], inconsequential: params[:inconsequential], vital_signs: params[:vital_signs])
     url = "http://#{HOST}/plain_show/#{@diagnistic.id}"
@@ -13,6 +14,10 @@ class DiagnosticsController < ApplicationController
       flash[:notice] = 'El diagnóstico no pudo ser creado'
       redirect_to user_path(params[:user_id])
     end
+  end
+  
+  def all_create
+    @user = current_user
   end
 
   def add_note
