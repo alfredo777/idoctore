@@ -352,6 +352,7 @@ class UsersController < ApplicationController
       @other_cites = @user.cite_doctors
       @tasks =  @other_cites + @personal_cites
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
+      @notices = @user.my_request_from_notice.last(15)
 
   end
 

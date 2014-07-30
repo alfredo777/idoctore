@@ -13,8 +13,10 @@
      <%end%>
   </tbody>
 </table>
-<ul class="pagination">
-  <%= will_paginate @diagnostics %>
-</ul>
+<% if inprofile %>
+  <ul class="pagination">
+    <%= will_paginate @diagnostics %>
+  </ul>
+<%end%>
 </center>
 

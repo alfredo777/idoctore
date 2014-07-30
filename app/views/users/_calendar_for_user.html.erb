@@ -43,10 +43,12 @@
   </div>
 </div>
 <div class="large-6 left columns">
-  <%= render partial: '/users/dates/list_of_dates', locals: {tasks: tasks}%>
+  <%= render partial: '/users/dates/list_of_dates', locals: {tasks: tasks, inprofile: inprofile}%>
+  <div style="margin-top:-55px;">
   <% if inprofile %>
      <%= link_to 'Ver más citas', all_cites_viwer_path , class: 'button success expand'%>
   <%end%>
+  </div>
 </div>
 </div>
 <div id="modal_to_create_cite" class="reveal-modal" data-reveal>
