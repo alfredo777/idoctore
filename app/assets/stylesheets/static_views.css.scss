@@ -246,9 +246,9 @@ em{
 
 .wrapper-dropdown {
   position: absolute;
-  width: 250px;
-  height:300px;
-  padding: 10px;
+  width: 260px;
+  height:390px;
+  padding: 15px;
   margin: 0 auto;
   background: #fff;
   color: #000;
@@ -256,10 +256,10 @@ em{
   cursor: pointer;
   z-index: 999999999;
   font-weight: bold;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  border: solid 1px #000;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: solid 4px #81BEF7;
   overflow: auto;
 }
 
@@ -268,7 +268,7 @@ em{
     height:0px;
     border-left:25px solid transparent; /* izquierda flecha */
     border-right:25px solid transparent; /* derecha flecha */
-    border-bottom:25px solid #0A0A0A; /* base flecha y color*/
+    border-bottom:25px solid #81BEF7; /* base flecha y color*/
     font-size:0px;
     line-height:0px;
  }

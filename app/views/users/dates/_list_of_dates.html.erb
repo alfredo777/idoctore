@@ -1,7 +1,9 @@
-  <ul class="large-block-grid-1 medium-block-grid-3">
+   
+    <% @tks = tasks.reverse.paginate(:page => params[:page], :per_page => 15)  %>
+   <ul class="large-block-grid-1 medium-block-grid-3">
     <li>
       <dl class="accordion" data-accordion="myAccordionGroup">
-       <% tasks.reverse.each do |t| %>
+       <% @tks.each do |t| %>
         <div id="confirmed_by_doctor_<%=t.id%>">
           <% if !t.confirmed_by_doctor %>
                 <div class="right" style="padding:13px; font-size:10px; margin-left:-10px;"> <%= link_to 'Confirmar', responce_cite_path(ident_i: t.id), remote: true if current_user.id == t.capt_requester.id %>
@@ -30,4 +32,7 @@
         <%end%>
       </dl>
     </li>
+  </ul>
+  <ul class="pagination">
+  <%= will_paginate @tks %>
   </ul>

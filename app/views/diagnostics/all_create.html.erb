@@ -1,1 +1,44 @@
-<h2>Datos que yo he agregado a pacientes </h2>
+<h2>Datos que yo he agregado </h2>
+
+     <div class="row">
+      <center>
+       <% @all_post_options.each do |data|%>
+       <div class="large-4 columns">
+       <h4 class="subheader">Diagnósticos</h4>   
+           <div class="panel">
+	         <% data[:diagnostics].each do |dt|%>
+				   <div class="slide-p" >
+				     <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
+				        <%= t('diagnostics.diagnostico')%> de <%= dt.user.name %>
+				     <%end%>
+				    </div>
+	         <%end%>
+	       </div>
+       </div>
+       <div class="large-4 columns">  
+         <h4 class="subheader">Signos Vitales</h4>    
+         <div class="panel">
+         <% data[:user_signs].each do |vs|%>
+		     <div class="slide-p" >
+			    <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
+			       Signos de <%= vs.user.name %>
+			    <%end%>
+		     </div>
+         <%end%>
+         </div>
+       </div>
+       <div class="large-4 columns">    
+        <h4 class="subheader">Archivos de Análisis</h4>  
+         <div class="panel">
+         <% data[:single_file].each do |an| %>
+			     <div class="slide-p" >
+				   <%= link_to visualizer_path(an.id, :type => 'analisis'), remote: true do %>
+				  	 Análisis de: <%= an.user.name %>
+				   <%end%>
+			     </div>
+         <%end%>
+         </div>
+       </div>
+       <%end%>
+       </center>
+     </div>

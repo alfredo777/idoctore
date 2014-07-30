@@ -1,7 +1,10 @@
 <div class="row">
   <div class="panel">
     <h3><%= t('diagnostics.level_of_problem')%></h3>
+      <%= label_tag 'Selecciona tu paciente' %>
+      <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
   </div>
+
     <div class="large-3 columns" ><%= label_tag t('diagnostics.chronic')%>
     <%= check_box_tag 'chronic' %></div>
     <div class="large-3 columns" ><%= label_tag t('diagnostics.outstanding')%>

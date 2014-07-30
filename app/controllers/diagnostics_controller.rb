@@ -17,7 +17,18 @@ class DiagnosticsController < ApplicationController
   end
   
   def all_create
+    interactors = []
     @user = current_user
+    user_signs = VitalSign.where(:owner_by => current_user.id).order('created_at DESC')
+    diagnostics = Diagnostic.where(:owner_by => current_user.id).order('created_at DESC')
+    single_file = SingleFile.where(:creator_id => current_user.id).order('created_at DESC')
+      interactors.push(
+        user_signs: user_signs,
+        diagnostics: diagnostics,
+        single_file: single_file
+      )
+    @all_post_options = interactors
+    puts @all_post_options
   end
 
   def add_note

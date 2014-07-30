@@ -1,119 +1,48 @@
 
 <div class="row">
 <%= form_tag('/vital_signs/create_from_user', :id => 'vital_signs') do -%>
-  <%= hidden_field_tag 'user_id', @user.id %>
+  <% if current_user.role == 'patient' %>
+  <%= hidden_field_tag 'user_id', current_user.id %>
+  <%else%>
+  <%= label_tag 'Selecciona tu paciente' %>
+  <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
+  <%end%>
   <%= hidden_field_tag 'owner_by', current_user.id %>
-  <div class="row">
-  <div class="large-10 columns">
-     <%= label_tag 'weight' %>
-    <div class="large-6 left">
-      <div id="sweight" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-      </div>
+    <div class="row">
+      <center>
+          <div class="large-4 left" style="margin-left:35px;">
+          <%= label_tag 'Peso' %>
+          <%= number_field_tag 'weight', 0, :class => 'required' %>
+          </div>
+          <div class="large-4 left" style="margin-left:35px;">
+          <%= label_tag 'Presión Arterial Alta' %>
+          <%= number_field_tag 'blood_pressure_up', 0 %>
+          </div>
+          <div class="large-4 left" style="margin-left:35px;">
+            <%= label_tag 'Presión Arterial Baja' %>
+            <%= number_field_tag 'blood_pressure_down', 0 %>
+          </div>
+          <div class="large-4 left" style="margin-left:35px;">
+             <%= label_tag 'Pulso' %>
+             <%= number_field_tag 'pulse', 0 %>
+          </div>
+          <div class="large-4 left" style="margin-left:35px;">
+             <%= label_tag 'Altura' %>
+             <%= number_field_tag 'height', 0 %>
+          </div>
+          <div class="large-4 left" style="margin-left:35px;">
+            <%= label_tag 'Respiración' %>
+            <%= number_field_tag 'breathing', 0 %>
+          </div>
+          <div class="large-4 left" style="margin-left:35px;">
+            <%= label_tag 'Temperatura' %>
+            <%= number_field_tag 'temperature', 0 %>
+          </div>
+      </center>
     </div>
-    <div class="large-2 left" style="margin-left:35px;">
-    <%= number_field_tag 'weight', 0, :class => 'required' %>
+    <div class=" large-9">
+      <%= submit_tag 'Crear signos vitales', :class => 'button right' %>
     </div>
-</div>
-<div class="large-10 columns ">
-    <%= label_tag 'blood_pressure_up' %>
-    <div class="large-6 left">
-      <div id="sblood_pressure_up" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-      </div>
-    </div>
-    <div class="large-2 left" style="margin-left:35px;">
-    <%= number_field_tag 'blood_pressure_up', 0 %>
-    </div>
-</div>
-<div class="large-10 columns">
-    <%= label_tag 'blood_pressure_down' %>
-      <div class="large-6 left">
-      <div id="sblood_pressure_down" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-        </div>
-      </div>
-      <div class="large-2 left" style="margin-left:35px;">
-        <%= number_field_tag 'blood_pressure_down', 0 %>
-      </div>
-</div>
-<div class="large-10 columns">
-    <%= label_tag 'pulse' %>
-      <div class="large-6 left">
-      <div id="spulse" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-        </div>
-      </div>
-      <div class="large-2 left" style="margin-left:35px;">
-         <%= number_field_tag 'pulse' %>
-      </div>
-</div>
-<div class="large-10 columns">
-    <%= label_tag 'height' %>
-      <div class="large-6 left">
-      <div id="sheight" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-        </div>
-      </div>
-      <div class="large-2 left" style="margin-left:35px;">
-         <%= number_field_tag 'height' %>
-      </div>
-  </div>
-
-<div class="large-10 columns">
-    <%= label_tag 'breathing' %>
-     <div class="large-6 left">
-      <div id="sbreathing" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-        </div>
-      </div>
-      <div class="large-2 left" style="margin-left:35px;">
-        <%= number_field_tag 'breathing' %>
-      </div>
-  </div>
-<div class="large-10 columns">
-    <%= label_tag 'temperature' %>
-      <div class="large-6 left">
-      <div id="stemperature" class="range-slider" style="margin-top:10px; margin-right:5px;" data-slider="20" data-options="start: 1; end: 300;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-        <input type="hidden">
-        </div>
-      </div>
-      <div class="large-2 left" style="margin-left:35px;">
-        <%= number_field_tag 'temperature' %>
-      </div>
-  </div>
-  <div class="actions">
-    <%= submit_tag 'Crear signos vitales', :class => 'button' %>
-  </div>
 <% end %>
 </div>
-
-<script type="text/javascript">
-  $(function() {
-    $(document).foundation();
-    SelfSlider('sweight', 'weight');
-    SelfSlider('sblood_pressure_up','blood_pressure_up');
-    SelfSlider('sblood_pressure_down', 'blood_pressure_down');
-    SelfSlider('spulse', 'pulse');
-    SelfSlider('sheight', 'height');
-    SelfSlider('sbreathing','breathing');
-    SelfSlider('stemperature', 'temperature');
-
-    ValidateFormIn('vital_signs', 'weight' );
- });
-</script>
 

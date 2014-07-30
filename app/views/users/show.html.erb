@@ -19,7 +19,6 @@
   <% if @user.role == 'patient' %>
     <script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
        <%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
-    </div>
       <center>
         <p class="red-back" style="width:100%;">Últimas actualizaciones del Usuario</p>
         <div class="actualization-back w_background" style="width:100%;">

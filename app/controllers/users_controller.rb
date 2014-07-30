@@ -27,8 +27,8 @@ class UsersController < ApplicationController
    @user_vital_signs = @user.vital_signs.last(5)
    @user_diagnostics = @user.diagnostics.last(5)
    @user_files = @user.single_files.last(5)
-   @personal_cites = @user.doctor_cites
-   @other_cites = @user.cite_doctors
+   @personal_cites = @user.doctor_cites.last(7)
+   @other_cites = @user.cite_doctors.last(7)
    @tasks =  @other_cites + @personal_cites
    @date = params[:month] ? Date.parse(params[:month]) : Date.today
    @notices = @user.my_request_from_notice.last(5)
@@ -36,8 +36,6 @@ class UsersController < ApplicationController
    @outstanding = @user.diagnostics.where(:outstanding => true).count
    @serious = @user.diagnostics.where(:serious => true).count
    @inconsequential = @user.diagnostics.where(:inconsequential => true).count
-
-
   end
 
   def diagnostics
@@ -345,6 +343,16 @@ class UsersController < ApplicationController
      @cite = CiteDoctor.find(params[:ident_i])
      @cite.destroy
      redirect_to :back
+  end
+
+  def all_cites_viwer
+      require 'will_paginate/array'
+      @user = current_user
+      @personal_cites = @user.doctor_cites
+      @other_cites = @user.cite_doctors
+      @tasks =  @other_cites + @personal_cites
+      @date = params[:month] ? Date.parse(params[:month]) : Date.today
+
   end
 
 #################################################################################################  
