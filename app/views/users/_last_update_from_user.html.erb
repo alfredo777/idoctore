@@ -1,9 +1,10 @@
-  <div style="margin-left:5%; margin-right:4%; width:100%;">
+  <div style="margin-left:1%; margin-right:1%; width:100%;">
+   <div class="row">
     <div class="left margin-regular">
     <table>
       <thead>
         <tr>
-        <th width="200"><%= t('vital_signs.vital_signs')%></th>
+        <th width="280"><%= t('vital_signs.vital_signs')%></th>
         </tr>
       </thead>
        <tbody>
@@ -19,7 +20,7 @@
     <table>
       <thead>
         <tr>
-        <th width="200"><%= t('diagnostics.diagnostics')%></th>
+        <th width="280"><%= t('diagnostics.diagnostics')%></th>
         </tr>
       </thead>
        <tbody>
@@ -35,7 +36,7 @@
     <table>
       <thead>
         <tr>
-        <th width="200">Análisis Clínicos</th>
+        <th width="280">Análisis Clínicos</th>
         </tr>
       </thead>
        <tbody>
@@ -46,6 +47,7 @@
     </table>
     <p><%= link_to t('simple.see_more') + '  →', single_files_inx_path(@user.id) , :class => 'small secondary button'%></p>
 
+    </div>
     </div>
   </div>
 <hr>

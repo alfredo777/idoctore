@@ -18,19 +18,11 @@ class DiagnosticsController < ApplicationController
   
   def all_create
     require 'will_paginate/array'
-
-    interactors = []
     @user = current_user
-    user_signs = VitalSign.where(:owner_by => current_user.id).order('created_at DESC')
-    diagnostics = Diagnostic.where(:owner_by => current_user.id).order('created_at DESC')
-    single_file = SingleFile.where(:creator_id => current_user.id).order('created_at DESC')
-      interactors.push(
-        user_signs: user_signs,
-        diagnostics: diagnostics,
-        single_file: single_file
-      )
-    @all_post_options = interactors.paginate(:page => params[:page], :per_page => 4)
-    puts @all_post_options
+    @user_signs = VitalSign.where(:owner_by => current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @diagnostics = Diagnostic.where(:owner_by => current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @single_file = SingleFile.where(:creator_id => current_user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
+    @typer = params[:typex]
   end
 
   def add_note

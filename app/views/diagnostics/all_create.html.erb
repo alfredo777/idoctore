@@ -1,12 +1,16 @@
 <h2>Datos que yo he agregado </h2>
 
-     <div class="row">
       <center>
-       <% @all_post_options.each do |data|%>
-       <div class="large-4 columns" style="background:#E0F8EC; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
+        <ul class="button-group">
+          <li><%=link_to 'Diagnosticos', all_create_path(typex: 'diacnostic'), class: 'button'%></li>
+          <li><%=link_to 'Signos', all_create_path(typex: 'signs'), class: 'button'%></li>
+          <li><%=link_to 'Análisis', all_create_path(typex: 'analisis'), class: 'button'%></li>
+        </ul>
+        <% if params[:typex] == 'diacnostic'%>
+       <div class="large-10 columns" style="background:#fff; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
        <h4 class="subheader">Diagnósticos</h4>   
            <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
-	         <% data[:diagnostics].each do |dt|%>
+	         <% @diagnostics.each do |dt|%>
 				   <div class="slide-p" >
 				     <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
 				        <%= t('diagnostics.diagnostico')%> de <%= dt.user.name %>
@@ -14,11 +18,16 @@
 				    </div>
 	         <%end%>
 	       </div>
-       </div>
-       <div class="large-4 columns" style="background:#F6D8CE; padding:15px; ; min-height:350px; border:solid 4px #81BEF7;">  
+         <ul class="pagination" style="margin-top:50px;" >
+         <%= will_paginate @diagnostics %>
+         </ul>
+       </div> 
+       <%end%>
+       <% if params[:typex] == 'signs'%>
+       <div class="large-10 columns" style="background:#fff; padding:15px; ; min-height:350px; border:solid 4px #81BEF7;">  
          <h4 class="subheader">Signos Vitales</h4>    
            <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
-         <% data[:user_signs].each do |vs|%>
+         <% @user_signs.each do |vs|%>
 		     <div class="slide-p" >
 			    <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
 			       Signos de <%= vs.user.name %>
@@ -26,11 +35,16 @@
 		     </div>
          <%end%>
          </div>
+         <ul class="pagination" style="margin-top:50px;" >
+              <%= will_paginate @single_file %>
+           </ul>
        </div>
-       <div class="large-4 columns" style="background:#F5F6CE; padding:10px; ; min-height:350px; border:solid 4px #81BEF7;">    
+        <%end%>
+        <% if params[:typex] == 'analisis'%>
+       <div class="large-10 columns" style="background:#fff; padding:10px; ; min-height:350px; border:solid 4px #81BEF7;">    
         <h4 class="subheader">Archivos de Análisis</h4>  
            <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
-         <% data[:single_file].each do |an| %>
+         <% @single_file.each do |an| %>
 			     <div class="slide-p" >
 				   <%= link_to visualizer_path(an.id, :type => 'analisis'), remote: true do %>
 				  	 Análisis de: <%= an.user.name %>
@@ -38,9 +52,12 @@
 			     </div>
          <%end%>
          </div>
+         <ul class="pagination" style="margin-top:50px;" >
+            <%= will_paginate @user_signs %>
+           </ul>
        </div>
-       <%end%>
-       </center>
-     </div>
+     
+      </center>
 
-     <%= will_paginate @all_post_options %>
+      <%end%>
+
