@@ -16,7 +16,8 @@ class UsersController < ApplicationController
   ######### views methods ########
   def index
     flash[:notice] = nil
-    @users = User.all
+    @user_patients = current_user.patients.paginate(:page => params[:page], :per_page => 20)
+    @user_doctors = current_user.doctors.paginate(:page => params[:page], :per_page => 20)
 
   end
 
@@ -101,6 +102,9 @@ class UsersController < ApplicationController
     if params[:street_addres] != nil
       @user.street_addres = params[:street_addres]
     end
+    if params[:sex] != nil
+      @user.sex = params[:sex]
+    end
     @user.save
     flash[:notice] = 'Se ha actualizado el usuario.'
     redirect_to user_path(@user.id)
@@ -173,10 +177,11 @@ class UsersController < ApplicationController
                @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @user_new.id)   
           if @user_new.save 
               @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
-              redirect_to patients_path(current_user.id)
               flash[:notice] = t('user.create_user_by_invite')
+              redirect_to :back
               else
               flash[:notice] = t('user.error_create_user_by_invite')
+              redirect_to :back
           end
       end
   end

@@ -54,6 +54,9 @@ $(function(){ $(document).foundation(); });
 
  	     var finder = $('#diagnostic_or_clinical_problem').val();
  	     var loker = $('#diagnostic_or_clinical_problem').val( finder +  paragraph);
+       alert('Has agregado al campo de problema clínico:'+paragraph)
+       clear_div('cie');
+       $('#rescue_name').val('Ingrese la enfermedad...');
 
  }
 

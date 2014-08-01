@@ -46,7 +46,7 @@
   <%= render partial: '/users/dates/list_of_dates', locals: {tasks: tasks, inprofile: inprofile}%>
   <div style="margin-top:-55px;">
   <% if inprofile %>
-     <%= link_to 'Ver más citas', all_cites_viwer_path , class: 'button success expand'%>
+     <%= link_to 'Ver más citas', all_cites_viwer_path , class: 'button success expand' if current_user.id == user.id%>
   <%end%>
   </div>
 </div>

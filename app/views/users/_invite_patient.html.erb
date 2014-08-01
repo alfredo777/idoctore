@@ -1,16 +1,17 @@
 <h2> Invitar Paciente </h2>
 <div><p>Invitar a ún paciente le permite llevar un contról mucho mas ágil de su historial clínico y al paciente le permite conocer el mísmo es muy importen para un seguimiento adecuado.</p></div>
 <%= form_tag('/users/create_user_by_invite') do -%>
-  <%= label_tag 'name' %>
-  <%= text_field_tag 'name', name %>
-  <%= label_tag 'email' %>
-  <%= email_field_tag 'email', email %>
-  <p>
+    <%= label_tag 'Nombre' %>
+    <%= text_field_tag 'name', '', :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+    <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+    <%= label_tag 'Email' %>
+    <%= email_field_tag 'email', '', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail' %>
+    <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
   <% if sex == nil %>
   <%= label_tag 'sex' %>
-  <div class="small-2 large-1 columns" ><%= label_tag 'Male' %>
+  <div class="small-2 large-1 columns" ><%= label_tag 'Hombre' %>
   <%= radio_button_tag 'sex', 'male' %></div>
-  <div class="small-2 large-1 columns" ><%= label_tag 'Female'%>
+  <div class="small-2 large-1 columns" ><%= label_tag 'Mujer'%>
   <%= radio_button_tag 'sex', 'female' %></div>
   <%= hidden_field_tag 'role', 'patient' %>
    <%else%>
@@ -20,3 +21,10 @@
   </p>
   <div class="right"><%= submit_tag 'Registrar', :class => 'button' %></div>
 <%end%>
+
+<script>
+  $(document).ready(function(){
+    VAlForValitx('name');
+    VAlForValitx('email');
+  });
+</script>

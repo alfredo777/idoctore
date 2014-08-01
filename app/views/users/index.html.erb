@@ -11,13 +11,23 @@
     </div>
 
 	<div class="row white-back">
-	  <%= render partial: '/users/call_users', locals: { users: current_user.patients } %>
+	  <%= render partial: '/users/call_users', locals: { users: @user_patients } %>
 	</div>
-	<% when 'patient'%>
+	 <center>
+	  <ul class="pagination" style="margin-top:50px;">
+	  <%= will_paginate @user_patients %>
+	  </ul>
+	 </center>
+   <% when 'patient'%>
 	<h2>Lista de doctores</h2>
 	<div class=" row white-back">
-	  <%= render partial: '/users/call_users', locals: { users: current_user.doctors } %>
+	  <%= render partial: '/users/call_users', locals: { users: @user_doctors } %>
 	</div>
+     <center>
+	  <ul class="pagination" style="margin-top:50px;">
+	  <%= will_paginate @user_doctors %>
+	  </ul>
+	 </center>
 <%end%>
 <script type="text/javascript">
 $('#patient_create').click(function(){

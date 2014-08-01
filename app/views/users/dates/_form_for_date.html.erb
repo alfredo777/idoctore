@@ -1,9 +1,9 @@
 <% if current_user.role == 'doctor' %>
       <%= form_tag('/users/send_request_cite') do -%>
-        <%= label_tag 'Fecha de la cita' %>
+        <%= label_tag 'Fecha de la cita (día/mes/año)-(01/01/2014)' %>
         <%= date_field_tag 'init_time_date', ''%>
-        <%= label_tag 'Hora de la cita' %>
-        <%= time_field_tag 'init_time_hour', Date.today.strftime('%d/%m/%Y')%>
+        <%= label_tag 'Hora de la cita (hora:minutos)-(23:00)' %>
+        <%= time_field_tag 'init_time_hour'%>
         <%= label_tag 'Razón' %>
         <%= text_area_tag 'request', '', rows: 10, cols: 25  %>
         <%= label_tag 'Confirmación' %>
@@ -16,10 +16,10 @@
     	<p>Para agendar una cita usted debe solicitarla despues en cuanto la cita se aceptada por el doctor usted podrá visualizarla en color verde.</p>
     </div>
     <%= form_tag('/users/send_request_cite') do -%>
-      <%= label_tag 'Fecha de la cita' %>
+      <%= label_tag 'Fecha de la cita (día/mes/año)-(01/01/2014)' %>
       <%= date_field_tag 'init_time_date', ''%>
-      <%= label_tag 'Hora de la cita' %>
-      <%= time_field_tag 'init_time_hour', Date.today.strftime('%d/%m/%Y')%>
+      <%= label_tag 'Hora de la cita (hora:minutos)-(23:00)' %>
+      <%= time_field_tag 'init_time_hour' %>
       <%= label_tag 'Razón' %>
       <%= text_area_tag 'request', '', rows: 10, cols: 25  %>
       <% if @user.id == current_user.id %>

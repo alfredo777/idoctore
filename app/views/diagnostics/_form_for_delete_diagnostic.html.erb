@@ -3,10 +3,10 @@
     <%= hidden_field_tag 'diagnostic', dt.id %>
 	<%= hidden_field_tag 'user_id', @user.id %>
 	<%= hidden_field_tag 'owner_id', current_user.id %>
-	<%= label_tag 'Justify'%>
+	<%= label_tag 'Junstificación'%>
 	<%= text_area_tag 'causes',nil, rows: 15 %>
-	<%= label_tag 'Select a cause'%>
+	<%= label_tag 'Elija una causa'%>
 
 	<%= select_tag "justify", options_for_select([ "Error", "New diagnostic", 'Other' ]) %>
-	<%= submit_tag 'Destroy', :class => 'button' %>
+	<%= submit_tag 'Eliminar diagnóstico', :class => 'button' %>
 <%end%>

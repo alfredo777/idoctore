@@ -6,6 +6,23 @@
           <li><%=link_to 'Signos', all_create_path(typex: 'signs'), class: 'button'%></li>
           <li><%=link_to 'Análisis', all_create_path(typex: 'analisis'), class: 'button'%></li>
         </ul>
+        <% if params[:typex] == nil%>
+       <div class="large-10 columns" style="background:#fff; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
+       <h4 class="subheader">Diagnósticos</h4>   
+           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
+           <% @diagnostics.each do |dt|%>
+           <div class="slide-p" >
+             <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
+                <%= t('diagnostics.diagnostico')%> de <%= dt.user.name %>
+             <%end%>
+            </div>
+           <%end%>
+         </div>
+         <ul class="pagination" style="margin-top:50px;" >
+         <%= will_paginate @diagnostics %>
+         </ul>
+       </div> 
+       <%end%>
         <% if params[:typex] == 'diacnostic'%>
        <div class="large-10 columns" style="background:#fff; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
        <h4 class="subheader">Diagnósticos</h4>   

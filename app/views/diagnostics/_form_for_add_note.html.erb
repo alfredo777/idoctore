@@ -1,3 +1,5 @@
+<h3>Formulario nota Clínica</h3>
+
 <%= form_tag('/diagnostics/add_note') do -%>
 <p  class="large-5"><%= label_tag 'Selecciona un Diagnóstico'%> <%= select_tag "diagnostic_id", options_from_collection_for_select(@user.diagnostics.last(20).reverse, "id", "created_at") %></p>
 <p  class="large-5"><%= label_tag 'Selecciona unos signos vitales'%> <%= select_tag "last_signs", options_from_collection_for_select(@user.vital_signs.last(3).reverse, "id", "created_at") %></p>

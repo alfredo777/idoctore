@@ -1,6 +1,5 @@
 <div class="field">
         <%= hidden_field_tag 'owner_by', owner.id %>
-        <%= hidden_field_tag 'vital_signs', user.vital_signs.last.id if user.vital_signs.count != 0%>
       </div>
       <div class="field">
         <b><%= label_tag t('diagnostics.interrogation') %></b><br>

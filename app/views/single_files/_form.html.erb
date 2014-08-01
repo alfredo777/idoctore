@@ -1,14 +1,17 @@
-<center>
+<h3>Formulario de Análisis Clínico</h3>
 <%= form_tag('/single_files/upload_file', :id => 'upload_file', :multipart => true) do -%>
-  <div style="width:500px;">
-  <%= file_field_tag 'file', :class => 'custom-file-input'  %>
-  </div>
-  <%= hidden_field_tag 'user_id', @user.id%>
-  <%= hidden_field_tag 'creator_id', current_user.id%>
-
- <div><%= submit_tag 'Subir archivo', :class => 'button' %></div>
+   <div class="row">
+   <% if current_user.role == 'doctor' %>
+  		<%= label_tag 'Selecciona tu paciente' %>
+ 	    <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
+     <%else%> 
+        <%= hidden_field_tag 'user_id', @user.id%>
+   <%end%>
+   </div>
+   <div class="row">
+        <%= label_tag 'Selecciona un archivo de tupaciente' %>
+	    <div><%= file_field_tag 'file', :class => 'custom-file-input'  %></div>
+  		<%= hidden_field_tag 'creator_id', current_user.id%>
+        <div><%= submit_tag 'Subir archivo', :class => 'button right' %></div>
+   </div>
 <%end%>
-<div id="load" style="display:none;">
-<%= image_tag('loader.GIF')%>
-</div>
-</center>

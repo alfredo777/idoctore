@@ -1,35 +1,39 @@
 <div class="row">
 	<div class="large-6  columns ">
+	    <a class="left link_to_t" onclick="clear_div('cie')" data-target='tools'>Limpiar y cerrar X</a>
 		<%= form_tag( '/cie10', :method => :get , :remote => true) do %>
 		   <div class="row collapse">
 		  <div class="small-10 columns">
 		  <%= text_field_tag 'rescue_name', 'Ingrese la enfermedad...', :onclick => 'if($(this).val()=="Ingrese la enfermedad..."){$(this).val("");};'%>
 		  </div>
 		  <div class="small-2 columns">
-		  <%= submit_tag 'Go', :class => ' button postfix' %>
+		  <%= submit_tag 'Buscar', :class => ' button postfix' %>
          </div>
          </div>
 		<%end%>
+	     <div class="row columns cie pol300" id='cie_10'></div>
 	</div>
+	<!--
 	<div class="large-5 columns">
  		<input type="text" name="medicine" id="medicine" placeholder="Buscador de sustancia activa.">
 	</div>
-    <a class="left" onclick="clear_div('cie')">Limpiar</a>
+	-->
+    <div class="large-5 columns panel">
+        <p>La CIE-10 es el acrónimo de la Clasificación internacional de enfermedades, décima versión.</p></br>
+        <p>La importancia de su uso es para un mejor guardado y diagnóstico clínico, este protocolo es avaldo por la Organización Mundial de la Salud (OMG).</p>
+    </div>
 </div>
-
-<div  class="row">
-	<div class="large-6 columns cie pol300" id='cie_10'></div>
-
-	<div class="large-6 columns cie" id="medicinedb"></div>
-</div>
+	<!--
+	<div  class="row">
+		<div class="large-6 columns cie" id="medicinedb"></div>
+	</div>
+	-->
 <script type="text/javascript">
 	$("#medicine").keyup(function (e) {
     if (e.keyCode == 13) {
      var vm = $("#medicine").val();
      var no_accents = RemoveAccents(vm);
-     console.log(no_accents);
      var docify = no_accents.replace(/ /g,'_');
-     console.log(docify);
      var url = 'http://www.medicamentosplm.com/sustancias/'+ docify + '.htm';
      var terminatege = "Esta infomración es traida desde la página http://www.medicamentosplm.com/"
      var iframe = '<iframe width="400" height="300" frameBorder="0" style="-webkit-transform:scale(0.8);-moz-transform-scale(0.8);" src='+ '"'+url+'"></iframe><p>'+ terminatege + '</p>';
