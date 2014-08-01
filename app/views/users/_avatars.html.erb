@@ -7,14 +7,12 @@
 	 <%= image_tag('/assets/users/wooman.png', :class => 'th ', :id => 'blah') if !user.avatar? %>
 	<%end%>
 <%else%>
-	<center>
-		<%= image_tag("#{user.avatar.gigant}", :class => 'th ') if user.avatar?  %>
-		<% case user.sex %>
-		<% when 'male' %>
-		 <%= image_tag('/assets/users/man.png', :class => 'th ') if !user.avatar?  %>
-		<% when 'female' %>
-		 <%= image_tag('/assets/users/wooman.png', :class => 'th ') if !user.avatar? %>
-		<%end%>
-	</center>
+	<%= image_tag("#{user.avatar.gigant}", :class => 'th ') if user.avatar?  %>
+	<% case user.sex %>
+	<% when 'male' %>
+	 <%= image_tag('/assets/users/man.png', :class => 'th ') if !user.avatar?  %>
+	<% when 'female' %>
+	 <%= image_tag('/assets/users/wooman.png', :class => 'th ') if !user.avatar? %>
+	<%end%>
 <%end%>
   

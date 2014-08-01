@@ -1,9 +1,9 @@
 <div class="row">
   <div class="panel">
-    <h3><%= t('diagnostics.level_of_problem')%></h3>
       <%= label_tag 'Selecciona tu paciente' %>
       <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
   </div>
+    <h4><%= t('diagnostics.level_of_problem')%></h4>
 
     <div class="large-3 columns" ><%= label_tag t('diagnostics.chronic')%>
     <%= check_box_tag 'chronic' %></div>
@@ -11,8 +11,7 @@
     <%= check_box_tag 'outstanding' %></div>
     <div class="large-3  columns" ><%= label_tag t('diagnostics.serious')%>
     <%= check_box_tag 'serious' %></div>
-    <div class="large-3  columns" ><%= label_tag t('diagnostics.inconsequential')%>
-    <%= check_box_tag 'inconsequential' %></div>
+    <div class="large-3  columns" ><%= label_tag t('diagnostics.inconsequential')%><%= check_box_tag 'inconsequential' %></div>
 </div>
 <div class="row">
   <div class="panel">

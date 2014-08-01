@@ -4,12 +4,11 @@
 	<a class="right button secondary" id="patient_create" data-target="newpatient" >Nuevo paciente</a>
 	 <p style="font-size:30px;">Lista de pacientes</p>
 	</div>
-	<div >
+	<div>
 	<div id="newpatient" class="row invite_container" style="display:none;">
    	 <%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
     </div>
     </div>
-
 	<div class="row white-back">
 	  <%= render partial: '/users/call_users', locals: { users: @user_patients } %>
 	</div>
