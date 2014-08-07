@@ -1,4 +1,7 @@
 <div class="row">
+    <%=  decripted_code(1234556789222)%>
+    <%=  undecript_code("mnopqqrstunnn")%>
+
 	<div class="large-7 columns">
 	<h1>Registro</h1>
 	<%= image_tag('banner5.png') %>
@@ -7,8 +10,9 @@
 	</div>
 	<div class="large-5 columns">
 	  <fieldset>
-	    <legend>Cambio de contraseña.</legend>
+	    <legend>Registro de uusario.</legend>
 			<%= render partial: '/users/form_register' %>
 	  </fieldset>
 	</div>
+
 </div>

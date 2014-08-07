@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   #################################################################################################
   ######### views methods ########
   def index
+    require 'will_paginate/array'
+
     flash[:notice] = nil
     @user_patients = current_user.patients.paginate(:page => params[:page], :per_page => 20)
     @user_doctors = current_user.doctors.paginate(:page => params[:page], :per_page => 20)

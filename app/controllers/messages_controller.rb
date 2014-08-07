@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
 	 response.headers["Content-Type"] = "text/event-stream"
 	 sse = SSE.new(response.stream, retry: 300, event: "event-name")
 	 start = Time.zone.now
-	 redis = Redis.new
+	 redis = Redis.new(:url => "redis://54.187.44.9:6379")
 	   ticker = Thread.new { loop { sse.write 0; sleep 5 } }
      sender = Thread.new do
 		  redis.psubscribe('messages.*') do |on|

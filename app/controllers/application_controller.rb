@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   helper_method :random_to_token
   helper_method :find_advance_key
   helper_method :expires_now
+  helper_method :decripted_code
+  helper_method :undecript_code
+
  
   def current_user
     if  User.exists?(session[:user])
@@ -81,6 +84,80 @@ class ApplicationController < ActionController::Base
     @user.create_adanced_key
     @user.advanced_key
   end
-  
+private
 
+  def decripted_code(codex = '', decript = 11)
+    a = ('a'..'z').to_a
+    x = codex.to_s.split(//)
+    y = a.count-decript.to_i
+    fa = a.last(y) + a.first(decript.to_i)
+    fax = fa[0..9]
+    act_array = []   
+    x.each do |xc|
+      case xc.to_i
+        when 0
+          act_array.push(fax[0])
+        when 1
+          act_array.push(fax[1])
+        when 2
+          act_array.push(fax[2])
+        when 3
+          act_array.push(fax[3])
+        when 4
+          act_array.push(fax[4])
+        when 5
+          act_array.push(fax[5])
+        when 6
+          act_array.push(fax[6])
+        when 7
+          act_array.push(fax[7])
+        when 8
+          act_array.push(fax[8])
+        when 9
+          act_array.push(fax[9])
+      end
+    end
+    xcv = act_array.map(&:inspect).join(' ')
+    xcvb = xcv.remove('"')
+    xcvbn = xcvb.remove(' ')
+    xcvbn.to_s
+  end
+
+  def undecript_code(codex = '', decript = 11)
+    a = ('a'..'z').to_a
+    x = codex.to_s.split(//)
+    y = a.count-decript.to_i
+    fa = a.last(y) + a.first(decript.to_i)
+    fax = fa[0..9]
+    act_array = []   
+    x.each do |xc|
+      case xc
+        when fax[0] 
+          act_array.push(0)
+        when fax[1]
+          act_array.push(1)
+        when fax[2]
+          act_array.push(2)
+        when fax[3]
+          act_array.push(3)
+        when fax[4]
+          act_array.push(4)
+        when fax[5]
+          act_array.push(5)
+        when fax[6]
+          act_array.push(6)
+        when fax[7]
+          act_array.push(7)
+        when fax[8]
+          act_array.push(8)
+        when fax[9]
+          act_array.push(9)
+      end
+    end
+    xcv = act_array.map(&:inspect).join(' ')
+    xcvb = xcv.remove('"')
+    xcvbn = xcvb.remove(' ')
+    xcvbn.to_i
+  end
+  
 end
