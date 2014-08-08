@@ -9,6 +9,8 @@ group :production do
 end
 group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
+  gem 'webmock'
+
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -52,7 +54,6 @@ gem "highcharts-rails", "~> 3.0.0"
 gem 'jquery-fileupload-rails'
 #### payments ######
 gem 'conekta'
-gem 'webmock'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
