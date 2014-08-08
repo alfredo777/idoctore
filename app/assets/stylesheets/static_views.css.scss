@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.simple_background {background-image: asset-url('/assets/medicine2.jpg') !important; width:100%; height:800px; background-repeat:no; background-size: 100% 100%; color:#fff;}
+.simple_background {background-image: url(image_path('/assets/medicine2.jpg')) !important; width:100%; height:800px; background-repeat:no; background-size: 100% 100%; color:#fff;}
 
 .white {color:#ffffff !important;}
-.grey-background { background-image: asset-url('/assets/light_2X.png'); margin-top:45px;}
+.grey-background { background-image: url(image_path('/assets/light_2X.png')); margin-top:45px;}
 .padding-l {padding-left:3px;}
 .slide {height:80px; background:#000;}
 .white-back {background: transparent;}
@@ -45,7 +45,7 @@
    margin-bottom:7px;
 }
 .red-back{
-	background-image: asset-url('/assets/skulls.png');
+	background-image: url(image_path('/assets/skulls.png'));
 	padding:5px;
 	color: #1c80cf;
 	margin-top:3px;
@@ -90,7 +90,7 @@ ul{
   list-style-type: none;
 }
 .raw_index {
-  background-image: asset-url('/assets/banner2-doctor.jpg'); width:100%; max-height:500px; min-height:400px; background-size:100%; background-repeat:no-repeat;
+  background-image: url(image_path('/assets/banner2-doctor.jpg')); width:100%; max-height:500px; min-height:400px; background-size:100%; background-repeat:no-repeat;
 }
 .foop{
   background:#333333;
@@ -145,7 +145,7 @@ em{
 }
 
 .skull_skin{
-  background-image: asset-url('/assets/skulls.png');
+  background-image: url(image_path('/assets/skulls.png'));
   height:400px;
   opacity: 0.78;
   filter: alpha(opacity=78); /* For IE8 and earlier */
@@ -183,7 +183,7 @@ em{
 }
 
 .notices{
-  background-image: asset-url('/assets/menu/call.png');
+  background-image: url(image_path('/assets/menu/call.png'));
   width:40px;
   height:40px;
   float:right;
@@ -194,7 +194,7 @@ em{
 
 }
  .notices:hover{
-  background-image: asset-url('/assets/menu/callupper.png');  
+  background-image: url(image_path('/assets/menu/callupper.png'));  
   width:40px;
   height:40px;
   float:right;
