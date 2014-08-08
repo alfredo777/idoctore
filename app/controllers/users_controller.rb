@@ -132,7 +132,7 @@ class UsersController < ApplicationController
          @user.terms = params[:terms]
          @user.save
           if @user.save 
-            #@mailer = UserMailer.welcome_email(@user, @user.confirmed_token).deliver
+            @mailer = UserMailer.welcome_email(@user, @user.confirmed_token).deliver
             flash[:notice] =  t('user.create_user')
             redirect_to users_path
             else
