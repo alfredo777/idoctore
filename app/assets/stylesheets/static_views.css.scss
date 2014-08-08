@@ -1,0 +1,274 @@
+// Place all the styles related to the static_views controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.simple_background {background-image: url('/assets/medicine2.jpg') !important; width:100%; height:800px; background-repeat:no; background-size: 100% 100%; color:#fff;}
+
+.white {color:#ffffff !important;}
+.grey-background { background-image: url('/assets/light_2X.png'); margin-top:45px;}
+.padding-l {padding-left:3px;}
+.slide {height:80px; background:#000;}
+.white-back {background: transparent;}
+.w80 {width:80%; padding:.5%; margin-left:10%; margin-right:9.5%; margin-top:15px; margin-bottom:15px;}
+.w80-b {width:80%; padding:.5%; margin-left:10%; margin-right:9.5%; margin-top:50px; margin-bottom:1px;}
+.black-bg {
+   background:#858585; 
+   padding:5px;
+   width:90%;
+}
+
+.w_background{
+  background: #ffffff;
+}
+
+.avatar_circle {
+   border-radius: 50%;
+   border: solid #eee;
+   padding:5px;
+   margin:5px;
+}
+.avatar_circle:hover {
+   background:#eee;
+}
+.imge_in_circle{
+   margin-top:12px;
+   margin-left:-1px;
+}
+.bacground-solider{
+   border: solid #CECECE;
+   height:250px !important;
+   margin-left: 15px !important;
+   padding-left:10px !important;
+   width:150px;
+   float:left;
+   position:relative;
+   margin-bottom:7px;
+}
+.red-back{
+	background-image: url('/assets/skulls.png');
+	padding:5px;
+	color: #1c80cf;
+	margin-top:3px;
+	margin-bottom:0px;
+  font-size:16px;
+  text-align:center;
+
+}
+.actualization-back{
+	min-height:260px !important;
+
+}
+.right-profile-menu{
+  width:100%;
+	padding:5px;
+	background:#fff;
+  border: solid 1.5px #eeeeee;
+}
+.defit-nig{
+    position:fixed;
+}
+.acordion-lile{
+    height:35px;
+    padding:5px;
+    width:90%;
+    margin-left:10px !important;
+    background:#eee;
+    border:1px #F5F5F5 solid;
+    margin-top:-7px !important;
+
+}
+.acordion-lile:hover{
+	background:#FA5882;
+	color: #fff;
+	margin-top:0px;
+	& a {
+	 color:#fff !important;
+	}
+}
+
+ul{
+  list-style-type: none;
+}
+.raw_index {
+  background-image: url('/assets/banner2-doctor.jpg'); width:100%; max-height:500px; min-height:400px; background-size:100%; background-repeat:no-repeat;
+}
+.foop{
+  background:#333333;
+  color:#fff;
+  text-align: center;
+  width:100%;
+  height:100px;
+}
+.actualization-back{
+  padding:7px;
+  border: solid 1.5px #eeeeee;
+}
+.margin-regular{
+  margin:7px;
+}
+.previous_page{
+  padding:8px;
+  background:#eee;
+  color:#000;
+}
+.next_page{
+  padding:8px;
+  background:#eee;
+  color:#000;
+}
+em{
+  background:#eee;
+  padding:8px;
+  height:33px;
+  width:33px;
+
+}
+.pagination{
+  & a{
+   background:#008cba;
+   padding:8px;
+   height:33px;
+   width:33px;
+   color:#fff;
+  }
+}
+.pol300{
+  max-height: 300px;
+  overflow:auto;
+}
+
+.messages_content{
+  min-height:200px;
+  max-height:400px;
+  overflow-y: auto; 
+  overflow-x: hidden;
+}
+
+.skull_skin{
+  background-image: url('/assets/skulls.png');
+  height:400px;
+  opacity: 0.78;
+  filter: alpha(opacity=78); /* For IE8 and earlier */
+}
+
+.jumps{
+
+
+  
+}
+.jumps:hover{
+    margin-top:-15px !important;
+    cursor:pointer;
+}
+
+.cursive{
+  font-family: 'Lobster', cursive !important;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.hexagon {
+  fill: none;
+  stroke: #000;
+  stroke-width: .5px;
+}
+
+.notices{
+  background-image: url('/assets/menu/call.png');
+  width:40px;
+  height:40px;
+  float:right;
+  margin-right:10px;
+  cursor:pointer;
+  background-size:100%;
+  background-repeat: no-repeat;
+
+}
+ .notices:hover{
+  background-image: url('/assets/menu/callupper.png');  
+  width:40px;
+  height:40px;
+  float:right;
+  margin-right:10px;
+  background-size:75%;
+  background-repeat: no-repeat;
+
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Selecciona un archivo';
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 18px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  float:right;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.menu-select{
+  background:#44769C;
+  padding:20px;
+  color:#ffffff;
+  margin-bottom:30px;
+}
+
+.invite_container{
+  background:#fff;
+  padding:20px;
+  margin-bottom:30px;
+
+}
+
+.wrapper-dropdown {
+  position: absolute;
+  width: 260px;
+  height:390px;
+  padding: 15px;
+  margin: 0 auto;
+  background: #fff;
+  color: #000;
+  outline: none;
+  cursor: pointer;
+  z-index: 999999999;
+  font-weight: bold;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: solid 4px #81BEF7;
+  overflow: auto;
+}
+
+.flecha-up {
+    width:0px;
+    height:0px;
+    border-left:25px solid transparent; /* izquierda flecha */
+    border-right:25px solid transparent; /* derecha flecha */
+    border-bottom:25px solid #81BEF7; /* base flecha y color*/
+    font-size:0px;
+    line-height:0px;
+ }
