@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721230611) do
+ActiveRecord::Schema.define(version: 20140807214308) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -202,6 +202,9 @@ ActiveRecord::Schema.define(version: 20140721230611) do
     t.string   "college"
     t.string   "cadre_card"
     t.text     "street_addres"
+    t.boolean  "payment_method",  default: false
+    t.string   "cupon"
+    t.date     "validity"
   end
 
   create_table "vital_signs", force: true do |t|

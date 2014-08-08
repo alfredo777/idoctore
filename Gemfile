@@ -50,6 +50,7 @@ gem "highcharts-rails", "~> 3.0.0"
 gem 'jquery-fileupload-rails'
 #### payments ######
 gem 'conekta'
+gem 'webmock'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

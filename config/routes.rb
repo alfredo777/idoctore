@@ -85,9 +85,11 @@ Rails.application.routes.draw do
       post 'admin_user_destroy'
       post 'admin_user_cupons'
       post 'search_cupons'
+
+
     end
   end
-
+  
   #######user parts#######
     get 'sign_in', :to => 'users#session_new', :as => :sign_in
     get 'sign_out', :to => 'users#destroy_session', :as => :sign_out
@@ -140,5 +142,11 @@ Rails.application.routes.draw do
   get 'admin/', :to => 'admin#stats', :as => :admin
   get 'admin/loggin', :as => :admin_loggin
   get '/admins_session_destroy', :to => 'admin#end_session', :as => :admin_end_session
+
+
+  ############ payments ##########
+  post 'payments/send_payment'
+  get  'payments/send_payment'
+
 
 end

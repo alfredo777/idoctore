@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  require "conekta"
   #################################################################################################
 
                   ########### USER CONTROLLER I DOCTORE ###############
@@ -439,6 +440,7 @@ def search_cupons
 end
 
 
+
 #################################################################################################
  ####### private methods #########
   private
@@ -514,6 +516,14 @@ end
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+     end
+
+     def set_access_control_headers  
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+      headers['Access-Control-Request-Method'] = '*'
+      headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+      response.headers.delete('X-Frame-Options')
      end
     
 end
