@@ -4,8 +4,8 @@ gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
 #database
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+	#gem 'pg'
+	#gem 'rails_12factor'
 end
 group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
