@@ -22,9 +22,7 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: 3232324
-  host: localhost
-  database: dbidoctore
-  port: 5432  
+  database: HEROKU_POSTGRESQL_AQUA_URL
+  pool: 5
+  timeout: 5000
+  
