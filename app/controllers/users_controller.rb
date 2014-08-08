@@ -241,6 +241,7 @@ class UsersController < ApplicationController
         puts "#{@user}"
         @user.confirmed_token = nil
         @user.confirmed = true
+        @user.terms = true
         @user.save
       
           @dp = DoctorPatient.find_by_patient_id(@user.id)   
