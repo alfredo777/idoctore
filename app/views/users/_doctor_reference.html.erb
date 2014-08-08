@@ -2,8 +2,8 @@
 	    <p class="red-back">Doctor: <%= user.name %></p>
 	    <div class=" right-profile-menu actualization-back " >
 		    <div class="large-3 left">
+		         <center>
 		   		 <%= render partial: '/users/avatars', locals: {user: user , edit: false}%>
-		   		 <center>
 		   			 <%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>
 		   		 </center>
 		    </div>
