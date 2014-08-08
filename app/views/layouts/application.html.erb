@@ -15,17 +15,11 @@
   </head>
   <%=render partial: 'layout_parts/heather', :locals => {:title => 'DM'}%>
   <body class="grey-background">
-    <% if current_user.role == 'doctor' && current_user.payment_method == false %>
-      <div id="container" class="raw white-back w80">
-      <%= render partial: '/users/payments/payment_method' %>
-      </div>
-    <%else%> 
     <div id="container" class="raw white-back w80">
       <div id='close_page_slider' style="display:none;"><%= image_tag('menu/close.png')%></div>   
       <div id="left_hide" style="display:none;" ></div>
        <%= yield %>
     </div>
-    <%end%>
    <%= javascript_include_tag "application" %>
   </body>
 </html>

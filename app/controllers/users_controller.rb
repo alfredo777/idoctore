@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  layout 'layout_not_login', only:[:new, :missing_password]
   require "conekta"
   #################################################################################################
 
