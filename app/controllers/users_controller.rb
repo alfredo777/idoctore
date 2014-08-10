@@ -408,7 +408,9 @@ class UsersController < ApplicationController
 
 def admin_user_loggin
   @admin = ManagerUser.find_by_email(params[:email])
-  password_cript_admin(params[:password], @admin, params[:identify] )
+  @pass = params[:password]
+  @iden = params[:identify]
+  password_cript_admin(@pass, @admin, @iden)
 end
 
 def admin_user_create
@@ -496,7 +498,7 @@ end
     
 
     def password_cript_admin(password, admin, identify )
-      
+
       sha256 = Digest::SHA256.new
       digest = sha256.update password
       backend_validate = admin.reciber_params_loggin(digest, identify)
