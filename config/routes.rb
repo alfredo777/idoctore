@@ -147,6 +147,7 @@ Rails.application.routes.draw do
   ############ payments ##########
   post 'payments/send_payment'
   get  'payments/send_payment'
+  get  'payments', :to => "payments#payments", :as => :payments
 
 
 end
