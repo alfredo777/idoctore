@@ -25,7 +25,7 @@ class ManagerUser < ActiveRecord::Base
       Digest::SHA2.hexdigest( self.salt + self.password.to_s + self.identify.to_s ) 
    end
 
-   def reiciber_params_loggin(pass, ident)
+   def reciber_params_loggin(pass, ident)
       cript = Digest::SHA2.hexdigest( self.salt + pass.to_s + ident.to_s ) 
       validates_acces(cript, codificate_encripter )
    end
