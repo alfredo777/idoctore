@@ -410,7 +410,12 @@ def admin_user_loggin
   @admin = ManagerUser.find_by_email(params[:email])
   @pass = params[:password]
   @iden = params[:identify]
+  if @admin
   password_cript_admin(@pass, @admin, @iden)
+  else
+    flash[:notice] = 'No se ha encontrado el usuario'
+    redirect_to :back
+  end
 end
 
 def admin_user_create
@@ -498,9 +503,12 @@ end
     
 
     def password_cript_admin(password, admin, identify )
-
+      puts password
+      puts admin
+      puts identify
       sha256 = Digest::SHA256.new
       digest = sha256.update password
+      puts digest
       backend_validate = admin.reciber_params_loggin(digest, identify)
       puts "#{backend_validate}"
 

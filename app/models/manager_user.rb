@@ -26,14 +26,10 @@ class ManagerUser < ActiveRecord::Base
    end
 
    def reciber_params_loggin(pass, ident)
-      puts pass
-      puts ident
-      if pass == nil || ident == nil
-         cript = Digest::SHA2.hexdigest( self.salt + pass.to_s + ident.to_s ) 
-         validates_acces(cript, codificate_encripter )
-        else
-          valx = false
-      end
+
+      cript = Digest::SHA2.hexdigest( self.salt + pass.to_s + ident.to_s ) 
+      validates_acces(cript, codificate_encripter )
+       
    end
 
    def validates_acces(enc, paramx)
