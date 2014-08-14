@@ -11,18 +11,17 @@ skip_before_filter :verify_authenticity_token
 	  end
     
 
-    if params[:cupon] != nil
-    		id = 'cupon_plan'
-    else
+    	ida = params[:ascesor]
+
 	    case params[:amount]
 	   		when 100000
 	   			id = 'plan_inicial'
 	    	when 160000
 	    		id = 'plan_avanzado'
+
 	    	when 1000000
 	    		id = 'plan_institucional'
 	    end
-    end	
 
 		begin
 		 charge = Conekta::Charge.create({

@@ -9,6 +9,9 @@
 	  <div class="row">
 	    <div class="large-7">
 	 		<%= select_tag 'amount', options_for_select([["Plan Incial", 100000], ["Plan Avanzado", 160000], [ "Plan Institucional", 1000000]]) %>
+            <p>Clave de ventas</p>
+	 		<%= text_field_tag 'ascesor', '', 'data-conekta'=>"card[name]"%>
+
 	    </div>
 	 	<div class="large-7">
 	 	     <p>Nombre del tarjetahabiente</p>
