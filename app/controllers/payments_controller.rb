@@ -35,7 +35,7 @@ skip_before_filter :verify_authenticity_token
       puts '***************Estato del cargo****************'
 		  puts charge.status
       puts '*******************************'
-
+          
 		rescue Conekta::ParameterValidationError => e
 		  puts e.message 
 		#alguno de los parámetros fueron inválidos

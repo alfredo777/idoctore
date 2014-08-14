@@ -3,7 +3,11 @@ class DiagnosticsController < ApplicationController
 
   def create_from_user
     @user = User.find(params[:user_id])
-    @vs = @user.vital_signs.last 
+    if @user.vital_signs.count != 0
+       @vs = @user.vital_signs.last 
+       else
+       @vs = nil
+    end
     @diagnistic = Diagnostic.create(user_id: params[:user_id], interrogation: params[:interrogation], physical_examination: params[:physical_examination], diagnostic_or_clinical_problem: params[:diagnostic_or_clinical_problem], list_of_laboratory_studies: params[:list_of_laboratory_studies], required_therapies: params[:required_therapies], suggested_treatments: params[:suggested_treatments], owner_by: params[:owner_by], chronic: params[:chronic], outstanding: params[:outstanding], serious: params[:serious], inconsequential: params[:inconsequential], vital_signs: @vs.id )
     url = "http://#{HOST}/plain_show/#{@diagnistic.id}"
     @diagnistic.update_attribute :qrcode, url.to_s
