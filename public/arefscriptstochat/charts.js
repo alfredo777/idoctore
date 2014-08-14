@@ -33,7 +33,7 @@ $(function () {
                 }
             },
             tooltip: {
-                valueSuffix: ' millions'
+                valueSuffix: 'Cantidad de Enfermedades'
             },
             plotOptions: {
                 bar: {
