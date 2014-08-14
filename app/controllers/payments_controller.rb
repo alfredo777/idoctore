@@ -15,11 +15,11 @@ skip_before_filter :verify_authenticity_token
     		id = 'cupon_plan'
     else
 	    case params[:amount]
-	   		when 1000
+	   		when 100000
 	   			id = 'plan_inicial'
-	    	when 1600
+	    	when 160000
 	    		id = 'plan_avanzado'
-	    	when 10000
+	    	when 1000000
 	    		id = 'plan_institucional'
 	    end
     end	
