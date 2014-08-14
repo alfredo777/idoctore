@@ -81,6 +81,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  ##### informat key ########
+  INFORMANT_API_KEY = da2f9b170470984027394b82fa6c42c9
+
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
