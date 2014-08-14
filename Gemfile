@@ -6,6 +6,7 @@ gem 'rails', '4.1.0'
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
+    gem "informant-rails"
 
 end
 group :development, :test do
@@ -13,7 +14,6 @@ group :development, :test do
   gem 'webmock'
 end
 
-gem "informant-rails"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
