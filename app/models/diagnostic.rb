@@ -23,7 +23,7 @@ class Diagnostic < ActiveRecord::Base
 	end 
 
 	def qrcode_exec
-		 @qr = RQRCode::QRCode.new(self.qrcode, size: 5)
+		 @qr = RQRCode::QRCode.new(self.qrcode, size: 10)
 	end
     		 
     def create_image_qr
