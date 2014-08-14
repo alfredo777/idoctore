@@ -11,11 +11,21 @@ class ApplicationController < ActionController::Base
   helper_method :expires_now
   helper_method :decripted_code
   helper_method :undecript_code
+  helper_method :action_host
 
  
   def current_user
     if  User.exists?(session[:user])
   	@iuser = User.find(session[:user]) if session[:user] != nil
+    end
+  end
+
+  def action_host
+    case Rails.env
+       when 'production'
+         'http://idoctore.herokuapp.com/'
+       when 'development'
+         'http://localhost:3000'
     end
   end
 
