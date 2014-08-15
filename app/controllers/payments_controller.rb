@@ -16,18 +16,18 @@ skip_before_filter :verify_authenticity_token
 	    case params[:amount]
 	   		when 100000
 	   			@id = 'plan_inicial'
-	   			n_XC = 1000
+	    		session[:valuexx] = 1000
 	    	when 160000
 	    		@id = 'plan_avanzado'
-          n_XC = 1600
+	    		session[:valuexx] = 1600
+
 	    	when 1000000
 	    		@id = 'plan_institucional'
-	    		n_XC = 10000
+	    		session[:valuexx] = 10000
 	    end
 
         session[:acte] = params[:conektaTokenId]
         puts "#{session[:acte]}"
-	      session[:valuexx] = n_XC.to_i 
 	      puts "#{session[:valuexx]}"
         session[:comission] = (session[:valuexx].to_i/100) * 3
         puts "#{session[:comission]}"
