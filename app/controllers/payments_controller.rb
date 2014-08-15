@@ -71,7 +71,9 @@ skip_before_filter :verify_authenticity_token
 	      	session[:comission_seller] = nil
 	      	session[:seller]= nil
 	      	session[:status_payment] = nil
+	      	current_user.update_attributes(payment_method: true)
 	      	flash[:notice] = 'Pago procesado'
+
 	       end
        else
  	      	flash[:notice] = 'Pago no procesado'
