@@ -55,7 +55,6 @@ skip_before_filter :verify_authenticity_token
 		  redirect_to :back
 		#un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
 		end
-    if @status == 'paid'
     	puts '******************** REGISTRANDO PAGO *******************'
     	@p = Payment.create(user_id: current_user.id, payment_global: session[:value], bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
     	puts '********************'
@@ -68,7 +67,7 @@ skip_before_filter :verify_authenticity_token
       	session[:seller]= nil
       	flash[:notice] = 'Pago procesado.'
        end
-    end
+    
 		respond_to do |format|
 		  format.html
 		end
