@@ -15,25 +15,25 @@ skip_before_filter :verify_authenticity_token
       puts "procesando pagos por el vendedor #{ida}"
 	    case params[:amount]
 	   		when 100000
-	   			id = 'plan_inicial'
-	   			n = 1000
+	   			@id = 'plan_inicial'
+	   			@n = 1000
 	    	when 160000
-	    		id = 'plan_avanzado'
-          n = 1600
+	    		@id = 'plan_avanzado'
+          @n = 1600
 	    	when 1000000
-	    		id = 'plan_institucional'
-	    		n = 10000
+	    		@id = 'plan_institucional'
+	    		@n = 10000
 	    end
-        comission = (n.to_i/100) * 3
-      	expiration_ii = Time.now + 367.days 
-      	comission_seller = (n.to_i/100) * 25
+        @comission = (@n.to_i/100) * 3
+      	@expiration_ii = Time.now + 367.days 
+      	@comission_seller = (@n.to_i/100) * 25
 		begin
 		 charge = Conekta::Charge.create({
 		      amount: params[:amount],
 		      currency: 'MXN',
 		      description: "payment suscription #{current_user.name} - #{current_user.id} --> vendedor #{ida}",
 		      card: params[:conektaTokenId],
-		      reference_id: "#{id}"
+		      reference_id: "#{@id}"
 		  })
       
 		rescue Conekta::ParameterValidationError => e
@@ -52,14 +52,15 @@ skip_before_filter :verify_authenticity_token
 		  redirect_to :back
 		#un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
 		end
-		  puts '***************Estato del cargo****************'
-		  puts charge.status
-      puts '*******************************'
-      if charge.status == 'paid'
-      	puts '******************** REGISTRANDO PAGO *******************'
-      	@p = Payment.create(user_id: current_user.id, payment_global: n, bank_commission: comission, final_comission: comission_seller, init: Time.now, expire: expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
-      	puts '********************'
-      end
+		@status = charge.status
+	  puts '***************Estato del cargo****************'
+	  puts charge.status
+    puts '*******************************'
+    if @status == 'paid'
+    	puts '******************** REGISTRANDO PAGO *******************'
+    	@p = Payment.create(user_id: current_user.id, payment_global: @n, bank_commission: @comission, final_comission: @comission_seller, init: Time.now, expire: @expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
+    	puts '********************'
+    end
 		respond_to do |format|
 		  format.html
 		end
