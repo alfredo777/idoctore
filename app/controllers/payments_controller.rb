@@ -26,11 +26,17 @@ skip_before_filter :verify_authenticity_token
 	    end
 
         session[:acte] = params[:conektaTokenId]
-	      session[:valuexx] = n_XC 
+        puts "#{session[:acte]}"
+	      session[:valuexx] = n_XC.to_i 
+	      puts "#{session[:valuexx]}"
         session[:comission] = (session[:valuexx].to_i/100) * 3
+        puts "#{session[:comission]}"
       	session[:expiration_ii] = Time.now + 367.days 
+        puts "#{session[:expiration_ii]}"
       	session[:comission_seller] = (session[:valuexx].to_i/100) * 25
+        puts "#{session[:comission_seller]}"
       	session[:seller]= ida
+        puts "#{session[:seller]}"
 		begin
 		 charge = Conekta::Charge.create({
 		      amount: params[:amount],
