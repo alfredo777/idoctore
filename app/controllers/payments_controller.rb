@@ -16,19 +16,20 @@ skip_before_filter :verify_authenticity_token
 	    case params[:amount]
 	   		when 100000
 	   			@id = 'plan_inicial'
-	   			@n = 1000
+	   			n_XC = 1000
 	    	when 160000
 	    		@id = 'plan_avanzado'
-          @n = 1600
+          n_XC = 1600
 	    	when 1000000
 	    		@id = 'plan_institucional'
-	    		@n = 10000
+	    		n_XC = 10000
 	    end
-        session[:acte] = @id 
-	      session[:value] = @n 
-        session[:comission] = (@n.to_i/100) * 3
+
+        session[:acte] = params[:conektaTokenId]
+	      session[:valuexx] = n_XC 
+        session[:comission] = (session[:valuexx].to_i/100) * 3
       	session[:expiration_ii] = Time.now + 367.days 
-      	session[:comission_seller] = (@n.to_i/100) * 25
+      	session[:comission_seller] = (session[:valuexx].to_i/100) * 25
       	session[:seller]= ida
 		begin
 		 charge = Conekta::Charge.create({
@@ -57,7 +58,7 @@ skip_before_filter :verify_authenticity_token
 		end
     if session[:status_payment] == 'paid'
     	puts '******************** REGISTRANDO PAGO *******************'
-    	@p = Payment.create(user_id: current_user.id, payment_global: session[:value], bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
+    	@p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx], bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
     	puts '********************'
 	    	 if @p.save
 	    	  session[:acte] = nil
