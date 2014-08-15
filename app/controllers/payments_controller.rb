@@ -37,12 +37,12 @@ skip_before_filter :verify_authenticity_token
 		  puts charge.status
       puts '*******************************'
       if charge.status == 'paid'
-      	comission = @n.to_f * 0.03
+      	comission = (@n/100) * 3
       	expiration_ii = Time.now + 367.days 
-      	comission_seller = @n.to_f * 0.25
+      	comission_seller = (@n/100) * 25
 
       	puts '******************** REGISTRANDO PAGO *******************'
-      	@p = Payment.create(user_id: current_user.id, payment_global: @n.to_i, bank_commission: comission, final_comission: comission_seller, init: Time.now, expire: expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
+      	@p = Payment.create(user_id: current_user.id, payment_global: @n, bank_commission: comission, final_comission: comission_seller, init: Time.now, expire: expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
       	puts '********************'
       end
 		rescue Conekta::ParameterValidationError => e
