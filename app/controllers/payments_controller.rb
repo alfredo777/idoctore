@@ -16,15 +16,17 @@ skip_before_filter :verify_authenticity_token
 	    case params[:amount]
 	   		when 100000
 	   			id = 'plan_inicial'
-	   			@n = 1000
+	   			n = 1000
 	    	when 160000
 	    		id = 'plan_avanzado'
-          @n = 1600
+          n = 1600
 	    	when 1000000
 	    		id = 'plan_institucional'
-	    		@n = 10000
+	    		n = 10000
 	    end
-
+        comission = (n.to_i/100) * 3
+      	expiration_ii = Time.now + 367.days 
+      	comission_seller = (n.to_i/100) * 25
 		begin
 		 charge = Conekta::Charge.create({
 		      amount: params[:amount],
@@ -37,12 +39,8 @@ skip_before_filter :verify_authenticity_token
 		  puts charge.status
       puts '*******************************'
       if charge.status == 'paid'
-      	comission = (@n/100) * 3
-      	expiration_ii = Time.now + 367.days 
-      	comission_seller = (@n/100) * 25
-
       	puts '******************** REGISTRANDO PAGO *******************'
-      	@p = Payment.create(user_id: current_user.id, payment_global: @n, bank_commission: comission, final_comission: comission_seller, init: Time.now, expire: expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
+      	@p = Payment.create(user_id: current_user.id, payment_global: n, bank_commission: comission, final_comission: comission_seller, init: Time.now, expire: expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
       	puts '********************'
       end
 		rescue Conekta::ParameterValidationError => e
