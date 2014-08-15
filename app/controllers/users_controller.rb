@@ -470,10 +470,12 @@ end
     end
 
     def filter_from_payment
-      if current_user.payment_method
-         puts "pagado"
-      else
-         redirect_to payments_path
+      if Rails.env == 'production'
+        if current_user.payment_method
+           puts "pagado"
+        else
+           redirect_to payments_path
+        end
       end
     end
     

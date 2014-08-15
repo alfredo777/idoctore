@@ -1,0 +1,6 @@
+<% current_user.payments.each do |pay|%>
+  Total:<%=pay.payment_global%></br>
+  Inicia: <%=pay.init%></br>
+  Expira: <%=pay.expire%></br>
+  Referencia: <%=pay.token_pay%></br>
+<%end%>

@@ -1,3 +1,7 @@
       <div id="container" class="raw white-back w80">
-      <%= render partial: '/users/payments/payment_method' %>
+      <% if current_user.validity %>
+     		 <%= render partial: '/users/payments/payment' %>
+     	 <%else%>
+     		 <%= render partial: '/users/payments/payment_method' %>
+      <%end%>
       </div>
