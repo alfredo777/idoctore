@@ -24,9 +24,12 @@ skip_before_filter :verify_authenticity_token
 	    		@id = 'plan_institucional'
 	    		@n = 10000
 	    end
-        @comission = (@n.to_i/100) * 3
-      	@expiration_ii = Time.now + 367.days 
-      	@comission_seller = (@n.to_i/100) * 25
+        session[:acte] = @id 
+	      session[:value] = @n 
+        session[:comission] = (@n.to_i/100) * 3
+      	session[:expiration_ii] = Time.now + 367.days 
+      	session[:comission_seller] = (@n.to_i/100) * 25
+      	session[:seller]= ida
 		begin
 		 charge = Conekta::Charge.create({
 		      amount: params[:amount],
@@ -52,13 +55,9 @@ skip_before_filter :verify_authenticity_token
 		  redirect_to :back
 		#un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
 		end
-		@status = charge.status
-	  puts '***************Estato del cargo****************'
-	  puts charge.status
-    puts '*******************************'
     if @status == 'paid'
     	puts '******************** REGISTRANDO PAGO *******************'
-    	@p = Payment.create(user_id: current_user.id, payment_global: @n, bank_commission: @comission, final_comission: @comission_seller, init: Time.now, expire: @expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: @id)
+    	@p = Payment.create(user_id: current_user.id, payment_global: session[:value], bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
     	puts '********************'
     end
 		respond_to do |format|
