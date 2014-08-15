@@ -43,7 +43,9 @@
 		   <ul class="right">
 		     <li><%= link_to  t('tabs_from_menu_user.patients'), users_path if current_user.role == 'doctor' %><%= link_to  t('tabs_from_menu_user.doctors'), users_path if current_user.role == 'patient' %></li>
 		     <li><%= link_to  "#{current_user.name}", user_path(current_user.id) %></li>
+		     <% if current_user.role == 'doctor' %>
 		     <li><%= link_to image_tag('payment.png', width:30, height:30), payments_path%> </li>
+		     <%end%>
 		     <li><%= link_to  image_tag('exit.png', width:30, height:30), sign_out_path(:id => current_user.id) %></li>
 		    </ul>
 		  <%end%>
