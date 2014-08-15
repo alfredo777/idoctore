@@ -64,7 +64,8 @@ skip_before_filter :verify_authenticity_token
 		end
     if session[:status_payment] == 'paid'
     	puts '******************** REGISTRANDO PAGO *******************'
-    	@p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx], bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
+    	@p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
+    	puts "#{@p}"
     	puts '********************'
 	    	 if @p.save
 	    	  session[:acte] = nil
