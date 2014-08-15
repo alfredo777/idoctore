@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810161153) do
+ActiveRecord::Schema.define(version: 20140814232342) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -160,6 +160,21 @@ ActiveRecord::Schema.define(version: 20140810161153) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "checked"
+  end
+
+  create_table "payments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "payment_global"
+    t.integer  "bank_commission"
+    t.integer  "final_comission"
+    t.date     "init"
+    t.date     "expire"
+    t.boolean  "comissionpay"
+    t.string   "seller_code"
+    t.string   "method"
+    t.string   "token_pay"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", force: true do |t|

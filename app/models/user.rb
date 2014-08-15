@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
    has_many :notices
    has_many :cupons
    has_many :institutions
+   has_many :payments
 
    ##### validamos por email #####
    

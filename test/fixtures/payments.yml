@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  payment_global: 1
+  bank_commission: 1
+  final_comission: 1
+  init: 2014-08-14
+  expire: 2014-08-14
+  comissionpay: false
+  seller_code: MyString
+
+two:
+  user_id: 1
+  payment_global: 1
+  bank_commission: 1
+  final_comission: 1
+  init: 2014-08-14
+  expire: 2014-08-14
+  comissionpay: false
+  seller_code: MyString
