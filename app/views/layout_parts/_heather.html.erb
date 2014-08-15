@@ -12,14 +12,16 @@
 	    $('#alert_box_simple').html('');
 	}, 3000);
 </script>
-<div class="fixed" style="margin-bottom:50px !important;">
-      <nav class="top-bar">
+<div class="fixed" style="margin-bottom:52px !important;">
+<div class="contain-to-grid" style="width:100% !important;">
+      <nav class="top-bar" data-topbar>        
       <center>
        <div class='large-10'>
         <ul class="title-area">
         <li class="name" style="margin-top: -8px;">
 		  <a href="<%= root_path%>"  class="cursive" style="margin-top:-5px;"><dt><h2 style="color:#A4A4A4;" class="left cursive"> I </h2><h2 class="left cursive" style="color:#086A87;">Doctore</h2></dt></a>
 		</li>
+        <li class="toggle-topbar" style="margin-top:10px; margin-right:10px;"><%= image_tag('menumobile.png', width: 30)%></li>
 		</ul>
 	    <section class="top-bar-section">
 
@@ -44,15 +46,16 @@
 		     <li><%= link_to  t('tabs_from_menu_user.patients'), users_path if current_user.role == 'doctor' %><%= link_to  t('tabs_from_menu_user.doctors'), users_path if current_user.role == 'patient' %></li>
 		     <li><%= link_to  "#{current_user.name}", user_path(current_user.id) %></li>
 		     <% if current_user.role == 'doctor' %>
-		     <li><%= link_to image_tag('payment.png', width:30, height:30), payments_path%> </li>
+		     <li><%= link_to image_tag('payment.png', width:42, height:42), payments_path%> </li>
 		     <%end%>
-		     <li><%= link_to  image_tag('exit.png', width:30, height:30), sign_out_path(:id => current_user.id) %></li>
+		     <li><%= link_to  image_tag('exit.png', width:42, height:42), sign_out_path(:id => current_user.id) %></li>
 		    </ul>
 		  <%end%>
 		</section>
 		</div>
 		</center>
 	    </nav>
+</div>
 </div>
   <% if current_user %>
   <div id="chat_notice_<%=current_user.id%>" style="margin-top:100px; position:fixed; height:auto; margin-left:50px; display:none; z-index:99999;" class="large-3">
