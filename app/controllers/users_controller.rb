@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   ############## filters #####################
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :loggin_filter, only: [:index, :show, :edit]
+  before_filter :filter_from_payment, only: [:index, :show, :edit]
   before_filter :filter_to_update, only: [:edit, :actualize]
   before_filter :filter_view_pofile, only: [:show, :diagnostics]
   before_filter :set_cache_buster
@@ -465,6 +466,14 @@ end
        else
         flash[:notice] = 'Usted no esta autorizado para editar este usuario.'
         redirect_to user_path(@user.id)
+      end
+    end
+
+    def filter_from_payment
+      if current_user.payment_method
+         puts "pagado"
+      else
+         redirect_to payments_path
       end
     end
     
