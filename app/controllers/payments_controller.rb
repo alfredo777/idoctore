@@ -38,7 +38,7 @@ skip_before_filter :verify_authenticity_token
 		      card: params[:conektaTokenId],
 		      reference_id: "#{@id}"
 		  })
-      
+      session[:status_payment] = charge.status
 		rescue Conekta::ParameterValidationError => e
 		  puts e.message 
 		  flash[:notice] = "Error al intentar pagar algúno de los parámetros es invalido"
@@ -55,19 +55,23 @@ skip_before_filter :verify_authenticity_token
 		  redirect_to :back
 		#un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
 		end
+    if session[:status_payment] == 'paid'
     	puts '******************** REGISTRANDO PAGO *******************'
     	@p = Payment.create(user_id: current_user.id, payment_global: session[:value], bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
     	puts '********************'
-    	 if @p.save
-    	  session[:acte] = nil
-	      session[:value] = nil
-        session[:comission] = nil
-      	session[:expiration_ii] = nil
-      	session[:comission_seller] = nil
-      	session[:seller]= nil
-      	flash[:notice] = 'Pago procesado.'
-       end
-    
+	    	 if @p.save
+	    	  session[:acte] = nil
+		      session[:value] = nil
+	        session[:comission] = nil
+	      	session[:expiration_ii] = nil
+	      	session[:comission_seller] = nil
+	      	session[:seller]= nil
+	      	session[:status_payment] = nil
+	      	flash[:notice] = 'Pago procesado'
+	       end
+       else
+ 	      	flash[:notice] = 'Pago no procesado'
+    end
 		respond_to do |format|
 		  format.html
 		end
