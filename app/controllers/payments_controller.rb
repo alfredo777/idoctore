@@ -35,14 +35,7 @@ skip_before_filter :verify_authenticity_token
 		      card: params[:conektaTokenId],
 		      reference_id: "#{id}"
 		  })
-      puts '***************Estato del cargo****************'
-		  puts charge.status
-      puts '*******************************'
-      if charge.status == 'paid'
-      	puts '******************** REGISTRANDO PAGO *******************'
-      	@p = Payment.create(user_id: current_user.id, payment_global: n, bank_commission: comission, final_comission: comission_seller, init: Time.now, expire: expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
-      	puts '********************'
-      end
+      
 		rescue Conekta::ParameterValidationError => e
 		  puts e.message 
 		  flash[:notice] = "Error al intentar pagar algúno de los parámetros es invalido"
@@ -59,6 +52,14 @@ skip_before_filter :verify_authenticity_token
 		  redirect_to :back
 		#un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
 		end
+		  puts '***************Estato del cargo****************'
+		  puts charge.status
+      puts '*******************************'
+      if charge.status == 'paid'
+      	puts '******************** REGISTRANDO PAGO *******************'
+      	@p = Payment.create(user_id: current_user.id, payment_global: n, bank_commission: comission, final_comission: comission_seller, init: Time.now, expire: expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
+      	puts '********************'
+      end
 		respond_to do |format|
 		  format.html
 		end
