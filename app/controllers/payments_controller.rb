@@ -21,7 +21,7 @@ skip_before_filter :verify_authenticity_token
 	    	when 1000000
 	    		@id = 'plan_institucional'
 	    end
-        session[:valuexx] = (params[:amount].to_i / 10).to_i
+        session[:valuexx] = (params[:amount].to_i / 100).to_i
         session[:acte] = params[:conektaTokenId]
         puts "#{session[:acte]}"
 	      puts "#{session[:valuexx]}"
