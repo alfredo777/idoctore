@@ -58,7 +58,7 @@ skip_before_filter :verify_authenticity_token
     puts '*******************************'
     if @status == 'paid'
     	puts '******************** REGISTRANDO PAGO *******************'
-    	@p = Payment.create(user_id: current_user.id, payment_global: @n, bank_commission: @comission, final_comission: @comission_seller, init: Time.now, expire: @expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: id)
+    	@p = Payment.create(user_id: current_user.id, payment_global: @n, bank_commission: @comission, final_comission: @comission_seller, init: Time.now, expire: @expiration_ii, comissionpay: false, seller_code: params[:seller], method: 'Card', token_pay: @id)
     	puts '********************'
     end
 		respond_to do |format|
