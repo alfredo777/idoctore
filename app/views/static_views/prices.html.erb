@@ -1,2 +1,59 @@
-<h1>StaticViews#prices</h1>
-<p>Find me in app/views/static_views/prices.html.erb</p>
+<div class="raw_prices" style="height:250px; margin-bottom:30px;">
+  <div class="skull_skin" style="height:250px; ">
+    <div class="row">
+        <center>
+		<h1 >Precios reales no inflados</h1>
+		<h4 >Porque nuestro deseo es trabajar contigo </br> te damos mas valor por tu dinero, entra y comprueba los mejores precios del mercado.</h4>
+		</center>
+    </div>
+  </div>
+  <%= image_tag('bestprice.png', width:160, heigh:160, class: 'right', style: 'margin-top:-80px; -zindex:9999; position:relative; margin-right:150px;')%>
+</div>
+<div class="row" style="height:650px;">
+<ul class="pricing-table large-4 left">
+  <li class="title">Plan Inicial</li>
+  <li class="price">$89 USD Anual</li>
+  <li class="description">Un increible plan para ti que te permite albergar la información de 100 pacientes </br> $0.89 USD por paciente.</li>
+  <li class="bullet-item">100 pacientes</li>
+  <li class="bullet-item">Almacenamiento ilimitado</li>
+  <li class="bullet-item">Manejo de expedientes</li>
+  <li class="bullet-item">Manejo de citas médicas</li>
+  <li class="bullet-item">Chat con tus pacientes </li>
+  <li class="bullet-item">Almacenamiento ilimitado</li>
+  <li class="bullet-item"><%=image_tag('x.png', width: 10, height:10)%></li>
+  <li class="bullet-item"><%=image_tag('x.png', width: 10, height:10)%></li>
+  <li class="bullet-item"><%=image_tag('x.png', width: 10, height:10)%></li>
+  <li class="cta-button"><%= link_to t('Comprar ahora'), new_user_path, class: 'button' %></li>
+</ul>
+<ul class="pricing-table large-4 left">
+  <li class="title">Plan Avanzado</li>
+  <li class="price">$140 USD Anual</li>
+  <li class="description">Un increible plan para ti doctor que estas iniciando una clinica pequeña, este plan te da hasta 250 pacientes $0.56 USD por paciente</li>
+  <li class="bullet-item">250 pacientes</li>
+  <li class="bullet-item">Almacenamiento ilimitado</li>
+  <li class="bullet-item">Manejo de expedientes</li>
+  <li class="bullet-item">Manejo de citas médicas</li>
+  <li class="bullet-item">Chat con tus pacientes </li>
+  <li class="bullet-item">Almacenamiento ilimitado</li>
+  <li class="bullet-item"><%=image_tag('x.png', width: 10, height:10)%></li>
+  <li class="bullet-item"><%=image_tag('x.png', width: 10, height:10)%></li>
+  <li class="bullet-item"><%=image_tag('x.png', width: 10, height:10)%></li>
+
+  <li class="cta-button"><%= link_to t('Comprar ahora'), new_user_path, class: 'button' %></li>
+</ul>
+<ul class="pricing-table large-4 left" style="margin-top:-50px;">
+  <li class="title">Plan Institucional</li>
+  <li class="price">Contactanos</li>
+  <li class="description">Tu que eres una gran institución </br> adquiere este plan basado </br>en tus necesidades.</li>
+  <li class="bullet-item"> Los pacientes que necesites</li>
+  <li class="bullet-item">Almacenamiento ilimitado</li>
+  <li class="bullet-item">Manejo de expedientes</li>
+  <li class="bullet-item">Manejo de citas médicas</li>
+  <li class="bullet-item">Chat con tus pacientes </li>
+  <li class="bullet-item">Almacenamiento ilimitado</li>
+  <li class="bullet-item">Panel de manejo de doctores </li>
+  <li class="bullet-item">Panel de manejo de pacientes </li>
+  <li class="bullet-item">Analítics</li>
+  <li class="cta-button"><a class="button" href="#">Contacto</a></li>
+</ul>
+</div>

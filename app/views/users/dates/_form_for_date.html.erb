@@ -6,7 +6,7 @@
         <%= time_field_tag 'init_time_hour'%>
         <%= label_tag 'Razón' %>
         <%= text_area_tag 'request', '', rows: 10, cols: 25  %>
-        <%= label_tag 'Confirmación' %>
+        <%= label_tag 'Con el paciente:' %>
         <%= hidden_field_tag 'doctor_id', current_user.id %>
         <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
         <div><%= submit_tag 'Solicitar Cita', :class => 'button' %></div>

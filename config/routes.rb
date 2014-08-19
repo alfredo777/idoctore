@@ -130,9 +130,10 @@ Rails.application.routes.draw do
   get 'post_id/:id', :to => 'static_views#post',:as => :post_in
   get 'load_view/:id', :to => 'static_views#visualizer',:as => :visualizer
   get 'static_views/home'
-  get 'static_views/prices'
-  get 'static_views/register'
-  get 'static_views/about_us'
+  get 'static_views/prices', :as => :prices
+  get 'static_views/register', :as => :register
+  get 'static_views/about_us', :as => :about_us
+  get 'static_views/what_work', :as => :what_work
 
   ######## Admin ############
 
