@@ -1,54 +1,51 @@
-  <div style="margin-left:1%; margin-right:1%; width:100%;">
-   <div class="row">
+<div style="margin-left:1%; margin-right:1%; width:100%;">
+  <div class="row">
     <div class="left margin-regular">
-    <table>
-      <thead>
-        <tr>
-        <th width="280"><%= t('vital_signs.vital_signs')%></th>
-        </tr>
-      </thead>
-       <tbody>
-        <% @user_vital_signs.reverse.each do |vs| %>
-        	<%= render partial: '/vital_signs/show', locals: {vs: vs}%>
-        <%end%>
-       </tbody>
-    </table>
-    <p><%= link_to t('simple.see_more') + '  →', vital_signs_inx_path(@user.id) , :class => 'small secondary button'%></p>
-    </div>
-
-    <div class="left margin-regular">
-    <table>
-      <thead>
-        <tr>
-        <th width="280"><%= t('diagnostics.diagnostics')%></th>
-        </tr>
-      </thead>
-       <tbody>
-         <% @user_diagnostics.reverse.each do |dt| %>
-            <%= render partial: '/diagnostics/show', locals: {dt: dt , all_options: false}%>
-         <%end%>
-      </tbody>
-    </table>
-    <p><%= link_to t('simple.see_more') + '  →', diagnostics_users_path(@user.id) , :class => 'small secondary button'%> </p>
-
+      <table>
+        <thead>
+          <tr>
+            <th width="280"><%= t('vital_signs.vital_signs')%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user_vital_signs.reverse.each do |vs| %>
+          <%= render partial: '/vital_signs/show', locals: {vs: vs}%>
+          <%end%>
+        </tbody>
+      </table>
+      <p><%= link_to t('simple.see_more') + '  →', vital_signs_inx_path(@user.id) , :class => 'small secondary button'%></p>
     </div>
     <div class="left margin-regular">
-    <table>
-      <thead>
-        <tr>
-        <th width="280">Análisis Clínicos</th>
-        </tr>
-      </thead>
-       <tbody>
-       <% @user_files.reverse.each do |an| %>
-            <%= render partial: '/single_files/show', locals: {an: an}%>
-       <%end%>
-      </tbody>
-    </table>
-    <p><%= link_to t('simple.see_more') + '  →', single_files_inx_path(@user.id) , :class => 'small secondary button'%></p>
-
+      <table>
+        <thead>
+          <tr>
+            <th width="280"><%= t('diagnostics.diagnostics')%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user_diagnostics.reverse.each do |dt| %>
+          <%= render partial: '/diagnostics/show', locals: {dt: dt , all_options: false}%>
+          <%end%>
+        </tbody>
+      </table>
+      <p><%= link_to t('simple.see_more') + '  →', diagnostics_users_path(@user.id) , :class => 'small secondary button'%> </p>
     </div>
+    <div class="left margin-regular">
+      <table>
+        <thead>
+          <tr>
+            <th width="280">Análisis Clínicos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user_files.reverse.each do |an| %>
+          <%= render partial: '/single_files/show', locals: {an: an}%>
+          <%end%>
+        </tbody>
+      </table>
+      <p><%= link_to t('simple.see_more') + '  →', single_files_inx_path(@user.id) , :class => 'small secondary button'%></p>
     </div>
   </div>
+</div>
 <hr>
 <%= render partial: '/users/calendar_for_user',  locals: {user: @user, tasks: tasks,  date: @date, inprofile: true}%>

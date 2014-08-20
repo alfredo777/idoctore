@@ -1,20 +1,18 @@
-    <p class="red-back"><%= user.name %></p>
-    <div class=" right-profile-menu actualization-back " >
-    <div class="row">
-	    <div class="large-3 left">
-	   		 <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
-	    </div>
-	    <% if user.sex != nil  %>
-	    <p>Sexo: <%= 'Hombre' if user.sex == 'male' %> <%= 'Mujer' if user.sex == 'female' %></p>
-	    <%end%>
-	    <p>Edad: <%= user.ageu %></p>
-	    <%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>
+<p class="red-back"><%= user.name %></p>
+<div class=" right-profile-menu actualization-back " >
+	<div class="row">
+		<div class="large-3 left">
+			<%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
+		</div>
+		<% if user.sex != nil  %>
+		<p>Sexo: <%= 'Hombre' if user.sex == 'male' %> <%= 'Mujer' if user.sex == 'female' %></p>
+		<%end%>
+		<p>Edad: <%= user.ageu %></p>
+		<%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>
 	</div>
 	<div class="row">
-	   <div class="large-10">
-	    <div id="chart_sics" data-valuesfc='[<%=cronic%>, <%= outstanding %>, <%=serious%>, <%=inconsequential%>]'></div>
-	    </div>
-	   </div>
-    </div>
-
-    
+		<div class="large-10">
+			<div id="chart_sics" data-valuesfc='[<%=cronic%>, <%= outstanding %>, <%=serious%>, <%=inconsequential%>]'></div>
+		</div>
+	</div>
+</div>

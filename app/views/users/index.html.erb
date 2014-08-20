@@ -1,36 +1,36 @@
 <% case current_user.role %>
-   <% when 'doctor' %>
-   <div class="menu-select">
+<% when 'doctor' %>
+<div class="menu-select">
 	<a class="right button secondary" id="patient_create" data-target="newpatient" >Nuevo paciente</a>
-	 <p style="font-size:30px;">Lista de pacientes</p>
-	</div>
-	<div>
+	<p style="font-size:30px;">Lista de pacientes</p>
+</div>
+<div>
 	<div id="newpatient" class="row invite_container" style="display:none;">
-   	 <%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
-    </div>
-    </div>
-	<div class="row white-back">
-	  <%= render partial: '/users/call_users', locals: { users: @user_patients } %>
+		<%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
 	</div>
-	 <center>
-	  <ul class="pagination" style="margin-top:50px;">
-	  <%= will_paginate @user_patients %>
-	  </ul>
-	 </center>
-   <% when 'patient'%>
-	<h2>Lista de doctores</h2>
-	<div class=" row white-back">
-	  <%= render partial: '/users/call_users', locals: { users: @user_doctors } %>
-	</div>
-     <center>
-	  <ul class="pagination" style="margin-top:50px;">
-	  <%= will_paginate @user_doctors %>
-	  </ul>
-	 </center>
+</div>
+<div class="row white-back">
+	<%= render partial: '/users/call_users', locals: { users: @user_patients } %>
+</div>
+<center>
+<ul class="pagination" style="margin-top:50px;">
+	<%= will_paginate @user_patients %>
+</ul>
+</center>
+<% when 'patient'%>
+<h2>Lista de doctores</h2>
+<div class=" row white-back">
+	<%= render partial: '/users/call_users', locals: { users: @user_doctors } %>
+</div>
+<center>
+<ul class="pagination" style="margin-top:50px;">
+	<%= will_paginate @user_doctors %>
+</ul>
+</center>
 <%end%>
 <script type="text/javascript">
 $('#patient_create').click(function(){
 	var datax = $('#patient_create').data()
-    $('#'+datax.target).toggle();
+$('#'+datax.target).toggle();
 });
 </script>

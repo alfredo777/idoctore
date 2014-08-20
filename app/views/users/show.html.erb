@@ -1,36 +1,27 @@
-  <script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
-
-  <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices} %>
-  <div class="row">
-   <div class="left large-3" style="display:none;"> 
-      <ul class="side-nav ">
-        <% if @user.id == current_user.id && current_user.role == 'doctor' %>
-           <li class="acordion-lile"><%= link_to t('tabs_from_menu_user.patients'), patients_path %></li>
-        <%end%>
-        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.record')%></a></li>
-        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.medical_record')%></a></li>
-        <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.treatment')%></a></li>
-        <li class="acordion-lile"><%= link_to 'Editar mi perfíl', edit_user_path(current_user.id)%></li>
-       </ul>
-    </div>
+<script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
+<%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices} %>
+<div class="row">
+  <div class="left large-3" style="display:none;">
+    <ul class="side-nav ">
+      <% if @user.id == current_user.id && current_user.role == 'doctor' %>
+      <li class="acordion-lile"><%= link_to t('tabs_from_menu_user.patients'), patients_path %></li>
+      <%end%>
+      <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.record')%></a></li>
+      <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.medical_record')%></a></li>
+      <li class="acordion-lile"><a href="#"><%= t('tabs_from_menu_user.treatment')%></a></li>
+      <li class="acordion-lile"><%= link_to 'Editar mi perfíl', edit_user_path(current_user.id)%></li>
+    </ul>
   </div>
-
-
-  <% if @user.role == 'patient' %>
-    <script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
-       <%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
-      <center>
-        <p class="red-back" style="width:100%;">Últimas actualizaciones del Usuario</p>
-        <div class="actualization-back w_background" style="width:100%;">
-          <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs, tasks: @tasks} %>
-        <div id="container_of_parts" ></div>
-      </center>
-    <%else%>
-        <%= render partial: '/users/doctor_reference', locals: {user: @user, tasks: @tasks} %>
-  <%end%>
-
- 
-
-
-
-
+</div>
+<% if @user.role == 'patient' %>
+<script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
+<%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
+<center>
+<p class="red-back" style="width:100%;">Últimas actualizaciones del Usuario</p>
+<div class="actualization-back w_background" style="width:100%;">
+  <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs, tasks: @tasks} %>
+  <div id="container_of_parts" ></div>
+  </center>
+  <%else%>
+  <%= render partial: '/users/doctor_reference', locals: {user: @user, tasks: @tasks} %>
+<%end%>

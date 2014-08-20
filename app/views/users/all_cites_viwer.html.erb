@@ -1,9 +1,8 @@
-  <script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
+<script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
 <div class="row" style="height:74px;">
-  <div class="large-5 left">
-  <h3>Manejador de citas</h3>
-  </div>
-   <%= render partial: '/layout_parts/notices', locals: {user: @user, notices: @notices}%>
+	<div class="large-5 left">
+		<h3>Manejador de citas</h3>
+	</div>
+	<%= render partial: '/layout_parts/notices', locals: {user: @user, notices: @notices}%>
 </div>
-
- <%= render partial: '/users/calendar_for_user',  locals: {user: @user, tasks: @tasks,  date: @date, inprofile: false}%>
+<%= render partial: '/users/calendar_for_user',  locals: {user: @user, tasks: @tasks,  date: @date, inprofile: false}%>

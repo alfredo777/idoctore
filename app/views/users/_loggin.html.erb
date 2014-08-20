@@ -1,24 +1,21 @@
- <fieldset>
-   <legend><%= t('user.login') %></legend>
-   <%= form_tag('/users/create_session') do -%>
-
-	  <p  style='color:#1c80cf;'><%=  t('user.mail') %></p>
-		  <%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email'  %>
-		  <small id="message_error_email" class="error" style="margin-top: -16px; display:none;"></small>	   
-	 <p  style='color:#1c80cf;'><%=  t('user.password') %></p>
-		 <%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
-  		<small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
-
-	  
-	  <div><%= submit_tag t('user.init'), :class => 'button' %></div>
+<fieldset>
+  <legend><%= t('user.login') %></legend>
+  <%= form_tag('/users/create_session') do -%>
+  <p  style='color:#1c80cf;'><%=  t('user.mail') %></p>
+  <%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email'  %>
+  <small id="message_error_email" class="error" style="margin-top: -16px; display:none;"></small>
+  <p  style='color:#1c80cf;'><%=  t('user.password') %></p>
+  <%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
+  <small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
+  
+  <div><%= submit_tag t('user.init'), :class => 'button' %></div>
   <% end -%>
   <%= link_to t('user.register'), new_user_path %></br>
   <%= link_to t('user.missing_password'), missing_password_path %></br>
 </fieldset>
-
 <script type="text/javascript">
-    $(document).ready(function(){
-      VAlForValitx('password');
-      VAlForValitx('email');
-    }); 
+$(document).ready(function(){
+VAlForValitx('password');
+VAlForValitx('email');
+});
 </script>

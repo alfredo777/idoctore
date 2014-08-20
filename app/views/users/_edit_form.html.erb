@@ -1,63 +1,60 @@
 <%= render partial: '/users/avatars', locals: {user: @user, edit: true}%>
 <%= form_tag("/users/#{@user.id}/actualize", :multipart => true) do -%>
-  <%= label_tag 'Avatar' %>
-  <%= file_field_tag 'file'  %>
-  <%= label_tag 'Nombre' %>
-  <%= text_field_tag 'name', @user.name, :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
-  <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
-  <%= label_tag 'Email' %>
-  <%= email_field_tag 'email', @user.email, :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'  %>
-  <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
-  <%= label_tag 'Cumpleaños (día/mes/año)-(01/01/2014)' %>
-  <%= date_field_tag 'birthday', @user.birthday %>
-  <div class="row">
-    <div class="small-2  left" ><%= label_tag 'Hombre' %>
-    <%= radio_button_tag 'sex', 'male' %></div>
-    <div class="small-2  left" ><%= label_tag 'Mujer'%>
-    <%= radio_button_tag 'sex', 'female' %></div>
-  </div>
-  <% if current_user.role == 'doctor' %>
-  <%= label_tag 'Cedula profesional' %>
-  <%= text_field_tag 'cadre_card', @user.cadre_card, :class => 'valitx', 'data-message' => 'El de la cedula email no puede quedar vacio.', 'data-target' => 'message_error_cadre_card' %>
-  <small id="message_error_cadre_card" class="error" style="margin-top: -16px; display:none;"></small>
-  <%= label_tag 'Dirección del consultorio' %>
-  <%= text_area_tag 'street_addres', @user.street_addres%>
-  <%= label_tag 'Universidad en la que estudio' %>
-  <%= text_field_tag 'college', @user.college%>
-  <%end%>
-  <br/>
-  <h3>Cambiar password</h3>
-  <%= label_tag 'Contraseña' %>
-  <%= password_field_tag 'password', nil %>
-  <%= label_tag 'Confirmación de contraseña' %>
-  <%= password_field_tag 'confirm_password', nil %>
-  <div><%= submit_tag 'Actualizar', :class => 'button' %></div>
+<%= label_tag 'Avatar' %>
+<%= file_field_tag 'file'  %>
+<%= label_tag 'Nombre' %>
+<%= text_field_tag 'name', @user.name, :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+<small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Email' %>
+<%= email_field_tag 'email', @user.email, :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'  %>
+<small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Cumpleaños (día/mes/año)-(01/01/2014)' %>
+<%= date_field_tag 'birthday', @user.birthday %>
+<div class="row">
+  <div class="small-2  left" ><%= label_tag 'Hombre' %>
+  <%= radio_button_tag 'sex', 'male' %></div>
+  <div class="small-2  left" ><%= label_tag 'Mujer'%>
+  <%= radio_button_tag 'sex', 'female' %></div>
+</div>
+<% if current_user.role == 'doctor' %>
+<%= label_tag 'Cedula profesional' %>
+<%= text_field_tag 'cadre_card', @user.cadre_card, :class => 'valitx', 'data-message' => 'El de la cedula email no puede quedar vacio.', 'data-target' => 'message_error_cadre_card' %>
+<small id="message_error_cadre_card" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Dirección del consultorio' %>
+<%= text_area_tag 'street_addres', @user.street_addres%>
+<%= label_tag 'Universidad en la que estudio' %>
+<%= text_field_tag 'college', @user.college%>
+<%end%>
+<br/>
+<h3>Cambiar password</h3>
+<%= label_tag 'Contraseña' %>
+<%= password_field_tag 'password', nil %>
+<%= label_tag 'Confirmación de contraseña' %>
+<%= password_field_tag 'confirm_password', nil %>
+<div><%= submit_tag 'Actualizar', :class => 'button' %></div>
 <% end -%>
-
 <script>
-  function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $("#file").change(function(){
-        readURL(this);
-  }); 
-
-  $(document).ready(function(){
-    VAlForValitx('name');
-    VAlForValitx('email');
-  });         
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+reader.onload = function (e) {
+$('#blah').attr('src', e.target.result);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+$("#file").change(function(){
+readURL(this);
+});
+$(document).ready(function(){
+VAlForValitx('name');
+VAlForValitx('email');
+});
 </script>
 <% if current_user.role == 'doctor' %>
 <script type="text/javascript">
-  $(document).ready(function(){
-      VAlForValitx('cadre_card');
-  });
+$(document).ready(function(){
+VAlForValitx('cadre_card');
+});
 </script>
 <%end%>

@@ -3,20 +3,19 @@
 <table>
   <thead>
     <tr>
-    <th width="300"><%= t('diagnostics.diagnostics')%></th>
-    <% if current_user.role == 'doctor' %>
-    <th width="200"> <%= t('diagnostics.request_deletion')%></th>
-    <%end%>
+      <th width="300"><%= t('diagnostics.diagnostics')%></th>
+      <% if current_user.role == 'doctor' %>
+      <th width="200"> <%= t('diagnostics.request_deletion')%></th>
+      <%end%>
     </tr>
   </thead>
-   <tbody>
-     <% @diagnostics.reverse.each do |dt| %>
-        <%= render partial: '/diagnostics/show', locals: {dt: dt, all_options: true}%>
-     <%end%>
+  <tbody>
+    <% @diagnostics.reverse.each do |dt| %>
+    <%= render partial: '/diagnostics/show', locals: {dt: dt, all_options: true}%>
+    <%end%>
   </tbody>
 </table>
-  <ul class="pagination">
-    <%= will_paginate @diagnostics %>
-  </ul>
+<ul class="pagination">
+  <%= will_paginate @diagnostics %>
+</ul>
 </center>
-

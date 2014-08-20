@@ -1,31 +1,29 @@
 <ul>
-<% users.each do |user| %>
-
+  <% users.each do |user| %>
   <% if user != current_user %>
-    <li class='bacground-solider'>
+  <li class='bacground-solider'>
     <%= link_to 'Eliminar Relación', local_delete_relation_path(other: user.id)%>
     <% if validate_accepted_patient(current_user,user) %>
-      <%= link_to user_path(user.id) do %>
-      <div class="large-11">
-          <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
-          <center><%= truncate( user.name, :length => 15 )%></center>
+    <%= link_to user_path(user.id) do %>
+    <div class="large-11">
+      <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
+      <center><%= truncate( user.name, :length => 15 )%></center>
       <%end%>
-          <center><% if user.role == 'patient' %><span class="success label"><%= 'Es tu paciente' %></span><%end%></center>
-          <center><% if user.role == 'doctor' %><span class="success label"><%= 'Es tu doctor'%></span><%end%></center>
+      <center><% if user.role == 'patient' %><span class="success label"><%= 'Es tu paciente' %></span><%end%></center>
+      <center><% if user.role == 'doctor' %><span class="success label"><%= 'Es tu doctor'%></span><%end%></center>
+    </div>
+    <%else%>
+    <div class="large-11">
+      <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
+      <center><%= truncate( user.name, :length => 15 )%></center>
+      <center><p><%= status_if_request_patient_doctor_exist(current_user, user).html_safe %></p></center>
+      <div id="modal_<%=user.id%>" class="reveal-modal" data-reveal>
+        <%= render partial: '/users/invite_patient', locals: {email: user.email, name: user.name, sex: user.sex} %>
+        <a class="close-reveal-modal">&#215;</a>
       </div>
-        <%else%>
-       <div class="large-11">
-        <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
-        <center><%= truncate( user.name, :length => 15 )%></center>
-        <center><p><%= status_if_request_patient_doctor_exist(current_user, user).html_safe %></p></center>
-        <div id="modal_<%=user.id%>" class="reveal-modal" data-reveal>
-             <%= render partial: '/users/invite_patient', locals: {email: user.email, name: user.name, sex: user.sex} %>
-              <a class="close-reveal-modal">&#215;</a>
-        </div>
-       </div>
-
+    </div>
     <%end%>
-   </li>
+  </li>
   <%end%>
-<%end%>
+  <%end%>
 </ul>
