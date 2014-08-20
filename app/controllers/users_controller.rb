@@ -471,10 +471,12 @@ end
 
     def filter_from_payment
       if Rails.env == 'production'
-        if current_user.payment_method
-           puts "pagado"
-        else
-           redirect_to payments_path
+        if current_user.role == 'doctor'
+          if current_user.payment_method
+             puts "pagado"
+          else
+             redirect_to payments_path
+          end
         end
       end
     end
