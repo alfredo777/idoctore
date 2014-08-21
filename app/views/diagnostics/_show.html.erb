@@ -2,7 +2,7 @@
   <td> 
    <div class="slide-p" >
      <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
-        <%= t('diagnostics.diagnostics')%> <%= dt.created_at %>
+        <%= t('diagnostics.diagnostics')%> <%= dt.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
      <%end%>
     </div>
    </td>

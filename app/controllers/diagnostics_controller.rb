@@ -14,6 +14,7 @@ class DiagnosticsController < ApplicationController
     @diagnistic.update_attribute :qrcode, url.to_s
 
     if @diagnistic.save
+      @mailer = UserMailer.notification_created_diagnostic(@user).deliver
       flash[:notice] = 'Se ha creado correctamente el diagnóstico'
       redirect_to user_path(params[:user_id])
     else

@@ -2,7 +2,7 @@
   <td> 
      <div class="slide-p" >
 	   <%= link_to visualizer_path(an.id, :type => 'analisis'), remote: true do %>
-	  	 Análisis del: <%= an.created_at %>
+	  	 Análisis del: <%= an.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
 	   <%end%>
      </div>
   </td>

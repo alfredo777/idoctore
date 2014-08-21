@@ -1,80 +1,77 @@
 <h2>Datos que yo he agregado </h2>
-
-      <center>
-        <ul class="button-group">
-          <li><%=link_to 'Diagnosticos', all_create_path(typex: 'diacnostic'), class: 'button'%></li>
-          <li><%=link_to 'Signos', all_create_path(typex: 'signs'), class: 'button'%></li>
-          <li><%=link_to 'Análisis', all_create_path(typex: 'analisis'), class: 'button'%></li>
-        </ul>
-        <% if params[:typex] == nil%>
-       <div class="large-10 columns" style="background:#fff; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
-       <h4 class="subheader">Diagnósticos</h4>   
-           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
-           <% @diagnostics.each do |dt|%>
-           <div class="slide-p" >
-             <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
-                <%= t('diagnostics.diagnostico')%> de <%= dt.user.name %>
-             <%end%>
-            </div>
-           <%end%>
-         </div>
-         <ul class="pagination" style="margin-top:50px;" >
-         <%= will_paginate @diagnostics %>
-         </ul>
-       </div> 
-       <%end%>
-        <% if params[:typex] == 'diacnostic'%>
-       <div class="large-10 columns" style="background:#fff; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
-       <h4 class="subheader">Diagnósticos</h4>   
-           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
-	         <% @diagnostics.each do |dt|%>
-				   <div class="slide-p" >
-				     <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
-				        <%= t('diagnostics.diagnostico')%> de <%= dt.user.name %>
-				     <%end%>
-				    </div>
-	         <%end%>
-	       </div>
-         <ul class="pagination" style="margin-top:50px;" >
-         <%= will_paginate @diagnostics %>
-         </ul>
-       </div> 
-       <%end%>
-       <% if params[:typex] == 'signs'%>
-       <div class="large-10 columns" style="background:#fff; padding:15px; ; min-height:350px; border:solid 4px #81BEF7;">  
-         <h4 class="subheader">Signos Vitales</h4>    
-           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
-         <% @user_signs.each do |vs|%>
-		     <div class="slide-p" >
-			    <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
-			       Signos de <%= vs.user.name %>
-			    <%end%>
-		     </div>
-         <%end%>
-         </div>
-         <ul class="pagination" style="margin-top:50px;" >
-              <%= will_paginate @single_file %>
-           </ul>
-       </div>
-        <%end%>
-        <% if params[:typex] == 'analisis'%>
-       <div class="large-10 columns" style="background:#fff; padding:10px; ; min-height:350px; border:solid 4px #81BEF7;">    
-        <h4 class="subheader">Archivos de Análisis</h4>  
-           <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
-         <% @single_file.each do |an| %>
-			     <div class="slide-p" >
-				   <%= link_to visualizer_path(an.id, :type => 'analisis'), remote: true do %>
-				  	 Análisis de: <%= an.user.name %>
-				   <%end%>
-			     </div>
-         <%end%>
-         </div>
-         <ul class="pagination" style="margin-top:50px;" >
-            <%= will_paginate @user_signs %>
-           </ul>
-       </div>
-     
-      </center>
-
+<center>
+<ul class="button-group">
+  <li><%=link_to 'Diagnosticos', all_create_path(typex: 'diacnostic'), class: 'button'%></li>
+  <li><%=link_to 'Signos', all_create_path(typex: 'signs'), class: 'button'%></li>
+  <li><%=link_to 'Análisis', all_create_path(typex: 'analisis'), class: 'button'%></li>
+</ul>
+<% if params[:typex] == nil%>
+<div class="large-10 columns" style="background:#fff; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
+  <h4 class="subheader">Diagnósticos</h4>
+  <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
+    <% @diagnostics.each do |dt|%>
+    <div class="slide-p" >
+      <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
+      <%= t('diagnostics.diagnostico')%> de <%= dt.user.name.truncate(16, separator: /\s/) %> el <%= dt.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>
       <%end%>
+    </div>
+    <%end%>
+  </div>
+  <ul class="pagination" style="margin-top:50px;" >
+    <%= will_paginate @diagnostics %>
+  </ul>
+</div>
+<%end%>
+<% if params[:typex] == 'diacnostic'%>
+<div class="large-10 columns" style="background:#fff; padding:15px; min-height:350px; border:solid 4px #81BEF7;">
+  <h4 class="subheader">Diagnósticos</h4>
+  <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
+    <% @diagnostics.each do |dt|%>
+    <div class="slide-p" >
+      <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
+      <%= t('diagnostics.diagnostico')%> de <%= dt.user.name.truncate(16, separator: /\s/) %> el <%= dt.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+  <ul class="pagination" style="margin-top:50px;" >
+    <%= will_paginate @diagnostics %>
+  </ul>
+</div>
+<%end%>
+<% if params[:typex] == 'signs'%>
+<div class="large-10 columns" style="background:#fff; padding:15px; ; min-height:350px; border:solid 4px #81BEF7;">
+  <h4 class="subheader">Signos Vitales</h4>
+  <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
+    <% @user_signs.each do |vs|%>
+    <div class="slide-p" >
+      <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
+      Signos de <%= vs.user.name.truncate(16, separator: /\s/) %> el <%= vs.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+  <ul class="pagination" style="margin-top:50px;" >
+    <%= will_paginate @single_file %>
+  </ul>
+</div>
+<%end%>
+<% if params[:typex] == 'analisis'%>
+<div class="large-10 columns" style="background:#fff; padding:10px; ; min-height:350px; border:solid 4px #81BEF7;">
+  <h4 class="subheader">Archivos de Análisis</h4>
+  <div style="border-top: 1.5px solid; padding:12px; background:#fff;">
+    <% @single_file.each do |an| %>
+    <div class="slide-p" >
+      <%= link_to visualizer_path(an.id, :type => 'analisis'), remote: true do %>
+      Análisis de: <%= an.user.name.truncate(16, separator: /\s/) %> el <%= an.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>
+      <%end%>
+    </div>
+    <%end%>
+  </div>
+  <ul class="pagination" style="margin-top:50px;" >
+    <%= will_paginate @user_signs %>
+  </ul>
+</div>
 
+</center>
+<%end%>

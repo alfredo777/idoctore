@@ -33,7 +33,7 @@ $(function () {
                 }
             },
             tooltip: {
-                valueSuffix: 'Cantidad de Enfermedades'
+                valueSuffix: ' Número de enfermedades detectadas en este rubro.'
             },
             plotOptions: {
                 bar: {

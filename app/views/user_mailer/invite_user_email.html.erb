@@ -1,3 +1,22 @@
-<h1>Hola  <%= @user.name %> el Doctor <%=@invite_from.name%> te ha invitado a Doctor Mind</h1>
-<center>Porfavor confirma tu correo electrónico para poder iniciar sessión.</center>
-<center><%=" http://www.idoctore.com/reset_password/"+"#{@url}"%></center>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Mail Idoctore</title>
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		</head>
+		<body>
+			<div style="background:#eee; width:95%; height:100px; padding:10px; border:solid #eee 1px;">
+				<h1 style="margin-top:-45px; font-size:25px;">
+				<a href="http://www.idoctore.com"  class="cursive" ><h2 style="color:#A4A4A4; float:left;" class="cursive"> I </h2><h2 class="cursive" style="color:#086A87; float:left;">Doctore</h2></a>
+				</h1>
+			</div>
+			<div style=" width:95%; height:380px; padding:10px; border:solid #eee 1px;">
+			<center>
+				<h1 style="color:#086A87; font-size:17px;" >Hola  <%= @user.name %></br> el Doctor <%=@invite_from.name%> te ha invitado a IDoctore</h1>
+				<h6 style="color:#313131; font-size:15px;" >Esta es una invitación de tu doctor para que tengas acceso a tu expediente médico, porfavor confirma tu correo electrónico y cambia tu contraseña para poder iniciar sessión.</h6>
+				<a href=<%=" http://www.idoctore.com/reset_password/"+"#{@url}"%> style="text-decoration: none; color:#26A3CD; ">Click para confirmar y cambiar contraseña</a>
+			</center>
+			</div>
+		</body>
+	</html>

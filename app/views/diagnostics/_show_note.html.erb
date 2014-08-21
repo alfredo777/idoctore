@@ -5,7 +5,7 @@
    <p><b>New treatment:</b> <%= simple_format(note.new_treatment) %></p>
    <p><b>By Doctor:</b> <%= link_to "#{note.user.name}", user_path(note.user.id)%></p>
    <% if note.vital_signs != nil %>
-   <p><b>Vital signs:</b> <%= note.vital_signs.created_at%></p>
+   <p><b>Vital signs:</b> <%= note.vital_signs.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%></p>
    <%end%>
    <p><b>Analysis: </b> <%= note.last_analysis %></p>
    <p><b>Created: </b> <%= note.created_at %></p>

@@ -159,7 +159,7 @@ class UsersController < ApplicationController
 
       if @dp_find != nil
         @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @u.id)
-        #@mailer = UserMailer.invite_user_email(current_user ,@u, @u.confirmed_token).deliver
+        @mailer = UserMailer.existent_user_invite(@u, current_user).deliver
         redirect_to :back
         flash[:notice] = t('user.solicitud_user_by_invite')
       else

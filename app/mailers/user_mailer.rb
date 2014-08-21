@@ -19,4 +19,16 @@ class UserMailer < ActionMailer::Base
      @url = confirmes
      mail(to: @user.email, subject: "Has solicitado recuperar contraseña a Doctor Mind.")
    end
+
+   def notification_created_diagnostic(user)
+     @user = user
+     mail(to: @user.email, subject: "Se ha agregado un nuevo diagnóstico a tu expediente.")
+   end
+
+   def existent_user_invite(user, doctor)
+     @user = user
+     @doctor = doctor
+     mail(to: @user.email, subject: "El doctor #{@doctor.name} ha indicado que eres su paciente.")
+
+   end
 end

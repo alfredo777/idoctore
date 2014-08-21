@@ -2,7 +2,7 @@
   <td>
      <div class="slide-p" >
     <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
-       Signos del <%= vs.created_at %>
+       Signos del <%= vs.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
     <%end%>
     </div>
   </td>
