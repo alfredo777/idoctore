@@ -1,7 +1,13 @@
+<div class="row">
+	<div class="panel">
+		<%= label_tag 'Selecciona tu paciente' %>
+		<%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
+	</div>
+</div>
 <div class="field">
-        <%= hidden_field_tag 'owner_by', owner.id %>
-      </div>
-      <div class="field">
-        <b><%= label_tag t('diagnostics.interrogation') %>(obligatorio)</b><br>
-        <%= text_area_tag 'interrogation', nil, rows: 10, cols: 25 %>
+	<%= hidden_field_tag 'owner_by', owner.id %>
+</div>
+<div class="field">
+	<b><%= label_tag t('diagnostics.interrogation') %>(obligatorio)</b><br>
+	<%= text_area_tag 'interrogation', nil, rows: 10, cols: 25 %>
 </div>

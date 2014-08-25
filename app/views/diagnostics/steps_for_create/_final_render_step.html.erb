@@ -1,42 +1,24 @@
 <div class="row">
-  <div class="panel">
-      <%= label_tag 'Selecciona tu paciente' %>
-      <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
+    <h3><%#= t('diagnostics.fields')%></h3>
+  <div id="form_for_diagnostic" >
+    <div id="step-1" class="PageForm">
+      <%= render partial: '/diagnostics/steps_for_create/step_1', locals: {user: user, owner: owner}%>
+    </div>
+    <div id="step-2" style="display:none;" class="PageForm">
+      <%= render partial: '/diagnostics/steps_for_create/step_2'%>
+    </div>
+    <div id="step-3" style="display:none;" class="PageForm">
+      <%= render partial: '/diagnostics/steps_for_create/step_3'%>
+    </div>
+    <div id="step-4" style="display:none;" class="PageForm">
+      <%= render partial: '/diagnostics/steps_for_create/step_4'%>
+    </div>
   </div>
-    <h4><%= t('diagnostics.level_of_problem')%></h4>
-
-    <div class="large-3 columns" ><%= label_tag t('diagnostics.chronic')%>
-    <%= check_box_tag 'chronic' %></div>
-    <div class="large-3 columns" ><%= label_tag t('diagnostics.outstanding')%>
-    <%= check_box_tag 'outstanding' %></div>
-    <div class="large-3  columns" ><%= label_tag t('diagnostics.serious')%>
-    <%= check_box_tag 'serious' %></div>
-    <div class="large-3  columns" ><%= label_tag t('diagnostics.inconsequential')%><%= check_box_tag 'inconsequential' %></div>
-</div>
-<div class="row">
-  <div class="panel">
-   <h3><%= t('diagnostics.fields')%></h3>
-  </div>
-  <div id="form_for_diagnostic" > 
-   <div id="step-1" class="PageForm">
-     <%= render partial: '/diagnostics/steps_for_create/step_1', locals: {user: user, owner: owner}%>
-   </div>
-   <div id="step-2" style="display:none;" class="PageForm">
-     <%= render partial: '/diagnostics/steps_for_create/step_2'%>
-   </div>
-   <div id="step-3" style="display:none;" class="PageForm">
-     <%= render partial: '/diagnostics/steps_for_create/step_3'%>
-   </div>
-   <div id="step-4" style="display:none;" class="PageForm">
-     <%= render partial: '/diagnostics/steps_for_create/step_4'%>
-   </div>
- </div>
   <div>
-  <a class="link_to_t button alert" data-target='tools'>Herramientas</a>
-   <a class="button secondary left" id="prev" data-target="step-1"> &#8592 Anterior</a>
-   <a class="button secondary left" id="next" data-target="step-2">Siguiente &#8594</a>
-   <%= submit_tag 'Crear', :class => 'button right', :style=>"display:none;", :id=>'create' %>
+    <a class="link_to_t button alert" data-target='tools'>Herramientas</a>
+    <a class="button secondary left" id="prev" data-target="step-1"> &#8592 Anterior</a>
+    <a class="button secondary left" id="next" data-target="step-2">Siguiente &#8594</a>
+    <%= submit_tag 'Crear', :class => 'button right', :style=>"display:none;", :id=>'create' %>
   </div>
 </div>
-
 <script type="text/javascript" src="/arefscriptstochat/stepsfordiagnostic.js"></script>

@@ -1,4 +1,12 @@
- <div class="field">
-         <b><%= label_tag t('diagnostics.diagnostic_or_clinical_problem') %>(obligatorio)</b><br>
-        <%= text_area_tag 'diagnostic_or_clinical_problem', nil, rows: 10, cols: 25  %>
- </div>
+	<h4><%= t('diagnostics.level_of_problem')%></h4>
+	<div class="large-3 columns" ><%= label_tag t('diagnostics.chronic')%>
+	<%= check_box_tag 'chronic' %></div>
+	<div class="large-3 columns" ><%= label_tag t('diagnostics.outstanding')%>
+	<%= check_box_tag 'outstanding' %></div>
+	<div class="large-3  columns" ><%= label_tag t('diagnostics.serious')%>
+	<%= check_box_tag 'serious' %></div>
+	<div class="large-3  columns" ><%= label_tag t('diagnostics.inconsequential')%><%= check_box_tag 'inconsequential' %></div>
+<div class="field">
+	<b><%= label_tag t('diagnostics.diagnostic_or_clinical_problem') %>(obligatorio)</b><br>
+	<%= text_area_tag 'diagnostic_or_clinical_problem', nil, rows: 10, cols: 25  %>
+</div>
