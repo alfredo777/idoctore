@@ -1,8 +1,10 @@
+<% if current_user.role == 'doctor' %>
 <ul class="button-group [radius round]">
 	<li>
     <%= link_to 'Imprimir', diagnostics_print_path(dt.id), :class => 'small button [secondary alert success]'%>
     <%= link_to 'Imprimir Receta', printing_threatment_path(dt.id ), :class => 'small button [secondary alert success]'%>
 </ul>
+<%end%>
 <div style="overflow:auto; height: 700px;">
 <div id="content_<%=dt.id%>" style="max-width:1100px;">
 

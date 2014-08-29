@@ -1,12 +1,16 @@
-<h1>Pagos Realizados</h1>
-<% current_user.payments.each do |pay|%>
-<div class="panel callout left">
-  <div class="large-7 left">
-  Total:<%=pay.payment_global%></br>
-  Inicia: <%=pay.init%></br>
-  Expira: <%=pay.expire%></br>
-  Referencia: <%=pay.token_pay%></br>
-  </div>
-  <div class="large-2 right"><%= image_tag('payment.png', width:60, height:60)%></div>
-</div>
+<% if current_user.payments.count == 0 %>
+	<h1>Pagos Realizados</h1>
+	<% current_user.payments.each do |pay|%>
+	<div class="panel callout left">
+	  <div class="large-7 left">
+	  Total:<%=pay.payment_global%></br>
+	  Inicia: <%=pay.init%></br>
+	  Expira: <%=pay.expire%></br>
+	  Referencia: <%=pay.token_pay%></br>
+	  </div>
+	  <div class="large-2 right"><%= image_tag('payment.png', width:60, height:60)%></div>
+	</div>
+	<%end%>
+<%else%>
+    <h2 style="margin-top:120px;">Cuenta gratuita dada de alta por el administrador.</h2>
 <%end%>
