@@ -1,4 +1,4 @@
-<% if current_user.payments.count == 0 %>
+<% if current_user.payments.count != 0 %>
 	<h1>Pagos Realizados</h1>
 	<% current_user.payments.each do |pay|%>
 	<div class="panel callout left">
