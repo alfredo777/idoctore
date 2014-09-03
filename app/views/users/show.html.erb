@@ -1,8 +1,7 @@
 <script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
-<% if current_user.role = 'patient' %>
+<% if current_user.role == 'patient' %>
  	<%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: true} %>
-<%end%>
-<% if current_user.role = 'doctor' %>
+<%else%>
 	<%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: false} %>
 <%end%>
 <% if @user.role == 'patient' %>
