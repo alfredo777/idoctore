@@ -1,9 +1,11 @@
- <div class="row">
+ <div class="row" >
    <% case current_user.role %>
       <% when 'doctor' %>
 	    <%= render partial: '/layout_parts/validates_menu', locals: {user: user, ifcurrentuser: false, diagnosticval: true, noteval: true, uploadfileval: true, vitalsignsval: true }%>
 	  <% when 'patient' %>
         <%= render partial: '/layout_parts/validates_menu', locals: {user: user, ifcurrentuser: true, diagnosticval: false, noteval: false, uploadfileval: true, vitalsignsval: true }%>
    <%end%>
+   <% if width_notice == true %>
    <%= render partial: '/layout_parts/notices', locals: {user: user, notices: notices}%>
+   <%end%>
  </div>

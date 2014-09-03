@@ -109,6 +109,10 @@ class UsersController < ApplicationController
     if params[:sex] != nil
       @user.sex = params[:sex]
     end
+
+    if params[:specialism] != nil
+      @user.specialism = params[:specialism]
+    end 
     @user.save
     flash[:notice] = 'Se ha actualizado el usuario.'
     redirect_to user_path(@user.id)

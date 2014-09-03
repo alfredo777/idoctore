@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :decripted_code
   helper_method :undecript_code
   helper_method :action_host
+  helper_method :changer_br
 
 
   def current_user
@@ -93,6 +94,11 @@ class ApplicationController < ActionController::Base
     @user = User.find(id)
     @user.create_adanced_key
     @user.advanced_key
+  end
+
+  def changer_br(string)
+    ax = string.gsub(',', '</br>  &#3903;')
+    '<div stlye="text-align: left !important; width:100%;">'+'&#3903;'+ax + '</div>'
   end
   private
 

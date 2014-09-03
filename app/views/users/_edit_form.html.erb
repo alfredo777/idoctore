@@ -24,6 +24,9 @@
 <%= text_area_tag 'street_addres', @user.street_addres%>
 <%= label_tag 'Universidad en la que estudio' %>
 <%= text_field_tag 'college', @user.college%>
+<%= label_tag 'Especialidades  ponerlas con comas(Pediatria, Cardiología, Urología)' %>
+<%= text_area_tag 'specialism', @user.specialism %>
+
 <%end%>
 <br/>
 <h3>Cambiar password</h3>

@@ -1,0 +1,16 @@
+<p class="map-back left" > Datos del Doctor </p>
+<ul class="vcard subheader"  style="width:100%; margin-top:-20px;">
+	<li><b>Escuela:</b> <%= user.college %></li>
+	<li><b>Cedula Profecional:</b> <%= user.cadre_card%></li>
+	<li class="locality"><b>Dirección del consultorio:</b> <%= user.street_addres%></li>
+</ul>
+<div>
+   <p class="map-back left" > Instituciones en las que he colaborado</p>
+   <div style="min-height:200px; margin-bot:20px;">
+   <center>
+		<% user.institutions.each do |i|%>
+		<%= image_tag(i.logo_string.diagnostic) %>
+		<%end%>
+	</center>
+	</div>
+</div>

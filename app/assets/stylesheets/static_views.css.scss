@@ -7,6 +7,9 @@
 .white {color:#ffffff !important;}
 .grey-background { background-image: image-url('light_2X.png'); margin-top:45px;}
 .padding-l {padding-left:3px;}
+.green-back {background-image: image-url('green_cup.png'); margin-top:0px; width:100%; height:auto; padding: 10px; font-size: 20px; color: #fff; text-transform: uppercase;}
+.map-back {background-image: image-url('old_map.png'); margin-top:0px; width:100%; height:auto; padding: 15px; font-size: 15px; color: #1c80cf; text-transform: uppercase;}
+
 .slide {height:80px; background:#000;}
 .white-back {background: transparent;}
 .w80 {width:80%; padding:.5%; margin-left:10%; margin-right:9.5%; margin-top:15px; margin-bottom:15px;}
@@ -52,6 +55,15 @@
 	margin-bottom:0px;
   font-size:16px;
   text-align:center;
+
+}
+.red-back-2{
+  background-image: image-url('skulls.png');
+  padding:5px;
+  color: #1c80cf;
+  margin-top:3px;
+  margin-bottom:0px;
+  font-size:16px;
 
 }
 .actualization-back{
