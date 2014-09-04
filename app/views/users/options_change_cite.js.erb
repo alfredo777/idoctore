@@ -4,9 +4,11 @@
 	<% when  'messages' %>
 	    $('#message_load').html('<%= escape_javascript(render(partial: "/users/dates/messages", locals: {cite: @cite, messages:  @messages}))%>');
 	       $('#calendar_tab').removeClass('active');
+	       $('#calendar_cite').removeClass('active');
 	       $('#calendar_message').addClass('active');
 	       $('#message_load').show();
 	       $('#calendar-init').hide();
+	       $('#list_of_dates').hide();
             $('html,body').animate({
 			   scrollTop: $("#message_load").offset().top
 			});
