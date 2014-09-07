@@ -104,7 +104,7 @@ class ApplicationController < ActionController::Base
   def agent
     result  = request.env['HTTP_USER_AGENT']
     puts result
-      if result =~ /iPad|iPhone|Android/
+      if result =~ /iPhone|Android/
         @browser = "Mobile"
         @mobile = true
       else
