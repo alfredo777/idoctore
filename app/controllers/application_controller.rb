@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   helper_method :undecript_code
   helper_method :action_host
   helper_method :changer_br
-
+  before_filter :agent
+  helper_method :agent
 
   def current_user
     if  User.exists?(session[:user])
@@ -100,6 +101,32 @@ class ApplicationController < ActionController::Base
     ax = string.gsub(',', '</br>  &#3903;')
     '<div stlye="text-align: left !important; width:100%;">'+'&#3903;'+ax + '</div>'
   end
+  def agent
+    result  = request.env['HTTP_USER_AGENT']
+    puts result
+      if result =~ /iPad|iPhone|Android/
+        @browser = "Mobile"
+        @mobile = true
+      else
+      case 
+      when result =~ /Chrome/
+        @browser = "Google Chrome"
+        @mobile = false
+      when result =~ /Firefox/
+        @browser = "Firefox"
+        @mobile = false
+      when result =~ /Safari/
+        @browser = "Safari"
+        @mobile = false
+      when result =~ /MSIE/
+        @browser = "Internet Explorer"
+        @mobile = false        
+      end 
+      end
+    puts "********************** #{@browser} / Mobile: #{@mobile} ************************" 
+       @mobile
+    end
+
   private
 
   def decripted_code(codex = '', decript = 11)

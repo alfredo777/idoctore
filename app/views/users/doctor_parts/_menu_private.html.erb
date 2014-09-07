@@ -1,3 +1,4 @@
+<% if !agent %>
 <div style="width:100px; left:0; position:fixed; z-index:1;">
 	<% if user.id == current_user.id && current_user.role == 'doctor'%>
 		<div style="width:60px; float:left;  margin-left:10px;">
@@ -10,9 +11,9 @@
 		</div>
 		<div style="width:60px; float:left; margin-left:10px;">
 			<center>
-			<%= link_to institutions_new_path do %>
+			<%= link_to all_create_path do %>
 			<%= link_to image_tag('concept/heart.png'), all_create_path, :class => 'stock_menu' %>
-			<%= link_to 'Diagnosticos', institutions_new_path, :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'%>
+			<%= link_to 'Diagnosticos', all_create_path, :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'%>
 			<%end%>
 			</center>
 		</div>
@@ -35,3 +36,4 @@
 			</center>
 		</div>
 </div>
+<%end%>
