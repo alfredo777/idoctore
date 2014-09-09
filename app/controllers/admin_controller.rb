@@ -12,6 +12,18 @@ class AdminController < ApplicationController
   end
 
   def stats
+    @date = Date.today
+    @yesterday = @date - 1.day
+    @users = User.count
+    @users_yesterday = User.where(created_at: @yesterday).count
+    @users_now = User.where(created_at: @date).count
+    @doctors = User.where(role: 'doctor').count
+    @patients = User.where(role: 'patient').count
+    @cronic = Diagnostic.where(:chronic => true).count
+    @outstanding = Diagnostic.where(:outstanding => true).count
+    @serious = Diagnostic.where(:serious => true).count
+    @inconsequential = Diagnostic.where(:inconsequential => true).count
+    @t_diagnostics = Diagnostic.count
   end
 
   def loggin

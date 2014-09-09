@@ -1,4 +1,104 @@
 <%= render partial: '/admin/menu'%>
-
-<h1>Admin#stats</h1>
-<p>Find me in app/views/admin/stats.html.erb</p>
+<div class="row">
+	<h1>Menú del administrador</h1>
+	<p>Manejo de estadísticas</p>
+</div>
+<div class="row" style="margin-top:50px;">
+	<div class="row" id="chart1"></div>
+	<div class="row" id="chart2"></div>
+</div>
+<script type="text/javascript">
+	$(function () {
+		$('#chart1').highcharts({
+		chart: {
+		type: 'bar'
+		},
+		title: {
+		text: 'Manejo de usuarios'
+		},
+		subtitle: {
+		text: 'Recurso de: IDoctore'
+		},
+		xAxis: {
+		categories: ['Usuarios Totales', 'Usuarios Ayer', 'Usuarios Nuevos Hoy', 'Doctores', 'Pacientes', 'Total de diagnósticos'],
+		title: {
+		text: null
+		}
+		},
+		yAxis: {
+		min: 0,
+		title: {
+		text: 'Cantidad de usuarios',
+		align: 'high'
+		},
+		labels: {
+		overflow: 'justify'
+		}
+		},
+		tooltip: {
+		valueSuffix: 'nº'
+		},
+		plotOptions: {
+		bar: {
+		dataLabels: {
+		enabled: true
+		}
+		}
+		},
+		legend: {
+		layout: 'vertical',
+		align: 'right',
+		verticalAlign: 'top',
+		x: -40,
+		y: 100,
+		floating: true,
+		borderWidth: 1,
+		backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+		shadow: true
+		},
+		credits: {
+		enabled: false
+		},
+		series: [{
+		name: '<%= "Usuarios al #{@date}"%>',
+		data: [<%= @users %>, <%= @users_yesterday %>, <%= @users_now %>, <%= @doctors %>,  <%= @patients %>, <%= @t_diagnostics %> ]
+		}]
+		});
+		$('#chart2').highcharts({
+		chart: {
+		plotBackgroundColor: null,
+		plotBorderWidth: null,
+		plotShadow: false
+		},
+		title: {
+		text: 'Tipos de diagnósticos'
+		},
+		tooltip: {
+		pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		},
+		plotOptions: {
+		pie: {
+		allowPointSelect: true,
+		cursor: 'pointer',
+		dataLabels: {
+		enabled: true,
+		format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+		style: {
+		color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+		}
+		}
+		}
+		},
+		series: [{
+		type: 'pie',
+		name: 'Este rubro',
+		data: [
+		['Crónico',  <%=@cronic%>],
+		['Sin consecuencias', <%= @inconsequential%>],
+		['Serios',   <%= @serious%>],
+		['Gravedad', <%= @outstanding%>]
+		]
+		}]
+		});
+	});
+</script>
