@@ -82,6 +82,8 @@ class PaymentsController < ApplicationController
 				#session[:seller]= nil
 				session[:status_payment] = nil
 				flash[:notice] = 'Pago procesado'
+				@m = ManagerUser.find_by_seller_code(session[:seller])
+				session[:seller] = @m.id
 
 			end
 		else
