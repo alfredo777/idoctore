@@ -62,13 +62,19 @@ class PaymentsController < ApplicationController
 			puts '******************** REGISTRANDO PAGO *******************'
 			if session[:paymenttouser] != nil
 			 @p = Payment.create(user_id: session[:paymenttouser].to_i, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])  
-			 session[:paymenttouser] = nil
 			else
 			 @p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
 		    end
 			puts "#{@p}"
 			puts '********************'
 			if @p.save
+				if session[:paymenttouser] != nil
+			     @user = User.find(session[:paymenttouser])
+                 @user.update_attributes(payment_method: true)
+     			 session[:paymenttouser] = nil
+                else
+				 current_user.update_attributes(payment_method: true)
+			    end
 				session[:acte] = nil
 				session[:value] = nil
 				session[:comission] = nil
@@ -76,12 +82,6 @@ class PaymentsController < ApplicationController
 				session[:comission_seller] = nil
 				session[:seller]= nil
 				session[:status_payment] = nil
-			    if session[:paymenttouser] != nil
-			     @user = User.find(session[:paymenttouser])
-                 @user.update_attributes(payment_method: true)
-                else
-				current_user.update_attributes(payment_method: true)
-			    end
 				flash[:notice] = 'Pago procesado'
 
 			end
