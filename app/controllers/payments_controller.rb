@@ -76,7 +76,12 @@ class PaymentsController < ApplicationController
 				session[:comission_seller] = nil
 				session[:seller]= nil
 				session[:status_payment] = nil
+			    if session[:paymenttouser] != nil
+			     @user = User.find(session[:paymenttouser])
+                 @user.update_attributes(payment_method: true)
+                else
 				current_user.update_attributes(payment_method: true)
+			    end
 				flash[:notice] = 'Pago procesado'
 
 			end
