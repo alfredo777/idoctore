@@ -71,7 +71,6 @@ class PaymentsController < ApplicationController
 				if session[:paymenttouser] != nil
 			     @user = User.find(session[:paymenttouser])
                  @user.update_attributes(payment_method: true)
-     			 session[:paymenttouser] = nil
                 else
 				 current_user.update_attributes(payment_method: true)
 			    end
@@ -90,7 +89,9 @@ class PaymentsController < ApplicationController
 		end
 		respond_to do |format|
 			if session[:paymenttouser] != nil
+ 			session[:paymenttouser] = nil
 			redirect_to seller_path
+
 			else
 			format.html
 		    end
