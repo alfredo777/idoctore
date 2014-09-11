@@ -79,7 +79,7 @@ class PaymentsController < ApplicationController
 				session[:comission] = nil
 				session[:expiration_ii] = nil
 				session[:comission_seller] = nil
-				session[:seller]= nil
+				#session[:seller]= nil
 				session[:status_payment] = nil
 				flash[:notice] = 'Pago procesado'
 
