@@ -87,15 +87,16 @@ class PaymentsController < ApplicationController
 		else
 			flash[:notice] = 'Pago no procesado'
 		end
+		if session[:paymenttouser] != nil
+			session[:paymenttouser] = nil
+		    redirect_to seller_path
+		else
 		respond_to do |format|
-			if session[:paymenttouser] != nil
- 			session[:paymenttouser] = nil
-			redirect_to seller_path
 
-			else
 			format.html
-		    end
 		end
+	    end
+
 	end
 
 	def payments
