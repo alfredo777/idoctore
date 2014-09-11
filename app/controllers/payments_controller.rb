@@ -37,7 +37,7 @@ class PaymentsController < ApplicationController
 			charge = Conekta::Charge.create({
 												amount: params[:amount],
 												currency: 'MXN',
-												description: "payment suscription #{current_user.name} - #{current_user.id} --> vendedor #{ida}",
+												description: "payment suscription --> vendedor #{ida}",
 												card: params[:conektaTokenId],
 												reference_id: "#{@id}"
 			})
