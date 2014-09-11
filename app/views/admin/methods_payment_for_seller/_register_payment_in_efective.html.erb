@@ -1,0 +1,9 @@
+<h1>Pago en efectivo</h1>
+<div>
+	<%= form_tag("/payments/send_payment_in_cash", :id => "cash-form") do -%>
+	        <%= select_tag 'amount', options_for_select([["Plan Incial", 100000], ["Plan Avanzado", 160000], [ "Plan Institucional", 1000000]]) %>
+			<p>Clave de ventas</p>
+			<%= text_field_tag 'seller', @seller.seller_code, placeholder: 'Ingresa el código de vendedor'%>
+		    <%= submit_tag 'Generar Pago', class: 'large-7 button'%>
+	<%end%>
+</div>

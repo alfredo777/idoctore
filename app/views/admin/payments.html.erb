@@ -1,4 +1,37 @@
 <%= render partial: '/admin/menu'%>
 
-<h1>Admin#payments</h1>
-<p>Find me in app/views/admin/payments.html.erb</p>
+<h1>Pagos</h1>
+<p>Monitor de pagos</p>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Inicio</th>
+      <th>Creado</th>
+      <th width="150">Final</th>
+      <th width="150">token en conekta</th>
+      <th width="150">Vendedor</th>
+      <th width="150">Monto total</th>
+      <th width="150">pago conekta</th>
+      <th width="150">comisión final</th>
+      <th width="150">comisión</th>
+      <th width="150">Usuario</th>
+      <th width="150">Methodo de pago</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @payments.each do |pay| %>
+	<tr>	
+	 <td><%= pay.init%></td>
+	 <td><%= pay.expire%></td>
+	 <td><%= pay.token_pay%></td>
+	 <td><%= pay.seller_code %></td>
+	 <td><%= pay.payment_global %></td>
+	 <td><%= pay.bank_commission %></td>
+	 <td><%= pay.final_comission %></td>
+	 <td><%= pay.comissionpay %></td>
+	 <td><%= pay.user.name %></td>
+	 <td><%= pay.method %></td>
+	</tr>
+	<%end%>
+  </tbody>
+</table>

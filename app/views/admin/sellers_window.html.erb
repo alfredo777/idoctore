@@ -1,0 +1,31 @@
+<%= link_to "salir", exit_seller_path, class: "button right"%>
+
+<h1>Panel de vendedores</h1>
+  <p>Monitor de pagos</p>
+<%= link_to "Dar de alta un nuevo usuario", create_user_by_payment_methods_path %>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Inicio</th>
+      <th>Expira</th>
+      <th width="150">Monto total</th>
+      <th width="150">pago conekta</th>
+      <th width="150">comisión final</th>
+      <th width="150">Methodo de pago</th>
+      <th width="150">Usuario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payments.each do |pay| %>
+	<tr>	
+   <td><%= pay.init %></td>
+   <td><%= pay.expire %></td>
+	 <td><%= pay.payment_global %></td>
+	 <td><%= pay.bank_commission %></td>
+	 <td><%= pay.final_comission %></td>
+	 <td><%= pay.method %></td>
+   <td><%= pay.user.name %></td>
+	</tr>
+	<%end%>
+  </tbody>
+</table>

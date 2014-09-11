@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="large-5 left">
+  <p style="font-size:100px;"> 1 </p>
+  <p style="width:70%;"> Tu primer paso será crear el usuario "recueda llenar todos los campors para poder continuar"</p>
+  </div>
+  <div class="large-7 left">
+    <%= form_tag('/users/register') do -%>
+    <%= render partial: '/admin/methods_payment_for_seller/user_info'%>
+    <%end%>
+  </div>
+</div>

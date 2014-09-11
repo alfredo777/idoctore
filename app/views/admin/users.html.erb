@@ -1,4 +1,38 @@
 <%= render partial: '/admin/menu'%>
 
-<h1>Admin#users</h1>
-<p>Find me in app/views/admin/users.html.erb</p>
+<h1>Usuarios</h1>
+<p>Usuarios de la aplicación</p>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Nombre</th>
+      <th>Creado</th>
+      <th width="150">Rol</th>
+      <th width="150">Table Header</th>
+      <th width="150">Cupon</th>
+      <th width="150">Pagos</th>
+      <th width="150">Opciones</th>
+
+    </tr>
+  </thead>
+  <tbody>
+   
+    <% @users.each do |user| %>
+	  <tr>	
+	  <td> <%= user.name %></td>
+	  <td> <%= user.created_at %></td>
+	  <td> <%= user.role %></td>
+	  <td> <%= user.payment_method %></td>
+	  <td> <%= user.cupon %></td>
+	  <td> <%= user.payments.last %></td>
+	  <td> <%= link_to "Suspeder usuario", suspend_user_path(:id => user.id) if !user.suspend %>
+		   <%= link_to "Activar usuario", suspend_user_path(:id => user.id) if user.suspend %>
+	  </td>
+      </tr>
+	<%end%>
+
+  </tbody>
+</table>
+<ul class="pagination">
+  <%= will_paginate @users %>
+</ul>

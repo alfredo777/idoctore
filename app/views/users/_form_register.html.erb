@@ -1,6 +1,7 @@
 <!-- formulario de registro -->
 <%= form_tag('/users/register') do -%>
   <%= label_tag 'Nombre' %>
+  <%= hidden_field_tag 'seller', false %>
   <%= text_field_tag 'name', '' ,'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
   <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
   <%= label_tag 'Email' %>
@@ -9,7 +10,7 @@
   <%= label_tag 'Sexo' %>
   <p>
   <div class="small-2 large-2 columns" ><%= label_tag 'Hombre' %>
-  <%= radio_button_tag 'sex', 'male' %></div>
+  <%= radio_button_tag 'sex', 'male', checked: true %></div>
   <div class="small-2 large-2 columns" ><%= label_tag 'Mujer'%>
   <%= radio_button_tag 'sex', 'female' %></div>
   <%= hidden_field_tag 'role', 'doctor' %>

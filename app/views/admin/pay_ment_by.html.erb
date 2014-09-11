@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="large-5 left">
+  <p style="font-size:100px;"> 2 </p>
+  <p style="width:70%;"> Selecciona uno de los métodos de pago. </p>
+  </div>
+  <div class="large-7 left">
+	<dl class="tabs" data-tab>
+	  <dd class="active"><a href="#panel1">Pago con tarjeta</a></dd>
+	  <dd><a href="#panel2">Pago en efectivo</a></dd>
+	</dl>
+	<div class="tabs-content">
+	  <div class="content active" id="panel1">
+	      <%= render partial: '/admin/methods_payment_for_seller/create_user_and_creadit_card'%>
+	  </div>
+	  <div class="content" id="panel2">
+	      <%= render partial: '/admin/methods_payment_for_seller/register_payment_in_efective'%>
+	  </div>
+	</div>
+   </div>
+  </div>

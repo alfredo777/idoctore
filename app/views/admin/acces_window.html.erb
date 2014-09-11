@@ -1,0 +1,8 @@
+<h1>Ventana de acceso</h1>
+ <fieldset>
+    <legend>Ingreso de vendedores</legend>
+		<%= form_tag(acces_window_validate_path) do -%>
+		  <%= text_field_tag 'seller_code', '', placeholder: 'Ingresa tu numero secreto de vendedor'%>
+		  <%= submit_tag 'Ingresar', class: 'right button'%>
+		<%end%>
+</fieldset>

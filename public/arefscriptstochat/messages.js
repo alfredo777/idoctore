@@ -12,7 +12,7 @@
      if (avatar.url != null){
      		var avatar =  avatar.modern.url
     	 }else{
-     		var avatar = '/assets/users/avatar_chat.png'
+     		var avatar = '/assets/avatar_chat.png'
      }
     
      var message_s = $('#new_messages_'+message.cite_doctor_id).size();

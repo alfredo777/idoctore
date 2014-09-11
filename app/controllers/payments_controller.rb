@@ -60,7 +60,12 @@ class PaymentsController < ApplicationController
 		end
 		if session[:status_payment] == 'paid'
 			puts '******************** REGISTRANDO PAGO *******************'
-			@p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
+			if session[:paymenttouser] != nil
+			 @p = Payment.create(user_id: session[:paymenttouser].to_i, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])  
+			 session[:paymenttouser] = nil
+			else
+			 @p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
+		    end
 			puts "#{@p}"
 			puts '********************'
 			if @p.save
@@ -79,12 +84,43 @@ class PaymentsController < ApplicationController
 			flash[:notice] = 'Pago no procesado'
 		end
 		respond_to do |format|
+			if session[:paymenttouser] != nil
+			redirect_to seller_path
+			else
 			format.html
+		    end
 		end
 	end
 
 	def payments
 	end
 
+	def send_payment_in_cash
+		case params[:amount]
+		when 100000
+			@id = 'plan_inicial'
+		when 160000
+			@id = 'plan_avanzado'
+		when 1000000
+			@id = 'plan_institucional'
+		end
+
+		@global = (params[:amount].to_i / 100).to_i
+		@comission = (@global.to_i/100) * 3
+		@comission_seller = (@global.to_i/100) * 25
+		@expire = Time.now + 367.days
+
+	    @p = Payment.create(user_id: session[:paymenttouser].to_i, payment_global: @global.to_i, bank_commission: @comission, final_comission: @comission_seller, init: Time.now, expire: @expire, comissionpay: false, seller_code: params[:seller], method: 'Cash', token_pay: 'no token')
+	    if @p.save
+	    	 puts session[:paymenttouser]
+             session[:paymenttouser] = nil
+             flash[:notice] = 'Pago realizado'
+		     redirect_to seller_path
+	    else
+	    	 flash[:notice] = 'Pago fallido'
+             redirect_to :back
+        end
+       
+	end
 
 end

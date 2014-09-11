@@ -10,24 +10,24 @@
 	    <div class="large-7">
 	 		<%= select_tag 'amount', options_for_select([["Plan Incial", 100000], ["Plan Avanzado", 160000], [ "Plan Institucional", 1000000]]) %>
             <p>Clave de ventas</p>
-	 		<%= text_field_tag 'seller', '', 'data-conekta'=>"card[name]"%>
+	 		<%= text_field_tag 'seller', '', 'data-conekta'=>"card[name]", placeholder: 'Ingresa el código de vendedor'%>
 
 	    </div>
 	 	<div class="large-7">
 	 	     <p>Nombre del tarjetahabiente</p>
-	 		 <%= text_field_tag '','jarda', 'data-conekta'=>"card[name]"%>
+	 		 <%= text_field_tag '','', 'data-conekta'=>"card[name]", placeholder: 'Tarjetahabiente'%>
 	 	</div>
 	 	<div class="large-7">
 	 	     <p>Número de la tarjeta</p>
-	 		 <%= number_field_tag '', '4242424242424242', 'data-conekta'=>"card[number]"%>
+	 		 <%= number_field_tag '', '', 'data-conekta'=>"card[number]", placeholder: 'Número de la tarjeta'%>
 	 	</div>
 	 	<div class="large-3">
 	 	     <p>CVC</p>
-	 		 <%= password_field_tag '', '123', 'data-conekta'=>"card[cvc]"%>
+	 		 <%= password_field_tag '', '', 'data-conekta'=>"card[cvc]", placeholder: 'Código de seguridad' %>
 	 	</div>
 	    <div class="large-8">
 	 	     <p>Fecha de expiración (MM/AAAA)</p>
-	 		 <div class="large-2 columns left"><%= number_field_tag '','10', 'data-conekta'=>"card[exp_month]"%></div><div class="left"><h3>/</h3></div><div class="large-2 columns left"><%= number_field_tag '', '2015' ,'data-conekta'=>"card[exp_year]"%></div>
+	 		 <div class="large-2 columns left"><%= number_field_tag '','', 'data-conekta'=>"card[exp_month]", placeholder: 'mes' %></div><div class="left"><h3>/</h3></div><div class="large-2 columns left"><%= number_field_tag '', '' ,'data-conekta'=>"card[exp_year]",placeholder: 'año'%></div>
 	 	</div>
 	    
 	  </div>

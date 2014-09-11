@@ -7,12 +7,16 @@ class UsersController < ApplicationController
 
   #################################################################################################
   ############## filters #####################
+  before_filter :conf_session, only: [:index, :show, :edit]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :loggin_filter, only: [:index, :show, :edit]
   before_filter :filter_from_payment, only: [:index, :show, :edit]
   before_filter :filter_to_update, only: [:edit, :actualize]
   before_filter :filter_view_pofile, only: [:show, :diagnostics]
   before_filter :set_cache_buster
+  before_filter :confirmed_user, only: [:index, :show, :edit]
+  before_filter :suspended_user, only: [:index, :show, :edit]
+
 
   #################################################################################################
   ######### views methods ########
@@ -133,13 +137,19 @@ class UsersController < ApplicationController
         @user.sex = params[:sex]
         @user.role = "#{params[:role]}"
         @user.confirmed_token = random_to_token
-        @user.confirmed = false
+        @user.confirmed = params[:seller]
         @user.terms = params[:terms]
         @user.save
         if @user.save
-          @mailer = UserMailer.welcome_email(@user, @user.confirmed_token).deliver
-          flash[:notice] =  t('user.create_user')
-          redirect_to users_path
+          if @user.confirmed == true
+              flash[:notice] =  'Usuario creado correctamente'
+              redirect_to pay_ment_by_path
+              session[:paymenttouser] = @user.id
+              else
+               @mailer = UserMailer.welcome_email(@user, @user.confirmed_token).deliver
+              flash[:notice] =  t('user.create_user')
+              redirect_to sign_in_path
+          end
         else
           flash[:notice] = t('user.user_simple_error')
           redirect_to :back
@@ -496,6 +506,30 @@ class UsersController < ApplicationController
         redirect_to user_path(current_user.id)
       end
 
+    end
+  end
+
+  def conf_session
+    if session[:user] == nil
+      session[:user] = nil
+       flash[:notice] = "Inicie un sessión para continuar" 
+       redirect_to root_path
+    end
+  end
+
+  def confirmed_user
+        if current_user.confirmed == false
+          session[:user] = nil
+          flash[:notice] = "Su usuario no ha sido confirmado" 
+          redirect_to root_path
+        end
+  end
+
+  def suspended_user
+    if current_user.suspend == true
+      session[:user] = nil
+      flash[:notice] = "Tu usuario se encuentra suspendido contactanos para ayudarte."
+      redirect_to root_path
     end
   end
   #########################################################################################

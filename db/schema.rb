@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903202537) do
+ActiveRecord::Schema.define(version: 20140909181109) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 20140903202537) do
     t.string   "cupon"
     t.date     "validity"
     t.text     "specialism"
+    t.boolean  "suspend",         default: false
   end
 
   create_table "vital_signs", force: true do |t|

@@ -1,0 +1,32 @@
+<div class="row">
+<% session[:paymenttouser] = nil %>
+<%= label_tag 'Nombre' %>
+<%= hidden_field_tag 'seller', true %>
+<%= text_field_tag 'name', '' ,'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+<small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Email' %>
+<%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email'  %>
+<small id="message_error_email" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Sexo' %>
+<p>
+<div class="small-2 large-2 columns" ><%= label_tag 'Hombre' %>
+<%= radio_button_tag 'sex', 'male', checked: true %></div>
+<div class="small-2 large-2 columns" ><%= label_tag 'Mujer'%>
+<%= radio_button_tag 'sex', 'female' %></div>
+<%= hidden_field_tag 'role', 'doctor' %>
+</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<%= label_tag 'Contraseña' %>
+<%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
+<small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Confirmar Contraseña' %>
+<%= password_field_tag 'confirm_password', '' ,'data-message' => 'El campo confirmar contraseña no puede quedar vacio.', 'data-target' => 'message_error_confirm_password' %>
+<small id="message_error_confirm_password" class="error" style="margin-top: -16px; display:none;"></small>
+<div><div class="left"><p>Acepto los <%= link_to 'Terminos y Condiciones', terms_and_conditions_path, target: '_blank'%> del sitio</p></div><div  class='right'><%= check_box_tag 'terms', true%></div></div>
+</div>
+<div class="row">
+<%= submit_tag 'Generar Usuario', class: 'large-7 button'%>
+</div>
