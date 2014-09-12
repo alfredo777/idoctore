@@ -4,12 +4,17 @@
     <%= link_to 'Imprimir', diagnostics_print_path(dt.id), :class => 'small button [secondary alert success]'%>
     <%= link_to 'Imprimir Receta', printing_threatment_path(dt.id ), :class => 'small button [secondary alert success]'%>
 </ul>
+<div class="row">
+<%= render partial: '/institutions/remote_institutions', locals: {institutions: dt.act_owner.institutions.where(recipe_appears: true), idx: dt.id}%>
+</div>
+
 <%end%>
+
 <div style="overflow:auto; height: 700px;">
 <div id="content_<%=dt.id%>" style="max-width:1100px;">
 
 	<div style="height: auto;  !important;">
-	<h2><%= t('diagnostics.title')%>  </h2><i id="name_<%= dt.id %>"> Dr: <%= link_to "#{dt.owner}", user_path(dt.user_id) %></i><div id ="qr_<%=dt.id%>"class="right"><%= render partial: '/diagnostics/qrcode', locals:{qr: dt.qrcode_exec, dt: dt} %></div>
+	<h2><%= t('diagnostics.title')%>  </h2><i id="name_<%= dt.id %>"> Dr: <%= link_to "#{dt.owner}", user_path(dt.act_owner.id) %></i><div id ="qr_<%=dt.id%>"class="right"><%= render partial: '/diagnostics/qrcode', locals:{qr: dt.qrcode_exec, dt: dt} %></div>
 
 	<h3>Clasifiación del problema</h3>
 	<div class="row">

@@ -1,6 +1,6 @@
 <%= render partial: '/diagnostics/remote_diagnostic', locals: {dt: @diagnostic}%>
 <script>
 $(document).ready(function(){
-  printTherapy(qr_<%=@diagnostic.id%>, suggested_treatments<%=@diagnostic.id%>, <%=@diagnostic.user_id%>, diagnostic_<%=@diagnostic.id%>, name_<%= @diagnostic.id %>, key_<%=@diagnostic.id%> );
+  printTherapy(qr_<%=@diagnostic.id%>, suggested_treatments<%=@diagnostic.id%>, <%=@diagnostic.user_id%>, diagnostic_<%=@diagnostic.id%>, name_<%= @diagnostic.id %>, key_<%=@diagnostic.id%>, institutions_printing_<%=@diagnostic.id%> );
  });
 </script>

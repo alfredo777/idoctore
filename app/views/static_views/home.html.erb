@@ -10,17 +10,33 @@
 </div>
 <div class="in_box">
 	<center>
+    <% if agent %>
+		<%= link_to about_us_path do %>
+			<div class="left box_act" style="background:#096D84;">
+				<%= image_tag('offer.png')%>
+			</div>
+		<%end%>
+    <%else%>
 	<%= link_to what_work_path do %>
 	<div class="left box_act" style="background:#096D84;">
 		Mira lo que te ofrecemos
 		<%= image_tag('offer.png')%>
 	</div>
 	<%end%>
-	<%= link_to about_us_path do %>
-	<div class="left box_act" style="background:#098473;">
-		Mira nuestra ideología
-		<%= image_tag('weare.png')%>
-	</div>
+	<%end%>
+	<% if agent %>
+		<%= link_to about_us_path do %>
+		<div class="left box_act" style="background:#098473;">
+			<%= image_tag('weare.png')%>
+		</div>
+		<%end%>
+	<%else%>
+		<%= link_to about_us_path do %>
+		<div class="left box_act" style="background:#098473;">
+			Mira nuestra ideología
+			<%= image_tag('weare.png')%>
+		</div>
+		<%end%>
 	<%end%>
 	</center>
 </div>
