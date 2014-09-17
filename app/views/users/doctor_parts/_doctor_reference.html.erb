@@ -1,13 +1,19 @@
 <div class="large-2"><%= render partial: '/users/doctor_parts/menu_private', locals: {user: user}%></div>
-<div style="width:80%; position:absolute;">
-	<div class=" right-profile-menu actualization-back " >
+<div style="width:48%; position:relative; float:left; margin-right:2%; margin-top:-1px;">
 				<div class="red-back-2 left" style="width:100%; padding:30px;">
-			     <div class="left"><center><%= render partial: '/users/avatars', locals: {user: user , edit: false}%></center></div>
-			     <div class="left large-5">
-					 <div class="left panel"> <b>Doctor:</b> <%= user.name %></div>
-					 <div class="left panel" style="width:100%;"> <b>Especialidades:</b></br> <%=  changer_br(user.specialism).html_safe if user.specialism != nil  %><%= "Agrega las especialidades al editar tu perfil" if user.specialism == nil  %></div>
+				 <div class="row">
+				 <center>
+			     <div class="circular-boreder"><%= render partial: '/users/avatars', locals: {user: user , edit: false}%></div>
+			     </center>
+			     </div>
+			     <hr>
+			     <div class="row">
+					 <div class="row panel"> <b>Doctor:</b> <%= user.name %></div><hr>
+
+					 <div class="row panel"> <b>Especialidades:</b></br> <%=  changer_br(user.specialism).html_safe if user.specialism != nil  %><%= "Agrega las especialidades al editar tu perfil" if user.specialism == nil  %></div>
 				 </div>
 				</div>
-		    <%= render partial: '/users/doctor_parts/doctor_info', locals: {user: user}%>
-	</div>
+</div>
+<div style="width:50%; position:relative; float:left;" >
+  <%= render partial: '/users/doctor_parts/doctor_info', locals: {user: user}%>
 </div>

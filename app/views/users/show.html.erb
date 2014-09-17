@@ -1,10 +1,6 @@
 <script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
-<% if current_user.role == 'patient' %>
- 	<%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: true} %>
-<%else%>
-	<%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: false} %>
-<%end%>
 <% if @user.role == 'patient' %>
+<%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: true} %>
 <script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
 <%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
 <center>
@@ -14,5 +10,7 @@
   <div id="container_of_parts" ></div>
   </center>
   <%else%>
+  
+  <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: false} %>
   <%= render partial: '/users/doctor_parts/doctor_reference', locals: {user: @user, tasks: @tasks} %>
 <%end%>

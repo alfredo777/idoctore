@@ -1,8 +1,12 @@
 <p class="red-back"><%= user.name %></p>
 <div class=" right-profile-menu actualization-back " >
 	<div class="row">
-		<div class="large-3 left">
+	    <div class="large-2 left">
+		<div class="circular-boreder ">
+		  <center>
 			<%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
+		  </center>
+		</div>
 		</div>
 		<% if user.sex != nil  %>
 		<p>Sexo: <%= 'Hombre' if user.sex == 'male' %> <%= 'Mujer' if user.sex == 'female' %></p>

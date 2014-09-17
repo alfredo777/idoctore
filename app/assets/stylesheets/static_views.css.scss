@@ -320,3 +320,23 @@ em{
       height:200px !important;
 
 }
+.circular {
+  width: 120px;
+  height: 120px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+    margin-top:15px;
+
+}
+.circular-boreder {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  //border:solid 5px #1c80cf;
+  background: #eee;
+
+
+}
