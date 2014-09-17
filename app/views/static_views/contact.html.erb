@@ -12,11 +12,17 @@
 <div class="large-7 left">
 <%= form_tag('/static_views/send_contact') do -%>
   <%= label_tag 'Email' %>
-  <%= text_field_tag 'mail', '', placeholder: 'tu@email.com'%>
+  <%= text_field_tag 'mail', '', placeholder: 'tu@email.com', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'%>
+  <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+
   <%= label_tag 'Nombre' %>
-  <%= text_field_tag 'name', '', placeholder: 'Escribe tu nombre' %>
+  <%= text_field_tag 'name', '', placeholder: 'Escribe tu nombre', :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+  <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+
   <%= label_tag 'Descripcción' %>
-  <%= text_area_tag 'description', '' , placeholder: 'Ingresa el asunto por el cual nos contactas', rows: '14'%>
+  <%= text_area_tag 'description', '' , placeholder: 'Ingresa el asunto por el cual nos contactas', rows: '14', :class => 'valitx', 'data-message' => 'El campo descripción no puede quedar vacio.', 'data-target' => 'message_error_des'%>
+   <small id="message_error_des" class="error" style="margin-top: -16px; display:none;"></small>
+
   <%= submit_tag 'Contactar', class: 'button right'%>
 <%end%>
 </div>
@@ -27,3 +33,11 @@
 </center>
 </div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+	VAlForValitx('name');
+	VAlForValitx('mail');
+    VAlForValitx('description');
+
+	});
+</script>
