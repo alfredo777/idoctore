@@ -1,5 +1,5 @@
 class StaticViewsController < ApplicationController
-  layout 'layout_not_login'
+  layout 'layout_not_login', except: [:contact]
   def home
     if session_status
       redirect_to users_path
@@ -23,6 +23,22 @@ class StaticViewsController < ApplicationController
   end
 
   def what_work
+  end
+
+  def contact
+      render layout: 'contact'
+
+  end
+
+  def send_contact
+   if params[:mail].nil? | params[:name].nil? | params[:description].nil?
+       flash[:notice] = "Tienes que llenar todos los campos para que el envio sea exitoso"
+        redirect_to :back
+   else
+   @m =  UserMailer.contact_to_admin(params[:mail], params[:name], params[:description]).deliver
+   flash[:notice] = "Se ha enviado correctamten tu email"
+   redirect_to root_path
+   end
   end
 
   def post

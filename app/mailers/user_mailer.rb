@@ -29,6 +29,12 @@ class UserMailer < ActionMailer::Base
      @user = user
      @doctor = doctor
      mail(to: @user.email, subject: "El doctor #{@doctor.name} ha indicado que eres su paciente.")
+   end
 
+   def contact_to_admin(email, name, description)
+     @email = email
+     @name = name
+     @description = description
+     mail(to: 'jardarubydv@gmail.com', subject: "La persona #{@name} se ha puesto en contacto contigo.")
    end
 end

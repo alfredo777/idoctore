@@ -134,6 +134,9 @@ Rails.application.routes.draw do
   get 'static_views/register', :as => :register
   get 'static_views/about_us', :as => :about_us
   get 'static_views/what_work', :as => :what_work
+  get 'static_views/contact', :as => :contact
+  get 'static_views/send_contact'
+  post 'static_views/send_contact'
 
   ######## Admin ############
 

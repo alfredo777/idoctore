@@ -1,0 +1,29 @@
+<div class="raw_contact" style="height:250px; margin-bottom:30px;">
+  <div class="skull_skin" style="height:250px; ">
+    <div class="row">
+      <center>
+      <h1 >Contactanos</h1>
+      <h4 >Ponte en contacto con nosotros para que podamos atender cualquier duda, sugerencia o queja que tengas.</h4>
+      </center>
+    </div>
+  </div>
+</div>
+<div class="row">
+<div class="large-7 left">
+<%= form_tag('/static_views/send_contact') do -%>
+  <%= label_tag 'Email' %>
+  <%= text_field_tag 'mail', '', placeholder: 'tu@email.com'%>
+  <%= label_tag 'Nombre' %>
+  <%= text_field_tag 'name', '', placeholder: 'Escribe tu nombre' %>
+  <%= label_tag 'Descripcción' %>
+  <%= text_area_tag 'description', '' , placeholder: 'Ingresa el asunto por el cual nos contactas', rows: '14'%>
+  <%= submit_tag 'Contactar', class: 'button right'%>
+<%end%>
+</div>
+<div class="large-4 right panel">
+<center>
+ <p>Nos pondremos en contacto en breve contigo.</p>
+ <%= image_tag 'menu/mail.png'%>
+</center>
+</div>
+</div>
