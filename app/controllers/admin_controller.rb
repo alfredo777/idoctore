@@ -78,6 +78,8 @@ class AdminController < ApplicationController
    redirect_to seller_path
    else
     flash[:notice] = "El vendedor al que esta intentando ingresar no existe"
+    redirect_to :back
+    
    end
    
   end
