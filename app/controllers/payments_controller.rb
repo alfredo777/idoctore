@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
 		if Rails.env == 'development'
 			Conekta.api_key = "key_vfTtG9pSzzQp7aFo"
 		else
-			Conekta.api_key = "key_vfTtG9pSzzQp7aFo"
+			Conekta.api_key = "key_6mcfLKFMWkGTCvc7"
 		end
 
 
