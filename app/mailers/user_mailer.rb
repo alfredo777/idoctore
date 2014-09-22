@@ -35,6 +35,6 @@ class UserMailer < ActionMailer::Base
      @email = email
      @name = name
      @description = description
-     mail(to: 'jardarubydv@gmail.com', subject: "La persona #{@name} se ha puesto en contacto contigo.")
+     mail(to: 'idoctorecontacto@gmail.com', subject: "La persona #{@name} se ha puesto en contacto contigo.")
    end
 end
