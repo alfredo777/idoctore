@@ -38,7 +38,7 @@
 			  <li><%=link_to t('menu.prices'),  prices_path %></a></li>
   			  <li><%=link_to 'Contacto',  contact_path %></a></li>
 
-			  <li><a href="#" id="price"  data-reveal-id="loggin_modal" ><%= t('menu.login')%></a></li>
+			  <li><%= link_to t('menu.login'), sign_in_path%></li>
 		   </ul>
 
 		   <%end%>
