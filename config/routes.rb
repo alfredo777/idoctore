@@ -143,11 +143,14 @@ Rails.application.routes.draw do
   get 'admin/users', :as => :admin_users
   get 'admin/cupons', :as => :admin_cupons
   get 'admin/payments', :as =>  :admin_payments
+  get 'admin/sellers_admin' , as: :sellers_admin
   get 'admin/', :to => 'admin#stats', :as => :admin
   get 'admin/loggin', :as => :admin_loggin
   get '/admins_session_destroy', :to => 'admin#end_session', :as => :admin_end_session
   get 'admin/suspend_user', :as => :suspend_user
   get 'admin/exit_seller', :as => :exit_seller
+  get 'admin/create_seller'
+  post 'admin/create_seller'
   post 'admin/suspend_user'
   get 'sellers_window', :to => 'admin#sellers_window', :as => :seller
   get 'acces_window', :to  => 'admin#acces_window', :as => :acces_window
@@ -155,7 +158,7 @@ Rails.application.routes.draw do
   post 'acces_window_validate', :to  => 'admin#acces_window_validate'
   get 'pay_ment_by', :to => 'admin#pay_ment_by', :as => :pay_ment_by
   get 'create_user_by_payment_methods', :to => 'admin#create_user_by_payment_methods', as: :create_user_by_payment_methods
-
+  
 
   ############ payments ##########
   post 'payments/send_payment'

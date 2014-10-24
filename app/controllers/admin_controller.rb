@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
-  before_filter :admin_filter, only: [:users, :cupons, :payments, :stats ]
+  before_filter :admin_filter, only: [:users, :cupons, :payments, :stats, :sellers_admin ]
   before_filter :seller_filter, only: [:sellers_window]
+  before_filter :can_acces_admin, only: [:users, :cupons, :payments, :stats, :sellers_admin ]
   before_filter :second_steap_filter, only: [:pay_ment_by]
 
   def users
@@ -63,7 +64,15 @@ class AdminController < ApplicationController
     @seller = ManagerUser.find(session[:seller])
     @payments = Payment.where(seller_code: @seller.seller_code)
   end
+  def sellers_admin
+    @sellers = ManagerUser.all
+  end
 
+  def create_seller
+   @udf = ManagerUser.create(email: params[:email], password: params[:password], identify: params[:sample_code], seller: params[:seller], seller_code: params[:seller_code], can_acces_admin: params[:can_acces_admin])
+   flash[:notice] = 'Agregado correctamente'
+   redirect_to :back
+  end
   def acces_window
      if session[:seller] != nil
       redirect_to sellers_window_path
@@ -78,10 +87,8 @@ class AdminController < ApplicationController
    redirect_to seller_path
    else
     flash[:notice] = "El vendedor al que esta intentando ingresar no existe"
-    redirect_to :back
-    
+    redirect_to :back    
    end
-   
   end
 
   def exit_seller
@@ -106,6 +113,17 @@ class AdminController < ApplicationController
   def second_steap_filter
     unless session[:paymenttouser] 
       redirect_to create_user_by_payment_methods_path
+    end
+  end
+
+  def can_acces_admin
+    if session[:admin] != nil
+      @u = ManagerUser.find(session[:admin])
+       if !@u.can_acces_admin
+        session[:admin] = nil
+        flash[:notice] = 'No tienes permisos para ingresar al admin '
+        redirect_to :back
+       end
     end
   end
 

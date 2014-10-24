@@ -1,0 +1,21 @@
+	<a class="button" id="new_seller">Nuevo Vendedor</a>
+	<div style="display:none;" id="seller">
+	<%= form_tag("/admin/create_seller") do -%>
+	   <p>Email</p>
+	   <%= text_field_tag 'email'%>
+	   <p>Código de vendedor</p>
+	   <%= text_field_tag 'seller_code', SecureRandom.hex(4)%>
+       <p>Sample Code</p>
+	   <%= text_field_tag 'sample_code', rand(23..45495)%>
+	   <p>Contraseña</p>
+	   <%= text_field_tag 'password', 'abc45454'%>
+	   <%= hidden_field_tag 'can_acces_admin', false%>
+	   <%= hidden_field_tag 'seller', true%>
+       <%= submit_tag 'Crear vendedor', class: 'button right'%>
+    <%end%>
+    </div>
+    <script>
+      $('#new_seller').click(function(){
+         $('#seller').toggle();
+      });
+    </script>

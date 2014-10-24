@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909181109) do
+ActiveRecord::Schema.define(version: 20141024181442) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20140909181109) do
     t.integer  "identify"
     t.boolean  "seller"
     t.string   "seller_code"
+    t.boolean  "can_acces_admin", default: true
   end
 
   create_table "medicines", force: true do |t|

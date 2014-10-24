@@ -1,0 +1,33 @@
+<%= render partial: '/admin/menu'%>
+<h1>Vendedores</h1>
+<div class="row">
+<%= render partial: '/admin/seller_form'%>
+</div>
+<div class="row">
+	<table>
+		<thead>
+			<tr>
+				<th width="200">Email</th>
+				<th width="150">Codígo de vendedor</th>
+				<th width="150">Código</th>
+				<th width="150">Identificador</th>
+				<th width="150">Admin Acces</th>
+				<th width="150">Password</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<% @sellers.each do |s|%>
+			<tr>
+				<td> <%= s.email %></td>
+				<td> <%= s.seller_code %></td>
+				<td> <%= s.identify %></td>
+				<td> <%= s.seller%></td>
+				<td> <%= s.can_acces_admin%></td>
+				<td> <%= truncate(s.password, lenght: 12)%></td>
+
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
