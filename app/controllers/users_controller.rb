@@ -189,6 +189,7 @@ class UsersController < ApplicationController
       @user_new.hashed_password = SecureRandom.hex(20)
       @user_new.role = "patient"
       @user_new.confirmed_token = random_to_token
+      @user_new.birthday = params[:birthday]
       @user_new.confirmed = false
       @user_new.save
       ###### add patient to user interface #####

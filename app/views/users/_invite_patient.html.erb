@@ -10,7 +10,7 @@
 <% if sex == nil %>
 <%= label_tag 'sex' %>
 <div class="small-2 large-1 columns" ><%= label_tag 'Hombre' %>
-<%= radio_button_tag 'sex', 'male' %></div>
+<%= radio_button_tag 'sex', 'male', checked: true %></div>
 <div class="small-2 large-1 columns" ><%= label_tag 'Mujer'%>
 <%= radio_button_tag 'sex', 'female' %></div>
 <%= hidden_field_tag 'role', 'patient' %>
@@ -18,6 +18,15 @@
 <%= hidden_field_tag 'role', 'patient' %>
 <%= hidden_field_tag 'sex', sex %>
 <%end%>
+</br></br>
+</br>
+</br>
+
+<small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Cumpleaños (día/mes/año)-(01/01/2014)' %>
+<%= date_field_tag 'birthday', '', :class => 'valitx',  'data-message' => 'Es necesario agregar una fecha de nacimiento', 'data-target' => 'message_error_birthday' %>
+<small id="message_error_birthday" class="error" style="margin-top: -16px; display:none;"></small>
+
 </p>
 <div class="right"><%= submit_tag 'Registrar', :class => 'button' %></div>
 <%end%>
@@ -25,5 +34,7 @@
 $(document).ready(function(){
 VAlForValitx('name');
 VAlForValitx('email');
+VAlForValitx('birthday');
+
 });
 </script>
