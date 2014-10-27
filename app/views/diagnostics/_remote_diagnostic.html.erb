@@ -5,7 +5,7 @@
     <%= link_to 'Imprimir Receta', printing_threatment_path(dt.id ), :class => 'small button [secondary alert success]'%>
 </ul>
 <div class="row">
-<%= render partial: '/institutions/remote_institutions', locals: {institutions: dt.act_owner.institutions.where(recipe_appears: true), idx: dt.id}%>
+<%#= render partial: '/institutions/remote_institutions', locals: {institutions: dt.act_owner.institutions.where(recipe_appears: true), idx: dt.id}%>
 </div>
 
 <%end%>

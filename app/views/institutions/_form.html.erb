@@ -10,8 +10,8 @@
 				  <%= label_tag 'Actividades que realizó (obligatorio)' %>
 				  <%= text_area_tag 'study_or_do', '',:class => 'valitx', 'data-target' => 'message_error_study_or_do', 'data-message' => 'El campo del las actividades que realizastes en la institución no puede quedar vacio.' %>
 				  <small id="message_error_study_or_do" class="error" style="margin-top: -16px; display:none;"></small>
-		      <p> ¿Aparece en la receta?: <%= check_box_tag 'recipe_appears' %>	</p>	  
-		      <p> ¿Aparece en el diagnóstico?: <%= check_box_tag 'appears_in_diagnostic' %>	</p>	  
+		      <!--<p> ¿Aparece en la receta?: <%= check_box_tag 'recipe_appears' %>	</p>	  
+		      <p> ¿Aparece en el diagnóstico?: <%= check_box_tag 'appears_in_diagnostic' %>	</p>-->	  
 				  <%= submit_tag 'Agregar Institución', :class => 'button right'%>
 				<%end%>
 	</fieldset>

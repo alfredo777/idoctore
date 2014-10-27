@@ -139,6 +139,7 @@ class UsersController < ApplicationController
         @user.confirmed_token = random_to_token
         @user.confirmed = params[:seller]
         @user.terms = params[:terms]
+        @user.cadre_card = params[:cadre_card]
         @user.save
         if @user.save
           if @user.confirmed == true
