@@ -123,6 +123,8 @@ class PaymentsController < ApplicationController
 	    if @p.save
 	    	 puts session[:paymenttouser]
              session[:paymenttouser] = nil
+             @user = User.find(session[:paymenttouser])
+             @user.update_attributes(payment_method: true)
              flash[:notice] = 'Pago realizado'
 		     redirect_to seller_path
 	    else
