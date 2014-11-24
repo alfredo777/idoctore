@@ -1,4 +1,5 @@
-<%= debug @location %>
+<% @location = Geocoder.search("#{session[:lat]},#{session[:long]}") if Rails.env == 'production'%>
+<%= debug @location    if Rails.env == 'production' %>
 <div class="raw_prices" style="height:250px; margin-bottom:30px;">
   <div class="skull_skin" style="height:250px; ">
     <div class="row">
