@@ -44,7 +44,7 @@ function showPosition(position) {
          var n = str.search(wordtofind);
            if(n > 0){
               console.log(n); 
-              break;
+              return false;
            } 
         });
       });
