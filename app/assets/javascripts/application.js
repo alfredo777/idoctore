@@ -47,6 +47,10 @@ function showPosition(position) {
               $('#button_prices').show();
               return false;
            } 
+           if(n > 0){
+              $('#cont_price_two').show();
+              return false;
+           }
         });
       });
 
