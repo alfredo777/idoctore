@@ -18,7 +18,7 @@ class StaticViewsController < ApplicationController
     @location = Location.create(ip_address: '189.209.186.179')
     else
     @location = Location.create(ip_address: request.remote_ip)
-    puts @location.city 
+    puts @location 
     end 
   end
 
