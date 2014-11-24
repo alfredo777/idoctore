@@ -167,5 +167,9 @@ Rails.application.routes.draw do
   get  'payments/send_payment_in_cash'
   post 'payments/send_payment_in_cash'
 
+  ########## location #########
+  post 'static_views/create_location'
+  get 'static_views/create_location'
+
 
 end

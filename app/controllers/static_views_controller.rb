@@ -14,9 +14,13 @@ class StaticViewsController < ApplicationController
   end
 
   def prices
-    @location = Location.create(ip_address: request.remote_ip)
-    puts @location.ubicate_in
-    end 
+    @validate = Geocoder.search("#{session[:lat]},#{session[:long]}")
+    puts @validate
+  end
+
+  def create_location
+    session[:lat] = params[:latitude]
+    session[:long] = params[:longitude]
   end
 
   def register

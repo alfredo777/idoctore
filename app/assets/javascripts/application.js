@@ -22,7 +22,12 @@ $(function(){ $(document).foundation(); });
 	  })
 	 });
 
+   showPosition();
  });
+
+ function showPosition() {
+    $.get( 'static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {});
+ }
 
  function add_to_diagnostic(identifier_c , name){
  	     var id = identifier_c;
