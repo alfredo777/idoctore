@@ -19,7 +19,11 @@ class StaticViewsController < ApplicationController
   def create_location
     session[:lat] = params[:latitude]
     session[:long] = params[:longitude]
-  
+    if Rails.env == 'production'
+    @location = Geocoder.search("#{session[:lat]},#{session[:long]}")
+    else
+    @location = "DEV" 
+    end
 
     puts "#{session[:lat]},#{session[:long]}"
 
