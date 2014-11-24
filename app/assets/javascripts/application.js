@@ -28,7 +28,7 @@ $(function(){ $(document).foundation(); });
  });
 
  function showPosition() {
-    var position = navigator.geolocation.getCurrentPosition(showPosition);
+    var position = navigator.geolocation.getCurrentPosition(initialize, locationError);
     $.get( '/static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {});
  }
 
