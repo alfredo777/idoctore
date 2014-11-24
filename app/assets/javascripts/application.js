@@ -37,14 +37,14 @@ function getLocation() {
 
 function showPosition(position) {
     $.get( '/static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {
-     var findToAccesString = ['Acapulco', 'Guerrero', 'Mexico', 'México', 'Federal District', 'Distrito Federal']
+     var findToAccesString = ['Acapulco', 'Guerrero']
        $.each(data, function(i, item) {
         $.each(findToAccesString, function(i, wordtofind) {
          var str = item.data.formatted_address;
          var n = str.search(wordtofind);
-           if(n > 0){
-              alert('open prices');
+           if(n < 0){
               $('#cont_price').show();
+              $('#button_prices').show();
               return false;
            } 
         });
