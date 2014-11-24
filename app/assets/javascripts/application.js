@@ -12,7 +12,7 @@ $(function(){ $(document).foundation(); });
  $(document).ready(function() {
    
 
-   showPosition();
+    getLocation();
 
 	 $('.nav-doctor a').click(function (e){
 	 	e.preventDefault();
@@ -27,10 +27,17 @@ $(function(){ $(document).foundation(); });
 
  });
 
- function showPosition() {
-    var position = navigator.geolocation.getCurrentPosition(initialize, locationError);
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
     $.get( '/static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {});
- }
+}
 
  function add_to_diagnostic(identifier_c , name){
  	     var id = identifier_c;
