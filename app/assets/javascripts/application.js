@@ -40,7 +40,7 @@ function showPosition(position) {
      var findToAccesString = ['Acapulco', 'Guerrero', 'Mexico'] 
      console.log(data);
        $.each(data, function(i, item) {
-         console.log(item);
+         console.log(item.data.formatted_address);
       });
 
     });
