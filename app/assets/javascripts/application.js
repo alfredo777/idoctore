@@ -44,7 +44,7 @@ function showPosition(position) {
          var str = item.data.formatted_address;
          var n = str.search(wordtofind);
           console.log(n);
-        }
+        });
       });
 
     });
