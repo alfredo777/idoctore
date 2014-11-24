@@ -24,7 +24,7 @@ class StaticViewsController < ApplicationController
     else
     @location = "DEV" 
     end
-
+    puts @location.city
     puts "#{session[:lat]},#{session[:long]}"
 
     respond_to do |format|
