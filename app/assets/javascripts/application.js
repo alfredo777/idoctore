@@ -43,6 +43,7 @@ function showPosition(position) {
          var str = item.data.formatted_address;
          var n = str.search(wordtofind);
            if(n > 0){
+              alert('open prices');
               $('#cont_price').show();
               return false;
            } 
