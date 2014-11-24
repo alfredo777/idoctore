@@ -42,11 +42,9 @@ function showPosition(position) {
         $.each(findToAccesString, function(i, wordtofind) {
          var str = item.data.formatted_address;
          var n = str.search(wordtofind);
-          console.log(str);
-          console.log(wordtofind);
            if(n > 0){
-              console.log(n);
-              
+              console.log(n); 
+              break;
            } 
         });
       });
