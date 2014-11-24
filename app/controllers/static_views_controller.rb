@@ -14,15 +14,19 @@ class StaticViewsController < ApplicationController
   end
 
   def prices
-   @location = session[:location]
+   if Rails.env == 'production'
+   @location =   Geocoder.search("#{session[:lat]},#{session[:long]}")
+   else
+    @locarion = 'dev'
+   end
   end
 
   def create_location
     session[:lat] = params[:latitude]
     session[:long] = params[:longitude]
-    session[:location] = Geocoder.search("#{session[:lat]},#{session[:long]}")
+  
 
-    puts "#{session[:lat]}-#{session[:long]}-#{session[:location]}"
+    puts "#{session[:lat]}-#{session[:long]}"
 
   end
 

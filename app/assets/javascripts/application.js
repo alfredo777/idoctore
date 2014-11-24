@@ -28,7 +28,7 @@ $(function(){ $(document).foundation(); });
  });
 
  function showPosition(position) {
-    $.get( 'static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {});
+    $.get( '/static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {});
  }
 
  function add_to_diagnostic(identifier_c , name){
