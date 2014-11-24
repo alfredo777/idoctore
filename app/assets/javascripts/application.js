@@ -45,6 +45,7 @@ function showPosition(position) {
            if(n > 0){
               console.log(n); 
               return false;
+              return false;
            } 
         });
       });
