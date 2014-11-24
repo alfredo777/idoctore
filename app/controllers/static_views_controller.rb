@@ -24,7 +24,7 @@ class StaticViewsController < ApplicationController
     else
     @location = "DEV" 
     end    
-    render json: @location.json
+    render json: @location.to_json
   end
 
   def register
