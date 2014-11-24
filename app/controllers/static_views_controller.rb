@@ -14,13 +14,14 @@ class StaticViewsController < ApplicationController
   end
 
   def prices
-    @validate = Geocoder.search("#{session[:lat]},#{session[:long]}")
-    puts @validate
+   @location = session[:location]
   end
 
   def create_location
     session[:lat] = params[:latitude]
     session[:long] = params[:longitude]
+    session[:location] = Geocoder.search("#{session[:lat]},#{session[:long]}")
+
   end
 
   def register
