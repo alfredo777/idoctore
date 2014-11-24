@@ -14,6 +14,7 @@ class StaticViewsController < ApplicationController
   end
 
   def prices
+    @location = request.location  
   end
 
   def register
