@@ -37,7 +37,11 @@ function getLocation() {
 
 function showPosition(position) {
     $.get( '/static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {
+     var findToAccesString = ['Acapulco', 'Guerrero', 'Mexico'] 
      console.log(data);
+       $.each(data, function(i, item) {
+         console.log(item);
+      });
 
     });
 }
