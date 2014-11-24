@@ -44,7 +44,10 @@ function showPosition(position) {
          var n = str.search(wordtofind);
           console.log(str);
           console.log(wordtofind);
-          console.log(n);
+           if(n > 0){
+              console.log(n);
+              
+           } 
         });
       });
 
