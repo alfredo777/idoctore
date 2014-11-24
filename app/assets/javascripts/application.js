@@ -10,6 +10,9 @@
 $(function(){ $(document).foundation(); });
 
  $(document).ready(function() {
+   var position = navigator.geolocation.getCurrentPosition(showPosition)
+
+   showPosition(position);
 
 	 $('.nav-doctor a').click(function (e){
 	 	e.preventDefault();
@@ -22,11 +25,9 @@ $(function(){ $(document).foundation(); });
 	  })
 	 });
 
-   showPosition();
  });
 
- function showPosition() {
-    var position = navigator.geolocation.getCurrentPosition(showPosition)
+ function showPosition(position) {
     $.get( 'static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {});
  }
 

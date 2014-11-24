@@ -22,6 +22,8 @@ class StaticViewsController < ApplicationController
     session[:long] = params[:longitude]
     session[:location] = Geocoder.search("#{session[:lat]},#{session[:long]}")
 
+    puts "#{session[:lat]}-#{session[:long]}-#{session[:location]}"
+
   end
 
   def register
