@@ -23,14 +23,8 @@ class StaticViewsController < ApplicationController
     @location = Geocoder.search("#{session[:lat]},#{session[:long]}")
     else
     @location = "DEV" 
-    end
-    puts @location
-    puts "#{session[:lat]},#{session[:long]}"
-
-    respond_to do |format|
-      format.js
-    end
-
+    end    
+    render json: @location.json
   end
 
   def register
