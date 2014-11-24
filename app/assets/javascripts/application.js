@@ -41,7 +41,7 @@ function showPosition(position) {
      console.log(data);
        $.each(data, function(i, item) {
         $.each(findToAccesString, function(i, wordtofind) {
-         var str = item.data.formatted_address
+         var str = item.data.formatted_address;
          var n = str.search(wordtofind);
           console.log(n);
         }
