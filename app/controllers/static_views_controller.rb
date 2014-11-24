@@ -14,7 +14,11 @@ class StaticViewsController < ApplicationController
   end
 
   def prices
-    @location = request.location  
+    if Rails.env == 'development'
+    @location = Location.create(ip_address: '189.209.186.179')
+    else
+    @location = Location.create(ip_address: request.remote_ip)
+    end 
   end
 
   def register

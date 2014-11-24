@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024181442) do
+ActiveRecord::Schema.define(version: 20141124172951) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(version: 20141024181442) do
     t.text     "study_or_do"
     t.boolean  "recipe_appears"
     t.boolean  "appears_in_diagnostic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "ip_address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

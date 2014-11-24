@@ -88,6 +88,7 @@ GEM
     foundation-rails (5.2.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    geocoder (1.2.6)
     highcharts-rails (3.0.10)
       railties (>= 3.1)
     hike (1.2.3)
@@ -225,6 +226,7 @@ DEPENDENCIES
   conekta
   fog
   foundation-rails
+  geocoder
   highcharts-rails (~> 3.0.0)
   informant-rails
   jbuilder (~> 2.0)
