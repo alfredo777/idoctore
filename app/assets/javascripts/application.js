@@ -37,7 +37,7 @@ function getLocation() {
 
 function showPosition(position) {
     $.get( '/static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {
-     var findToAccesString = ['Acapulco', 'Guerrero', 'Mexico']
+     var findToAccesString = ['Acapulco', 'Guerrero', 'México']
        $.each(data, function(i, item) {
         $.each(findToAccesString, function(i, wordtofind) {
          var str = item.data.formatted_address;
@@ -45,12 +45,10 @@ function showPosition(position) {
            if(n < 0){
               $('#cont_price').show();
               $('#button_prices').show();
-              return false;
+              $('#cont_price_two').hide();
+
            } 
-           if(n > 0){
-              $('#cont_price_two').show();
-              return false;
-           }
+
         });
       });
 
