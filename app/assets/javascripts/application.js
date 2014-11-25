@@ -46,7 +46,7 @@ function showPosition(position) {
               $('#pricemsf').show();
               $('#cont_price').hide();
               $('#button_prices').hide();
-              $('#register_link').show();
+              $('#register_link').hide();
            }
 
         });
