@@ -37,7 +37,7 @@ function getLocation() {
 
 function showPosition(position) {
     $.get( '/static_views/create_location', { latitude: position.coords.latitude, longitude: position.coords.longitude }, function( data ) {
-     var findToAccesString = ['Acapulco', 'Guerrero', 'Distrito Federal', 'México']
+     var findToAccesString = ['Acapulco', 'Guerrero']
        $.each(data, function(i, item) {
         $.each(findToAccesString, function(i, wordtofind) {
          var str = item.data.formatted_address;
