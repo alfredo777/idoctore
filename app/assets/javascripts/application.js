@@ -42,9 +42,10 @@ function showPosition(position) {
         $.each(findToAccesString, function(i, wordtofind) {
          var str = item.data.formatted_address;
          var n = str.search(wordtofind);
-           if(n < 0){
-              $('#cont_price').show();
-              $('#button_prices').show();
+           if(n > 0){
+              $('#pricemsf').show();
+              $('#cont_price').hide();
+              $('#button_prices').hide();
               $('#register_link').hide();
            }
 
