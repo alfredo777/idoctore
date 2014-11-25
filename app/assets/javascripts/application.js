@@ -47,6 +47,10 @@ function showPosition(position) {
               $('#button_prices').show();
               $('#cont_price_two').hide();
 
+            }else{
+              $('#cont_price').hide();
+              $('#button_prices').hide();
+              $('#cont_price_two').show();
            } 
 
         });
