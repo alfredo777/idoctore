@@ -12,7 +12,7 @@ $(function(){ $(document).foundation(); });
  $(document).ready(function() {
    
 
-    getLocation();
+    //getLocation();
 
 	 $('.nav-doctor a').click(function (e){
 	 	e.preventDefault();
