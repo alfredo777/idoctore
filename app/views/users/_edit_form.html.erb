@@ -10,12 +10,12 @@
 <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
 <%= label_tag 'Cumpleaños (día/mes/año)-(01/01/2014)' %>
 <%= date_field_tag 'birthday', @user.birthday %>
-<div class="row">
+<!--<div class="row">
   <div class="small-2  left" ><%= label_tag 'Hombre' %>
   <%= radio_button_tag 'sex', 'male' %></div>
   <div class="small-2  left" ><%= label_tag 'Mujer'%>
   <%= radio_button_tag 'sex', 'female' %></div>
-</div>
+</div>-->
 <% if current_user.role == 'doctor' %>
 <%= label_tag 'Cedula profesional' %>
 <%= text_field_tag 'cadre_card', @user.cadre_card, :class => 'valitx', 'data-message' => 'El de la cedula email no puede quedar vacio.', 'data-target' => 'message_error_cadre_card' %>

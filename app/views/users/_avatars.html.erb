@@ -1,10 +1,10 @@
 <% if edit %>
-	<%= image_tag("#{user.avatar.gigant}", :class => 'th  ', :id => 'blah') if user.avatar?  %>
+	<%= image_tag("#{user.avatar.gigant}", :class => 'th  ', :id => 'blah', :width => '150px') if user.avatar?  %>
 	<% case user.sex %>
 	<% when 'male' %>
-	 <%= image_tag('users/man.png', :class => 'th ', :id => 'blah') if !user.avatar?  %>
+	 <%= image_tag('users/man.png', :class => 'th ', :id => 'blah', :width => '150px') if !user.avatar?  %>
 	<% when 'female' %>
-	 <%= image_tag('users/wooman.png', :class => 'th ', :id => 'blah') if !user.avatar? %>
+	 <%= image_tag('users/wooman.png', :class => 'th ', :id => 'blah', :width => '150px') if !user.avatar? %>
 	<%end%>
 <%else%>
 	<%= image_tag("#{user.avatar.gigant}", :class => 'circular ') if user.avatar?  %>

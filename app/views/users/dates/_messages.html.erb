@@ -1,4 +1,5 @@
-<h6><b>Mensajes</b></h6>
+<div style="width:90%;">
+<h6><b>Mensajes de la cita</b></h6>
    <%= form_tag("/messages/create", remote: true, :id => 'form_message') do -%>
      <%= text_field_tag 'message'%>
       <small id="message_error" class="error" style="display:none; margin-top:-16px;">Es necesario que este campo no esté en blanco.</small>
@@ -19,3 +20,4 @@
         console.log('submit');
       });
    </script>
+</div>
