@@ -1,40 +1,40 @@
-  <h3>Vital Signs</h3>
+  <h3>Signos vitales</h3>
   <p>
-  <strong>Weight:</strong>
+  <strong>Peso en Kilogramos:</strong>
   <%= vs.weight %>
 </p>
 
 <p>
-  <strong>Blood pressure up:</strong>
+  <strong>Presión sanguinea Alta:</strong>
   <%= vs.blood_pressure_up %>
 </p>
 
 <p>
-  <strong>Blood pressure down:</strong>
+  <strong>Presión sanguinea baja:</strong>
   <%= vs.blood_pressure_down %>
 </p>
 
 <p>
-  <strong>Pulse:</strong>
+  <strong>Pulso por minuto:</strong>
   <%= vs.pulse %>
 </p>
 
 <p>
-  <strong>Height:</strong>
+  <strong>Altura en centimetros:</strong>
   <%= vs.height %>
 </p>
 
 <p>
-  <strong>Breathing:</strong>
+  <strong>Respiraciones por minuto:</strong>
   <%= vs.breathing %>
 </p>
 
 <p>
-  <strong>Temperature:</strong>
+  <strong>Temperatura en centigrados:</strong>
   <%= vs.temperature %>
 </p>
 <p>
-  <strong>Signs taken per:</strong>
+  <strong>Persona que tomo los signos:</strong>
   <%=  link_to "#{vs.owner}", user_path(vs.owner_by), target: '_blank' if vs.owner_by != nil%>
   <%=   "#{vs.owner}" if vs.owner_by == nil%>
 
