@@ -194,7 +194,7 @@ class UsersController < ApplicationController
       @user_new.confirmed = false
       @user_new.save
       ###### add patient to user interface #####
-      @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @user_new.id)
+      @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @user_new.id, :accepted_request => true)
       if @user_new.save
         @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
         flash[:notice] = t('user.create_user_by_invite')
@@ -263,8 +263,8 @@ class UsersController < ApplicationController
 
     @dp = DoctorPatient.find_by_patient_id(@user.id)
     if @dp != nil
-      @dp.accepted_request = true
-      @dp.save
+        @dp.accepted_request = true
+        @dp.save
     end
 
     flash[:notice] = t('user.reset_password')
