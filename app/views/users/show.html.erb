@@ -10,7 +10,6 @@
   <div id="container_of_parts" ></div>
   </center>
   <%else%>
-  
   <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: false} %>
   <%= render partial: '/users/doctor_parts/doctor_reference', locals: {user: @user, tasks: @tasks} %>
 <%end%>
