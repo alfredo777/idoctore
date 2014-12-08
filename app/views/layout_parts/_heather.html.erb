@@ -48,19 +48,23 @@
 		     <li><%= link_to  "#{current_user.name}", user_path(current_user.id) %></li>
 		     <% if current_user.role == 'doctor' %>
 		      <% if agent %>
-		      	<li><%= link_to "Pagos", payments_path%> </li>
+		      	<li><%= link_to "$Mi cuenta", payments_path%> </li>
 				<li><%= link_to "Mis instituciones",institutions_new_path %> </li>
 				<li><%= link_to 'Diagnosticos', all_create_path%> </li>
 				<li><%= link_to 'Editar Usuario', edit_user_path(current_user)%> </li>
 				<li><%= link_to 'Citas', all_cites_viwer_path %> </li>
 		      <%else%>
-		       <li><%= link_to image_tag('payment.png', width:42, height:42), payments_path%> </li>
+		       <li><%#= link_to image_tag('payment.png', width:42, height:42), payments_path%> 
+                   <%= link_to "$Mi cuenta", payments_path%>
+		       </li>
 		      <%end%>
 		     <%end%>
 		     <% if agent %>
 		     <li><%= link_to  "Salir", sign_out_path(:id => current_user.id) %></li>
 		     <%else%>
-		     <li><%= link_to  image_tag('exit.png', width:42, height:42), sign_out_path(:id => current_user.id) %></li>
+		     <li>
+		       <%= link_to  "Salir", sign_out_path(:id => current_user.id) %>
+		       <%#= link_to  image_tag('exit.png', width:42, height:42), sign_out_path(:id => current_user.id) %></li>
 		     <%end%>
 		    </ul>
 		  <%end%>
