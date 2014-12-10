@@ -17,8 +17,8 @@
   <%= radio_button_tag 'sex', 'female' %></div>
 </div>-->
 <% if current_user.role == 'doctor' %>
-<%= label_tag 'Cedula profesional' %>
-<%= text_field_tag 'cadre_card', @user.cadre_card, :class => 'valitx', 'data-message' => 'El de la cedula email no puede quedar vacio.', 'data-target' => 'message_error_cadre_card' %>
+<%= label_tag 'Cédula profesional' %>
+<%= text_field_tag 'cadre_card', @user.cadre_card, :class => 'valitx', 'data-message' => 'El de la cédula email no puede quedar vacio.', 'data-target' => 'message_error_cadre_card' %>
 <small id="message_error_cadre_card" class="error" style="margin-top: -16px; display:none;"></small>
 <%= label_tag 'Dirección del consultorio' %>
 <%= text_area_tag 'street_addres', @user.street_addres%>
