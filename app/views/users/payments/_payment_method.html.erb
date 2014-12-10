@@ -8,7 +8,7 @@
 	<%= form_tag("/payments/send_payment", :remote => true, :id => "card-form") do -%>
 	  <div class="row">
 	    <div class="large-7">
-	 		<%= select_tag 'amount', options_for_select([["Plan Incial", 100000], ["Plan Avanzado", 160000], [ "Plan Institucional", 1000000]]) %>
+	 		<%= select_tag 'amount', options_for_select([["Plan Incial", 230000], ["Plan Ilimitado", 400000]]) %>
             <p>Clave de ventas</p>
 	 		<%= text_field_tag 'seller', '', 'data-conekta'=>"card[name]", placeholder: 'Ingresa el código de vendedor'%>
 
