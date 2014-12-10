@@ -9,7 +9,7 @@
 #ManagerUser.create(email: 'jardarubydv@gmail.com', password: 'alfredo2008', identify: 1234567, seller_code: '234890222CFG',  seller: true)
 
 ######## crando usuarios ########
-
+=begin
 @doctor_test = User.create(name: "German Carrillo", email: "gemacafl@gmail.com" , hashed_password: "12345678", confirmed: true, role: "doctor", sex: "male", terms: true, cadre_card: "1235-german", payment_method: true, date_of_birth: Time.now)
 
 @patient_test_1 = User.create(name: "Mario Perez Jimenez", email: "gemacafl+1@gmail.com", hashed_password: "12345678", confirmed: true, role: "patient", sex: "male", terms: true, date_of_birth: Time.now )
@@ -45,3 +45,7 @@
 @dp14 = DoctorPatient.create(doctor_id: @doctor_test.id , patient_id: @patient_test_14.id, accepted_request: true)
 @dp15 = DoctorPatient.create(doctor_id: @doctor_test.id , patient_id: @patient_test_15.id, accepted_request: true)
 @dp16 = DoctorPatient.create(doctor_id: @doctor_test.id , patient_id: @patient_test_16.id, accepted_request: true)
+
+=end
+@doctor_test = User.create(name: "Adrián Cerón", email: "d.r.ceron@hotmail.com" , hashed_password: "adrian01", confirmed: true, role: "doctor", sex: "male", terms: true, cadre_card: "1235-ceron", payment_method: true, date_of_birth: Time.now)
+
