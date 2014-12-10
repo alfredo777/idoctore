@@ -14,12 +14,10 @@ class PaymentsController < ApplicationController
 		ida = params[:seller]
 		puts "procesando pagos por el vendedor #{ida}"
 		case params[:amount]
-		when 100000
+		when 230000
 			@id = 'plan_inicial'
-		when 160000
-			@id = 'plan_avanzado'
-		when 1000000
-			@id = 'plan_institucional'
+		when 400000
+			@id = 'plan_unlimited'
 		end
 		session[:valuexx] = (params[:amount].to_i / 100).to_i
 		session[:acte] = params[:conektaTokenId]
@@ -106,12 +104,10 @@ class PaymentsController < ApplicationController
 
 	def send_payment_in_cash
 		case params[:amount]
-		when 100000
-			@id = 'plan_inicial'
-		when 160000
-			@id = 'plan_avanzado'
-		when 1000000
-			@id = 'plan_institucional'
+		when 230000
+			@id = 'plan_inicial'		
+		when 400000
+			@id = 'plan_unlimited'
 		end
 
 		@global = (params[:amount].to_i / 100).to_i
