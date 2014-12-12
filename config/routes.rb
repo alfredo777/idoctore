@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   
 
+  get 'hospitals/view'
+
+  get 'hospitals/loggin'
+
+  get 'hospitals/users'
+
+  get 'hospitals/stats'
+
   ######## home page #######
 
   root 'static_views#home'
