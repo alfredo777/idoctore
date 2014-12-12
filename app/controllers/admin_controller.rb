@@ -56,8 +56,13 @@ class AdminController < ApplicationController
   end
 
   def pay_ment_by
-    @user = User.find(session[:paymenttouser])
-    @seller = ManagerUser.find(session[:seller])
+    if session[:admin] == nil
+      @user = User.find(session[:paymenttouser])
+      @seller = ManagerUser.find(session[:seller])
+      else
+
+      @seller = ManagerUser.find(session[:admin])
+    end
   end
 
   def sellers_window
