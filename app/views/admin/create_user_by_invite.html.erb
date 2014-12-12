@@ -1,0 +1,9 @@
+<%= render partial: '/admin/menu'%>
+
+<h1>Usuario Gratuito</h1>
+
+ <%= form_tag('/users/register') do -%>
+     <%= hidden_field_tag 'payment_method', true %>
+
+    <%= render partial: '/admin/methods_payment_for_seller/user_info'%>
+ <%end%>
