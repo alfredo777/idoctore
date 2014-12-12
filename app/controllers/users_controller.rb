@@ -140,12 +140,20 @@ class UsersController < ApplicationController
         @user.confirmed = params[:seller]
         @user.terms = params[:terms]
         @user.cadre_card = params[:cadre_card]
+          if params[:payment_method]
+             @user.payment_method = true
+          end
         @user.save
         if @user.save
           if @user.confirmed == true
               flash[:notice] =  'Usuario creado correctamente'
-              redirect_to pay_ment_by_path
-              session[:paymenttouser] = @user.id
+              if session[:admin] != nil
+                session[:paymenttouser] = nil
+                redirect_to admin_path
+              else
+                session[:paymenttouser] = @user.id
+                redirect_to pay_ment_by_path
+              end
               else
                @mailer = UserMailer.welcome_email(@user, @user.confirmed_token).deliver
               flash[:notice] =  t('user.create_user')

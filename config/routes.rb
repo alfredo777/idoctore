@@ -119,7 +119,7 @@ Rails.application.routes.draw do
 
   ######## admin get for user parts ##########
     get 'users/search_cupons' 
-
+   
   
   ####### comunication parts ########
 
@@ -166,7 +166,7 @@ Rails.application.routes.draw do
   post 'acces_window_validate', :to  => 'admin#acces_window_validate'
   get 'pay_ment_by', :to => 'admin#pay_ment_by', :as => :pay_ment_by
   get 'create_user_by_payment_methods', :to => 'admin#create_user_by_payment_methods', as: :create_user_by_payment_methods
-  
+  get 'create_user_free', :to => "admin#create_user_by_invite", :as => :create_user_by_invite 
 
   ############ payments ##########
   post 'payments/send_payment'
