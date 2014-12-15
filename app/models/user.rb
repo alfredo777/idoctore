@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
    has_many :cupons
    has_many :institutions
    has_many :payments
+   has_many :user_hospitals
+   has_many :hospitals, through: :user_hospitals
 
    ##### validamos por email #####
    
