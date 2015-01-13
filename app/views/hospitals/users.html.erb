@@ -1,2 +1,27 @@
-<h1>Hospitals#users</h1>
-<p>Find me in app/views/hospitals/users.html.erb</p>
+<h1>Panel de Doctores</h1>
+<p>Visualizador de doctores</p>
+<table>
+  <thead>
+
+    <tr>
+	    <th width="150">Avatar</th>
+	    <th width="200"> Nombre</th>
+	    <th width="100"> Cumpleaños</th>
+	    <th width="100"> Sexo</th>
+	    <th width="200"> Opcciones</th>
+	</tr>
+  </thead>
+<tbody >
+
+<% @hospital.users.where(role: 'doctor').each do |user|%>
+	<tr>     
+	     <td><%= render partial: '/users/avatars', locals: {user: user, edit: false}%></td>
+	     <td><%= user.name %></td>
+	     <td><%= user.date_of_birth %></td>
+	     <td><%= user.sex %></td>
+	     <td><%= link_to 'Eliminar de mi hospital', delete_realtion_path(user: user.id)%></td>
+	</tr>
+<%end%>
+</tbody>
+	
+</table>

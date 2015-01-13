@@ -4,9 +4,9 @@
 <div class="small-6 columns">
  <fieldset>
     <legend>Formulario de acceso</legend>
-	<%= form_tag('/hospitals/session') do -%>
+	<%= form_tag('/hospitals/session_in') do -%>
 	   <%= text_field_tag 'code', '', placeholder: 'Código de acceso de adminstrador de hospital' %>
-	   <%= text_field_tag 'password', '', placeholder: 'Contraseña de acceso de adminstrador de hospital' %>
+	   <%= password_field_tag 'password', '', placeholder: 'Contraseña de acceso de adminstrador de hospital' %>
 	   <%= submit_tag 'Ingresar', :class => 'button' %>
 	<%end%>
  </fieldset>

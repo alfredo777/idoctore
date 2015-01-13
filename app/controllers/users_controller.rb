@@ -404,6 +404,7 @@ class UsersController < ApplicationController
   end
 
   def destroy_session
+    @activity = UserActivity.create(user: current_user, activity: 'logout')
     session[:user] = nil
     redirect_to root_path
   end
@@ -550,9 +551,10 @@ class UsersController < ApplicationController
     backend_validate = member.w_digest(digest)
     puts "#{backend_validate}"
 
-    if  backend_validate == true
+    if backend_validate == true
       session[:user] = "#{member.id}"
       redirect_to user_path(member.id)
+      @activity = UserActivity.create(user: current_user, activity: 'login')
       flash[:notice] = t('user.create_session')
     else
       session[:user] = nil
