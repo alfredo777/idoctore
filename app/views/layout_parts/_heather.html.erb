@@ -3,7 +3,7 @@
 <%= favicon_link_tag('favicon.ico')%>
 <% if flash[:notice] %>
 <div data-alert class="alert-box" id="alert_box_simple">
-  <%= notice  %>
+  <%= flash[:notice]   %>
 </div>
 <% end %>
 <script type="text/javascript">

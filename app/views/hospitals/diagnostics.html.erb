@@ -1,0 +1,30 @@
+<h3><%= t('diagnostics.diagnostics')%> - <%= "#{@user.name}" %></h3>
+<center>
+<table>
+  <thead>
+    <tr>
+      <th width="300"><%= t('diagnostics.diagnostics')%></th>
+      <th width="200"> Doctor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @diagnostics.each do |dt| %>
+    <tr>
+      <td>
+        <div class="slide-p" >
+          <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
+          <%= t('diagnostics.diagnostics')%> <%= dt.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
+          <%end%>
+        </div>
+      </td>
+      <td>
+        <%= dt.owner %>
+      </td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+<ul class="pagination">
+  <%= will_paginate @diagnostics %>
+</ul>
+</center>

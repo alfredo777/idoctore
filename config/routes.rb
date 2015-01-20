@@ -166,8 +166,10 @@ Rails.application.routes.draw do
   get 'hospitals/view', :as => :hospital
   get 'hospitals/loggin', :as => :login_hospital
   get 'hospitals/users', :as => :admin_doctor_hospital
+  get 'hospitals/patients', :as => :admin_patients_hospital
   get 'hospitals/stats', :as => :stats_hospital
   get 'hospitals/create_user_hospital', :as => :create_user_hospital
+  get 'hospitals/diagnostics', :as => :diagnostics_admin
   get 'hospitals/delete_user_hospital'
   get 'hospitals/create_user_by_hospital'
   get 'hospitals/create_hospital'

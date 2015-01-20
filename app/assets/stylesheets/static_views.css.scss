@@ -373,9 +373,11 @@ em{
   border-top: 50px solid #666;  
 }
 .color_grey{
-  background: #fff;
   color:#6E6E6E;
   border-right:  #eee solid 9px;
+  //background: #F5F5DC;
+  background: #323232;
+
 }
 
 .color_grey h1, h2, h3, h4{
@@ -383,14 +385,21 @@ em{
 }
 
 .li-nav{
-  background: #eee;
+  background: none;
   width:100%;
   padding: 5%;
-  border-bottom: #fff solid 1px !important;
+  border-bottom: #6E6E6E solid 1px !important;
 
 
 }
  
 .li-nav:hover{
-    border-bottom: #A9D0F5 solid 1px !important;
+    border-bottom: #efefef solid 1px !important;
+}
+
+#lateral{
+  position: fixed;
+}
+.body-load-hospital{
+  margin-left: 20%;
 }

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def index
     require 'will_paginate/array'
 
-    flash[:notice] = nil
+    #flash[:notice] = nil
     @user_patients = current_user.patients.paginate(:page => params[:page], :per_page => 20)
     @user_doctors = current_user.doctors.paginate(:page => params[:page], :per_page => 20)
 
@@ -182,12 +182,19 @@ class UsersController < ApplicationController
 
       if @dp_find != nil
         @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @u.id)
+
+        if current_user.hospitals.count != 0
+         @hospital = current_user.hospitals.last
+         @create_relation = UserHospital.create(user_id: @u.id, hospital_id: @hospital.id)
+        end
+
         @mailer = UserMailer.existent_user_invite(@u, current_user).deliver
-        redirect_to :back
         flash[:notice] = t('user.solicitud_user_by_invite')
-      else
         redirect_to :back
+      else
         flash[:notice] = t('user.error_solicitude_user_by_invite')
+        redirect_to :back
+        
 
       end
     else
@@ -204,12 +211,19 @@ class UsersController < ApplicationController
       ###### add patient to user interface #####
       @dp = DoctorPatient.create(:doctor_id => current_user.id, :patient_id => @user_new.id, :accepted_request => true)
       if @user_new.save
+        if current_user.hospitals.count != 0
+         @hospital = current_user.hospitals.last
+         @create_relation = UserHospital.create(user_id: @user_new.id, hospital_id: @hospital.id)
+        end
         @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
-        flash[:notice] = t('user.create_user_by_invite')
+        #flash[:notice] = t('user.create_user_by_invite')
+        flash[:notice] = 'Nuevo paciente agregado'
         redirect_to :back
+
       else
         flash[:notice] = t('user.error_create_user_by_invite')
         redirect_to :back
+
       end
     end
   end

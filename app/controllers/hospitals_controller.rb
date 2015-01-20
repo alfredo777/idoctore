@@ -31,7 +31,19 @@ class HospitalsController < ApplicationController
 
   def users
     @hospital = Hospital.find(session[:hospital])
+    @doctors = @hospital.users.where(role: 'doctor').paginate(:page => params[:page], :per_page => 30).order('id DESC')
 
+  end
+
+  def patients
+    @hospital = Hospital.find(session[:hospital])
+    @patients = @hospital.users.where(role: 'patient').paginate(:page => params[:page], :per_page => 30).order('id DESC')
+  end
+
+  def diagnostics
+    @hospital = Hospital.find(session[:hospital])
+    @user=User.find(params[:id])
+    @diagnostics = @user.diagnostics.paginate(:page => params[:page], :per_page => 30).order('id DESC')
   end
 
   def stats
