@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124172951) do
+ActiveRecord::Schema.define(version: 20141216175535) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 20141124172951) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "accepted_request", default: false
+  end
+
+  create_table "hospitals", force: true do |t|
+    t.string   "name"
+    t.string   "password"
+    t.string   "salt"
+    t.integer  "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "secure_code"
   end
 
   create_table "institutions", force: true do |t|
@@ -201,6 +211,20 @@ ActiveRecord::Schema.define(version: 20141124172951) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "creator_id"
+  end
+
+  create_table "user_activities", force: true do |t|
+    t.string   "activity"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_hospitals", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hospital_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

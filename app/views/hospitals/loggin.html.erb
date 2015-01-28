@@ -1,0 +1,17 @@
+<h1>Ingresa al manager de tu hospital</h1>
+<p>Coloca los datos de tu hospital para poder ingresar</p>
+<div class="row">
+<div class="small-6 columns">
+ <fieldset>
+    <legend>Formulario de acceso</legend>
+	<%= form_tag('/hospitals/session_in') do -%>
+	   <%= text_field_tag 'code', '', placeholder: 'Código de acceso de adminstrador de hospital' %>
+	   <%= password_field_tag 'password', '', placeholder: 'Contraseña de acceso de adminstrador de hospital' %>
+	   <%= submit_tag 'Ingresar', :class => 'button' %>
+	<%end%>
+ </fieldset>
+ </div>
+ <div class="small-6 columns">
+   <%= image_tag('hospital-login.png')%>
+ </div>
+</div>

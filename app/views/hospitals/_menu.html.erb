@@ -1,0 +1,23 @@
+<% if session[:hospital] != nil %>
+<div id="lateral" class="small-2 columns color_grey">
+<div class="state_grey">
+	<a class="cursive state_grey" style="margin-top:-5px;"><dt><h2 style="color:#6E6E5C;" class="left cursive"> I </h2><h2 class="left cursive" style="color:#6E6E5C;">Doctore</h2></dt></a>
+</div>
+<div><h4><%= @hospital.name %></h4></div>
+<ul class="side-nav">
+	<li class="li-nav"><%= link_to 'Inicio', hospital_path %></li>
+	<li class="li-nav"><%= link_to 'Doctores', admin_doctor_hospital_path%></li>
+	<li class="li-nav"><%= link_to 'Pacientes', admin_patients_hospital_path%></li>
+	<li class="li-nav"><%= link_to 'Nuevo Doctor', create_user_hospital_path %></li>
+	<!--<li class="li-nav"><%= link_to 'Estadísticas', stats_hospital_path%></li>-->
+	<li class="li-nav"><%= link_to 'Salir', hospitals_session_out_path %></li>
+</ul>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var accesorwindowheight = $(window).height();
+		$('#lateral').height(accesorwindowheight);
+	});
+</script>
+<%end%>

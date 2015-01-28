@@ -1,3 +1,5 @@
+<% if session[:hospital] == nil %>
+
 <% if current_user.role == 'doctor' %>
 <ul class="button-group [radius round]">
 	<li>
@@ -8,6 +10,7 @@
 <%#= render partial: '/institutions/remote_institutions', locals: {institutions: dt.act_owner.institutions.where(recipe_appears: true), idx: dt.id}%>
 </div>
 
+<%end%>
 <%end%>
 
 <div style="overflow:auto; height: 700px;">
@@ -82,10 +85,13 @@
 	<% if dt.notes != nil %>
 	<%= render partial: '/diagnostics/show_note', locals:{dt: dt} %>
 	<%end%>
-
+    
+    <% if session[:hospital] == nil %>
 
 	<p id="key_<%=dt.id%>" style="font-size:8px;"> <%= find_advance_key(dt.owner_by)if current_user.id = dt.owner_by%></p>
 	</div>
+
+	<%end%>
 
 </div>
 </div>

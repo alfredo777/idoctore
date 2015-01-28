@@ -4,11 +4,14 @@ class User < ActiveRecord::Base
    has_many :diagnostics
    has_many :notes
    has_many :cite_doctors
-   has_many :single_files
-   has_many :notices
-   has_many :cupons
-   has_many :institutions
-   has_many :payments
+   has_many :single_files, dependent: :destroy
+   has_many :notices, dependent: :destroy
+   has_many :cupons, dependent: :destroy
+   has_many :institutions, dependent: :destroy
+   has_many :payments, dependent: :destroy
+   has_many :user_hospitals
+   has_many :hospitals, through: :user_hospitals
+   has_many :user_activities, dependent: :destroy
 
    ##### validamos por email #####
    

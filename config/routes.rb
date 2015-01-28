@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   ######## home page #######
 
   root 'static_views#home'
@@ -138,6 +137,7 @@ Rails.application.routes.draw do
   get 'static_views/send_contact'
   post 'static_views/send_contact'
 
+
   ######## Admin ############
 
   get 'admin/users', :as => :admin_users
@@ -159,6 +159,29 @@ Rails.application.routes.draw do
   get 'pay_ment_by', :to => 'admin#pay_ment_by', :as => :pay_ment_by
   get 'create_user_by_payment_methods', :to => 'admin#create_user_by_payment_methods', as: :create_user_by_payment_methods
   get 'create_user_free', :to => "admin#create_user_by_invite", :as => :create_user_by_invite 
+  get 'hospital_manager', :to => "admin#hospital_admin", :as => :hospital_admin
+
+  ############# hospitals #############
+
+  get 'hospitals/view', :as => :hospital
+  get 'hospitals/loggin', :as => :login_hospital
+  get 'hospitals/users', :as => :admin_doctor_hospital
+  get 'hospitals/patients', :as => :admin_patients_hospital
+  get 'hospitals/stats', :as => :stats_hospital
+  get 'hospitals/create_user_hospital', :as => :create_user_hospital
+  get 'hospitals/diagnostics', :as => :diagnostics_admin
+  get 'hospitals/delete_user_hospital'
+  get 'hospitals/create_user_by_hospital'
+  get 'hospitals/create_hospital'
+  get 'hospitals/session_in'
+  get 'hospitals/delete_realtion', :as => :delete_realtion
+  get 'hospitals/session_out', :as => :hospitals_session_out
+  post 'hospitals/create_user_hospital'
+  post 'hospitals/delete_user_hospital'
+  post 'hospitals/create_user_by_hospital'  
+  post 'hospitals/create_hospital'
+  post 'hospitals/session_in'
+  post 'hospitals/delete_realtion'
 
   ############ payments ##########
   post 'payments/send_payment'

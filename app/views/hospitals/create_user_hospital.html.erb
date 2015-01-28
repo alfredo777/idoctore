@@ -1,0 +1,15 @@
+<h1> Creador de Doctores </h1>
+<p> Agrega doctores mediante tu sistema de de hospital</p>
+<%= form_tag('/hospitals/create_user_by_hospital') do-%>
+    <%= label_tag "Nombre"%>
+	<%= text_field_tag 'name','', placeholder: 'Ingresa el nombre del médico a dar de alta' %>
+	<%= label_tag "Email"%>
+    <%= text_field_tag 'email','', placeholder: 'Ingresa el email' %>
+    <%= label_tag "Cédula"%>
+    <%= text_field_tag 'cedula','', placeholder: 'Ingresa la cédula del doctor' %>
+    <%= label_tag "Cumpleaños"%>
+    <%= date_field_tag 'birthday','', placeholder: 'Fecha de nacimiento' %>
+    <%= label_tag "Sexo"%>
+    <%= select_tag 'sex', options_for_select([ ["Masculino", "male"], [ "Femenino", "female"] ])%>
+    <%= submit_tag "Crear Doctor", :class => 'right button'%>
+<%end%>

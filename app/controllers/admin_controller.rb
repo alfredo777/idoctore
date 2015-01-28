@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
-  before_filter :admin_filter, only: [:users, :cupons, :payments, :stats, :sellers_admin ]
+  before_filter :admin_filter, only: [:users, :cupons, :payments, :stats, :sellers_admin, :hospital_admin, :create_user_by_invite ]
   before_filter :seller_filter, only: [:sellers_window]
-  before_filter :can_acces_admin, only: [:users, :cupons, :payments, :stats, :sellers_admin ]
+  before_filter :can_acces_admin, only: [:users, :cupons, :payments, :stats, :sellers_admin, :hospital_admin, :create_user_by_invite ]
   before_filter :second_steap_filter, only: [:pay_ment_by]
 
   def users
@@ -99,6 +99,13 @@ class AdminController < ApplicationController
   def exit_seller
     session[:seller] = nil
     redirect_to acces_window_path
+  end
+
+  def create_user_by_invite
+  end
+
+  def hospital_admin
+     @hospitals = Hospital.all
   end
 
   private

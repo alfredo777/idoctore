@@ -1,0 +1,29 @@
+<h1>Panel de Doctores</h1>
+<p>Visualizador de doctores</p>
+<table>
+	<thead>
+		<tr>
+			<th width="150">Avatar</th>
+			<th width="200"> Nombre</th>
+			<th width="100"> Cumpleaños</th>
+			<th width="100"> Sexo</th>
+			<th width="200"> Opcciones</th>
+		</tr>
+	</thead>
+	<tbody >
+		<% @patients.each do |user|%>
+		<tr>
+			<td><%= render partial: '/users/avatars', locals: {user: user, edit: false}%></td>
+			<td><%= user.name %></td>
+			<td><%= user.birthday %></td>
+			<td><%= user.sex %></td>
+			<td>-<%= link_to 'Eliminar de mi hospital', delete_realtion_path(user: user.id)%> </br> -<%= link_to "Diagnósticos", diagnostics_admin_path(id: user.id) %></td>
+		</tr>
+		<%end%>
+	</tbody>
+
+	<ul class="pagination">
+	  <%= will_paginate @patients %>
+	</ul>
+	
+</table>
