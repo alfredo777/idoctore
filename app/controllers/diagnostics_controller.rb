@@ -51,7 +51,7 @@ class DiagnosticsController < ApplicationController
     @diagnostic.notes.destroy_all
     @diagnostic.destroy
 
-    flash[:notice] = 'Se ha eliminado correctamente el diagnostico.'
+    flash[:notice] = 'Se ha eliminado correctamente el diagnóstico.'
     redirect_to :back
   end
 

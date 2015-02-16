@@ -2,9 +2,9 @@
 es: 
   diagnostics: 
     chronic: Cronico
-    diagnostic_or_clinical_problem: "Diagnostico o problema clínico"
-    diagnostics: Diagnosticos
-    end_diagnostic: "Finalizar Diagnostico"
+    diagnostic_or_clinical_problem: "Diagnóstico o problema clínico"
+    diagnostics: Diagnósticos
+    end_diagnostic: "Finalizar Diagnóstico"
     inconsequential: "Sin consecuencias"
     interrogation: Entrevista
     list_of_laboratory_studies: "Listado de estudios de laboratorio"
@@ -19,12 +19,12 @@ es:
     level_of_problem: 'Gravedad del Problema'
     fields: 'Rubros a completar'
     diagnostic_created_in: 'Diagnóstico creado'
-    title: Diagnostico
+    title: Diagnóstico
     request_deletion: 'Solicitar Eliminar'
     print_options: 'Opcciones de impresión'
   forms_tabs: 
     analysis: Análisis
-    diagnosis: Diagnostico
+    diagnosis: Diagnóstico
     note: Nota
     vital_signs: "Signos Vitales"
   landing_page: 
@@ -43,12 +43,12 @@ es:
     who_we_are: "¿Quienes Somos?"
     login: Ingresa
   notes: 
-    diagnostics: "Diagnostico al que pertenece"
+    diagnostics: "Diagnóstico al que pertenece"
     new_treatment: "Nuevo tratamiento"
     note: Nota
     viatal_signs: "Signos vitales por fecha"
   tabs_from_menu_user: 
-    diagnostics: Diagnosticos
+    diagnostics: Diagnósticos
     medical_record: "Historia Clínica"
     my_calendar: Calendario
     patients: Pacientes
