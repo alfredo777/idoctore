@@ -6,6 +6,6 @@ $.pageslide({ direction: 'left', href:'#left_hide' })
 $('#left_hide').html('<%= escape_javascript(render(partial: "/diagnostics/remote_diagnostic", locals: {dt: @find}))%>');
 $.pageslide({ direction: 'left', href:'#left_hide' })
 <% when 'analisis'%>
-$('#left_hide').html('<%= escape_javascript(render(partial: "/single_files/remote_diagnostic", locals: {an: @find}))%>');
+$('#left_hide').html('<%= escape_javascript(render(partial: "/single_files/remote_analisis", locals: {an: @find}))%>');
 $.pageslide({ direction: 'left', href:'#left_hide' })
 <%end %>
