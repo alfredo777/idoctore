@@ -2,8 +2,9 @@
 <%= form_tag('/single_files/upload_file', :id => 'upload_file', :multipart => true) do -%>
    <div class="row">
    <% if current_user.role == 'doctor' %>
-  		<%= label_tag 'Selecciona tu paciente' %>
- 	    <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
+    <div class="panel">
+     <%= render partial: "/single_files/user_select", locals: {user: user}%>
+     </div>
      <%else%> 
         <%= hidden_field_tag 'user_id', @user.id%>
    <%end%>

@@ -5,8 +5,9 @@
   <% if current_user.role == 'patient' %>
   <%= hidden_field_tag 'user_id', current_user.id %>
   <%else%>
-  <%= label_tag 'Selecciona tu paciente' %>
-  <%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") %>
+    <div class="panel">
+    <%= render partial: "/single_files/user_select", locals: {user: user}%>
+    </div>
   <%end%>
   <%= hidden_field_tag 'owner_by', current_user.id %>
     <div class="row">

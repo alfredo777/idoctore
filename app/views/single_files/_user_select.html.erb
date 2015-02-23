@@ -1,0 +1,7 @@
+<%= label_tag 'Selecciona tu paciente' if current_user.id ==  user.id %>
+<%= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") if current_user.id ==  user.id%>
+<% if current_user.id !=  user.id %>
+<%= image_tag(user.avatar.modern) if user.avatar != nil  %>
+<%= "Paciente: #{user.name}" if current_user.id !=  user.id  %>
+<%= hidden_field_tag "user_id", user.id   if current_user.id !=  user.id %>
+<%end%>
