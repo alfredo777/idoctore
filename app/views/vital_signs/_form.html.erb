@@ -12,32 +12,32 @@
     <div class="row">
       <center>
           <div class="large-4 left" style="margin-left:35px;">
-          <%= label_tag 'Peso' %>
-          <%= number_field_tag 'weight', 0, :class => 'required' %>
+          <%= label_tag 'Peso en Kilogramos' %>
+          <%= number_field_tag 'weight','',placeholder: 0, :class => 'required' %>
           </div>
           <div class="large-4 left" style="margin-left:35px;">
           <%= label_tag 'Presión Sistólica' %>
-          <%= number_field_tag 'blood_pressure_up', 0 %>
+          <%= number_field_tag 'blood_pressure_up','',placeholder: 0 %>
           </div>
           <div class="large-4 left" style="margin-left:35px;">
             <%= label_tag 'Presión Diastólica' %>
-            <%= number_field_tag 'blood_pressure_down', 0 %>
+            <%= number_field_tag 'blood_pressure_down','',placeholder: 0 %>
           </div>
           <div class="large-4 left" style="margin-left:35px;">
              <%= label_tag 'Pulso por minuto' %>
-             <%= number_field_tag 'pulse', 0 %>
+             <%= number_field_tag 'pulse','',placeholder: 0 %>
           </div>
           <div class="large-4 left" style="margin-left:35px;">
              <%= label_tag 'Altura en centimetros' %>
-             <%= number_field_tag 'height', 0 %>
+             <%= number_field_tag 'height','',placeholder: 0 %>
           </div>
           <div class="large-4 left" style="margin-left:35px;">
             <%= label_tag 'Respiración por minuto' %>
-            <%= number_field_tag 'breathing', 0 %>
+            <%= number_field_tag 'breathing','',placeholder: 0 %>
           </div>
           <div class="large-4 left" style="margin-left:35px;">
             <%= label_tag 'Temperatura grados centrigrados' %>
-            <%= number_field_tag 'temperature', 0 %>
+            <%= number_field_tag 'temperature','',placeholder: 0 %>
           </div>
       </center>
     </div>

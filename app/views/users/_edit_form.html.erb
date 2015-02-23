@@ -8,7 +8,7 @@
 <%= label_tag 'Email' %>
 <%= email_field_tag 'email', @user.email, :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'  %>
 <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
-<%= label_tag 'Cumpleaños (día/mes/año)-(01/01/2014)' %>
+<%= label_tag 'Fecha de nacimiento (día/mes/año)-(01/01/2014)' %>
 <%= date_field_tag 'birthday', @user.birthday %>
 <!--<div class="row">
   <div class="small-2  left" ><%= label_tag 'Hombre' %>
