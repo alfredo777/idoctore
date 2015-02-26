@@ -403,3 +403,29 @@ em{
 .body-load-hospital{
   margin-left: 20%;
 }
+
+.drop_select{
+  height: 200px;
+  overflow: auto;
+  width:100%;
+  border-top: solid #eee 2px;
+
+}
+
+.select_close{
+  width:100%;
+  height: 60px;
+  background: #E0F8FC;
+  padding: 20px;
+  cursor: pointer;
+
+}
+
+.select_by_id{
+    padding: 9px;
+    border-bottom: solid #eee 2px;
+
+    &:hover{
+      background: #E0F8FC;
+    }
+}
