@@ -1,0 +1,7 @@
+<%= image_tag("#{user.avatar.modern}", :class => 'th  ', :id => 'blah', :width => '45px') if user.avatar?  %>
+<% case user.sex %>
+<% when 'male' %>
+<%= image_tag('users/man.png', :class => 'th ', :id => 'blah', :width => '45px') if !user.avatar?  %>
+<% when 'female' %>
+<%= image_tag('users/wooman.png', :class => 'th ', :id => 'blah', :width => '45px') if !user.avatar? %>
+<%end%>
