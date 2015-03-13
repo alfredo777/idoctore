@@ -302,11 +302,16 @@ class UsersController < ApplicationController
 
   def change_missing_password
     @user = User.find_by_email(params[:email])
+    if @user != nil
     @user.confirmed_token = random_to_token
     @user.save
     @mailer = UserMailer.missing_password(@user, @user.confirmed_token).deliver
     flash[:notice] = t('user.mail_to_change_password')
     redirect_to root_path
+    else
+    flash[:notice] = "No ha sido posible encontrar el usuario"
+    redirect_to :back
+    end
   end
 
   def change_password
@@ -409,11 +414,16 @@ class UsersController < ApplicationController
   ######### session methods ############
   def create_session
     @user = User.find_by_email(params[:email])
-    if @user.terms == true
-      password_cript(params[:password], @user)
-    else
-      flash[:notice] = t('user.non_terms_accepted')
-      redirect_to root_path
+    if @user != nil
+      if @user.terms == true
+        password_cript(params[:password], @user)
+      else
+        flash[:notice] = t('user.non_terms_accepted')
+        redirect_to root_path
+      end
+      else
+        flash[:notice] = "Ha ocurrido un error no ha sido posible encontrar el usuario"
+      redirect_to :back  
     end
   end
 
