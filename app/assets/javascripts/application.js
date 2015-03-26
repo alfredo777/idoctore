@@ -5,6 +5,7 @@
 //= require highcharts/highcharts-more
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
+//= require cocoon
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

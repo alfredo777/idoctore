@@ -1,0 +1,21 @@
+<h1>Historia Clínica </h1>
+<div class="row panel">
+	<p>
+	Paciente: <%= @user.name %></br>
+	Edad: <%= @user.ageu %>
+	</p>
+   	  <%= link_to "Agregar Historía clínica", new_clinical_history_path(user: @user.id )%>
+
+	<% if @user.clinical_histories == nil %>
+	    <%else%>
+	  <%#= link_to "Actualizar Historia Clínica", edit_clinical_history_path(user: @user.id )%>
+	<%end%> 
+
+
+</div>
+<div class="row panel">
+
+	<% @user.clinical_histories.each do |ch| %>
+	  <%= link_to "#{ch.created_at}", open_clinical_history_path(history: ch.id)%></br>
+	<%end%>
+</div>

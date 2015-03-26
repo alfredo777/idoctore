@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   helper_method :changer_br
   before_filter :agent
   helper_method :agent
+  helper_method :current_patients_p
 
   def current_user
     if  User.exists?(session[:user])
@@ -29,6 +30,10 @@ class ApplicationController < ActionController::Base
     when 'development'
       'http://localhost:3000'
     end
+  end
+
+  def current_patients_p
+    @patients =  current_user.patients
   end
 
   def session_status

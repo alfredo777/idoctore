@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+
+
   ######## home page #######
 
   root 'static_views#home'
@@ -182,6 +184,16 @@ Rails.application.routes.draw do
   post 'hospitals/create_hospital'
   post 'hospitals/session_in'
   post 'hospitals/delete_realtion'
+
+  ########### clinical histories #########
+  get 'clinical_histories/view', :as => :clinical_history
+  get 'clinical_histories/create',:as =>  :clinical_histories
+  post 'clinical_histories/create'
+  get 'clinical_histories/new', :as => :new_clinical_history
+  get 'clinical_histories/update'
+  post 'clinical_histories/update'
+  get 'clinical_histories/edit', :as => :edit_clinical_history
+  get 'clinical_histories/open', :as => :open_clinical_history
 
   ############ payments ##########
   post 'payments/send_payment'

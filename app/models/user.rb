@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
    has_many :user_hospitals
    has_many :hospitals, through: :user_hospitals
    has_many :user_activities, dependent: :destroy
+   has_many :clinical_histories
 
    ##### validamos por email #####
    
@@ -65,7 +66,6 @@ class User < ActiveRecord::Base
 
    end
 
-
   def generate_salt
        o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
        string = (0...50).map { o[rand(o.length)] }.join
@@ -109,6 +109,7 @@ class User < ActiveRecord::Base
       id_patients.push(idp.doctor_id)
     end
     @users = User.find(id_patients)
+
   end
 
   def create_adanced_key

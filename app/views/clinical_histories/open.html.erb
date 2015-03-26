@@ -1,0 +1,86 @@
+<div class="row">
+	<div  class="large-12 columns">
+		<div class="head-blue">
+			<%=image_tag('envelope.png')%>  Historia clínica del <%= @clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div  class="large-12 columns">
+		<div class="head-ax">Padecimiento actual</div>
+		<div class="body-ax"><%= @clinical_history.suffering %></div>
+	</div>
+</div></br>
+<div class="row">
+	<div  class="small-12 columns">
+		<div class="head-ax">Interrogatorio por aparatos y sistemas</div>
+		<div class="body-ax"><%= @clinical_history.interview %></div>
+	</div>
+</div></br>
+<div class="row">
+	<div  class="large-12 columns">
+		<div class="head-ax">Padecimientos familiares</div>
+		<div class="body-ax">
+			<center>
+			<table>
+				<thead>
+					<tr>
+						<th width="750">Nombre</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @clinical_history.familial_diseases.each do |fd| %>
+					
+					<tr>
+						<td><%= fd.name %></td>
+					</tr>
+					<%end%>
+				</tbody>
+			</table>
+			</center>
+		</div>
+	</div>
+</div></br>
+<div class="row">
+	<div  class="large-12 columns">
+		<div class="head-ax">Exploración física</div>
+		<div class="body-ax">
+			<center>
+			<table>
+				<thead>
+					<tr>
+						<th width="200">Parte del cuertpo</th>
+						<th width="200">Notas</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @clinical_history.phisical_explorations.each do |fe| %>
+					<tr>
+						<td><%= fe.body_part %></td>
+						<td><%= fe.notes %></td>
+					</tr>
+					<%end%>
+				</tbody>
+			</table>
+			</center>
+		</div>
+	</div>
+</div></br>
+<div class="row">
+	<div  class="large-12 columns">
+		<div class="head-ax">Resultados previos y actuales de Aux. de diagnostico</div>
+		<div class="body-ax"><%= @clinical_history.diagnostic_aux %></div>
+	</div>
+</div></br>
+<div class="row">
+	<div  class="large-12 columns">
+		<div class="head-ax">Terapéutica empleada y resultados obtenidos</div>
+		<div class="body-ax"><%= @clinical_history.terapeutic_use %></div>
+	</div>
+</div></br>
+<div class="row">
+	<div  class="large-12 columns">
+		<div class="head-ax">Diagnóstico o problemas clínicos</div>
+		<div class="body-ax"><%= @clinical_history.diagnostic %></div>
+	</div>
+</div></br>

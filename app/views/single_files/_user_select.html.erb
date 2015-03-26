@@ -4,8 +4,8 @@
 <p class="right" style="margin-top:-20px;" class="ligrow">▼</p>
 </div>
 </div>
-<div id="user_x_id" name="user_x_id" class="drop_select" style="display:none;">
-	<% current_user.patients.each do |user| %>
+<div id="user_x_id" name="user_x_id" class="drop_select" style="display:none;"> 
+	<%  current_patients_p.each do |user| %>
 	<div id="<%=  user.id %>" class="select_by_id" >
     <%= render partial: '/users/avatars_mini', locals: {user: user, edit: false}%>
 	<%= user.name %>
@@ -13,11 +13,8 @@
 	<%end%>
 </div>
 <%= hidden_field_tag "user_id" %>
-<%#= number_field_tag "user_id" %>
 
 <%end%>
-
-<%#= select_tag "user_id", options_from_collection_for_select(current_user.patients, "id", "name") if current_user.id ==  user.id%>
 <% if current_user.id !=  user.id %>
 <%= image_tag(user.avatar.modern) if user.avatar != nil  %>
 <%= "Paciente: #{user.name}" if current_user.id !=  user.id  %>

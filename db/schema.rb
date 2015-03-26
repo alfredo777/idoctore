@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216175535) do
+ActiveRecord::Schema.define(version: 20150306222913) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -39,6 +39,19 @@ ActiveRecord::Schema.define(version: 20141216175535) do
     t.integer  "diagnostic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "clinical_histories", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hospital_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "interview"
+    t.text     "diagnostic"
+    t.text     "suffering"
+    t.text     "diagnostic_aux"
+    t.text     "terapeutic_use"
+    t.integer  "doctor_id"
   end
 
   create_table "cupons", force: true do |t|
@@ -97,6 +110,14 @@ ActiveRecord::Schema.define(version: 20141216175535) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "accepted_request", default: false
+  end
+
+  create_table "familial_diseases", force: true do |t|
+    t.string   "name"
+    t.integer  "clinical_history_id"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "hospitals", force: true do |t|
@@ -192,6 +213,14 @@ ActiveRecord::Schema.define(version: 20141216175535) do
     t.string   "seller_code"
     t.string   "method"
     t.string   "token_pay"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phisical_explorations", force: true do |t|
+    t.string   "body_part"
+    t.text     "notes"
+    t.integer  "clinical_history_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

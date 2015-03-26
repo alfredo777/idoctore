@@ -1,0 +1,65 @@
+<div class="row">
+
+  <%= form_for @clinical_history do |f|%>
+  <h4>Paciente</h4>
+  <fieldset>
+    <%=" Historia clínica de #{@user.name}" %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.hidden_field :doctor_id, value: current_user.id %>
+  </fieldset>
+  <h4>Signos Vitales</h4>
+  <fieldset>
+    <h5>En este apartado se muestra la última toma de signos vitales.</h5>
+    <% @v = @user.vital_signs.last %>
+    <%= render partial: '/vital_signs/remoted_signs', locals: {vs: @v}%>
+  </fieldset>
+  <h4>Padecimiento actual</h4>
+  <fieldset>
+    <%= f.text_area :suffering %>
+  </fieldset>
+  <h4> Interrogatorio por aparatos y sistemas</h4>
+  <fieldset>
+    <%= f.text_area :interview %>
+  </fieldset>
+  <h4>Padecimientos familiares</h4>
+  <fieldset id="familial_diseases">
+    <%= f.fields_for :familial_diseases do |fd| %>
+    <%= render partial: 'familial_disease_fields', locals: {:f => fd} %>
+    <%end%>
+    <%= link_to_add_association 'Agregar padecimiento familiar', f, :familial_diseases, :class => 'button succes small' %>
+  </fieldset>
+  <h4>Exploración física</h4>
+  <fieldset id="phisical_explorations">
+    <%= f.fields_for :phisical_explorations do |fd| %>
+    <%= render partial: 'phisical_explorations_fields', locals: {:f => fd} %>
+    <%end%>
+    <%= link_to_add_association 'Agregar zona de exploración', f, :phisical_explorations, :class => 'button succes small' %>
+  </fieldset>
+  <h4>Resultados previos y actuales de Aux. de diagnostico</h4>
+  <fieldset>
+     <%= f.text_area :diagnostic_aux %>
+  </fieldset>
+  <h4>Terapéutica empleada y resultados obtenidos</h4>
+  <fieldset>
+     <%= f.text_area :terapeutic_use %>
+  </fieldset>
+  <h4>Diagnóstico o problemas clínicos</h4>
+  <fieldset>
+    <%= f.text_area :diagnostic %>
+  </fieldset>
+  <%= f.submit 'Enviar', :class => 'button'%>
+  <%end%>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#familial_diseases a.add_fields").
+  data("association-insertion-position", 'after').
+  data("association-insertion-node", 'this');
+  $(".container").on('click',"a.remove_fields",function(){
+    return confirm("Do you want to delete this?") ;
+    });
+    $("#phisical_explorations a.add_fields").
+  data("association-insertion-position", 'after').
+  data("association-insertion-node", 'this');
+});
+</script>

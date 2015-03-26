@@ -3,6 +3,7 @@
     <tr>
       <th width="50">Avatar</th>
       <th>Nombre</th>
+      <th width="150">Historia clínica</th>
       <th width="150">Status</th>
       <th width="150">Ver diagnósticos</th>
       <th width="150">Ver análisis</th>
@@ -14,7 +15,7 @@
     <% users.each do |user| %>
     <tr>
       <% if user != current_user %>
-      
+
       <td>
         <% if validate_accepted_patient(current_user,user) %>
         <%= link_to user_path(user.id) do %>
@@ -31,7 +32,12 @@
         <%end%>
         <%else%>
         <%= user.name %>
-        
+          
+        <%end%>
+      </td>
+      <td>
+        <% if validate_accepted_patient(current_user,user) %>
+         <center> <%= link_to 'Ver  →', clinical_history_path(user: user.id) %> </center>
         <%end%>
       </td>
       <td>
