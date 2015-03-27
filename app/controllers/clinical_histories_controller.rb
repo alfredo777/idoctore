@@ -43,7 +43,7 @@ class ClinicalHistoriesController < ApplicationController
     @clinical_history = ClinicalHistory.create(clinical_history_params)
      if @clinical_history.save
         flash[:notice] = "Se ha creado correctamente la historia clínia"
-        redirect_to user_path(@clinical_history.user_id)
+        redirect_to clinical_history_path(user: @clinical_history.user_id)
         else
         flash[:notice] = "No se ha podido crear correctamente a la historia clínica"
         redirect_to :back
