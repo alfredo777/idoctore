@@ -1,6 +1,30 @@
 class ClinicalHistoriesController < ApplicationController
   def view
     @user = User.find(params[:user])
+
+        if @user.clinical_histories.count != 0
+
+           history_familial_diseases = []
+
+           @last4 = @user.clinical_histories.last(4)
+           
+           @last4.each do |d|
+             puts d.created_at
+             if d.familial_diseases.count != 0
+               d.familial_diseases.each do |fd|
+                 puts fd.name
+                 history_familial_diseases.push(fd.name.downcase)
+               end
+             end
+           end
+
+           history_familial_diseases = history_familial_diseases.uniq
+
+           @updates = history_familial_diseases
+
+        end
+
+
   end
 
   def create
@@ -17,6 +41,12 @@ class ClinicalHistoriesController < ApplicationController
 
   def new
     @user = User.find(params[:user])
+    c = @user.vital_signs.count 
+    if c == 0
+      @v = false
+    else
+      @v = @user.vital_signs.last
+    end
     @clinical_history = ClinicalHistory.new
   end
 

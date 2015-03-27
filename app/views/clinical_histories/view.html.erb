@@ -1,21 +1,51 @@
-<h1>Historia Clínica </h1>
-<div class="row panel">
+<div class="row ">
+    <div  class="large-12 columns">
+    <div class="head-ax">Historia Clínica</div>
+	<div class="body-ax">
 	<p>
-	Paciente: <%= @user.name %></br>
-	Edad: <%= @user.ageu %>
+		Paciente: <%= @user.name %></br>
+		Edad: <%= @user.ageu %>
 	</p>
-   	  <%= link_to "Agregar Historía clínica", new_clinical_history_path(user: @user.id )%>
-
+	<%= link_to "Agregar Historía clínica", new_clinical_history_path(user: @user.id )%>
 	<% if @user.clinical_histories == nil %>
-	    <%else%>
-	  <%#= link_to "Actualizar Historia Clínica", edit_clinical_history_path(user: @user.id )%>
-	<%end%> 
-
-
-</div>
-<div class="row panel">
-
-	<% @user.clinical_histories.each do |ch| %>
-	  <%= link_to "#{ch.created_at}", open_clinical_history_path(history: ch.id)%></br>
+	<%else%>
+	<%#= link_to "Actualizar Historia Clínica", edit_clinical_history_path(user: @user.id )%>
 	<%end%>
-</div>
+	</div>
+	</div>
+</div></br>
+<div class="row">
+	<div  class="large-6 columns">
+		<div class="head-ax">Historias Clínicas</div>
+		<div class="body-ax">
+			<center>
+			<% @user.clinical_histories.reverse.each do |ch| %>
+			<%= link_to "Historia clínica del #{ch.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')}", open_clinical_history_path(history: ch.id)%></br>
+			<%end%>
+			</center>
+		</div>
+	</div>
+	<div  class="large-6 columns">
+		<div class="head-ax">Enfermedades Familiares</div>
+		<div class="body-ax">
+			<p>Enfermedades Familiares de las cuatro últimas actualizaciones de la historía clínica.</p>
+			<center>
+			<table>
+				<thead>
+					<tr>
+						<th width="200">Enfermedades</th>
+					</tr>
+				</thead>
+				<tbody>
+				   <% if @user.clinical_histories.count != 0 %>
+					<% @updates.each do |ef| %>
+					<tr>
+						<td><%= ef %></td>
+					</tr>
+					<%end%>
+				   <%end%>
+				</tbody>
+			</table>
+			</center>
+		</div>
+	</div>

@@ -10,8 +10,7 @@
   <h4>Signos Vitales</h4>
   <fieldset>
     <h5>En este apartado se muestra la última toma de signos vitales.</h5>
-    <% @v = @user.vital_signs.last %>
-    <%= render partial: '/vital_signs/remoted_signs', locals: {vs: @v}%>
+    <%= render partial: '/vital_signs/remoted_signs', locals: {vs: @v} if @v != false %>
   </fieldset>
   <h4>Padecimiento actual</h4>
   <fieldset>
