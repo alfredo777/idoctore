@@ -5,22 +5,34 @@ class ClinicalHistoriesController < ApplicationController
         if @user.clinical_histories.count != 0
 
            history_familial_diseases = []
+           history_phisical_explorations = []
 
-           @last4 = @user.clinical_histories.last(4)
+           @last4 = @user.clinical_histories.last(7)
            
            @last4.each do |d|
              puts d.created_at
              if d.familial_diseases.count != 0
                d.familial_diseases.each do |fd|
-                 puts fd.name
                  history_familial_diseases.push(fd.name.downcase)
                end
              end
            end
 
+           @last4.each do |d|
+             puts d.created_at
+             if d.familial_diseases.count != 0
+               d.phisical_explorations.each do |fd|
+                 history_phisical_explorations.push(fd.body_part.downcase)
+               end
+             end
+           end
+
            history_familial_diseases = history_familial_diseases.uniq
+           history_phisical_explorations = history_phisical_explorations.uniq
 
            @updates = history_familial_diseases
+           @anatomy_update = history_phisical_explorations
+           @last1 = @user.clinical_histories.last
 
         end
 
