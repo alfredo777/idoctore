@@ -3,6 +3,7 @@ class DiagnosticsController < ApplicationController
 
   def create_from_user
     @user = User.find(params[:user_id])
+    @clinical_h =  @user.clinical_histories.last
     if @user.vital_signs.count != 0
       @vsx =  @user.vital_signs.last
       @vs = @vsx.id
@@ -12,7 +13,13 @@ class DiagnosticsController < ApplicationController
     @diagnistic = Diagnostic.create(user_id: params[:user_id], interrogation: params[:interrogation], physical_examination: params[:physical_examination], diagnostic_or_clinical_problem: params[:diagnostic_or_clinical_problem], list_of_laboratory_studies: params[:list_of_laboratory_studies], required_therapies: params[:required_therapies], suggested_treatments: params[:suggested_treatments], owner_by: params[:owner_by], chronic: params[:chronic], outstanding: params[:outstanding], serious: params[:serious], inconsequential: params[:inconsequential], vital_signs: @vs )
     url = "http://#{action_host}/plain_show/#{@diagnistic.id}"
     @diagnistic.update_attribute :qrcode, url.to_s
-
+    puts "#{@clinical_h.id}"
+    if params[:add_clinical]
+      if @clinical_h != nil
+        @clinical_history_add = ClinicalHistoryToDiagnostic.create(diagnostic_id: @diagnistic.id, clinical_history_id: @clinical_h.id )
+        puts "#{@clinical_history_add.id}"
+      end
+    end
     if @diagnistic.save
       @mailer = UserMailer.notification_created_diagnostic(@user).deliver
       flash[:notice] = 'Se ha creado correctamente el diagnóstico'

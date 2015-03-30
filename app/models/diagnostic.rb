@@ -2,7 +2,8 @@ class Diagnostic < ActiveRecord::Base
 
 	belongs_to :user
     has_many :notes
-
+    has_many :clinical_history_to_diagnostic
+    has_many :clinical_histories, through: :clinical_history_to_diagnostic
     
    
 	def owner
