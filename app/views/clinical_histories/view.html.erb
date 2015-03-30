@@ -41,11 +41,13 @@
 		<div class="head-ax">Último diagnóstico en la historia</div>
 		<div class="body-ax">
 			<center>
-			<% if @last1.diagnostics.count == 0 %>
+			<% if  @user.clinical_histories.count != 0 %>
+			<% if  @last1.diagnostics.count == 0 %>
 			<p><%= @last1.diagnostic %></p>
 			<%else%>
-			<% dl = @last1.diagnostics.last %>
+			<% dl = @last1.diagnostics.last  %>
 			<%= dl.diagnostic_or_clinical_problem %>
+			<%end%>
 			<%end%>
 			</center>
 		</div>
@@ -67,6 +69,7 @@
 					</tr>
 				</thead>
 				<tbody>
+				    <% if @user.clinical_histories.count != 0 %>
 					<% @user.clinical_histories.last(20).reverse.each do |hc|%>
 					<% if hc.diagnostics.count != 0 %>
 					<% hc.diagnostics.last(10).reverse.each do |dl| %>
@@ -82,6 +85,7 @@
 							<%end%>
 						</td>
 					</tr>
+					<%end%>
 					<%end%>
 					<%end%>
 					<%end%>
