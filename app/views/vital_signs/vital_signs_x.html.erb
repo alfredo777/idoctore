@@ -1,20 +1,24 @@
-<h3><%= t('diagnostics.diagnostics')%> - <%= link_to "#{@user.name}", user_path(@user.id) %></h3>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;"><%= t('forms_tabs.vital_signs')%> - <%= link_to "#{@user.name}", user_path(@user.id) %>
+  </p>
+</div>
 <div class="margin-regular">
-<center>
-<table>
-  <thead>
-    <tr>
-    <th width="300"><%= t('vital_signs.vital_signs')%></th>
-    </tr>
-  </thead>
-   <tbody>
-    <% @user_vital_signs.reverse.each do |vs| %>
+  <center>
+  <table>
+    <thead>
+      <tr>
+        <th width="300"><%= t('vital_signs.vital_signs')%></th>
+        <!--<th width="300">Médico</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <% @user_vital_signs.reverse.each do |vs| %>
       <%= render partial: '/vital_signs/show', locals: {vs: vs}%>
-    <%end%>
-   </tbody>
-</table>
-<ul class="pagination">
-  <%= will_paginate @user_vital_signs %>
-</ul>
+      <%end%>
+    </tbody>
+  </table>
+  <ul class="pagination">
+    <%= will_paginate @user_vital_signs %>
+  </ul>
 </div>
 </center>

@@ -1,4 +1,9 @@
-<h1>Instituciones</h1>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;"> Instituciones - <%= link_to "#{current_user.name}", user_path(current_user.id) %>
+  </p>
+</div>
+
+<div id="container" class="raw white-back w80">
 <p>Manejo de las Instituciones en la cuales me he desempeñado.</p>
 
 <%= render partial: '/institutions/form' %>
@@ -25,4 +30,5 @@
    </body>
     <%end%>
 </table>
+</div>
 </div>

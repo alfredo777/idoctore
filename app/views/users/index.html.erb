@@ -1,14 +1,15 @@
 <% case current_user.role %>
 <% when 'doctor' %>
 <div class="menu-select">
-	<a class="right button secondary" id="patient_create" data-target="newpatient" >Nuevo paciente</a>
-	<p style="font-size:30px;">Lista de pacientes</p>
+	<a class="right button success" id="patient_create" data-target="newpatient" >Nuevo paciente</a>
+	<p style="font-size:30px; margin-top:20px;">Lista de pacientes</p>
 </div>
 <div>
 	<div id="newpatient" class="row invite_container" style="display:none;">
 		<%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
 	</div>
 </div>
+<div id="container" class="raw white-back w80">
 <div class=" white-back">
 	<%= render partial: '/users/call_users', locals: { users: @user_patients } %>
 </div>
@@ -26,6 +27,7 @@
 <ul class="pagination" style="margin-top:50px;">
 	<%= will_paginate @user_doctors %>
 </ul>
+</div>
 </center>
 <%end%>
 <script type="text/javascript">

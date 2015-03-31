@@ -259,10 +259,16 @@ em{
 }
 
 .menu-select{
-  background:#44769C;
+  background: #0085F2;
   padding:20px;
   color:#ffffff;
   margin-bottom:30px;
+  & a{
+    color: #FFB300;
+    &:hover{
+     color: #AE9354;
+    }
+  }
 }
 
 .invite_container{

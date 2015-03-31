@@ -1,3 +1,5 @@
+<div id="container" class="raw white-back w80">
+
 <script type="text/javascript" src="/arefscriptstochat/messages.js"></script>
 <% if @user.role == 'patient' %>
 <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: true} %>
@@ -13,3 +15,4 @@
   <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: false} %>
   <%= render partial: '/users/doctor_parts/doctor_reference', locals: {user: @user, tasks: @tasks} %>
 <%end%>
+</div>

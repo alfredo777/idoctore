@@ -1,10 +1,8 @@
-<div class="row">
-	<div  class="large-12 columns">
-		<div class="head-blue">
-			<%= link_to 'Regresar', clinical_history_path(user: params[:user]), class: 'button alert tiny' %>
-			<%=image_tag('envelope.png')%>  Historia clínica del <%= @clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
-		</div>
-	</div>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;"> 
+			<%=image_tag('envelope.png')%>  Historia clínica del <%= @clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %> -
+			<%= link_to 'Regresar', clinical_history_path(user: params[:user]) %>
+  </p>
 </div>
 <div class="row">
 	<div  class="large-12 columns">

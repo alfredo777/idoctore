@@ -1,3 +1,8 @@
-<h1>Editar Usuario</h1>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;">Editar Usuario - <%= link_to "#{@user.name}", user_path(@user.id) %>
+  </p>
+</div>
+<div id="container" class="raw white-back w80">
 
 <%= render 'edit_form' %>
+</div>
