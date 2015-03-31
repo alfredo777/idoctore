@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330183734) do
+ActiveRecord::Schema.define(version: 20150331031950) do
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150330183734) do
     t.text     "diagnostic_aux"
     t.text     "terapeutic_use"
     t.integer  "doctor_id"
+    t.integer  "vital_sign_id"
   end
 
   create_table "clinical_history_to_diagnostics", force: true do |t|

@@ -83,3 +83,9 @@
 		<div class="body-ax"><%= @clinical_history.diagnostic %></div>
 	</div>
 </div></br>
+
+<div class="row">
+	<div  class="large-12 columns">
+        <%= render partial: '/vital_signs/remoted_signs', locals: {vs: @clinical_history.vital_sign} if  @clinical_history.vital_sign != false %>
+	</div>
+</div></br>

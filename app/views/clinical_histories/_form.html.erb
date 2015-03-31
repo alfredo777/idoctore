@@ -14,6 +14,7 @@
       <fieldset>
         <h5>En este apartado se muestra la última toma de signos vitales.</h5>
         <%= render partial: '/vital_signs/remoted_signs', locals: {vs: @v} if @v != false %>
+        <%= f.hidden_field :vital_sign_id , value: @v.id if @v != false %>
       </fieldset>
     </div>
   </div>

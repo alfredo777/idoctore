@@ -7,4 +7,12 @@ class ClinicalHistory < ActiveRecord::Base
 	accepts_nested_attributes_for :familial_diseases, :reject_if => :all_blank, :allow_destroy => true
 	accepts_nested_attributes_for :phisical_explorations, :reject_if => :all_blank, :allow_destroy => true
 
+	def vital_sign
+		if self.vital_sign_id != nil
+		  @vital_sign = VitalSign.find(self.vital_sign_id)
+	    else
+		   @vital_sign = false
+		end
+	end
+
 end

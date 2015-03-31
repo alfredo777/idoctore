@@ -77,6 +77,6 @@ class ClinicalHistoriesController < ApplicationController
 
 
   def clinical_history_params
-    params.require(:clinical_history).permit(:user_id, :suffering, :doctor_id ,:interview, :diagnostic_aux, :terapeutic_use, :diagnostic,familial_diseases_attributes: [:id, :name], phisical_explorations_attributes: [:body_part, :notes])
+    params.require(:clinical_history).permit(:user_id, :suffering, :doctor_id ,:interview, :diagnostic_aux, :vital_sign_id ,:terapeutic_use, :diagnostic,familial_diseases_attributes: [:id, :name], phisical_explorations_attributes: [:body_part, :notes])
   end
 end
