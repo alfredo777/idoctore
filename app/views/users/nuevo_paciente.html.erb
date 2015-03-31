@@ -1,0 +1,10 @@
+<% if current_user.role == 'doctor' %>
+<div class="menu-select">
+	<p style="font-size:30px; margin-top:20px;">Agregar Paciente</p>
+</div>
+<div>
+	<div  class="row ">
+		<%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
+	</div>
+</div>
+<%end%>

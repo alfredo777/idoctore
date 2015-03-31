@@ -1,40 +1,38 @@
-<h2> Invitar Paciente </h2>
-<div><p>Invitar a ún paciente le permite llevar un contról mucho mas ágil de su historial clínico y al paciente le permite conocer el mísmo es muy importen para un seguimiento adecuado.</p></div>
-<%= form_tag('/users/create_user_by_invite') do -%>
-<%= label_tag 'Nombre' %>
-<%= text_field_tag 'name', '', :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
-<small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
-<%= label_tag 'Email' %>
-<%= email_field_tag 'email', '', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail' %>
-<small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
-<% if sex == nil %>
-<%= label_tag 'sex' %>
-<div class="small-2 large-1 columns" ><%= label_tag 'Hombre' %>
-<%= radio_button_tag 'sex', 'male', checked: true %></div>
-<div class="small-2 large-1 columns" ><%= label_tag 'Mujer'%>
-<%= radio_button_tag 'sex', 'female' %></div>
-<%= hidden_field_tag 'role', 'patient' %>
-<%else%>
-<%= hidden_field_tag 'role', 'patient' %>
-<%= hidden_field_tag 'sex', sex %>
-<%end%>
-</br></br>
-</br>
-</br>
-
-<small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
-<%= label_tag 'Fecha de nacimiento (día/mes/año)-(01/01/2014)' %>
-<%= date_field_tag 'birthday', '', :class => 'valitx',  'data-message' => 'Es necesario agregar una fecha de nacimiento', 'data-target' => 'message_error_birthday' %>
-<small id="message_error_birthday" class="error" style="margin-top: -16px; display:none;"></small>
-
-</p>
-<div class="right"><%= submit_tag 'Registrar', :class => 'button' %></div>
-<%end%>
-<script>
-$(document).ready(function(){
-VAlForValitx('name');
-VAlForValitx('email');
-VAlForValitx('birthday');
-
-});
-</script>
+<div class="head-ax">Invitar Paciente </div>
+<div class="body-ax">
+	<p>Invitar a ún paciente le permite llevar un contról mucho mas ágil de su historial clínico y al paciente le permite conocer el mísmo es muy importen para un seguimiento adecuado.</p>
+	<%= form_tag('/users/create_user_by_invite') do -%>
+	<%= label_tag 'Nombre' %>
+	<%= text_field_tag 'name', '', :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+	<small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+	<%= label_tag 'Email' %>
+	<%= email_field_tag 'email', '', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail' %>
+	<small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+	<% if sex == nil %>
+	<%= label_tag 'sex' %>
+	<div class="small-2 large-1 columns" ><%= label_tag 'Hombre' %>
+	<%= radio_button_tag 'sex', 'male', checked: true %></div>
+	<div class="small-2 large-1 columns" ><%= label_tag 'Mujer'%>
+	<%= radio_button_tag 'sex', 'female' %></div>
+	<%= hidden_field_tag 'role', 'patient' %>
+	<%else%>
+	<%= hidden_field_tag 'role', 'patient' %>
+	<%= hidden_field_tag 'sex', sex %>
+	<%end%>
+	</br></br>
+	</br>
+	</br>
+	<small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+	<%= label_tag 'Fecha de nacimiento (día/mes/año)-(01/01/2014)' %>
+	<%= date_field_tag 'birthday', '', :class => 'valitx',  'data-message' => 'Es necesario agregar una fecha de nacimiento', 'data-target' => 'message_error_birthday' %>
+	<small id="message_error_birthday" class="error" style="margin-top: -16px; display:none;"></small>
+	<%= submit_tag 'Registrar', :class => 'button ' %>
+	<%end%>
+</div>
+	<script>
+	$(document).ready(function(){
+	VAlForValitx('name');
+	VAlForValitx('email');
+	VAlForValitx('birthday');
+	});
+	</script>

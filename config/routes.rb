@@ -109,6 +109,7 @@ Rails.application.routes.draw do
     get 'cancel_cite', :to => 'users#cancel_cite', :as => :cancel_cite
     get 'users/:id/my_patients', :to => 'users#patients', :as => :patients
     get 'all_cites', :to => 'users#all_cites_viwer', :as => :all_cites_viwer
+    get 'nuevo_paciente', :to => 'users#nuevo_paciente', :as => :add_patient
 
   ######## admin get for user parts ##########
     get 'users/search_cupons' 

@@ -24,8 +24,8 @@ class UsersController < ApplicationController
     require 'will_paginate/array'
 
     #flash[:notice] = nil
-    @user_patients = current_user.patients.paginate(:page => params[:page], :per_page => 10)
-    @user_doctors = current_user.doctors.paginate(:page => params[:page], :per_page => 10)
+    @user_patients = current_user.patients.paginate(:page => params[:page], :per_page => 30)
+    @user_doctors = current_user.doctors.paginate(:page => params[:page], :per_page => 30)
 
   end
 
@@ -174,6 +174,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def nuevo_paciente
+  end
+
   def create_user_by_invite
     ###### add new user to plataform ####
     @u = User.find_by_email(params[:email])
@@ -190,7 +193,7 @@ class UsersController < ApplicationController
 
         @mailer = UserMailer.existent_user_invite(@u, current_user).deliver
         flash[:notice] = t('user.solicitud_user_by_invite')
-        redirect_to :back
+        redirect_to users_path
       else
         flash[:notice] = t('user.error_solicitude_user_by_invite')
         redirect_to :back
@@ -218,7 +221,7 @@ class UsersController < ApplicationController
         @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
         #flash[:notice] = t('user.create_user_by_invite')
         flash[:notice] = 'Nuevo paciente agregado'
-        redirect_to :back
+        redirect_to users_path
 
       else
         flash[:notice] = t('user.error_create_user_by_invite')

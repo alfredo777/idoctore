@@ -1,7 +1,7 @@
 <% case current_user.role %>
 <% when 'doctor' %>
 <div class="menu-select">
-	<a class="right button success" id="patient_create" data-target="newpatient" >Nuevo paciente</a>
+    <%= link_to 'Agregar paciente', add_patient_path, class: "right button success" %>
 	<p style="font-size:30px; margin-top:20px;">Lista de pacientes</p>
 </div>
 <div>
@@ -30,9 +30,3 @@
 </div>
 </center>
 <%end%>
-<script type="text/javascript">
-$('#patient_create').click(function(){
-	var datax = $('#patient_create').data()
-$('#'+datax.target).toggle();
-});
-</script>
