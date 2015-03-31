@@ -461,3 +461,10 @@ em{
   padding: 25px;
   font-size: 20px;
 }
+
+.close_notice{
+  font-size:30px; color:#F70E3C; margin-top:-45px; z-index:1; position:fixed; margin-left:230px; background:#eee; width:40px; heigth:40px;
+  & :hover{
+    color:#F79E0E;
+  }
+}

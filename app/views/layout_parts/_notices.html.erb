@@ -6,10 +6,12 @@
     	<div class="flecha-up" ></div>
     </div>
     <ul id="notice_dropdown" class="wrapper-dropdown" style="left:70% !important; top:50px; display:none;">	
+      <div id="close_notice" class="close_notice" > <center>X </center></div>
       <% notices.each do |u| %>
          <%= link_to "/options_change_cite?ident_i=#{u.congruence.cite_doctor_id}&amp;type=messages" , remote: true  do %>
             <li>
-              <div class="left" style="width:20%;"> <%= image_tag(u.user.avatar.modern) %> </div><div class="left" style="width:77%; margin-left:5px; text-align:justify;">El usuario <%= "#{u.user.name}" %> le ha enviado un mensane.</div>
+              <div class="left" style="width:20%;"> <%= render partial: '/users/avatars_mini', locals: {user: u.user, edit: false}%>
+ </div><div class="left" style="width:77%; margin-left:5px; text-align:justify;">El usuario <%= "#{u.user.name}" %> le ha enviado un mensane.</div>
                <hr>
             </li>
          <%end%>
@@ -21,4 +23,8 @@
       	 $('#notice_dropdown').toggle();
       	 $('#arrow_notice').toggle();
       })
+      $('#close_notice').click(function(){
+         $('#notice_dropdown').toggle();
+         $('#arrow_notice').toggle();
+      });
     </script>
