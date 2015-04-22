@@ -1,6 +1,6 @@
 <%= render partial: '/diagnostics/remote_diagnostic_to_print', locals: {dt: @diagnostic}%>
 <script>
 $(document).ready(function(){
-  printTherapy();
+  printTherapy(<%= @diagnostic.user_id %>);
  });
 </script>
