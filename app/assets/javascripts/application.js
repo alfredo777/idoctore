@@ -155,4 +155,21 @@ function readURL(input) {
    }
 }
 
+function changeTab(tab){
+  
+  // cambio de tab
+  var actual_tab = $('.active').attr('id');
+  $('#'+actual_tab).addClass('unactive');
+  $('#'+actual_tab).removeClass('active');
+  $('.arrow-down').remove();
+  $('#'+tab).removeClass('unactive');
+  $('#'+tab).addClass('active');
+  $('#'+tab).append('<div class="arrow-down"></div>');
 
+  // cambio de contenido
+  var closeTab = 'to-' + actual_tab;
+  var oppTab = 'to-' + tab;
+  $('#'+closeTab).hide();
+  $('#'+oppTab).show();
+
+}

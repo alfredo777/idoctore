@@ -98,6 +98,12 @@ class UsersController < ApplicationController
     if params[:file] != nil
       @user.avatar = params[:file]
     end
+    if params[:left_logo] != nil
+      @user.left_logo = params[:left_logo]
+    end
+    if params[:right_logo] != nil
+      @user.right_logo = params[:right_logo]
+    end
 
     if params[:college] != nil
       @user.college = params[:college]
@@ -117,6 +123,11 @@ class UsersController < ApplicationController
     if params[:specialism] != nil
       @user.specialism = params[:specialism]
     end 
+
+    if params[:phone] != nil
+      @user.phone = params[:phone]
+    end
+    
     @user.save
     flash[:notice] = 'Se ha actualizado el usuario.'
     redirect_to user_path(@user.id)
@@ -437,7 +448,7 @@ class UsersController < ApplicationController
   end
 
   def session_new
-
+    render layout: 'session_new'
   end
   #################################################################################################
   #### crear notificaciones

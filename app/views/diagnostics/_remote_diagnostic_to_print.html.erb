@@ -1,0 +1,110 @@
+<div id="print_x">
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Receta</title>
+		</head>
+		<body>
+			<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+			<style type="text/css">
+			body{
+				font-family: 'Roboto', sans-serif;
+			}
+			#address{
+				width: 60%;
+					font-size: 13px;
+					color: #010101;
+			}
+			h1, h2, h3, h4, h5{
+				color:#848484;
+			}
+			h2{
+				font-size:25px;
+			}
+			h3{
+				font-size: 18px;
+			}
+			#footer{
+			position:fixed;
+			left:0px;
+			bottom:0px;
+			height:130px;
+			width:100%;
+			background:#fff;
+			}
+			#firma{
+				width:70%;
+				float:left;
+				padding: 20px;
+			
+			}
+			#qr{
+				width:17%;
+				float:left;
+			}
+			#up{
+				width:120%;
+				position:fixed;
+				height:120px;
+			}
+			#left{
+				position:absolute;
+			left:0px;
+			}
+			#right{
+				position:absolute;
+			right:0px;
+			}
+			#flocontent{
+			margin-top:70px;
+				}
+			#skey{
+				font-size: 8px;
+			}
+			</style>
+			<div id="up">
+				<%= image_tag("#{current_user.left_logo.diagnostic }", :id => 'left') if current_user.left_logo?  %>
+				<%= image_tag("#{current_user.right_logo.diagnostic }", :id => 'right') if current_user.right_logo?  %>
+			</div>
+			<div id="head">
+				<center>
+				<h2> <%= current_user.name %></h2>
+				<h3> <%=current_user.college %></h3>
+				</center>
+			</div>
+			<center>
+			<div id="address">
+				<p> Consultorio: <%= current_user.street_addres %>, Teléfono: <%=current_user.phone %> </p>
+				<p>Cédula: <%=current_user.cadre_card %></p>
+			</div>
+			</center>
+			<div id="flocontent">
+				<div id="diagnostic_<%=dt.id%>">
+					<h3><%= t('diagnostics.diagnostic_or_clinical_problem')%></h3>
+					<p align='justify'><%= simple_format(dt.diagnostic_or_clinical_problem)%></p>
+				</div>
+				<% if !dt.required_therapies.empty? %>
+				<div id="therapies_<%=dt.id%>">
+					<h2><%= t('diagnostics.required_therapies') %></h2>
+					<p align='justify'><%= simple_format(dt.required_therapies)%></p>
+				</div>
+				<%end%>
+				<div id="suggested_treatments<%=dt.id%>">
+					<h2><%=  t('diagnostics.suggested_treatments')%></h2>
+					<p align='justify'><%= simple_format(dt.suggested_treatments)%></p>
+				</div>
+			</div>
+			<div id="footer">
+				<div id="firma">
+					___________________________________________<br>
+					Dr.<%=current_user.name %><br>
+					Emisión: <%=dt.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %><br>
+					Secure Key: <p id="skey"> <%= find_advance_key(dt.owner_by)if current_user.id = dt.owner_by%></p></br>
+				</div>
+				<div id="qr">
+					<%= render partial: '/diagnostics/qrcode', locals:{qr: dt.qrcode_exec, dt: dt} %>
+				</div>
+			</div>
+		</body>
+	</html>
+</div>
