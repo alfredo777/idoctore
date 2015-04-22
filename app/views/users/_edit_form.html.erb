@@ -11,10 +11,10 @@
 <%= label_tag 'Fecha de nacimiento (día/mes/año)-(01/01/2014)' %>
 <%= date_field_tag 'birthday', @user.birthday %>
 <!--<div class="row">
-  <div class="small-2  left" ><%= label_tag 'Hombre' %>
-  <%= radio_button_tag 'sex', 'male' %></div>
-  <div class="small-2  left" ><%= label_tag 'Mujer'%>
-  <%= radio_button_tag 'sex', 'female' %></div>
+	<div class="small-2  left" ><%= label_tag 'Hombre' %>
+	<%= radio_button_tag 'sex', 'male' %></div>
+	<div class="small-2  left" ><%= label_tag 'Mujer'%>
+	<%= radio_button_tag 'sex', 'female' %></div>
 </div>-->
 <% if current_user.role == 'doctor' %>
 <%= label_tag 'Cédula profesional' %>
@@ -22,11 +22,19 @@
 <small id="message_error_cadre_card" class="error" style="margin-top: -16px; display:none;"></small>
 <%= label_tag 'Dirección del consultorio' %>
 <%= text_area_tag 'street_addres', @user.street_addres%>
+<%= label_tag 'Teléfono de contacto' %>
+<%= text_field_tag 'phone', @user.phone %>
 <%= label_tag 'Universidad en la que estudio' %>
 <%= text_field_tag 'college', @user.college%>
 <%= label_tag 'Especialidades  ponerlas con comas(Pediatria, Cardiología, Urología)' %>
 <%= text_area_tag 'specialism', @user.specialism %>
-
+<h3>Logos para recetas</h3>
+<%= label_tag 'Logo izquierdo' %>
+<%= image_tag("#{current_user.left_logo.diagnostic }", :id => 'left', class: 'th') if current_user.left_logo?  %>
+<%= file_field_tag 'left_logo'  %>
+<%= label_tag 'Logo derecho' %>
+<%= image_tag("#{current_user.right_logo.diagnostic }", :id => 'right', class: 'th') if current_user.right_logo?  %>
+<%= file_field_tag 'right_logo'  %>
 <%end%>
 <br/>
 <h3>Cambiar password</h3>

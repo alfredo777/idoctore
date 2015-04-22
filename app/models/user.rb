@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
    #validates_format_of   :email, :with => /^[\-a-z0-9]+$/
 
    mount_uploader :avatar, AvatarUploader
+   mount_uploader :left_logo, LeftLogoUploader
+   mount_uploader :right_logo, RightLogoUploader
+
 
    after_create do 
        self.register = Time.now
