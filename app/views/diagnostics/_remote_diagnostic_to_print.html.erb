@@ -1,4 +1,12 @@
-<div id="print_x">
+<center>
+
+<div class="panel subheader">
+<p>Al usted dar click en Imprimir se generará la vista de impresión.</p>
+<div id="print" class="button">Imprimir</div>
+</div>
+<%= image_tag('printer.png')%>
+</center>
+<div id="print_x" style="<%=%>display:none;">
 	<!DOCTYPE html>
 	<html>
 		<head>
@@ -108,3 +116,12 @@
 		</body>
 	</html>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('#print').click( function(){
+  	 $('#print_x').show();
+     printTherapy(<%= @diagnostic.user_id %>);
+  })
+ });
+</script>
