@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def action_host
     case Rails.env
     when 'production'
-      'http://idoctore.herokuapp.com/'
+      'http://idoctore.com/'
     when 'development'
       'http://localhost:3000'
     end
