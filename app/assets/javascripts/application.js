@@ -25,7 +25,17 @@ $(function(){ $(document).foundation(); });
 	  	scrollTop: top - 50
 	  })
 	 });
+   $('.long_list').click(function(){
+    var ToxList = $(this).data('target');
+    var Whheight = $( window ).height();
+    $('.option_list').hide();
+    $('.option_list').height(Whheight);
+    $('#'+ToxList).show('slide');
+   });
 
+   $('.cancel-user').click(function(){
+    $('.option_list').hide('slide');
+   });
 
  });
 

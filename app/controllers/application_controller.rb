@@ -16,10 +16,26 @@ class ApplicationController < ActionController::Base
   before_filter :agent
   helper_method :agent
   helper_method :current_patients_p
+  helper_method :viewver_user
+  helper_method :current_assistant
 
   def current_user
     if  User.exists?(session[:user])
       @iuser = User.find(session[:user]) if session[:user] != nil
+      else
+      @iuser = viewver_user  
+    end
+  end
+
+  def viewver_user
+    if  User.exists?(session[:viweruser])
+      @iuser = User.find(session[:viweruser]) if session[:viweruser] != nil
+    end
+  end
+
+  def current_assistant
+    if  OfficeAssistant.exists?(session[:assistant])
+      @assistant =  OfficeAssistant.find(session[:assistant]) if session[:assistant] != nil
     end
   end
 
@@ -109,7 +125,7 @@ class ApplicationController < ActionController::Base
   def agent
     result  = request.env['HTTP_USER_AGENT']
     puts result
-      if result =~ /iPhone|Android/
+      if result =~ /iPhone|Android|iPad/
         @browser = "Mobile"
         @mobile = true
       else

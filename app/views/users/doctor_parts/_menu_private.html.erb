@@ -17,12 +17,19 @@
 			<%end%>
 			</center>
 		</div>
-
 		<div style="width:60px; float:left; margin-left:10px;">
 			<center>
 			<%= link_to edit_user_path(user) do %>
 			<%= link_to image_tag('concept/pencil.png'), edit_user_path(user), :class => 'stock_menu' %>
 			<%= link_to 'Editar Usuario', edit_user_path(user), :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'  if user.id == current_user.id%>
+			<%end%>
+			</center>
+		</div>
+		<div style="width:60px; float:left; margin-left:10px;">
+			<center>
+			<%= link_to assistents_path do %>
+			<%= link_to image_tag('concept/nurse.png'), assistents_path, :class => 'stock_menu' %>
+			<%= link_to 'Asistentes', assistents_path, :style => 'font-size:9px; margin-top:-5px; margin-left:10px;'  if user.id == current_user.id%>
 			<%end%>
 			</center>
 		</div>

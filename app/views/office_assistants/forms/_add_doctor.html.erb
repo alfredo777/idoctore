@@ -1,0 +1,12 @@
+<%= form_tag(add_doctor_to_assistant_path, :multipart => true) do -%>
+<center>
+<div class="row" style="margin-top:10px; margin-left:120px;">
+  <div class="large-8 columns left" style="margin-top:10px; margin-left: 40px;">
+    <%= email_field_tag 'email', '', placeholder: 'Email: para agregar médico'%>
+  </div>
+  <div class="large-1 columns left" style="margin-top:10px;">
+    <%= submit_tag "Buscar y Agregar", class: 'btn purple-btn round'%>
+  </div>
+</div>
+</center>
+<%end%>

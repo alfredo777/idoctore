@@ -7,7 +7,7 @@
 </div>
 
 <div class="row" style="height:14px;">
-  <%= render partial: '/layout_parts/notices', locals: {user: @user, notices: @notices}%>
+  <%= render partial: '/layout_parts/notices', locals: {user: @user, notices: @notices, revet: false}%>
 
 </div>
 <%= render partial: '/users/calendar_for_user',  locals: {user: @user, tasks: @tasks,  date: @date, inprofile: false}%>

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   #################################################################################################
   ############## filters #####################
-  before_filter :conf_session, only: [:index, :show, :edit]
+  before_filter :conf_session, only: [:index, :show, :edit, :mobile_cites_viewver]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :loggin_filter, only: [:index, :show, :edit]
   before_filter :filter_from_payment, only: [:index, :show, :edit]
@@ -51,10 +51,7 @@ class UsersController < ApplicationController
   def diagnostics
     @user=User.find(params[:id])
     @diagnostics = @user.diagnostics.paginate(:page => params[:page], :per_page => 10)
-
-    respond_to do |format|
-      format.html
-    end
+    layout_cahnge
   end
 
   # GET /users/new
@@ -130,7 +127,11 @@ class UsersController < ApplicationController
     
     @user.save
     flash[:notice] = 'Se ha actualizado el usuario.'
-    redirect_to user_path(@user.id)
+    if viewver_user != nil
+      redirect_to assistans_doctor_show_path(id: viewver_user.id)
+    else
+      redirect_to user_path(@user.id)
+    end
   end
 
   #################################################################################################
@@ -151,6 +152,7 @@ class UsersController < ApplicationController
         @user.confirmed = params[:seller]
         @user.terms = params[:terms]
         @user.cadre_card = params[:cadre_card]
+        @user.phone = params[:phone]
           if params[:payment_method]
              @user.payment_method = true
           end
@@ -186,6 +188,7 @@ class UsersController < ApplicationController
   end
 
   def nuevo_paciente
+    layout_cahnge
   end
 
   def create_user_by_invite
@@ -204,12 +207,14 @@ class UsersController < ApplicationController
 
         @mailer = UserMailer.existent_user_invite(@u, current_user).deliver
         flash[:notice] = t('user.solicitud_user_by_invite')
+        if session[:assistant] == nil
         redirect_to users_path
+        else
+        redirect_to patients_assistant_path(user: current_user.id)
+        end
       else
         flash[:notice] = t('user.error_solicitude_user_by_invite')
         redirect_to :back
-        
-
       end
     else
       @user_new = User.new
@@ -232,7 +237,11 @@ class UsersController < ApplicationController
         @mailer = UserMailer.invite_user_email(current_user ,@user_new, @user_new.confirmed_token).deliver
         #flash[:notice] = t('user.create_user_by_invite')
         flash[:notice] = 'Nuevo paciente agregado'
+        if session[:assistant] == nil
         redirect_to users_path
+        else
+        redirect_to patients_assistant_path(user: current_user.id)
+        end
 
       else
         flash[:notice] = t('user.error_create_user_by_invite')
@@ -345,8 +354,8 @@ class UsersController < ApplicationController
   #### methos for cites ##########
 
   def send_request_cite
-    date =  params[:init_time_date] + ' ' +params[:init_time_hour]
-
+    date =  params[:init_time_date] + ' ' + params[:init_time_hour] + ':00'
+    date = DateTime.parse( date )
     case  current_user.role
     when 'doctor'
       ###### cite auto confirmed #####
@@ -421,7 +430,16 @@ class UsersController < ApplicationController
     @tasks =  @other_cites + @personal_cites
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @notices = @user.my_request_from_notice.last(15)
+  end
 
+  def mobile_cites_viewver
+    require 'will_paginate/array'
+    @user = User.find(params[:id])
+    @personal_cites = @user.doctor_cites
+    @other_cites = @user.cite_doctors
+    @tasks =  @other_cites + @personal_cites
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    @notices = @user.my_request_from_notice.last(15)
   end
 
   #################################################################################################
@@ -510,12 +528,19 @@ class UsersController < ApplicationController
       format.js
     end
   end
-
+  
 
 
   #################################################################################################
   ####### private methods #########
   private
+
+  #### change layout
+  def layout_cahnge
+    if session[:assistant] != nil
+      render layout: "assistants"
+    end
+  end
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
@@ -523,12 +548,14 @@ class UsersController < ApplicationController
   #################################################################################################
   ######## filtros ###########
   def filter_to_update
-    @user = User.find(params[:id])
-    if @user.id ==  current_user.id
-      # flash[:notice] = 'Bienbenido al editor de usuario.'
-    else
-      flash[:notice] = 'Usted no esta autorizado para editar este usuario.'
-      redirect_to user_path(@user.id)
+    if viewver_user == nil 
+      @user = User.find(params[:id])
+      if @user.id ==  current_user.id
+        # flash[:notice] = 'Bienbenido al editor de usuario.'
+      else
+        flash[:notice] = 'Usted no esta autorizado para editar este usuario.'
+        redirect_to user_path(@user.id)
+      end
     end
   end
 
@@ -546,32 +573,39 @@ class UsersController < ApplicationController
 
   def filter_view_pofile
     @user = User.find(params[:id])
-    if current_user.id == @user.id
-    else
-      if validate_accepted_patient(current_user, @user)
-        #flash[:notice] = "Bienbenido al perfíl de tu paciente #{@user.name}"
+    if session[:assistant] == nil
+      if current_user.id == @user.id
       else
-        flash[:notice] = 'El  usuario al que intentabas ingresar no es tu paciente.'
-        redirect_to user_path(current_user.id)
+        if validate_accepted_patient(current_user, @user)
+          #flash[:notice] = "Bienbenido al perfíl de tu paciente #{@user.name}"
+        else
+          flash[:notice] = 'El  usuario al que intentabas ingresar no es tu paciente.'
+          redirect_to user_path(current_user.id)
+        end
       end
-
+    else
+      if request.fullpath.split("?")[0] != diagnostics_users_path(@user.id)
+      redirect_to assistans_doctor_show_path(id: viewver_user.id)
+      end
     end
   end
 
   def conf_session
-    if session[:user] == nil
-      session[:user] = nil
-       flash[:notice] = "Inicie un sessión para continuar" 
-       redirect_to root_path
+    if session[:assistant] == nil
+      if session[:user] == nil
+        session[:user] = nil
+         flash[:notice] = "Inicie un sessión para continuar" 
+         redirect_to root_path
+      end
     end
   end
 
   def confirmed_user
-        if current_user.confirmed == false
-          session[:user] = nil
-          flash[:notice] = "Su usuario no ha sido confirmado" 
-          redirect_to root_path
-        end
+    if current_user.confirmed == false
+      session[:user] = nil
+      flash[:notice] = "Su usuario no ha sido confirmado" 
+      redirect_to root_path
+    end
   end
 
   def suspended_user

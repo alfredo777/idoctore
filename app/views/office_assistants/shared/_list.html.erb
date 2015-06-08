@@ -1,0 +1,94 @@
+<center>
+<% if params[:typex] == nil%>
+<div class="large-12 columns">
+  <h4 class="purple-text">Diagnósticos</h4>
+  <div class="conten-list-x large-6">
+    <ul>
+      <% @diagnostics.each do |dt|%>
+      <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
+      <li class= "btn list_button">
+        <div class="slide-p">
+          &#10001; <%= t('diagnostics.diagnostico')%> de <%= dt.user.name.truncate(16, separator: /\s/) %> el <%= dt.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>
+        </div>
+      </li>
+      <%end%>
+      <%end%>
+    </ul>
+  </div>
+  <div class="purple-paginate">
+    <ul class="pagination" style="margin-top:50px;" >
+      <%= will_paginate @diagnostics %>
+    </ul>
+  </div>
+</div>
+<%end%>
+<% if params[:typex] == 'diacnostic'%>
+<div class="large-12 columns" >
+  <h4 class="purple-text">Diagnósticos</h4>
+  <div class="conten-list-x large-6" >
+    <ul>
+      <% @diagnostics.each do |dt|%>
+      <%= link_to visualizer_path(dt.id, :type => 'diacnostic'), remote: true do %>
+      <li class= "btn list_button">
+        <div class="slide-p">
+          &#10001; <%= t('diagnostics.diagnostico')%> de <%= dt.user.name.truncate(16, separator: /\s/) %> el <%= dt.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>
+        </div>
+      </li>
+      <%end%>
+      <%end%>
+    </ul>
+  </div>
+  <div class="purple-paginate">
+    <ul class="pagination" style="margin-top:50px;" >
+      <%= will_paginate @diagnostics %>
+    </ul>
+  </div>
+</div>
+<%end%>
+<% if params[:typex] == 'signs'%>
+<div class="large-12 columns" >
+  <h4 class="purple-text">Signos Vitales</h4>
+  <div class="conten-list-x large-6" >
+    <ul>
+      <% @user_signs.each do |vs|%>
+      <%= link_to visualizer_path(vs.id, :type => 'signs'), remote: true do %>
+      <li class= "btn list_button">
+        <div class="slide-p" >
+          &#10001; Signos de <%= vs.user.name.truncate(16, separator: /\s/) %> el <%= vs.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>  
+        </div>
+      </li>
+      <%end%>
+      <%end%>
+    </ul>
+  </div>
+  <div class="purple-paginate">
+    <ul class="pagination" style="margin-top:50px;" >
+      <%= will_paginate @single_file %>
+    </ul>
+  </div>
+</div>
+<%end%>
+<% if params[:typex] == 'analisis'%>
+<div class="large-12 columns">
+  <h4 class="purple-text">Archivos de Análisis</h4>
+  <div class="conten-list-x large-6" >
+    <ul>
+      <% @single_file.each do |an| %>
+      <%= link_to visualizer_path(an.id, :type => 'analisis'), remote: true do %>
+      <li class= "btn list_button">
+        <div class="slide-p" >
+          &#10001; Análisis de: <%= an.user.name.truncate(16, separator: /\s/) %> el <%= an.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')%>  
+        </div>
+      </li>
+      <%end%>
+      <%end%>
+    </ul>
+  </div>
+  <div class="purple-paginate">
+    <ul class="pagination" style="margin-top:50px;" >
+      <%= will_paginate @user_signs %>
+    </ul>
+  </div>
+</div>
+</center>
+<%end%>

@@ -6,10 +6,12 @@
 <script type="text/javascript" src="/arefscriptstochat/charts.js"></script>
 <%= render partial: '/users/reference_to_patient', locals: {user: @user, cronic: @cronic, outstanding: @outstanding, serious: @serious, inconsequential: @inconsequential }%>
 <center>
+<% if !agent %>
 <p class="red-back" style="width:100%;">Últimas actualizaciones del Usuario</p>
 <div class="actualization-back w_background" style="width:100%;">
-  <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs, tasks: @tasks} %>
+  <%= render partial: 'users/last_update_from_user', locals: {vital_signs: @user_vital_signs, tasks: @tasks}  %>
   <div id="container_of_parts" ></div>
+<%end%>
   </center>
   <%else%>
   <%= render partial: '/layout_parts/post_menu', locals: {user: @user, owner: current_user, notices: @notices, width_notice: false} %>

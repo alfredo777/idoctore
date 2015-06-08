@@ -1,7 +1,20 @@
+<% if  session[:assistant] == nil %>
+<% if !agent %>
 <div class="menu-select">
   <p style="font-size:30px; margin-top:20px;"><%= t('forms_tabs.analysis')%> - <%= link_to "#{@user.name}", user_path(@user.id)%>
   </p>
-</div><div class=" margin-regular">
+</div>
+<%else%>
+<div class="mobile_head">
+  <%= t('forms_tabs.analysis')%>
+</div>
+<%end%>
+<%else%>
+<div class="act_head_lef_assistent">
+  <%= t('forms_tabs.analysis')%> - <%= "#{@user.name}" %>
+</div>
+<%end%>
+<div class=" margin-regular">
 <center>
 
 <table>

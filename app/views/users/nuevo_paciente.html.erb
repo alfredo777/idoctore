@@ -1,7 +1,13 @@
 <% if current_user.role == 'doctor' %>
+<% if  session[:assistant] == nil %>
 <div class="menu-select">
 	<p style="font-size:30px; margin-top:20px;">Agregar Paciente</p>
 </div>
+<%else%>
+<div class="act_head_lef_assistent">
+  Agregar Paciente a <%= current_user.name %>
+</div>
+<%end%>
 <div>
 	<div  class="row ">
 		<%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>

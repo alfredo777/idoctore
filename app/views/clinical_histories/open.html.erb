@@ -1,9 +1,15 @@
+<% if session[:assistant] == nil %>
 <div class="menu-select">
   <p style="font-size:30px; margin-top:20px;"> 
 			 Historia clínica del <%= @clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %> -
 			<%= link_to 'Regresar', clinical_history_path(user: params[:user]) %>
   </p>
 </div>
+<%else%>
+<div class="act_head_lef_assistent">
+  Historia clínica <%= @user.name %> del <%= @clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
+</div>
+<%end%>
 <div class="row">
 	<div  class="large-12 columns">
 		<div class="head-ax">Padecimiento actual</div>

@@ -1,0 +1,28 @@
+<center>
+<table>
+  <thead>
+    <tr>
+      <th width="350">Nombre</th>
+      <th width="150">Email</th>
+      <th width="150">Teléfono</th>
+      <th width="150">Opcciones</th>
+    </tr>
+  </thead>
+  <% assistents.reverse.each do |assistant| %>
+    <tr>
+      <td>
+        <%= assistant.name %>
+      </td>
+      <td>
+         <%= assistant.email %>
+      </td>
+      <td>
+         <%= assistant.phone %>
+      </td>
+      <td>
+         <%= link_to 'Eliminar asistente', remove_assistant_path(assistant: assistant.id), confirm: '¿Estas seguro de eliminar el asistente?' %>
+      </td>
+    </tr>
+  <%end%>
+</table>
+</center>

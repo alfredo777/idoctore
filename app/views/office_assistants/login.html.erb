@@ -1,0 +1,18 @@
+<div class="home_title" style="margin-top:40px;">
+  Ingresa
+</div>
+<div class="row">
+<fieldset>
+  <legend><%= t('user.login') %></legend>
+  <%= form_tag(create_session_assistant_path) do -%>
+  <p  style='color:#1c80cf;'><%=  t('user.mail') %></p>
+  <%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email'  %>
+  <small id="message_error_email" class="error" style="margin-top: -16px; display:none;"></small>
+  <p  style='color:#1c80cf;'><%=  t('user.password') %></p>
+  <%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
+  <small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
+  
+  <div><%= submit_tag t('user.init'), :class => 'button' %></div>
+  <%end%>
+</fieldset>
+</div>

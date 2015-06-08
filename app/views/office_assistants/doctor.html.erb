@@ -1,0 +1,14 @@
+<div class="act_head_lef_assistent">
+  <%= render partial: '/users/avatars_mini', locals: {user: @user, edit: false}%> <%= @user.name %>
+</div>
+<div class="content_menu_left_doctor right">
+  <%= render partial: '/office_assistants/shared/post_menu', locals: {user: viewver_user, width_notice: false }%>
+</div>
+<div style="margin-top:20px;">
+  <ul class="button-group right" style="margin-right:20px;">
+    <li><%=link_to 'Diagnósticos', assistans_doctor_show_path(id: @user.id, typex: 'diacnostic'), class: 'btn purple-btn'%></li>
+    <li><%=link_to 'Signos', assistans_doctor_show_path(id: @user.id, typex: 'signs'), class: 'btn purple-btn'%></li>
+    <li><%=link_to 'Análisis', assistans_doctor_show_path(id: @user.id, typex: 'analisis'), class: 'btn purple-btn'%></li>
+  </ul>
+<%= render partial: '/office_assistants/shared/list'%>
+</div>

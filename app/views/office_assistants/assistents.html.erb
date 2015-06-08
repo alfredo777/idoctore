@@ -1,0 +1,5 @@
+<div class="menu-select">
+  <%= link_to 'Agregar asistente', assitants_new_path, class: "right button success" %>
+  <p style="font-size:30px; margin-top:20px;">Mis asistentes</p>
+</div>
+<%= render partial: '/office_assistants/assistants', locals: {assistents: @assistents }%>

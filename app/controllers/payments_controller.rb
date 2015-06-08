@@ -4,13 +4,14 @@ class PaymentsController < ApplicationController
 	#################################################################################################
 	######### Payment Methods ##########
 	def send_payment
+		###### determina el enviroment ######
 		if Rails.env == 'development'
 			Conekta.api_key = "key_vfTtG9pSzzQp7aFo"
 		else
 			Conekta.api_key = "key_6mcfLKFMWkGTCvc7"
 		end
-
-
+        
+        ########## identificador del parametro de pagos #########
 		ida = params[:seller]
 		puts "procesando pagos por el vendedor #{ida}"
 		case params[:amount]
@@ -31,6 +32,7 @@ class PaymentsController < ApplicationController
 		puts "#{session[:comission_seller]}"
 		session[:seller]= ida
 		puts "#{session[:seller]}"
+
 		begin
 			charge = Conekta::Charge.create({
 												amount: params[:amount],
@@ -56,13 +58,33 @@ class PaymentsController < ApplicationController
 			redirect_to :back
 			#un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
 		end
+
 		if session[:status_payment] == 'paid'
 			puts '******************** REGISTRANDO PAGO *******************'
 			if session[:paymenttouser] != nil
 			 @p = Payment.create(user_id: session[:paymenttouser].to_i, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])  
+			 @user = User.find(session[:paymenttouser].to_i)
 			else
 			 @p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
+		     @user = current_user
 		    end
+            
+		    ###### guardamos el usuario para cobro recurrente ####
+			begin
+				customer = Conekta::Customer.create({
+				    name: "#{@user.name}",
+				    email: "#{@user.email}",
+				    phone: "#{@user.phone}",
+				    cards: [params[:conektaTokenId]] 
+			   	#["tok_a4Ff0dD2xYZZq82d9"]
+				 })
+				rescue Conekta::ParameterValidationError => e
+				  puts e.message_to_purchaser 
+				#alguno de los parámetros fueron inválidos
+			end 
+
+			####### hacemos update de las diversas sessiones de usuario ######
+
 			puts "#{@p}"
 			puts '********************'
 			if @p.save

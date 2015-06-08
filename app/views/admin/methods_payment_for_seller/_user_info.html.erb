@@ -20,7 +20,7 @@
 <br/>
 <br/>
 <%= label_tag 'Contraseña' %>
-<%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
+<%= password_field_tag 'password', '' ,'data-message' => 'El contaseña  no puede quedar vacio.', 'data-target' => 'message_error_password' %>
 <small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
 <%= label_tag 'Confirmar Contraseña' %>
 <%= password_field_tag 'confirm_password', '' ,'data-message' => 'El campo confirmar contraseña no puede quedar vacio.', 'data-target' => 'message_error_confirm_password' %>
@@ -28,8 +28,22 @@
 <%= label_tag 'Cédula profesional' %>
 <%= text_field_tag 'cadre_card', '' ,'data-message' => 'El campo cédula profecional contraseña no puede quedar vacio.', 'data-target' => 'message_error_confirm_cadre_card' %>
 <small id="message_error_confirm_cadre_card" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Teléfono' %>
+<%= number_field_tag 'phone', '' ,'data-message' => 'El campo de Teléfono no puede quedar vacio', 'data-target' => 'message_error_phone' %>
+<small id="message_error_phone" class="error" style="margin-top: -16px; display:none;"></small>
+
 <div><div class="left"><p>Acepto los <%= link_to 'Terminos y Condiciones', terms_and_conditions_path, target: '_blank'%> del sitio</p></div><div  class='right'><%= check_box_tag 'terms', true, checked: true%></div></div>
 </div>
 <div class="row">
 <%= submit_tag 'Generar Usuario', class: 'large-7 button'%>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+	VAlForValitx('name');
+	VAlForValitx('email');
+	VAlForValitx('password');
+	VAlForValitx('confirm_password');
+	VAlForValitx('cadre_card');
+	VAlForValitx('phone');
+	});
+</script>

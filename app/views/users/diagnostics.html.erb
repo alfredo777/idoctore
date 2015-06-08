@@ -1,7 +1,19 @@
+<% if  session[:assistant] == nil %>
+<% if !agent %>
 <div class="menu-select">
   <p style="font-size:30px; margin-top:20px;"><%= t('diagnostics.diagnostics')%> - <%= link_to "#{@user.name}", user_path(@user.id) %>
   </p>
 </div>
+<%else%>
+<div class="mobile_head">
+  <%= t('diagnostics.diagnostics')%>
+</div>
+<%end%>
+<%else%>
+<div class="act_head_lef_assistent">
+  <%= t('diagnostics.diagnostics')%> - <%= "#{@user.name}" %>
+</div>
+<%end%>
 <center>
 <table>
   <thead>

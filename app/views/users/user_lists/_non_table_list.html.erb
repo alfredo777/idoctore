@@ -1,0 +1,36 @@
+<% users.reverse.each do |user| %>
+<% if user != current_user %>
+<div class="long_list"  data-target="user_di<%=user.id%>">
+  <%= render partial: '/users/avatars_mini', locals: {user: user, edit: false}%>
+  <%=truncate( user.name, length: 23) %>
+</div>
+<div class="option_list" style="display:none;" id="user_di<%=user.id%>" >
+  <ul>
+    <li><center> <%= link_to '', remote: true, class: 'cancel-user ' do  %><i class="fa fa-times icon-widht-mid"></i><%end%></center> </li>
+    <div class="list_append">
+    <center>
+    <%= link_to  user_path(user.id)  do %>
+    <li class="list_a"><i class="fa fa-child icon-widht-big"></i></br> Ver usuario </li>
+    <%end%>
+    <%= link_to  clinical_history_path(user: user.id) do %>
+    <li class="list_a"><i class="fa fa-file-excel-o icon-widht-big"></i></br>Historia Clínica</li>
+    <%end%>
+    <%= link_to diagnostics_users_path(user.id)  do%>
+    <li class="list_a"><i class="fa fa-folder-open icon-widht-big"></i></br>Diagnósticos</li>
+    <%end%>
+    <%= link_to  single_files_inx_path(user.id)  do%>
+    <li class="list_a"><i class="fa fa-leaf icon-widht-big"></i></br> Ver Análisis</li>
+    <%end%>
+    <%= link_to vital_signs_inx_path(user.id) do%>
+    <li class="list_a"><i class="fa fa-life-ring icon-widht-big"></i></br>Ver signos vitales </li>
+    <%end%>
+    <%= link_to mobile_cites_viewver_path(user.id) do %>
+    <li class="list_a"><i class="fa fa-calendar icon-widht-big"></i></br> Citas</li>
+    <%end%>
+    </center>
+    </div>
+  </ul>
+</div>
+
+<%end%>
+<%end%>

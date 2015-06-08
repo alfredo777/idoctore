@@ -1,0 +1,11 @@
+<div class="act_head_lef_assistent">
+  Editar asistente
+</div>
+<div class="row" style="margin-top:50px;">
+<%= form_tag(update_assistant_path) do -%>
+<%= text_field_tag 'name', @assitant.name %>
+<%= text_field_tag 'email', @assitant.email %>
+<%= number_field_tag 'name', @assitant.phone %>
+<%= submit_tag 'Actualizar asistente', class: 'btn purple-btn large-btn right'%>
+<%end%>
+</div>

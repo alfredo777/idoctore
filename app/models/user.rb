@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
    has_many :hospitals, through: :user_hospitals
    has_many :user_activities, dependent: :destroy
    has_many :clinical_histories
+   has_many :office_assistant_assigned_doctors
+   has_many :office_assistants, through: :office_assistant_assigned_doctors
 
    ##### validamos por email #####
    

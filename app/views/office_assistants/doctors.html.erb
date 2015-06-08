@@ -1,0 +1,26 @@
+<div class="act_head_lef_assistent">
+  Médicos que asisto 
+</div>
+<%= render partial: '/office_assistants/forms/add_doctor', locals: {assistant: @assistant}%>
+<center>
+<table style="margin-top:30px;">
+  <thead>
+    <tr>
+      <th width="50">Avatar</th>
+      <th width="350">Nombre</th>
+      <th width="150">Cédula</th>
+      <th width="240">Opcciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @assistant.users.each do |user|%>
+    <tr>
+      <td><%= render partial: '/users/avatars_mini', locals: {user: user, edit: false}%></td>
+      <td><%= user.name %></td>
+      <td><%= user.cadre_card %></td>
+      <td><center><%= link_to 'Datos', assistans_doctor_show_path(id: user.id )%> | <%= link_to 'Editar', edit_doctor_assistant_path(id: user.id)%> | <%= link_to 'Citas', assitants_cites_path(id: user.id)%> | <%= link_to 'Eliminar', remove_doctor_assistant_path(user_id: user.id), confirm: '¿Estas seguro de eliminar el médico?'%></center></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+</center>

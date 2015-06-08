@@ -1,32 +1,41 @@
 <% case current_user.role %>
 <% when 'doctor' %>
+<% if !agent %>
 <div class="menu-select">
-    <%= link_to 'Agregar paciente', add_patient_path, class: "right button success" %>
-	<p style="font-size:30px; margin-top:20px;">Lista de pacientes</p>
+  <%= link_to 'Agregar paciente', add_patient_path, class: "right button success" %>
+  <p style="font-size:30px; margin-top:20px;">Lista de pacientes</p>
+</div>
+<%else%>
+<div class="mobile_head">
+ Lista de pacientes
 </div>
 <div>
-	<div id="newpatient" class="row invite_container" style="display:none;">
-		<%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
-	</div>
+<%= link_to 'Agregar paciente', add_patient_path, class: " button success", style: 'width:100%;' %>
+</div>
+<%end%>
+<div style="margin-top:-20px;">
+  <div id="newpatient" class="row invite_container" style="display:none;">
+    <%= render partial: '/users/invite_patient', locals: {email: nil, name: nil, sex: nil} %>
+  </div>
 </div>
 <div id="container" class="raw white-back w80">
-<div class=" white-back">
-	<%= render partial: '/users/call_users', locals: { users: @user_patients } %>
-</div>
-<center>
-<ul class="pagination" style="margin-top:50px;">
-	<%= will_paginate @user_patients %>
-</ul>
-</center>
-<% when 'patient'%>
-<h2>Lista de doctores</h2>
-<div class=" row white-back">
-	<%= render partial: '/users/call_users', locals: { users: @user_doctors } %>
-</div>
-<center>
-<ul class="pagination" style="margin-top:50px;">
-	<%= will_paginate @user_doctors %>
-</ul>
+  <div class=" white-back">
+    <%= render partial: '/users/call_users', locals: { users: @user_patients } %>
+  </div>
+  <center>
+  <ul class="pagination" style="margin-top:50px;">
+    <%= will_paginate @user_patients %>
+  </ul>
+  </center>
+  <% when 'patient'%>
+  <h2>Lista de doctores</h2>
+  <div class=" row white-back">
+    <%= render partial: '/users/call_users', locals: { users: @user_doctors } %>
+  </div>
+  <center>
+  <ul class="pagination" style="margin-top:50px;">
+    <%= will_paginate @user_doctors %>
+  </ul>
 </div>
 </center>
 <%end%>

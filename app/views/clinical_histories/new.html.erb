@@ -1,9 +1,14 @@
+<% if session[:assistant] == nil %>
 <div class="menu-select">
   <p style="font-size:30px; margin-top:20px;"> Historia clínica - <%= link_to "#{@user.name}", user_path(@user.id) %>
   </p>
   <p>Hola esta es la primera historia clínica que agregas a <b><%= @user.name %></b> es necesario que porfavor, coloques los campos que se te piden. </p>
-
 </div>
+<%else%>
+<div class="act_head_lef_assistent">
+ Nueva Historia clínica
+</div>
+<%end%>
 <div id="container" class="raw white-back w80">
 <%= render partial: 'form' %>
 </div>

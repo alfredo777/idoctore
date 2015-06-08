@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
 
-
   ######## home page #######
 
   root 'static_views#home'
@@ -110,7 +109,7 @@ Rails.application.routes.draw do
     get 'users/:id/my_patients', :to => 'users#patients', :as => :patients
     get 'all_cites', :to => 'users#all_cites_viwer', :as => :all_cites_viwer
     get 'nuevo_paciente', :to => 'users#nuevo_paciente', :as => :add_patient
-
+    get 'viwver_cites/:id', :to => 'users#mobile_cites_viewver', :as => :mobile_cites_viewver
   ######## admin get for user parts ##########
     get 'users/search_cupons' 
    
@@ -185,6 +184,61 @@ Rails.application.routes.draw do
   post 'hospitals/create_hospital'
   post 'hospitals/session_in'
   post 'hospitals/delete_realtion'
+
+  ########## assistants #############
+
+  get 'office_assistants/login', as: :assistants_loggin
+  get 'office_assistants/logout', as: :assistants_logout
+  get 'office_assistants/doctors', as: :assistans_doctor
+  get 'office_assistants/doctor',  as: :assistans_doctor_show
+  get 'office_assistants/cites', as: :assitants_cites
+  get 'office_assistants/messages', as: :assitants_messages
+  get 'office_assistants/new', as: :assitants_new
+  get 'office_assistants/assistents', as: :assistents
+  get 'office_assistants/create_session', as: :create_session_assistant
+  post 'office_assistants/create_session'
+  post 'office_assistants/add_assistant_by_doctor', as: :add_assistant_by_doctor
+  post 'office_assistants/add_doctor_to_assistant', as: :add_doctor_to_assistant
+  get 'office_assistants/remove_assistant',  as: :remove_assistant
+  post 'office_assistants/remove_assistant'
+  get 'office_assistants/edit_doctor', as: :edit_doctor_assistant
+  get 'office_assistants/remove_doctor', as: :remove_doctor_assistant
+  post 'office_assistants/remove_doctor'
+  get 'office_assistants/find_user_to_action', as: :find_user_to_action
+  post 'office_assistants/find_user_to_action'
+  get 'office_assistants/edit_assistant', as: :edit_assistant
+  post 'office_assistants/update_assistant', as: :update_assistant
+  get 'office_assistants/patients', as: :patients_assistant
+  ######## status forms #########
+
+  get 'user_static_forms/diagnostic', as: :diagnostic_static
+  get 'user_static_forms/medical_note', as: :medical_note_static
+  get 'user_static_forms/single_files', as: :single_files_static
+  get 'user_static_forms/vital_signs', as: :vital_signs_static  
+  
+  ########### organization ###########
+
+  get 'organization/login'
+  get 'organization/index'
+  get 'organization/view'
+  get 'organization/new'
+  get 'organization/patients'
+  get 'organization/patients_new'
+  get 'organization/doctors'
+  get 'organization/doctors_new'
+  get 'organization/assistants'
+  get 'organization/assistants_new'
+  get 'organization/hospitals'
+  get 'organization/hospitals_new'
+  get 'organization/admins'
+  get 'organization/admin_new'
+  get 'organization/dependencies'
+  get 'organization/dependency_new'
+  get 'organization/payments_controll_by_dependency'
+  get 'organization/rates'
+  get 'organization/rates_new'
+  get 'organization/rates_update'
+
 
   ########### clinical histories #########
   get 'clinical_histories/view', :as => :clinical_history

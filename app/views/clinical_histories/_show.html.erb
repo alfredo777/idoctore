@@ -1,0 +1,163 @@
+<% if session[:assistant] == nil %>
+<% if !agent %>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;"> 
+      Historia Clínica - <%= link_to 'Ir al perfíl del paciente',  user_path(user.id) %>
+  </p>
+</div>
+<%else%>
+<div class="mobile_head">
+  Historia Clínica
+</div>
+<%end%>
+<%else%>
+<div class="act_head_lef_assistent">
+  Historia clínica <%= user.name %>
+</div>
+<%end%>
+<div class="row ">
+  <div  class="large-12 columns">
+    <div class="head-ax">Paciente</div>
+    <div class="body-ax">
+      <div class="row ">
+        <div class="large-3 columns">
+          <center>
+          <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
+          </center>
+        </div>
+        <div class="large-4 columns left">
+          <p>
+            Paciente: <%= user.name %></br>
+            Edad: <%= user.ageu %>
+          </p>
+          <%= link_to "Actaulizar historia clínica", new_clinical_history_path(user: user.id )%>
+          <% if user.clinical_histories == nil %>
+          <%else%>
+          <%#= link_to "Actualizar Historia Clínica", edit_clinical_history_path(user: user.id )%>
+          <%end%>
+        </div>
+        <div class="large-5 columns left">
+          <p>Todos la información que aparece directamente es parte de la historia clínica.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></br>
+<div class="row">
+  <div  class="large-6 columns">
+    <div class="head-ax">Historial</div>
+    <div class="body-ax">
+      <center>
+      <% user.clinical_histories.reverse.each do |ch| %>
+      <%= link_to "Historia clínica del #{ch.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')}", open_clinical_history_path(history: ch.id, user: params[:user])%></br>
+      <%end%>
+      </center>
+    </div>
+  </div>
+  <div  class="large-6 columns">
+    <div class="head-ax">Último diagnóstico en la historia</div>
+    <div class="body-ax">
+      <center>
+      <% if  user.clinical_histories.count != 0 %>
+      <% if  @last1.diagnostics.count == 0 %>
+      <p><%= @last1.diagnostic %></p>
+      <%else%>
+      <% dl = @last1.diagnostics.last  %>
+      <%= dl.diagnostic_or_clinical_problem %>
+      <%end%>
+      <%end%>
+      </center>
+    </div>
+  </div>
+  
+</div></br>
+<div class="row">
+  <div  class="large-12 columns">
+    <div class="head-ax">Diagnísticos agregados a la historia clínica</div>
+    <div class="body-ax">
+      <center>
+      <table>
+        <thead>
+          <tr>
+            <th width="200">Médico</th>
+            <th width="200">Fecha</th>
+            <th width="200">Hora</th>
+            <th width="200">Opcciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% if user.clinical_histories.count != 0 %>
+          <% user.clinical_histories.last(20).reverse.each do |hc|%>
+          <% if hc.diagnostics.count != 0 %>
+          <% hc.diagnostics.last(10).reverse.each do |dl| %>
+          <tr>
+            <td><%= dl.owner %></td>
+            <td><%= dl.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y') %></td>
+            <td><%= dl.created_at.strftime('%H'+':'+'%M') %></td>
+            <td>
+              <div class="slide-p" >
+                <%= link_to visualizer_path(dl.id, :type => 'diacnostic'), remote: true do %>
+                <%= t('simple.see_more')%>
+              </div>
+              <%end%>
+            </td>
+          </tr>
+          <%end%>
+          <%end%>
+          <%end%>
+          <%end%>
+        </tbody>
+      </table>
+      </center>
+    </div>
+  </div>
+</div></br>
+<div class="row">
+  <div  class="large-6 columns">
+    <div class="head-ax">Enfermedades Familiares</div>
+    <div class="body-ax">
+      <p>Enfermedades Familiares de las siete últimas actualizaciones de la historía clínica.</p>
+      <center>
+      <table>
+        <thead>
+          <tr>
+            <th width="200">Enfermedades</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if user.clinical_histories.count != 0 %>
+          <% @updates.reverse.each do |ef| %>
+          <tr>
+            <td><%= ef %></td>
+          </tr>
+          <%end%>
+          <%end%>
+        </tbody>
+      </table>
+      </center>
+    </div>
+  </div>
+  <div  class="large-6 columns">
+    <div class="head-ax">Partes del cuerpo Exploradas recientemente</div>
+    <div class="body-ax">
+      <center>
+      <table>
+        <thead>
+          <tr>
+            <th width="200">Parte del cuerpo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if user.clinical_histories.count != 0 %>
+          <% @anatomy_update.reverse.each do |ef| %>
+          <tr>
+            <td><%= ef %></td>
+          </tr>
+          <%end%>
+          <%end%>
+        </tbody>
+      </table>
+      </center>
+    </div>
+  </div>
+</div></br>

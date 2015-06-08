@@ -1,0 +1,2 @@
+module OfficeAssistantsHelper
+end

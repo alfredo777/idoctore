@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="head-ax">Crear Asistente </div>
+  <div class="body-ax">
+    <%= form_tag(add_assistant_by_doctor_path, :multipart => true) do -%>
+    <%= label_tag 'Nombre' %>
+    <%= text_field_tag 'name', '', :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+    <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+    <%= label_tag 'Email' %>
+    <%= email_field_tag 'email', '', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'  %>
+    <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+    <%= label_tag 'Teléfono de contacto' %>
+    <%= text_field_tag 'phone' %>
+    <%= label_tag 'Contraseña' %>
+    <%= password_field_tag 'password', '' %>
+    <div><%= submit_tag 'Crear Asistente', :class => 'button right' %></div>
+    <%end%>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+VAlForValitx('name');
+VAlForValitx('email');
+});
+</script>

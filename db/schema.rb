@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422212749) do
+ActiveRecord::Schema.define(version: 20150430014854) do
+
+  create_table "admin_in_organizations", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "password"
+    t.string   "email"
+    t.string   "user_name"
+    t.boolean  "super_admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "appointments", force: true do |t|
     t.string   "solictude"
@@ -208,6 +218,32 @@ ActiveRecord::Schema.define(version: 20150422212749) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "checked"
+  end
+
+  create_table "office_assistant_assigned_doctors", force: true do |t|
+    t.integer  "office_assistant_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "office_assistants", force: true do |t|
+    t.string   "name"
+    t.string   "password"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "organization_id"
+    t.integer  "hospital_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.integer  "description"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "payments", force: true do |t|

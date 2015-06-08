@@ -1,65 +1,18 @@
-<% if ifcurrentuser %> 
-  <% if user.id == current_user.id %>
-	  <%= link_to post_in_path(user.id, :type => 'upload_file'), remote: true  do %>
-	    <div style="40px !important;" class="left">
-			<div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
-		 		 <%= image_tag('menu/analisis2.png', width: 60, height: 60)%>
-			</div>
-			<center>
-		   <p>Análisis</p>
-		  </center>
-	     </div>
-	  <%end%>
-	  <%= link_to post_in_path(user.id, :type => 'vital_signs'), remote: true  do %>
-	  	<div style="40px !important;" class="left">
-		    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
-		 			<%= image_tag('menu/plus.png', width: 60, height: 60)%>
-		    </div>
-	    	<center>
-		   <p>Signos</p>
-		  </center>
-	     </div>
-	  <%end%>
-  <%end%>
+<% if agent %>
+<div style="float:right; left:10px; position: fixed; z-index: 1; bottom:0; margin-bottom: 110px;" id="clicker_menu">
+  <div style="width:100%; margin-bottom:5px;">
+  <%= image_tag('menucreatemobile.png', width: 60)%>
+  </div>
+  
+  <div style="display:none; width:100%;" id="to_clicker_menu">
+    <%= render partial: '/layout_parts/call_post_menu_links', locals: {user: user, ifcurrentuser: ifcurrentuser}%>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#clicker_menu').click(function(){
+    $('#to_clicker_menu').slideToggle();
+  });
+</script>
 <%else%>
-  <%= link_to post_in_path(user.id, :type => 'diagnostic'), remote: true  do %>
-     <div style="40px !important;" class="left">
-      <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
-		   <%= image_tag('menu/diagnostic.png', width: 60, height: 60)%>
-	  </div>
-	  <center>
-	   <p>Diagnóstico</p>
-	  </center>
-     </div>
-  <%end%>
-  <%= link_to post_in_path(user.id, :type => 'note'), remote: true  do %>
-       <div style="40px !important;" class="left">
-	    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
-			 <%= image_tag('menu/note.png', width: 60, height: 60)%>
-	    </div>
-	     <center>
-		   <p>Nota</p>
-		  </center>
-	   </div>
-  <%end%>
-  <%= link_to post_in_path(user.id, :type => 'upload_file'), remote: true  do %>
-       <div style="40px !important;" class="left">
-		<div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
-	 		 <%= image_tag('menu/analisis2.png', width: 60, height: 60)%>
-		</div>
-		 <center>
-		   <p>Análisis</p>
-		  </center>
-	   </div>
-  <%end%>
-  <%= link_to post_in_path(user.id, :type => 'vital_signs'), remote: true  do %>
-        <div style="40px !important;" class="left">
-		    <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">	     
-		 			<%= image_tag('menu/plus.png', width: 60, height: 60)%>
-		    </div>
-		  <center>
-		   <p>Signos</p>
-		  </center>
-	   </div>
-  <%end%>
+<%= render partial: '/layout_parts/call_post_menu_links', locals: {user: user, ifcurrentuser: ifcurrentuser}%>
 <%end%>

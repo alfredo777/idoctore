@@ -1,0 +1,73 @@
+<center><h4 class="purple-text">Menú de creación</h4></center>
+<ul class="button-group right">
+  <li>
+    <div class="slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
+      <%= link_to post_in_path(user.id, :type => 'diagnostic'), remote: true  do %>
+      <div class="btn purple-btn left" class="left">
+        Diagnóstico
+      </div>
+      <%end%>
+    </div>
+  </li>
+  <li>
+    <div class="slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
+      <%= link_to post_in_path(user.id, :type => 'note'), remote: true  do %>
+      <div class="btn purple-btn" class="left">
+        Nota
+      </div>
+      <%end%>
+    </div>
+  </li>
+  <li>
+    <div class="slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
+      <%= link_to post_in_path(user.id, :type => 'upload_file'), remote: true  do %>
+      <div class="btn purple-btn" class="left">
+        Análisis
+      </div>
+      <%end%>
+    </div>
+  </li>
+  <li>
+    <div class="slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
+      <%= link_to post_in_path(user.id, :type => 'vital_signs'), remote: true  do %>
+      <div class="btn purple-btn" class="left">
+        Signos
+      </div>
+      <%end%>
+    </div>
+  </li>
+  <li>
+  <a href="#" data-reveal-id="modal_select_clinical_history" >
+    <div class="btn purple-btn" class="left">
+      Historias Clínicas
+    </div>
+   </a>
+  </li>
+  <li>
+    <%= link_to patients_assistant_path(user: user.id) do %>
+    <div class="btn purple-btn" class="left">
+      Pacientes
+    </div>
+    <%end%>
+  </li>
+  <li>
+    <%= link_to assitants_cites_path  do %>
+    <div class="btn purple-btn" class="left">
+      Citas
+    </div>
+    <%end%>
+  </li>
+</ul>
+
+<div id="modal_select_clinical_history" class="reveal-modal" data-reveal>
+
+  <div class="row">
+    <h2>Historia clínica</h2>
+   <%= form_tag(find_user_to_action_path) do -%>
+         <%= render partial: "/single_files/user_select", locals: {user: user}%></br></br>
+         <%= hidden_field_tag 'type_id', 'clinical_history' %>
+         <%= submit_tag 'Ir a la historía clínica del paciente', class: 'button right'%>
+   <%end%>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

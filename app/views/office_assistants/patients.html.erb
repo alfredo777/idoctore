@@ -1,0 +1,7 @@
+<div class="act_head_lef_assistent">
+  Pacientes de  <%= @user.name %>
+</div>
+<div class="row" style="margin:30px;">
+  <%= link_to 'Agregar paciente', add_patient_path, class: 'btn purple-btn right' %>
+</div>
+<%= render partial: '/users/call_users', locals: { users: @user_patients } %>

@@ -13,20 +13,38 @@ class DiagnosticsController < ApplicationController
     @diagnistic = Diagnostic.create(user_id: params[:user_id], interrogation: params[:interrogation], physical_examination: params[:physical_examination], diagnostic_or_clinical_problem: params[:diagnostic_or_clinical_problem], list_of_laboratory_studies: params[:list_of_laboratory_studies], required_therapies: params[:required_therapies], suggested_treatments: params[:suggested_treatments], owner_by: params[:owner_by], chronic: params[:chronic], outstanding: params[:outstanding], serious: params[:serious], inconsequential: params[:inconsequential], vital_signs: @vs )
     url = "#{action_host}/plain_show/#{@diagnistic.id}"
     @diagnistic.update_attribute :qrcode, url.to_s
-    puts "#{@clinical_h.id}"
-    if params[:add_clinical]
-      if @clinical_h != nil
-        @clinical_history_add = ClinicalHistoryToDiagnostic.create(diagnostic_id: @diagnistic.id, clinical_history_id: @clinical_h.id )
-        puts "#{@clinical_history_add.id}"
+    if @clinical_h != nil
+      puts "#{@clinical_h.id}"
+      if params[:add_clinical]
+        if @clinical_h != nil
+          @clinical_history_add = ClinicalHistoryToDiagnostic.create(diagnostic_id: @diagnistic.id, clinical_history_id: @clinical_h.id )
+          puts "#{@clinical_history_add.id}"
+        end
       end
     end
     if @diagnistic.save
       @mailer = UserMailer.notification_created_diagnostic(@user).deliver
+      if @clinical_h != nil
       flash[:notice] = 'Se ha creado correctamente el diagnóstico'
-      redirect_to user_path(params[:user_id])
+      else
+        if params[:add_clinical]
+          flash[:notice] = 'Se ha guardado el diagnóstico pero no ha podido agregarse a la historía clinica ya que no hay ninguna vigente'
+        else
+          flash[:notice] = 'Se ha creado correctamente el diagnóstico'
+        end
+      end
+      if viewver_user != nil
+        redirect_to assistans_doctor_show_path(id: viewver_user.id)
+      else
+        redirect_to user_path(params[:user_id])
+      end
     else
       flash[:notice] = 'El diagnóstico no pudo ser creado'
-      redirect_to user_path(params[:user_id])
+      if viewver_user != nil
+        redirect_to assistans_doctor_show_path(id: viewver_user.id)
+      else
+        redirect_to user_path(params[:user_id])
+      end
     end
   end
 

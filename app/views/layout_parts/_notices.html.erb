@@ -5,8 +5,12 @@
 	  <div id="arrow_notice" style="margin-left:95% !important; margin-top:38px; width:100px; display:none;">
     	<div class="flecha-up" ></div>
     </div>
-    <ul id="notice_dropdown" class="wrapper-dropdown" style="left:70% !important; top:50px; display:none;">	
+    <ul id="notice_dropdown" class="wrapper-dropdown" style="<%= 'left:80% !important;' if revet  %>  <%= 'top:140px;' if  revet %> display:none; <%= 'left:74% !important;' unless revet %>  <%= 'top:220px;' unless revet %> "  >	
+      <div class="head_notice">
+      <h5>Notificaicones</h4>
       <div id="close_notice" class="close_notice" > <center>X </center></div>
+      </div>
+      <div class="body_notice">
       <% notices.each do |u| %>
          <%= link_to "/options_change_cite?ident_i=#{u.congruence.cite_doctor_id}&amp;type=messages" , remote: true  do %>
             <li>
@@ -16,6 +20,7 @@
             </li>
          <%end%>
        <%end%>
+      </div>
     </ul>
   <%end%>
     <script>

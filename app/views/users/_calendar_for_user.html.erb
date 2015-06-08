@@ -4,7 +4,6 @@
       <dd id="calendar_tab" class="active"><a >Calendario</a></dd>
       <dd id="calendar_cite" ><a>Citas</a></dd>
       <dd id="calendar_message" ><a>Mensajes</a></dd>
-
     </dl>
     <div id="message_load" style="display:none;">
       <div class="panel callout radius">
@@ -14,18 +13,18 @@
     <div id="calendar-init" >
       <div id="calendar">
         <div>
-          <center>
-          <% if current_user.role == 'doctor' %>
-          <a href="#" data-reveal-id="modal_to_create_cite" >Agendar Cita</a>
-          <%else%>
-          <a href="#" data-reveal-id="modal_to_create_cite" >Solicitar Cita</a>
-          <%end%>
-          <div class="left">
+           <div class="left" style="margin-top:15px;">
             <%= link_to "&#8592; Mes anterior".html_safe, :month => (date.beginning_of_month-1).strftime("%Y-%m-01") %>
           </div>
+          <center>
+          <% if current_user.role == 'doctor' %>
+          <a href="#" class="btn purple-btn" data-reveal-id="modal_to_create_cite" >Agendar Cita</a>
+          <%else%>
+          <a href="#" class="btn purple-btn" data-reveal-id="modal_to_create_cite" >Solicitar Cita</a>
+          <%end%>
           <%= h  date.strftime( '%B'+'-'+'%Y')  %>
           </center>
-          <div class="right">
+          <div class="right" style="margin-bottom:15px;">
             <%= link_to "Mes siguiente &#8594;".html_safe, :month => (date.end_of_month+1).strftime("%Y-%m-01") %>
           </div>
         </div>

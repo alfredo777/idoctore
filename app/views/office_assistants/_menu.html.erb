@@ -1,0 +1,30 @@
+<div class="list_of_menu">
+  <div class="head_menu_left">
+    IDoctore -> Asistentes
+  </div>
+  <div class="asistant-data" >
+   Name:  </br> <%= current_assistant.name %>  </br>
+   Mail:  </br> <%= current_assistant.email %></br>
+  </div>
+  <%= link_to assistans_doctor_path do %>
+  <div class="button_menu_left">
+   &#8362; Doctores
+  </div>
+  <%end%>
+  <%= link_to edit_assistant_path do %>
+  <div class="button_menu_left">
+   &#8362; Editar Asistente
+  </div>
+  <%end%>
+  <!--
+  <%= link_to assitants_messages_path do %>
+  <div class="button_menu_left">
+   &#8362; Mensajeria
+  </div>
+  <%end%>-->
+  <%= link_to assistants_logout_path do %>
+  <div class="button_menu_left">
+   &#8362; Salir
+  </div>
+  <%end%>
+</div>
