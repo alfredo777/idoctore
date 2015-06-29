@@ -19,7 +19,7 @@ class PaymentsController < ApplicationController
     when "idoctore-mensual"
       plan = Conekta::Plan.create({
         id: "idoctore-mensual",
-        name: "Plan mensual de idoctore"
+        name: "Plan mensual de idoctore",
         amount: 21000,
         currency: "MXN",
         interval: "month"
@@ -27,7 +27,7 @@ class PaymentsController < ApplicationController
     when "idoctore-anual"
       plan = Conekta::Plan.create({
         id: "idoctore-anual",
-        name: "Plan anual de idoctore"
+        name: "Plan anual de idoctore",
         amount: 200000,
         currency: "MXN",
         interval: "year"
