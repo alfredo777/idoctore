@@ -10,16 +10,19 @@ class PaymentsController < ApplicationController
 
     plan_id = session[:payment].gsub(/[^0-9A-Za-z_-]/, '').gsub(' ', '_')
     plan = Conekta::Plan.find("#{plan_id}")
-    puts plan.inspect
+    puts plan
+
+    puts @user 
 
     customer = Conekta::Customer.create({
 		  name: @user.name.to_s,
 		  email: @user.email.to_s,
 		  phone: @user.phone.to_s,
-		  cards: [params[:conektaTokenId]]
+		  cards: [params[:conektaTokenId]],
+      plan: plan.id
 		})
     
-    puts customer.inspect
+    puts customer
     subscription = customer.create_subscription({
         plan: plan.id
     })
