@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
     puts plan
 
 	  subscription = customer.create_subscription({
-		  "plan_id": plan.id 
+		  "plan_id": session[:payment]
 		})
 
 		puts subscription
