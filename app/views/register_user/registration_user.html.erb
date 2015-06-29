@@ -5,6 +5,7 @@
     <div id="1" class="steap steap-select">1</div>
     <div id="2" class="steap">2</div>
     <div id="3" class="steap">3</div>
+    <div id="4" class="steap">4</div>
   </div>
   <div id="message" class="steaps-container">
     <b>Ingresa tus datos de usuairo.</b>
@@ -18,6 +19,7 @@
     <div id="1" class="steap">1</div>
     <div id="2" class="steap steap-select">2</div>
     <div id="3" class="steap">3</div>
+    <div id="4" class="steap">4</div>
   </div>
   <div id="message" class="steaps-container">
     <b>Elige el tipo de pago.</b>
@@ -31,12 +33,31 @@
     <div id="1" class="steap">1</div>
     <div id="2" class="steap">2</div>
     <div id="3" class="steap steap-select">3</div>
+    <div id="4" class="steap">4</div>
   </div>
   <div id="message" class="steaps-container">
     <b>Ingresa tus datos.</b>
   </div>
   <div id="action" class="steaps-action">
     <%= render partial: '/users/payments/payment_method' %>
+  </div>
+  <%end%>
+  <% if session[:steap] == 4 %>
+  <div class="steaps">
+    <div id="1" class="steap">1</div>
+    <div id="2" class="steap">2</div>
+    <div id="3" class="steap">3</div>
+    <div id="4" class="steap steap-select">4</div>
+  </div>
+  <div id="message" class="steaps-container">
+    <b>Ingresa tus datos.</b>
+  </div>
+  <div id="action" class="steaps-action">
+    <center>
+    <h3>Gracias por usar IDoctore</h3>
+    <p>Le recordamos revisar su emal para la confirmación de su estatus.</p>
+    <i class="fa fa-smile-o"></i>
+    </center>
   </div>
   <%end%>
 </div>

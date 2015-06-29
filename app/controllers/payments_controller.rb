@@ -8,12 +8,13 @@ class PaymentsController < ApplicationController
 
     @user = UserRegister.find(session[:registeruser])
    #cards: [params[:conektaTokenId]]
-
+   #cards: ["tok_test_visa_4242"]
     customer = Conekta::Customer.create({
 		  name: @user.name.to_s,
 		  email: @user.email.to_s,
 		  phone: @user.phone.to_s,
       cards: ["tok_test_visa_4242"]
+
 		})
     puts customer 
     plan_id = session[:payment].gsub(/[^0-9A-Za-z_-]/, '').gsub(' ', '_')
@@ -55,17 +56,40 @@ class PaymentsController < ApplicationController
 
     puts subscription
     if subscription.status == 'active'
-    puts "*************** suscripcción creada correctamente ******************"  
+      puts "*************** suscripcción creada correctamente ******************" 
+      session[:steap] = 4
+      create_user_by_payment(@user.name, @user.email, @user.password, @user.sex, @user.cadre_card, @user.phone)
     elsif subscription.status == 'past_due'
-    puts "*************** falla al inicializar la suscripcción *****************"
+      puts "*************** falla al inicializar la suscripcción *****************"
+      flash[:notice] = "Error al crear la suscripcción vuelva a intetarlo, si el problema persiste contactenos"
+    end
+
+    if subscription.status == 'in_trial'
+      session[:steap] = 4
+      create_user_by_payment(@user.name, @user.email, @user.password, @user.sex, @user.cadre_card, @user.phone)
     end
 
     redirect_to :back
-
+    
 	end
 
 	def payments
 	end
+  
+  def create_user_by_payment(name, email, password, sex, cadre_card, phone)
+    user = User.find_by_email(email)
+    if user.nil?
+    user = User.create(name: name, email: email, hashed_password: password, terms: true, sex: sex, role: 'doctor', cadre_card: cadre_card, payment_method: true)
+    user = UserRegister.find(session[:registeruser])
+    user.destroy
+    else
+    user = UserRegister.find(session[:registeruser])
+    user.destroy
+    session[:steap] = nil
+    flash[:notice] = "El usuario que esta intentado crear ya existe"
+    redirect_to :back
+    end
+  end
 
 	def send_payment_in_cash
 		case params[:amount]
