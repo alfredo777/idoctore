@@ -7,12 +7,13 @@ class PaymentsController < ApplicationController
 		Conekta.api_key = $coneckta_api_key
 
     @user = UserRegister.find(session[:registeruser])
+   #cards: [params[:conektaTokenId]]
 
     customer = Conekta::Customer.create({
 		  name: @user.name.to_s,
 		  email: @user.email.to_s,
 		  phone: @user.phone.to_s,
-		  cards: [params[:conektaTokenId]] 
+      cards: ["tok_test_visa_4242"]
 		})
     puts customer 
     plan_id = session[:payment].gsub(/[^0-9A-Za-z_-]/, '').gsub(' ', '_')
