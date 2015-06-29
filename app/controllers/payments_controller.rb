@@ -15,12 +15,6 @@ class PaymentsController < ApplicationController
 		  cards: [params[:conektaTokenId]] 
 		})
     
-    puts customer
-
-    plan = Conekta::Plan.find(session[:payment]) 
-
-    puts plan
-
 	  subscription = customer.create_subscription({
 		  plan_id: session[:payment]
 		})
