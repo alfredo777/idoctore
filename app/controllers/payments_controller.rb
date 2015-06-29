@@ -47,7 +47,9 @@ class PaymentsController < ApplicationController
     end
     puts plan
 
+    plan = Conekta::Plan.find(plan.id)
 
+    puts "******************#{plan}"
     subscription = customer.create_subscription({
         plan: plan.id
     })
