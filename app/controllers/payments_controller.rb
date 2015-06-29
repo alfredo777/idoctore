@@ -5,8 +5,8 @@ class PaymentsController < ApplicationController
 	######### Payment Methods ##########
 	def send_payment
 		Conekta.api_key = $coneckta_api_key
-
-    @user = UserRegister.find(session[:registeruser])
+   if UserRegister.exists?(session[:registeruser])
+   @user = UserRegister.find(session[:registeruser])
    #cards: [params[:conektaTokenId]]
    #cards: ["tok_test_visa_4242"]
    if @user.nil?
@@ -73,7 +73,12 @@ class PaymentsController < ApplicationController
       session[:steap] = 4
       create_user_by_payment(@user.name, @user.email, @user.password, @user.sex, @user.cadre_card, @user.phone)
     end 
-   end   
+   end  
+   else
+    session[:registeruser] = nil
+    session[:steap] = nil
+    redirect_to :back 
+   end
 	end
 
 	def payments
