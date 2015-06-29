@@ -91,7 +91,7 @@ Rails.application.configure do
     :port           => '587',
     :authentication => :plain,
     :user_name      => 'app28038091@heroku.com',
-    :password       => 'yskr4b8f',
+    :password       => 'vwopduxd9380',
     :domain         => 'heroku.com',
     :enable_starttls_auto => true
   }
