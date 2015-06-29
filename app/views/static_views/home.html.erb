@@ -34,7 +34,7 @@
 		<p>Poderoso</p>
 	</div>
 	<div class="section-read left" id="power" style="display:none;"  data-target="power-o">
-		IDoctore fue diseádo y construido con los estandares mas poderosos para dar a nuestro cliente una 
+		IDoctore fue diseñádo y construido con los estandares mas poderosos para dar a nuestro cliente una 
 		certeza de la calidad y rendimiento del servicio.
 	</div>
 	<div class="icon-section left" id="easy-o" data-target="easy">
@@ -44,7 +44,6 @@
 	<div class="section-read left" id="easy" style="display:none;" data-target="easy-o">
 		IDoctore es una aplicación que se preocupa porque el usuario final pueda entender el como
 		usarlo de una manera sencilla y dinámica.
-
 	</div>
 </div>
 <div class="content-title-banner left">
@@ -118,7 +117,7 @@
 	<div>
 		<div class="feature-descript left">
 			<h3> Chat </h3>
-			<h4>Mantente comunicado de forma segura y privada con tu paciente mediante el chat entre Doctor y Paciente</h4>
+			<h4>Mantente comunicado de forma segura y privada con tus pacientes mediante el chat entre Doctor y Paciente</h4>
 		</div>
 		<div class="feature-image right">
 			<%= image_tag('features/c8.png', width: "540px")%>
@@ -128,8 +127,8 @@
 <div  class="container-home class-h-functions" id="recetas" style="display:none;">
 	<div>
 		<div class="feature-descript left">
-			<h3> Imresión de Recetas </h3>
-			<h4> Impreme tus recetas y expedientes personalizados.</h4>
+			<h3> Impresión de Recetas </h3>
+			<h4> Imprime tus recetas y expedientes de una manera rapida y segura.</h4>
 		</div>
 		<div class="feature-image right">
 			<%= image_tag('features/c15.png', width: "540px")%>
@@ -150,8 +149,8 @@
 <div  class="container-home class-h-functions" id="analisis" style="display:none;">
 	<div>
 		<div class="feature-descript left">
-			<h3> Análsis Clinicos </h3>
-			<h4>Carga en nuestra aplicación los diversos análisis clínicos y accede a ellos cuando lo necesites.</h4>
+			<h3> Análisis Clinicos </h3>
+			<h4>Carga en nuestra aplicación los diversos análisis clínicos y accede a ellos cuando los necesites.</h4>
 		</div>
 		<div class="feature-image right">
 			<%= image_tag('features/c4.png', width: "540px")%>
@@ -173,7 +172,7 @@
 	<div>
 		<div class="feature-descript left">
 			<h3> Pacientes </h3>
-			<h4> Maneja a tus pacientes de forma dinámica y sencilla</h4>
+			<h4> Maneja a tus pacientes de forma ordenada y sencilla</h4>
 		</div>
 		<div class="feature-image right">
 			<%= image_tag('features/c9.png', width: "540px")%>
@@ -184,7 +183,7 @@
 	<div>
 		<div class="feature-descript left">
 			<h3> Historias clínicas </h3>
-			<h4>Agrega y maneja las hitoria clínica de tu paciente.</h4>
+			<h4>Agrega y maneja las hitorias clínicas de tus pacientes.</h4>
 		</div>
 		<div class="feature-image right">
 			<%= image_tag('features/c11.png', width: "540px")%>
@@ -195,7 +194,7 @@
 	<div>
 		<div class="feature-descript left">
 			<h3> Asistente Médico </h3>
-			<h4> Recibe ayuda de tu asistente médico.</h4>
+			<h4> Recibe ayuda de tu(s) asistente(s) médico(s).</h4>
 		</div>
 		<div class="feature-image right">
 			<%= image_tag('features/c13.png', width: "540px")%>
@@ -228,20 +227,20 @@
 	<h2>Datos</h2>
 	<div class="info-users left">
 		<i class="fa fa-user-md"></i>
-		<p>950 Médicos</p>
+		<p>250 Médicos</p>
 	</div>
 	<div class="info-users left">
 		<i class="fa fa-user"></i>
-		<p>13,340 Pacientes</p>
+		<p>4,340 Pacientes</p>
 	</div>
 	<div class="info-users left">
 		<i class="fa fa-hospital-o"></i>
-		<p>5 Hospitales</p>
+		<p>2 Hospitales</p>
 	</div>
 </div>
 <div  class="container-home" style="height:600px;">
 	<div class="contact-box">
-	  <h2>Contactanos</h2>
+	  <h2>Contáctanos</h2>
 		<%= form_tag('/static_views/send_contact') do -%>
     <%= label_tag 'Email' %>
     <%= text_field_tag 'mail', '', placeholder: 'tu@email.com', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'%>
