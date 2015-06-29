@@ -30,8 +30,8 @@ class PaymentsController < ApplicationController
             amount: (210.to_f * 100).to_i,
             currency: "MXN",
             interval: "month",
-            trial_period_days: 10,
-            expiry_count: 24
+            trial_period_days: 10.to_i,
+            expiry_count: 24.to_i
           })
         when "idoctore-anual"
           plan = Conekta::Plan.create({
@@ -40,8 +40,8 @@ class PaymentsController < ApplicationController
             amount: (2000.to_f * 100).to_i,
             currency: "MXN",
             interval: "year",
-            trial_period_days: 10,
-            expiry_count: 24
+            trial_period_days: 10.to_i,
+            expiry_count: 24.to_i
           })
       end
     end
