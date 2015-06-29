@@ -1,4 +1,4 @@
-<%= form_tag('/register_user/insert_user_data') do -%>
+<%= form_tag(insert_user_data_path) do -%>
 <div class="registration-form">
   <%= label_tag 'Nombre' %>
   <%= hidden_field_tag 'seller', false %>
@@ -19,7 +19,6 @@
   <small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
   <label>Acepto los <%= link_to 'Terminos y Condiciones', terms_and_conditions_path, target: '_blank'%> del sitio<%= check_box_tag 'terms', true, checked: true%></label>
 </div>
-  <%= hidden_field_tag 'role', 'doctor' %>
 
 <%= submit_tag 'registrar', class: "registration-button" %>
  
@@ -32,6 +31,5 @@
       VAlForValitx('password');
       VAlForValitx('confirm_password');
       VAlForValitx('cadre_card');
-
     }); 
 </script>

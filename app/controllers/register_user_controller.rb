@@ -25,6 +25,7 @@ class RegisterUserController < ApplicationController
     @user.save
     session[:registeruser] = @user.id
     session[:steap] = 2
+    
     redirect_to register_user_by_steaps_path
   end
 
