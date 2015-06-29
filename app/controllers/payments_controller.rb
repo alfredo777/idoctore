@@ -18,6 +18,7 @@ class PaymentsController < ApplicationController
 		  phone: @user.phone.to_s,
 		  cards: [params[:conektaTokenId]]
 		})
+    
     puts customer.inspect
     subscription = customer.create_subscription({
         plan: plan.id
