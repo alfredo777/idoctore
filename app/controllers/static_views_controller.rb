@@ -1,6 +1,7 @@
 class StaticViewsController < ApplicationController
   layout 'layout_not_login', except: [:contact]
   def home
+    session[:steap] = nil
     if session_status
       redirect_to users_path
     else

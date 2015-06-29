@@ -87,7 +87,8 @@ class PaymentsController < ApplicationController
   def create_user_by_payment(name, email, password, sex, cadre_card, phone)
     user = User.find_by_email(email)
     if user.nil?
-    user = User.create(name: name, email: email, hashed_password: password, terms: true, sex: sex, role: 'doctor', cadre_card: cadre_card, payment_method: true)
+    user = User.create(name: name, email: email, hashed_password: password, terms: true, sex: sex, role: 'doctor', cadre_card: cadre_card, payment_method: true, confirmed_token: random_to_token)
+    mailer = UserMailer.welcome_email(user, user.confirmed_token).deliver
     user = UserRegister.find(session[:registeruser])
     user.destroy
     redirect_to register_user_by_steaps_path
