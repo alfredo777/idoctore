@@ -1,45 +1,24 @@
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.1/js/conekta.js"></script>
- <script type="text/javascript" src="/arefscriptstochat/iconekta.js"></script>
-
-
-<h1>Elija un método de pago</h1>
-<div>
-	<%= form_tag("/payments/send_payment", :remote => true, :id => "card-form") do -%>
-	  <div class="row">
-	    <div class="large-7">
-	 		<%= select_tag 'amount', options_for_select([["Plan Incial", 230000], ["Plan Ilimitado", 400000]]) %>
-            <p>Clave de ventas</p>
-	 		<%= text_field_tag 'seller', '', 'data-conekta'=>"card[name]", placeholder: 'Ingresa el código de vendedor'%>
-
-	    </div>
-	 	<div class="large-7">
-	 	     <p>Nombre del tarjetahabiente</p>
-	 		 <%= text_field_tag '','', 'data-conekta'=>"card[name]", placeholder: 'Tarjetahabiente'%>
-	 	</div>
-	 	<div class="large-7">
-	 	     <p>Número de la tarjeta</p>
-	 		 <%= number_field_tag '', '', 'data-conekta'=>"card[number]", placeholder: 'Número de la tarjeta'%>
-	 	</div>
-	 	<div class="large-3">
-	 	     <p>CVC</p>
-	 		 <%= password_field_tag '', '', 'data-conekta'=>"card[cvc]", placeholder: 'Código de seguridad' %>
-	 	</div>
-	    <div class="large-8">
-	 	     <p>Fecha de expiración (MM/AAAA)</p>
-	 		 <div class="large-2 columns left"><%= number_field_tag '','', 'data-conekta'=>"card[exp_month]", placeholder: 'mes' %></div><div class="left"><h3>/</h3></div><div class="large-2 columns left"><%= number_field_tag '', '' ,'data-conekta'=>"card[exp_year]",placeholder: 'año'%></div>
-	 	</div>
-	    
-	  </div>
-	  <div class="row">
-	     <%= submit_tag 'Generar Pago', class: 'large-7 button'%>
-      </div>
-    <%end%>
+<script type="text/javascript" src="/arefscriptstochat/iconekta.js"></script>
+<%= form_tag("/payments/send_payment", remote: true ,:id => "card-form") do -%>
+<span class="card-errors"></span>
+<div class="form-row">
+	<div class="registration-form">
+		<p>Nombre del tarjetahabiente</p>
+		<%= text_field_tag '','Pancho Lopez', 'data-conekta'=>"card[name]", placeholder: 'Tarjetahabiente'%>
+		<p>Número de la tarjeta</p>
+		<%= number_field_tag '', '4242424242424242', 'data-conekta'=>"card[number]", placeholder: 'Número de la tarjeta'%>
+		<p>CVC</p>
+		<%= password_field_tag '', '123', 'data-conekta'=>"card[cvc]", placeholder: 'Código de seguridad' %>
+		<p>Fecha de expiración (MM/AAAA)</p>
+		<div class="row">
+			<%= select_tag '', options_for_select(1..12),'data-conekta'=>"card[exp_month]", class: "left small-2 columns" %><h2 class="left small-1 columns " style="margin-top:-8px;">/</h2><%= select_tag '', options_for_select(2015..2050),'data-conekta'=>"card[exp_year]", class: "left small-2 columns"%>
+		</div>
+	</div>
 </div>
+<%= submit_tag 'Pagar', class: 'registration-button'%>
+<%end%>
 <script type="text/javascript">
- 
- // Conekta Public Key
-  Conekta.setPublishableKey('key_Y7tZ622oQMeoeFyj');
- 
- // ...
+Conekta.setPublishableKey('key_Y7tZ622oQMeoeFyj');
 </script>

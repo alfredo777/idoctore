@@ -1,0 +1,19 @@
+<%= form_tag('/users/create_session') do -%>
+<span><%=  t('user.mail') %></span></br></br>
+<%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email'  %>
+<small id="message_error_email" class="error" style="margin-top: -16px; display:none;"></small>
+<span><%=  t('user.password') %></span></br></br>
+<%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
+<small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
+
+<div><%= submit_tag t('user.init'), :class => 'btn white-btn large-btn right' %></div>
+<% end -%>
+<%#= link_to t('user.register'), new_user_path, id: 'register_link' %>
+<%= link_to "Ingresa como Asistente", assistants_loggin_path %></br>
+<%= link_to t('user.missing_password'), missing_password_path %></br>
+<script type="text/javascript">
+$(document).ready(function(){
+VAlForValitx('password');
+VAlForValitx('email');
+});
+</script>

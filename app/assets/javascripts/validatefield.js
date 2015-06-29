@@ -1,9 +1,6 @@
-
-
 function VAlForValitx(id){
  var message = $('#'+id).data("message");
  var to_target = $('#'+id).data("target");
-
   $( "form" ).submit(function( event ) {
 	if (!$.trim($('#'+id).val())){
  		$('#'+to_target).html(message);
@@ -16,6 +13,3 @@ function VAlForValitx(id){
   });
 
 }
-
-
-

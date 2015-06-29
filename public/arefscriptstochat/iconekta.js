@@ -7,7 +7,8 @@ jQuery(function($) {
 	conektaSuccessResponseHandler = function(token) {
 	  var $form;
 	  $form = $("#card-form");
-
+     
+     console.log('ingresando');
 	  
 	/* Inserta el token_id en la forma para que se envíe al servidor */
 

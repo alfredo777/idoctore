@@ -1,0 +1,18 @@
+
+<%= form_tag('/register_user/select_plan') do -%>
+<div class="registration-form">
+
+<%= select_tag "payment", options_for_select([ ["Mensual $210 MXN", "idoctore-mensual"], ["Anual $2000 MXN", "idoctore-anual"] ], "Mensual") %>
+
+<%= radio_button_tag 'paymenttype', 'credito', true %> Crédito o devito(no electron) <i class="fa fa-credit-card"></i>
+<%= radio_button_tag 'paymenttype', 'efectivo' %> Efectivo <i class="fa fa-university"></i>
+
+<p><b>Nota:</b> El pago en efectivo solo procede en el pago de anualidades.</p>
+
+<center><h1 style="font-size:170px; color:#FCB900;"><i class="fa fa-shield"></i></h1> <p>Su pago esta protegido</p></center>
+</div>
+
+<%= submit_tag 'Continuar', class: "registration-button" %>
+
+
+<%end%>

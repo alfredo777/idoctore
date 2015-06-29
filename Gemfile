@@ -13,6 +13,7 @@ end
 group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
   gem 'webmock'
+  gem 'ultrahook'
 end
 
 # Use SCSS for stylesheets

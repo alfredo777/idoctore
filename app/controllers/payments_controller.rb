@@ -1,124 +1,34 @@
 class PaymentsController < ApplicationController
 	skip_before_filter :verify_authenticity_token
-
+  
 	#################################################################################################
 	######### Payment Methods ##########
 	def send_payment
-		###### determina el enviroment ######
-		if Rails.env == 'development'
-			Conekta.api_key = "key_vfTtG9pSzzQp7aFo"
-		else
-			Conekta.api_key = "key_6mcfLKFMWkGTCvc7"
-		end
-        
-        ########## identificador del parametro de pagos #########
-		ida = params[:seller]
-		puts "procesando pagos por el vendedor #{ida}"
-		case params[:amount]
-		when 230000
-			@id = 'plan_inicial'
-		when 400000
-			@id = 'plan_unlimited'
-		end
-		session[:valuexx] = (params[:amount].to_i / 100).to_i
-		session[:acte] = params[:conektaTokenId]
-		puts "#{session[:acte]}"
-		puts "#{session[:valuexx]}"
-		session[:comission] = (session[:valuexx].to_i/100) * 3
-		puts "#{session[:comission]}"
-		session[:expiration_ii] = Time.now + 367.days
-		puts "#{session[:expiration_ii]}"
-		session[:comission_seller] = (session[:valuexx].to_i/100) * 25
-		puts "#{session[:comission_seller]}"
-		session[:seller]= ida
-		puts "#{session[:seller]}"
+		Conekta.api_key = $coneckta_api_key
 
-		begin
-			charge = Conekta::Charge.create({
-												amount: params[:amount],
-												currency: 'MXN',
-												description: "payment suscription --> vendedor #{ida}",
-												card: params[:conektaTokenId],
-												reference_id: "#{@id}"
-			})
-			session[:status_payment] = charge.status
-		rescue Conekta::ParameterValidationError => e
-			puts e.message
-			flash[:notice] = "Error al intentar pagar algúno de los parámetros es invalido"
-			redirect_to :back
-			#alguno de los parámetros fueron inválidos
-		rescue Conekta::ProcessingError => e
-			puts e.message
-			flash[:notice] = "Lo sentimos la tarjeta no pudo ser procesada"
-			redirect_to :back
-			#la tarjeta no pudo ser procesada
-		rescue Conekta::Error
-			puts e.message
-			flash[:notice] = "Lo sentimos el sistema de cobros ha tenido un error inesperado y no ha procesado su pago"
-			redirect_to :back
-			#un error ocurrió que no sucede en el flujo normal de cobros como por ejemplo un auth_key incorrecto
-		end
+    @user = UserRegister.find(session[:registeruser])
 
-		if session[:status_payment] == 'paid'
-			puts '******************** REGISTRANDO PAGO *******************'
-			if session[:paymenttouser] != nil
-			 @p = Payment.create(user_id: session[:paymenttouser].to_i, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])  
-			 @user = User.find(session[:paymenttouser].to_i)
-			else
-			 @p = Payment.create(user_id: current_user.id, payment_global: session[:valuexx].to_i, bank_commission: session[:comission], final_comission: session[:comission_seller], init: Time.now, expire: session[:expiration_ii], comissionpay: false, seller_code: session[:seller], method: 'Card', token_pay: session[:acte])
-		     @user = current_user
-		    end
-            
-		    ###### guardamos el usuario para cobro recurrente ####
-			begin
-				customer = Conekta::Customer.create({
-				    name: "#{@user.name}",
-				    email: "#{@user.email}",
-				    phone: "#{@user.phone}",
-				    cards: [params[:conektaTokenId]] 
-			   	#["tok_a4Ff0dD2xYZZq82d9"]
-				 })
-				rescue Conekta::ParameterValidationError => e
-				  puts e.message_to_purchaser 
-				#alguno de los parámetros fueron inválidos
-			end 
+    customer = Conekta::Customer.create({
+		  name: @user.name.to_s,
+		  email: @user.email.to_s,
+		  phone: @user.phone.to_s,
+		  cards: [params[:conektaTokenId]] 
+		})
+    
+    puts customer
+    
+    plan = Conekta::Plan.find(session[:payment]) 
 
-			####### hacemos update de las diversas sessiones de usuario ######
+    puts plan
 
-			puts "#{@p}"
-			puts '********************'
-			if @p.save
-				if session[:paymenttouser] != nil
-			     @user = User.find(session[:paymenttouser])
-                 @user.update_attributes(payment_method: true)
-                else
-				 current_user.update_attributes(payment_method: true)
-			    end
-				session[:acte] = nil
-				session[:value] = nil
-				session[:comission] = nil
-				session[:expiration_ii] = nil
-				session[:comission_seller] = nil
-				#session[:seller]= nil
-				session[:status_payment] = nil
-				flash[:notice] = 'Pago procesado'
-				@m = ManagerUser.find_by_seller_code(session[:seller])
-				session[:seller] = @m.id
+	  subscription = customer.create_subscription({
+		  "plan_id": plan.id 
+		})
 
-			end
-		else
-			flash[:notice] = 'Pago no procesado'
-		end
-		if session[:paymenttouser] != nil
-			session[:paymenttouser] = nil
-		    redirect_to seller_path
-		else
-		respond_to do |format|
+		puts subscription
 
-			format.html
-		end
-	    end
 
+    redirect_to :back
 	end
 
 	def payments

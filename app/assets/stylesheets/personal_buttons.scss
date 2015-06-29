@@ -15,6 +15,60 @@
   }
 }
 
+.blue-btn{
+  padding: 10px;
+  background: transparent;
+  color: #008cba;
+  border: solid 2px #008cba;
+  &:hover{
+    background: #008cba;
+    color: #fff;
+    border: solid 2px #fff;
+  }
+}
+
+.blue-btn-inverse{
+  padding: 10px;
+  background: rgba(19, 97, 204, 0.3);
+  color: #fff;
+  border: solid 2px #CEECF5;
+  &:hover{
+    background:  rgba(19, 97, 126, 0.3);
+    color: #008cba;
+    border: solid 2px #008cba;
+  }
+}
+
+.white-btn{
+  padding: 10px;
+  background: transparent;
+  color: #fff;
+  border: solid 2px #fff;
+  &:hover{
+    background: #fff;
+    color: #808080;
+    border: solid 2px #fff;
+  }
+}
+
+.green-btn{
+  background: rgba(44, 219, 96, 0.7);
+  color: #fff;
+  border: solid 2px rgba(44, 219, 96, 0.7);
+  &:hover{
+    background: rgba(44, 219, 96, 1);;
+    color: #fff;
+    border: solid 4px rgba(44, 219, 96, 0.7);
+  }
+}
+.super-btn{
+  font-size: 27px;
+  min-width: 100px;
+  border: solid 4px;
+  padding: 30px;
+}
+
+
 .large-btn{
   font-size: 17px;
   min-width: 100px;
@@ -90,4 +144,14 @@
   & :hover{
     color:#F79E0E;
   }
+}
+
+.grey-back{
+  background: #eee;
+}
+
+.radius-btn{
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }

@@ -2,10 +2,10 @@
   <legend><%= t('user.login') %></legend>
   <%= form_tag('/users/create_session') do -%>
   <p  style='color:#1c80cf;'><%=  t('user.mail') %></p>
-  <%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email'  %>
+  <%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email', 'data-form' => 'loggin-form'  %>
   <small id="message_error_email" class="error" style="margin-top: -16px; display:none;"></small>
   <p  style='color:#1c80cf;'><%=  t('user.password') %></p>
-  <%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
+  <%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password', 'data-form' => 'loggin-form'  %>
   <small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
   
   <div><%= submit_tag t('user.init'), :class => 'button' %></div>

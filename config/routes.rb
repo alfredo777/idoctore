@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   ######## home page #######
 
   root 'static_views#home'
@@ -56,6 +55,15 @@ Rails.application.routes.draw do
   ####### sessions #########
   
   resources :sessions
+
+  ########## register user ############
+
+  get 'register_user/select_plan'
+  get 'register_user/insert_user_data'
+  get 'register_user/insert_payment_data'
+  get 'register_user', to: 'register_user#registration_user', as: 'register_user_by_steaps'
+  post 'register_user/insert_user_data'
+  post 'register_user/select_plan'
 
   ######### users resources to posting ########
 
