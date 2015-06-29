@@ -7,17 +7,17 @@ class PaymentsController < ApplicationController
 		Conekta.api_key = $coneckta_api_key
 
     @user = UserRegister.find(session[:registeruser])
-
+    
     customer = Conekta::Customer.create({
 		  name: @user.name.to_s,
 		  email: @user.email.to_s,
 		  phone: @user.phone.to_s,
-		  cards: [params[:conektaTokenId]] 
+		  cards: [params[:conektaTokenId]],
+      plan: session[:payment]
 		})
-    puts customer 
 
+    puts customer.inspect
     plan_id = session[:payment].gsub(/[^0-9A-Za-z_-]/, '').gsub(' ', '_')
-
     puts plan_id
     begin
     plan = Conekta::Plan.find(plan_id)
@@ -30,9 +30,9 @@ class PaymentsController < ApplicationController
             amount: (210.to_f * 100).to_i,
             currency: "MXN",
             interval: "month",
-            trial_period_days: 10.to_i,
-            expiry_count: 24.to_i
-          })
+            frequency: 1,
+            trial_period_days: 10,
+            expiry_count: 24})
         when "idoctore-anual"
           plan = Conekta::Plan.create({
             id: "idoctore-anual",
@@ -40,14 +40,13 @@ class PaymentsController < ApplicationController
             amount: (2000.to_f * 100).to_i,
             currency: "MXN",
             interval: "year",
-            trial_period_days: 10.to_i,
-            expiry_count: 24.to_i
-          })
+            frequency: 1,
+            trial_period_days: 10,
+            expiry_count: 24})
       end
     end
-    puts plan
-
-    plan = Conekta::Plan.find(plan.id)
+    
+    puts plan.inspect
 
     puts "******************#{plan}"
     subscription = customer.create_subscription({
