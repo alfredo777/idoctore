@@ -14,7 +14,11 @@ class PaymentsController < ApplicationController
 		  phone: @user.phone.to_s,
 		  cards: [params[:conektaTokenId]] 
 		})
+    puts customer 
+
     plan_id = session[:payment].gsub(/[^0-9A-Za-z_-]/, '').gsub(' ', '_')
+
+    puts plan_id
     begin
     plan = Conekta::Plan.find(plan_id)
     rescue Conekta::Error => e
@@ -37,10 +41,14 @@ class PaymentsController < ApplicationController
           })
       end
     end
+    puts plan
+
 
     subscription = customer.create_subscription({
         plan_id: plan.id
     })
+
+    puts subscription
     if subscription.status == 'active'
     puts "*************** suscripcción creada correctamente ******************"  
     elsif subscription.status == 'past_due'
