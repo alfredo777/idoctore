@@ -8,25 +8,51 @@ class PaymentsController < ApplicationController
 
     @user = UserRegister.find(session[:registeruser])
 
-    plan_id = session[:payment].gsub(/[^0-9A-Za-z_-]/, '').gsub(' ', '_')
-    plan = Conekta::Plan.find("#{plan_id}")
-    puts plan
-
-    puts @user 
-
     customer = Conekta::Customer.create({
 		  name: @user.name.to_s,
 		  email: @user.email.to_s,
 		  phone: @user.phone.to_s,
-		  cards: [params[:conektaTokenId]],
-      plan: plan.id
+		  cards: [params[:conektaTokenId]] 
 		})
+    puts customer 
+    plan_id = session[:payment].gsub(/[^0-9A-Za-z_-]/, '').gsub(' ', '_')
+    puts plan_id
+    begin
+    plan = Conekta::Plan.find(plan_id)
+    rescue Conekta::Error => e
+      case session[:payment]
+        when "idoctore-mensual"
+          plan = Conekta::Plan.create({
+            id: "idoctore-mensual",
+            name: "Plan mensual de idoctore",
+            amount: (210.to_f * 100).to_i,
+            currency: "MXN",
+            interval: "month",
+            frequency: 1,
+            trial_period_days: 10,
+            expiry_count: 24})
+        when "idoctore-anual"
+          plan = Conekta::Plan.create({
+            id: "idoctore-anual",
+            name: "Plan anual de idoctore",
+            amount: (2000.to_f * 100).to_i,
+            currency: "MXN",
+            interval: "year",
+            frequency: 1,
+            trial_period_days: 10,
+            expiry_count: 24
+          })
+      end
+    end
     
-    puts customer
+    puts plan.inspect
+
+    puts "******************#{plan}"
     subscription = customer.create_subscription({
         plan: plan.id
     })
-    puts subscription.inspect
+
+    puts subscription
     if subscription.status == 'active'
     puts "*************** suscripcción creada correctamente ******************"  
     elsif subscription.status == 'past_due'
