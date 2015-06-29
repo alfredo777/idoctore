@@ -9,6 +9,11 @@ class PaymentsController < ApplicationController
     @user = UserRegister.find(session[:registeruser])
    #cards: [params[:conektaTokenId]]
    #cards: ["tok_test_visa_4242"]
+   if @user.nil?
+    session[:registeruser] = nil
+    session[:steap] = nil
+    redirect_to :back
+   else
     customer = Conekta::Customer.create({
 		  name: @user.name.to_s,
 		  email: @user.email.to_s,
@@ -67,7 +72,8 @@ class PaymentsController < ApplicationController
     if subscription.status == 'in_trial'
       session[:steap] = 4
       create_user_by_payment(@user.name, @user.email, @user.password, @user.sex, @user.cadre_card, @user.phone)
-    end    
+    end 
+   end   
 	end
 
 	def payments
