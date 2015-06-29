@@ -36,18 +36,18 @@ class PaymentsController < ApplicationController
             interval: "year"
           })
       end
-	  subscription = customer.create_subscription({
-		  plan_id: plan.id
-		})
-
-		if subscription.status == 'active'
-    puts "*************** suscripcción creada correctamente ******************"  
-    elsif subscription.status == 'past_due'
-    puts "*************** falla al inicializar la suscripcción *****************"
+      subscription = customer.create_subscription({
+        plan_id: plan.id
+      })
+      if subscription.status == 'active'
+      puts "*************** suscripcción creada correctamente ******************"  
+      elsif subscription.status == 'past_due'
+      puts "*************** falla al inicializar la suscripcción *****************"
+      end
     end
 
-
     redirect_to :back
+    
 	end
 
 	def payments
