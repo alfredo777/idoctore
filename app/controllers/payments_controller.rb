@@ -27,17 +27,21 @@ class PaymentsController < ApplicationController
           plan = Conekta::Plan.create({
             id: "idoctore-mensual",
             name: "Plan mensual de idoctore",
-            amount: 21000,
+            amount: (210.to_f * 100).to_i,
             currency: "MXN",
-            interval: "month"
+            interval: "month",
+            trial_period_days:  15,
+            expiry_count:  12
           })
         when "idoctore-anual"
           plan = Conekta::Plan.create({
             id: "idoctore-anual",
             name: "Plan anual de idoctore",
-            amount: 200000,
+            amount: (2000.to_f * 100).to_i,
             currency: "MXN",
-            interval: "year"
+            interval: "year",
+            trial_period_days:  15,
+            expiry_count:  12
           })
       end
     end
@@ -45,7 +49,7 @@ class PaymentsController < ApplicationController
 
 
     subscription = customer.create_subscription({
-        plan_id: plan.id
+        plan: plan.id
     })
 
     puts subscription
