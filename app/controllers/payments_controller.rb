@@ -15,11 +15,34 @@ class PaymentsController < ApplicationController
 		  cards: [params[:conektaTokenId]] 
 		})
     
+    case session[:payment]
+    when "idoctore-mensual"
+      plan = Conekta::Plan.create({
+        id: "idoctore-mensual",
+        name: "Plan mensual de idoctore"
+        amount: 21000,
+        currency: "MXN",
+        interval: "month"
+      })
+    when "idoctore-anual"
+      plan = Conekta::Plan.create({
+        id: "idoctore-anual",
+        name: "Plan anual de idoctore"
+        amount: 200000,
+        currency: "MXN",
+        interval: "year"
+      })
+    end
+    
 	  subscription = customer.create_subscription({
-		  plan_id: session[:payment]
+		  plan_id: plan.id
 		})
 
-		puts subscription
+		if subscription.status == 'active'
+    puts "*************** suscripcción creada correctamente ******************"  
+    elsif subscription.status == 'past_due'
+    puts "*************** falla al inicializar la suscripcción *****************"
+    end
 
 
     redirect_to :back
