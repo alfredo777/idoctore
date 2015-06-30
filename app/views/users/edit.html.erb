@@ -1,8 +1,13 @@
+<% if !agent %>
 <div class="menu-select">
   <p style="font-size:30px; margin-top:20px;">Editar Usuario - <%= link_to "#{@user.name}", user_path(@user.id) %>
   </p>
 </div>
+<%else%>
+<div class="mobile_head">
+  Editar Usuario - <%= link_to truncate("#{@user.name}", length: 15, omission: '...'), user_path(@user.id) %>
+</div>
+<%end%>
 <div id="container" class="raw white-back w80">
-
 <%= render 'edit_form' %>
 </div>

@@ -6,11 +6,11 @@
 <div class="form-row">
 	<div class="registration-form">
 		<p>Nombre del tarjetahabiente</p>
-		<%= text_field_tag '','Pancho Lopez', 'data-conekta'=>"card[name]", placeholder: 'Tarjetahabiente'%>
+		<%= text_field_tag '','', 'data-conekta'=>"card[name]", placeholder: 'Tarjetahabiente'%>
 		<p>Número de la tarjeta</p>
-		<%= number_field_tag '', '4242424242424242', 'data-conekta'=>"card[number]", placeholder: 'Número de la tarjeta'%>
+		<%= number_field_tag '', '', 'data-conekta'=>"card[number]", placeholder: 'Número de la tarjeta'%>
 		<p>CVC</p>
-		<%= password_field_tag '', '123', 'data-conekta'=>"card[cvc]", placeholder: 'Código de seguridad' %>
+		<%= password_field_tag '', '', 'data-conekta'=>"card[cvc]", placeholder: 'Código de seguridad' %>
 		<p>Fecha de expiración (MM/AAAA)</p>
 		<div class="row">
 			<%= select_tag '', options_for_select(1..12),'data-conekta'=>"card[exp_month]", class: "left small-2 columns" %><h2 class="left small-1 columns " style="margin-top:-8px;">/</h2><%= select_tag '', options_for_select(2015..2050),'data-conekta'=>"card[exp_year]", class: "left small-2 columns"%>

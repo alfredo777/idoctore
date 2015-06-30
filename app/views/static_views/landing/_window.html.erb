@@ -1,0 +1,266 @@
+<div class="banner-head">
+  <div class="content-banner left">
+    </br></br></br></br></br></br>
+    <h4>IDoctore las mejor manera de manejar expedientes médicos, para comenzar da click en el boton adquirir y disfruta de una experiencia intuitiva de manejo de datos médicos.
+    </h4></br></br></br></br></br></br>
+    <center>
+    <%= link_to register_user_by_steaps_path do %>
+    <span class="btn blue-btn-inverse super-btn">Quiero comenzar a usarlo
+    </span>
+    <%end%>
+    <div class="social">
+      <%= link_to('https://www.facebook.com/idoctore?ref=hl', target: '_blank') do %>
+      <i class="fa fa-facebook-square "></i>
+      <%end%>
+      <%= link_to('https://twitter.com/idoctoreoficial', target: '_blank') do %>
+      <i class="fa fa-twitter-square"></i>
+      <%end%>
+    </div>
+    </center>
+  </div>
+</div>
+<div class="container-home" style="background:rgba(131, 233, 255, 0.4);">
+  <center><h2>Te ofrecemos un sistema:</h2></center>
+  <div class="icon-section left" id="secure-o" data-target="secure">
+    <i class="fa fa-lock"></i>
+    <p>Seguro</p>
+  </div>
+  <div class="section-read left" id="secure" style="display:none;" data-target="secure-o">
+    Te ofrecemos un sistema seguro de almacenamiento de datos con las últimas tecnologías web disponibles.
+  </div>
+  <div class="icon-section left" id="power-o" data-target="power">
+    <i class="fa fa-star"></i>
+    <p>Poderoso</p>
+  </div>
+  <div class="section-read left" id="power" style="display:none;"  data-target="power-o">
+    IDoctore fue diseñádo y construido con los estandares mas poderosos para dar a nuestro cliente una
+    certeza de la calidad y rendimiento del servicio.
+  </div>
+  <div class="icon-section left" id="easy-o" data-target="easy">
+    <i class="fa fa-thumbs-o-up"></i>
+    <p>Fácil de usar</p>
+  </div>
+  <div class="section-read left" id="easy" style="display:none;" data-target="easy-o">
+    IDoctore es una aplicación que se preocupa porque el usuario final pueda entender el como
+    usarlo de una manera sencilla y dinámica.
+  </div>
+</div>
+<div class="content-title-banner left">
+  <h4 class="text-contet"> El futuro del manejo de datos y citas médicas esta en tus manos y en la de tus pacientes, mantente 100% cerca de ellos, ten sus datos a mano, lleva un expediente completo de todas sus consultas clínicas.</h4>
+</div>
+<div class="container-home" style="display:none;">
+</div>
+<div  class="container-home">
+  <h2>Funciones:</h2>
+  <div class="carrousel-contaier">
+    <div  class="carrousel">
+      <div class="function-landing select" data-target="citas">
+        <i class="fa fa-calendar"></i>
+        <p>Calendario</p>
+      </div>
+      <div class="function-landing" data-target="chat">
+        <i class="fa fa-comments-o"></i>
+        <p>Chat</p>
+      </div>
+      <div class="function-landing" data-target="recetas">
+        <i class="fa fa-print"></i>
+        <p>Impresión de recetas</p>
+      </div>
+      <div class="function-landing" data-target="analisis">
+        <i class="fa fa-flask"></i>
+        <p>Manejo de análisis</p>
+      </div>
+      <div class="function-landing" data-target="diagnosticos">
+        <i class="fa fa-folder-open"></i>
+        <p>Manejo de Dignósticos</p>
+      </div>
+      <div class="function-landing" data-target="signos">
+        <i class="fa fa-heart"></i>
+        <p>Manejo de Signos vitales</p>
+      </div>
+      <div class="function-landing" data-target="notas">
+        <i class="fa fa-pencil-square-o"></i>
+        <p>Manejo de Notas médicas</p>
+      </div>
+      <div class="function-landing" data-target="pacientes">
+        <i class="fa fa-users"></i>
+        <p>Manejo de pacientes</p>
+      </div>
+      <div class="function-landing" data-target="historia">
+        <i class="fa fa-book"></i>
+        <p>Manejo de historia clínica</p>
+      </div>
+      <div class="function-landing" data-target="asistente">
+        <i class="fa fa-stethoscope"></i>
+        <p>Asistente Médico</p>
+      </div>
+      <div class="function-landing" data-target="cie10">
+        <i class="fa fa-wrench"></i>
+        <p>CIE10</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="citas">
+  <div id="target-calendario">
+    <div class="feature-descript left">
+      <h3> Agenda de citas </h3>
+      <h4>Maneja tus citas como tu prefieras, recibe solicitudes y lleva tu agenda de forma dinámica.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c7.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="chat" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Chat </h3>
+      <h4>Mantente comunicado de forma segura y privada con tus pacientes mediante el chat entre Doctor y Paciente</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c8.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="recetas" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Impresión de Recetas </h3>
+      <h4> Imprime tus recetas y expedientes de una manera rapida y segura.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c15.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="diagnosticos" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Diagnósticos </h3>
+      <h4>Crea y administra diagnósticos en tiempo real con herramientas como el CIE10, accesa ellos en cualquier lugar y a cualquier hora.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c2.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="analisis" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Análisis Clinicos </h3>
+      <h4>Carga en nuestra aplicación los diversos análisis clínicos y accede a ellos cuando los necesites.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c4.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="notas" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Notas médicas </h3>
+      <h4>Agrega notas médicas a tus diagnósticos en un segundo.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c3.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="pacientes" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Pacientes </h3>
+      <h4> Maneja a tus pacientes de forma ordenada y sencilla</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c9.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="historia" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Historias clínicas </h3>
+      <h4>Agrega y maneja las hitorias clínicas de tus pacientes.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c11.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="asistente" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Asistente Médico </h3>
+      <h4> Recibe ayuda de tu(s) asistente(s) médico(s).</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c13.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="cie10" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> CIE10 </h3>
+      <h4> Ingresa a la base de datos de referencia de enfermendades, para agregarlo a los diagnósticos.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c14.png', width: "340px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home class-h-functions" id="signos" style="display:none;">
+  <div>
+    <div class="feature-descript left">
+      <h3> Signos vitales </h3>
+      <h4> Administra una base de datos de signos vitales de tus pacientes.</h4>
+    </div>
+    <div class="feature-image right">
+      <%= image_tag('features/c5.png', width: "540px")%>
+    </div>
+  </div>
+</div>
+<div  class="container-home" style="margin-top:-120px; background:rgba(50, 198, 47, 0.2); height:550px;">
+  <h2>Datos</h2>
+  <div class="info-users left">
+    <i class="fa fa-user-md"></i>
+    <p>250 Médicos</p>
+  </div>
+  <div class="info-users left">
+    <i class="fa fa-user"></i>
+    <p>4,340 Pacientes</p>
+  </div>
+  <div class="info-users left">
+    <i class="fa fa-hospital-o"></i>
+    <p>2 Hospitales</p>
+  </div>
+</div>
+<div  class="container-home" style="height:600px;">
+  <div class="contact-box">
+    <h2>Contáctanos</h2>
+    <%= form_tag('/static_views/send_contact') do -%>
+    <%= label_tag 'Email' %>
+    <%= text_field_tag 'mail', '', placeholder: 'tu@email.com', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail'%>
+    <small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+    <%= label_tag 'Nombre' %>
+    <%= text_field_tag 'name', '', placeholder: 'Escribe tu nombre', :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+    <small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+    <%= label_tag 'Descripcción' %>
+    <%= text_area_tag 'description', '' , placeholder: 'Ingresa el asunto por el cual nos contactas', rows: '14', :class => 'valitx', 'data-message' => 'El campo descripción no puede quedar vacio.', 'data-target' => 'message_error_des'%>
+    <small id="message_error_des" class="error" style="margin-top: -16px; display:none;"></small>
+    <%= submit_tag 'Contactar', class: 'button right'%>
+    <%end%>
+  </div>
+  <div class="contact-box">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7525.253441886715!2d-99.16054912364956!3d19.42852779419732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff2defb09d8b%3A0x43334117a4c73167!2sCalle+Versalles+94%2C+Ju%C3%A1rez%2C+06600+Ciudad+de+M%C3%A9xico%2C+D.F.!5e0!3m2!1ses!2smx!4v1434251670005" width="100%" height="550" frameborder="0" style="border:0"></iframe>
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+VAlForValitx('name');
+VAlForValitx('mail');
+VAlForValitx('description');
+});
+</script>

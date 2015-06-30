@@ -438,6 +438,7 @@ class UsersController < ApplicationController
     @personal_cites = @user.doctor_cites
     @other_cites = @user.cite_doctors
     @tasks =  @other_cites + @personal_cites
+    @tasks = @tasks.paginate(:page => params[:page], :per_page => 15)
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @notices = @user.my_request_from_notice.last(15)
   end

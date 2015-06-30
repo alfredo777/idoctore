@@ -5,22 +5,27 @@
   <% if @tasks.count != 0 %>
   <% @tasks.reverse.each do |task|%>
   <div class="data-li large-4 columns">
-      <div class="cite_day">
+    <div class="cite_day">
       <h2><%= task.init_time.strftime('%d') %></h2>
-      <h3><%= task.init_time.strftime('%B') %></h3>
+      <h3><%= truncate(task.init_time.strftime('%B'), length: 3, omission: '') %></h3>
       <h4><%= task.init_time.strftime('%Y') %></h4>
-      </div>
-      <div class="cite_content small-8 columns">
+    </div>
+    <div class="cite_content small-8 columns">
       <h4>Médico: <%= task.capt_requester.name %></h4>
       <h4>Hora: <%= task.init_time.strftime('%H:%M') %></h4>
-      </div>
+    </div>
   </div>
   <%end%>
   <%else%>
-   <div class="cite_day">
+  <div class="cite_day">
     <center>
-      <h2>No tienes citas</h2>
+    <h2>No tienes citas</h2>
     </center>
-   </div>
+  </div>
   <%end%>
 </div>
+<center>
+<ul class="pagination" style="margin-top:20px;">
+  <%= will_paginate @tasks %>
+</ul>
+</center>
