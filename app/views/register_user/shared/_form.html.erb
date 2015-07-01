@@ -1,4 +1,5 @@
 <%= form_tag(insert_user_data_path) do -%>
+<% if !agent %>
 <div class="registration-form">
   <%= label_tag 'Nombre' %>
   <%= hidden_field_tag 'seller', false %>
@@ -19,7 +20,29 @@
   <small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
   <label>Acepto los <%= link_to 'Terminos y Condiciones', terms_and_conditions_path, target: '_blank'%> del sitio<%= check_box_tag 'terms', true, checked: true%></label>
 </div>
-
 <%= submit_tag 'registrar', class: "registration-button" %>
- 
+<%else%>
+<div class="mobile_head">
+ Primer paso del registro
+</div>
+<%= label_tag 'Nombre' %>
+<%= hidden_field_tag 'seller', false %>
+<%= text_field_tag 'name', '' ,'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
+<small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Email' %>
+<%= email_field_tag 'email', '' , 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_email'  %>
+<small id="message_error_email" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Sexo' %>
+<%= select_tag "sex", options_for_select([ ["Hombre", "male"], ["Mujer", "female"] ], "Hombre") %>
+<%= label_tag 'Cédula profesional' %>
+<%= text_field_tag 'cadre_card', '' ,'data-message' => 'El campo cédula profecional contraseña no puede quedar vacio.', 'data-target' => 'message_error_confirm_cadre_card' %>
+<small id="message_error_confirm_cadre_card" class="error" style="margin-top: -16px; display:none;"></small>
+<%= label_tag 'Teléfono' %>
+<%= number_field_tag 'phone'%>
+<%= label_tag 'Contraseña' %>
+<%= password_field_tag 'password', '' ,'data-message' => 'El contaseña nombre no puede quedar vacio.', 'data-target' => 'message_error_password' %>
+<small id="message_error_password" class="error" style="margin-top: -16px; display:none;"></small>
+<label>Acepto los <%= link_to 'Terminos y Condiciones', terms_and_conditions_path, target: '_blank'%> del sitio<%= check_box_tag 'terms', true, checked: true%></label>
+<%= submit_tag 'Registrar', class: "button" %>
+<%end%>
 <%end%>

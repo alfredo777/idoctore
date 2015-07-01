@@ -1,0 +1,21 @@
+<div class="container-not-login">
+  <% if session[:steap] == nil %>
+  <%= render partial: '/register_user/shared/form' %>
+  <%end%>
+  <% if session[:steap] == 2 %>
+  <%= render partial: '/register_user/shared/select_payment_type' %>
+  <%end%>
+  <% if session[:steap] == 3 %>
+  <%= render partial: '/users/payments/payment_method' %>
+  <%end%>
+  <% if session[:steap] == 4 %>
+  <div class="mobile_head">
+    ¡Felicidades!
+  </div>
+  <center>
+  <h3>Gracias por usar IDoctore</h3>
+  <p>Le recordamos revisar su email para la confirmación de su estatus.</p>
+  <h1 style="font-size:170px; color:#FCB900;"><i class="fa fa-smile-o"></i></h1>
+  </center>
+  <%end%>
+</div>

@@ -1,6 +1,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://conektaapi.s3.amazonaws.com/v0.3.1/js/conekta.js"></script>
 <script type="text/javascript" src="/arefscriptstochat/iconekta.js"></script>
+<% if !agent %>
 <%= form_tag("/payments/send_payment", remote: true ,:id => "card-form") do -%>
 <span class="card-errors"></span>
 <div class="form-row">
@@ -18,6 +19,27 @@
 	</div>
 </div>
 <%= submit_tag 'Pagar', class: 'registration-button'%>
+<%end%>
+<%else%>
+<%= form_tag("/payments/send_payment", remote: true ,:id => "card-form") do -%>
+<div class="mobile_head">
+ Tercer paso del registro
+</div>
+<span class="card-errors"></span>
+<div class="form-row">
+		<p>Nombre del tarjetahabiente</p>
+		<%= text_field_tag '','', 'data-conekta'=>"card[name]", placeholder: 'Tarjetahabiente'%>
+		<p>Número de la tarjeta</p>
+		<%= number_field_tag '', '', 'data-conekta'=>"card[number]", placeholder: 'Número de la tarjeta'%>
+		<p>CVC</p>
+		<%= password_field_tag '', '', 'data-conekta'=>"card[cvc]", placeholder: 'Código de seguridad' %>
+		<p>Fecha de expiración (MM/AAAA)</p>
+		<div class="row">
+			<%= select_tag '', options_for_select(1..12),'data-conekta'=>"card[exp_month]" %><h2 class="left small-1 columns " style="margin-top:-8px;">/</h2><%= select_tag '', options_for_select(2015..2050),'data-conekta'=>"card[exp_year]"%>
+		</div>
+</div>
+<%= submit_tag 'Pagar', class: 'button'%>
+<%end%>
 <%end%>
 <script type="text/javascript">
 Conekta.setPublishableKey('key_Y7tZ622oQMeoeFyj');
