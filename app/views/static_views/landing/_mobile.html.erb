@@ -1,12 +1,15 @@
-<div class="banner-head content-banner" style="background:#fff;">
+<div class="banner-head content-banner" style="background:#fff; margin-bottom:90px;">
   <h4>IDoctore las mejor manera de manejar expedientes médicos, para comenzar da click en el boton adquirir y disfruta de una experiencia intuitiva de manejo de datos médicos con las mejores <%=link_to 'funciones',what_work_path%>.
 
   </h4><br/>
   <%= link_to register_user_by_steaps_path do %>
   <span class="btn blue-btn-inverse large-btn">Quiero comenzar a usarlo
   </span>
+  <%end%></br></br></br>
+  <%= link_to  sign_in_path do %>
+   <span class="btn green-btn-inverse large-btn"> Ya soy miembro - Ingresar
+  </span>
   <%end%>
-  o <%= link_to 'Ingresa', sign_in_path%>
   <div class="five-stars" style="margin-top:30px;">
     <div>
       <%= image_tag('bestprice.png', width: 200)%>
