@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708003558) do
+ActiveRecord::Schema.define(version: 20150708071717) do
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -357,7 +357,6 @@ ActiveRecord::Schema.define(version: 20150708003558) do
     t.date     "validity"
     t.text     "specialism"
     t.boolean  "suspend",                   default: false
-    t.integer  "phone"
     t.string   "left_logo"
     t.string   "right_logo"
     t.string   "ethnic_group"
@@ -371,6 +370,7 @@ ActiveRecord::Schema.define(version: 20150708003558) do
     t.string   "religion"
     t.string   "sexual_preference"
     t.integer  "number_of_sexual_partners"
+    t.string   "phone"
   end
 
   create_table "vital_signs", force: true do |t|
