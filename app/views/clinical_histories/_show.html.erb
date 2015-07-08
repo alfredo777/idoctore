@@ -1,8 +1,8 @@
 <% if session[:assistant] == nil %>
 <% if !agent %>
 <div class="menu-select">
-  <p style="font-size:30px; margin-top:20px;"> 
-      Historia Clínica - <%= link_to 'Ir al perfíl del paciente',  user_path(user.id) %>
+  <p style="font-size:30px; margin-top:20px;">
+    Historia Clínica - <%= link_to 'Ir al perfíl del paciente',  user_path(user.id) %>
   </p>
 </div>
 <%else%>
@@ -17,27 +17,24 @@
 <%end%>
 <div class="row ">
   <div  class="large-12 columns">
-    <div class="head-ax">Paciente</div>
+    <div class="head-ax">Datos del paciente</div>
     <div class="body-ax">
       <div class="row ">
-        <div class="large-3 columns">
+        <div class="left" style="width:30%;">
           <center>
           <%= render partial: '/users/avatars', locals: {user: user, edit: false}%>
-          </center>
-        </div>
-        <div class="large-4 columns left">
-          <p>
-            Paciente: <%= user.name %></br>
-            Edad: <%= user.ageu %>
-          </p>
-          <%= link_to "Actaulizar historia clínica", new_clinical_history_path(user: user.id )%>
+          </center></br></br></br>
+          <center>
+          <%= link_to "Actaulizar historia clínica", new_clinical_history_path(user: user.id ), class: 'btn blue-btn large-mid'%></br></br></br>
           <% if user.clinical_histories == nil %>
           <%else%>
           <%#= link_to "Actualizar Historia Clínica", edit_clinical_history_path(user: user.id )%>
           <%end%>
+          <%= link_to "Actualizar paciente", identification_path(user: user.id), class: 'btn blue-btn large-mid' %> </br>
+          </center>
         </div>
-        <div class="large-5 columns left">
-          <p>Todos la información que aparece directamente es parte de la historia clínica.</p>
+        <div class="left" style="width:70%;">
+          <%= render partial: '/clinical_histories/user_data', locals: {user: user}%>
         </div>
       </div>
     </div>
@@ -86,7 +83,7 @@
           </tr>
         </thead>
         <tbody>
-            <% if user.clinical_histories.count != 0 %>
+          <% if user.clinical_histories.count != 0 %>
           <% user.clinical_histories.last(20).reverse.each do |hc|%>
           <% if hc.diagnostics.count != 0 %>
           <% hc.diagnostics.last(10).reverse.each do |dl| %>

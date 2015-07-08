@@ -1,5 +1,6 @@
 class VitalSign < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :clinical_history
 
 	def owner
 		if self.owner_by != nil

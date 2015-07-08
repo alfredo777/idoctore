@@ -85,6 +85,7 @@ Rails.application.routes.draw do
       post 'create_message_cite'
       post 'actualize_invitation_non_mail'
       post 'delete_relation_doctor_patient'
+      post 'clinical_update', :to => 'users#clinical_update' , as: :clinical_update_user
 
       ############# admin users #############
 
@@ -93,6 +94,7 @@ Rails.application.routes.draw do
       post 'admin_user_destroy'
       post 'admin_user_cupons'
       post 'search_cupons'
+
 
 
     end
@@ -257,6 +259,7 @@ Rails.application.routes.draw do
   post 'clinical_histories/update'
   get 'clinical_histories/edit', :as => :edit_clinical_history
   get 'clinical_histories/open', :as => :open_clinical_history
+  get 'clinical_histories/identification', as: :identification
 
   ############ payments ##########
   post 'payments/send_payment'

@@ -9,7 +9,7 @@
 		</div>
 		</div>
 		<% if user.sex != nil  %>
-		<p>Sexo: <%= 'Hombre' if user.sex == 'male' %> <%= 'Mujer' if user.sex == 'female' %></p>
+		<p>Sexo: <%= t("sex.#{user.sex}") %></p>
 		<%end%>
 		<p>Edad: <%= user.ageu %></p>
 		<%= link_to 'Editar Usuario', edit_user_path(user) if user.id == current_user.id%>

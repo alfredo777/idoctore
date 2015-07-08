@@ -1,0 +1,30 @@
+<div class="row">
+  <div  class="large-12 columns">
+    <%= render partial: '/vital_signs/remoted_signs', locals: {vs: clinical_history.vital_signs.last} if  clinical_history.vital_signs.count != 0 %>
+  </div>
+</div></br>
+<div class="row">
+  <div  class="large-12 columns">
+    <div class="head-ax">Exploración física</div>
+    <div class="body-ax">
+      <center>
+      <table>
+        <thead>
+          <tr>
+            <th width="200">Parte del cuerpo</th>
+            <th width="200">Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% clinical_history.phisical_explorations.each do |fe| %>
+          <tr>
+            <td><%= fe.body_part %></td>
+            <td><%= fe.notes %></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+      </center>
+    </div>
+  </div>
+</div></br>

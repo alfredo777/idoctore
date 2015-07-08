@@ -112,3 +112,41 @@ es:
   will_paginate:
     previous_label: 'Anterior'
     next_label: 'Siguiente'
+  religion:
+    catolic: Católico
+    christian_protestant: "Cristiano Protestante"
+    traditional_christian: "Cristiano Tradicional"
+    christian_gospel: "Cristiano Evangélico"
+    christian_pentecostal: "Cristiano Pentecostal"
+    greek_orthodox_christian: "Cristiano ortodoxo Griego"
+    russian_orthodox_christian: "Cristiano ortodoxo Ruso"
+    jewish: Judío
+    messianic_jew: "Judío Mesiánico"
+    buddhist: Budista
+    muslim: Musulman
+    confucianism: Confucionismo
+    shinto: Shintoismo
+    paganism: Paganismo
+    atheism: Ateismo
+  sex:
+    male: 'Hombre'
+    female: 'Mujer'
+  ethnic_group:
+    caucasian: Caucásico
+    latin_american: "Latino Hispanico"
+    mixed: Latino Mestizo
+    jewish: "Semita Judío"
+    arab: "Semita Arabe"
+    asian: "Asiatico"
+    african_american: "Afro Americano"
+    african: "Africano"
+    indian: "Indigena"
+    mulatto: Mulato
+    baboon: Zambo
+    hindu: Hindú
+  marital_status:
+    single: Soltero
+    married: Casado
+    concubinage: Concuvinato
+    widower: Viudo
+

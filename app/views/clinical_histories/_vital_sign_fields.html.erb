@@ -1,0 +1,15 @@
+<div class="large-12 nested-fields">
+  <div class="small-6  large-9 columns">
+    <h4>Medidas antropometricas</h4>
+    <%= f.number_field :weight, placeholder: 'Peso en Kg' %>
+    <%= f.number_field :height, placeholder: 'Altura en Metros' %>
+    <h4>Signos vitales</h4>
+    <%= f.number_field :blood_pressure_down, placeholder: 'Presión Diastólica' %>
+    <%= f.number_field :blood_pressure_up, placeholder: 'Presión Sistólica' %>
+    <%= f.number_field :pulse, placeholder: 'Frecuencia Cardiaca' %>
+    <%= f.number_field :breathing, placeholder: 'Respiración' %>
+    <%= f.number_field :temperature, placeholder: 'Temperatura' %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.hidden_field :owner_by, value: current_user.id %>
+  </div>
+</div>

@@ -61,7 +61,9 @@ gem 'jquery-fileupload-rails'
 gem 'conekta'
 ###### geo localization ####
 gem "geocoder"
+######## gem dinamic forms #####
 gem "cocoon"
+####### site map generator ######
 gem "sitemap_generator"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

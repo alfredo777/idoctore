@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
    ##### validamos por email #####
    
    validates_uniqueness_of :email
+   validates_uniqueness_of :phone
    validates_presence_of :email
    #validates_format_of   :email, :with => /^[\-a-z0-9]+$/
 

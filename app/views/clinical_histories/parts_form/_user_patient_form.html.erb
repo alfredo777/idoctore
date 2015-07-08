@@ -1,0 +1,33 @@
+<%= form_tag(clinical_update_user_users_path(id: user.id), :multipart => true) do -%>
+  <%= label_tag 'Nombre' %>
+  <%= text_field_tag 'name', "#{user.name}", placeholder: 'Nombre', required: true%>
+  <%= label_tag 'Teléfono' %>
+  <%= number_field_tag 'phone', "#{user.phone}", placeholder: 'Teléfono Fijo o Celular', required: true%>
+  <%= label_tag 'Email (no requerido)' %>
+  <%= text_field_tag 'email', user.email, placeholder: 'e@mail'%>
+  <%= label_tag 'Fecha de nacimiento (día/mes/año)-(01/01/2014)' %>
+  <%= date_field_tag 'birthday', user.birthday, required: true %>
+  <%= label_tag 'Raza (dato no obligatorio)' %>
+  <%= select_tag 'ethnic_group', options_for_select([['Caucasico','caucasian'],['Latino Hispanico','latin_american'],['Latino Mestizo','mixed'],['Semita Judío','jewish'],['Semita Arabe','arab'],['Asiatico','asian'],['Afro Americano','african_american'],['Africano','african'],['Indigena','indian'],['Mulato','mulatto'],['Zambo','baboon'], ['Hindú', 'hindu']], "#{user.ethnic_group}")%>
+  <%= label_tag 'Nacionalidad' %>
+  <%= text_field_tag 'nationality', user.nationality, placeholder: 'Nacionalidad', required: true%>
+  <%= label_tag 'Estado civil' %>
+  <%= select_tag 'marital_status', options_for_select([['Soltero(a)','single'],['Casado','married'],['Concuvinato','concubinage'], ['Viudo(a)','widower']], user.marital_status)%>
+  <%= label_tag 'Ocupación' %>
+  <%= text_field_tag 'occupation', user.occupation, placeholder: 'Ocupación', required: true %>
+  <%= label_tag 'Lugar de nacimiento' %>
+  <%= text_field_tag 'birthplace', user.birthplace, placeholder: 'Lugar de nacimiento', required: true %>
+  <%= label_tag 'Lugar de recidencia'%>
+  <%= text_field_tag 'place_of_residence', user.place_of_residence, placeholder: 'Lugar de recidenciato', required: true%>
+  <%= label_tag 'Dirección de residencia'%>
+  <%= text_field_tag 'home', user.home, placeholder: 'Dirección', required: true%>
+  <%= label_tag 'Persona a cargo del paciente'%>
+  <%= text_field_tag 'person_in_charge', user.person_in_charge, placeholder: 'Nombre'%>
+  <%= label_tag 'Religión (dato no obligatorio)'%>
+  <%= select_tag 'religion', options_for_select([['Cristiano Católico','catolic'],['Cristiano Protestante','christian_protestant'],['Cristiano Tradicional','traditional_christian'],['Cristiano Evangélico','christian_gospel'],['Cristiano Pentecostal','christian_pentecostal'],['Cristiano Ortodoxo Griego','greek_orthodox_christian'],['Cristiano Ortodoxo Ruso','russian_orthodox_christian'],['Judío','jewish'], ['Judío Mesiánico','messianic_jew'] ,['Budista','buddhist'],['Musulman','muslim'],['Confucionismo','confucianism'],['Shintoista','shinto'],['Paganismo (Antigua Religión)','paganism'], ['Ateismo','atheism']], "#{user.religion}" )%>
+  <%= label_tag 'Preferencia Sexual (dato no obligatorio)'%>
+  <%= select_tag 'sexual_preference', options_for_select([['Heterosexual','heterosexual'], ['Bisexual','bisexual'], ['Homosexual','homosexual']])%>
+  <%= label_tag 'Parejas sexuales (dato no obligatorio)'%>
+  <%= select_tag 'number_of_sexual_partners', options_for_select(0..50, user.number_of_sexual_partners)%>
+  <%= submit_tag 'Actualizar el perfíl del paciente', class: 'button '%>
+<%end%>

@@ -1,0 +1,24 @@
+<% if session[:assistant] == nil %>
+<% if !agent %>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;"> 
+      Actualización del paciente - <%= link_to 'Regresar a la historia clínica',  clinical_history_path(user: @user.id) %>
+  </p>
+</div>
+<%else%>
+<div class="mobile_head">
+  Actualización del paciente
+</div>
+<%end%>
+<%else%>
+<div class="act_head_lef_assistent">
+  Actualización del paciente <%= @user.name %>
+</div>
+<%end%>
+<div class="row ">
+  <div  class="large-12 columns">
+    <div class="body-ax">
+     <%= render partial: '/clinical_histories/parts_form/user_patient_form', locals: {user: @user}%>
+    </div>
+   </div>
+</div>

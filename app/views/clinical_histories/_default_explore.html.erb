@@ -1,0 +1,7 @@
+<div class="large-12 nested-fields">
+  <div class="small-6  large-9 columns">
+
+    <%= text_field_tag "clinical_history[phisical_explorations_attributes][#{random_number}][body_part]", "#{menssage}", placeholder: 'Parte del cuerpo', id:"clinical_history_phisical_explorations_attributes_#{random_number}_body_part" %>
+    <%= text_area_tag "clinical_history[phisical_explorations_attributes][#{random_number}][notes]", '' ,placeholder: 'Anotación', id: "clinical_history_phisical_explorations_attributes_#{random_number}_notes" %>
+  </div>
+</div>

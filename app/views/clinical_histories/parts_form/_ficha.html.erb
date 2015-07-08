@@ -1,0 +1,36 @@
+<div  class="large-12 columns">
+  </br>
+  <div class="head-ax"> Ficha de identificación </div>
+  <div class="body-ax">
+    <fieldset id="familial_diseases">
+      <h4>Antecedentes heredo familiares</h4>
+      <%= f.fields_for :familial_diseases  do |fd| %>
+      <%= render partial: 'familial_disease_fields', locals: {:f => fd} %>
+      <%end%>
+      <%= link_to_add_association 'Agregar padecimiento', f, :familial_diseases, :class => 'button succes small' %>
+    </fieldset>
+    <fieldset id="no_pathological_antecedents">
+      <h4>Antecedentes personales no patológicos</h4>
+      <%= f.fields_for :no_pathological_antecedents  do |f| %>
+      <%= render partial: 'no_pathological_antecedents_fields', locals: {:f => f} %>
+      <%end%>
+      <%= link_to_add_association 'Agregar antecedente no patológico', f, :no_pathological_antecedents, :class => 'button succes small' %>
+    </fieldset>
+    <fieldset id="pathological_antecedents">
+      <h4>Antecedentes personales patológicos</h4>
+      <%= f.fields_for :pathological_antecedents  do |f| %>
+      <%= render partial: 'pathological_antecedents_fields', locals: {:f => f} %>
+      <%end%>
+      <%= link_to_add_association 'Agregar antecedente patológico', f, :pathological_antecedents, :class => 'button succes small' %>
+    </fieldset>
+    <fieldset  >
+      <h4>Padecimiento actual</h4>
+      <%= f.text_area :suffering,  rows: 13 %>
+    </fieldset>
+    
+    <fieldset >
+      <h4> Interrogatorio por aparatos y sistemas </h4>
+      <%= f.text_area :interview,  rows: 13 %>
+    </fieldset>
+  </div>
+</div>

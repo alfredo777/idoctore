@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616232016) do
+ActiveRecord::Schema.define(version: 20150708003558) do
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20150616232016) do
     t.text     "diagnostic_aux"
     t.text     "terapeutic_use"
     t.integer  "doctor_id"
-    t.integer  "vital_sign_id"
   end
 
   create_table "clinical_history_to_diagnostics", force: true do |t|
@@ -199,6 +198,14 @@ ActiveRecord::Schema.define(version: 20150616232016) do
     t.text     "message"
   end
 
+  create_table "no_pathological_antecedents", force: true do |t|
+    t.string   "name"
+    t.text     "note"
+    t.integer  "clinical_history_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notes", force: true do |t|
     t.text     "content"
     t.integer  "last_analysis"
@@ -242,6 +249,14 @@ ActiveRecord::Schema.define(version: 20150616232016) do
     t.string   "name"
     t.integer  "description"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pathological_antecedents", force: true do |t|
+    t.string   "name"
+    t.text     "note"
+    t.integer  "clinical_history_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -320,12 +335,12 @@ ActiveRecord::Schema.define(version: 20150616232016) do
     t.string   "email"
     t.date     "register"
     t.string   "confirmed_token"
-    t.boolean  "confirmed",       default: false
+    t.boolean  "confirmed",                 default: false
     t.text     "description"
     t.string   "role"
     t.text     "resume"
     t.datetime "last_loggin"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                     default: false
     t.date     "birthday"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -337,14 +352,25 @@ ActiveRecord::Schema.define(version: 20150616232016) do
     t.string   "college"
     t.string   "cadre_card"
     t.text     "street_addres"
-    t.boolean  "payment_method",  default: false
+    t.boolean  "payment_method",            default: false
     t.string   "cupon"
     t.date     "validity"
     t.text     "specialism"
-    t.boolean  "suspend",         default: false
+    t.boolean  "suspend",                   default: false
     t.integer  "phone"
     t.string   "left_logo"
     t.string   "right_logo"
+    t.string   "ethnic_group"
+    t.string   "nationality"
+    t.string   "marital_status"
+    t.string   "occupation"
+    t.string   "birthplace"
+    t.string   "place_of_residence"
+    t.text     "home"
+    t.string   "person_in_charge"
+    t.string   "religion"
+    t.string   "sexual_preference"
+    t.integer  "number_of_sexual_partners"
   end
 
   create_table "vital_signs", force: true do |t|
@@ -359,6 +385,7 @@ ActiveRecord::Schema.define(version: 20150616232016) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_by"
+    t.integer  "clinical_history_id"
   end
 
 end

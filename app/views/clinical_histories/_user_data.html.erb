@@ -1,0 +1,40 @@
+<center>
+<ul class="vcard">
+  <div class="left" style="width:33%;">
+    <li class="fn"> Paciente</li>
+    <h6 class="subheader"><%= user.name %></h6>
+    <li class="fn"> Edad </li>
+    <h6 class="subheader"><%= user.ageu %></h6>
+    <li class="fn"><%=  'Nacionalidad' %></li>
+    <h6 class="subheader"><%= user.nationality %></h6>
+    <li class="fn"><%=  'Estado Civil' %></li>
+    <h6 class="subheader"><%= t("marital_status.#{user.marital_status}")if !user.marital_status.nil? %></h6>
+    <li class="fn"><%=  'Ocupación' %></li>
+    <h6 class="subheader"><%= user.occupation %></h6>
+  </div>
+  <div class="left" style="width:33%;">
+    <li class="fn"><%=  'Sexo' %></li>
+    <h6 class="subheader"><%= t("sex.#{user.sex}") %></h6>
+    <li class="fn"><%=  'Raza' %></li>
+    <h6 class="subheader"><%= t("ethnic_group.#{user.ethnic_group}") if !user.ethnic_group.nil? %></h6>
+    <li class="fn"><%=  'Religión' %></li>
+    <h6 class="subheader"><%= t("religion.#{user.religion}") if !user.religion.nil? %></h6>
+    <li class="fn"><%=  'Preferencia Sexual' %></li>
+    <h6 class="subheader"><%= user.sexual_preference %></h6>
+    <li class="fn"><%=  'Parejas Sexuales' %></li>
+    <h6 class="subheader"><%= user.number_of_sexual_partners %></h6>
+  </div>
+  <div class="left" style="width:33%;">
+    <li class="fn"><%=  'Teléfono' %></li>
+    <h6 class="subheader"><%= user.phone %></h6>
+    <li class="fn"><%=  'Email' %></li>
+    <h6 class="subheader"><%= truncate(user.email, length: 17) %></h6>
+    <li class="fn"><%=  'Lugar de nacimiento' %></li>
+    <h6 class="subheader"><%= user.birthplace %></h6>
+    <li class="fn"><%=  'Lugar de recidencia' %></li>
+    <h6 class="subheader"><%= user.place_of_residence %></h6>
+    <li class="fn"><%=  'Lugar donde habita' %></li>
+    <h6 class="subheader"><%= user.home %></h6>
+  </div>
+</ul>
+</center>

@@ -1,13 +1,13 @@
-<div class="head-ax">Invitar Paciente </div>
+
 <div class="body-ax">
 	<p>Invitar a ún paciente le permite llevar un contról mucho mas ágil de su historial clínico y al paciente le permite conocer el mísmo es muy importen para un seguimiento adecuado.</p>
 	<%= form_tag('/users/create_user_by_invite') do -%>
 	<%= label_tag 'Nombre' %>
 	<%= text_field_tag 'name', '', :class => 'valitx', 'data-message' => 'El campo nombre no puede quedar vacio.', 'data-target' => 'message_error_name' %>
 	<small id="message_error_name" class="error" style="margin-top: -16px; display:none;"></small>
-	<%= label_tag 'Email' %>
-	<%= email_field_tag 'email', '', :class => 'valitx', 'data-message' => 'El campo email no puede quedar vacio.', 'data-target' => 'message_error_mail' %>
-	<small id="message_error_mail" class="error" style="margin-top: -16px; display:none;"></small>
+	<%= label_tag 'Teléfono' %>
+	<%= number_field_tag 'phone', '', :class => 'valitx', 'data-message' => 'El campo teléfono no puede quedar vacio.', 'data-target' => 'message_error_phone' %>
+	<small id="message_error_phone" class="error" style="margin-top: -16px; display:none;"></small>
 	<% if sex == nil %>
 	<%= label_tag 'sex' %>
 	<div class="small-2 large-1 columns" ><%= label_tag 'Hombre' %>
@@ -32,7 +32,7 @@
 	<script>
 	$(document).ready(function(){
 	VAlForValitx('name');
-	VAlForValitx('email');
+	VAlForValitx('phone');
 	VAlForValitx('birthday');
 	});
 	</script>

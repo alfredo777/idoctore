@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   ############## filters #####################
   before_filter :conf_session, only: [:index, :show, :edit, :mobile_cites_viewver]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :loggin_filter, only: [:index, :show, :edit]
+  before_filter :loggin_filter, only: [:index, :show, :edit, :clinical_update]
   before_filter :filter_from_payment, only: [:index, :show, :edit]
   before_filter :filter_to_update, only: [:edit, :actualize]
   before_filter :filter_view_pofile, only: [:show, :diagnostics]
@@ -134,6 +134,89 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def clinical_update
+    @user = User.find(params[:id])
+    if params[:email] == nil
+      @user.email = "contacto+"+"#{SecureRandom.hex(10)}"+"@idoctore.com"
+      else
+      @user.email =  params[:email]
+    end
+
+    if params[:name] != nil
+      @user.name = params[:name]
+    end
+
+    if params[:birthday] != nil
+      @user.birthday = params[:birthday]
+    end
+
+    if params[:phone] != nil
+      @user.phone = params[:phone]
+    end
+
+    if params[:ethnic_group] != nil
+      @user.ethnic_group = params[:ethnic_group]
+    end
+
+    if params[:nationality] != nil
+      @user.nationality = params[:nationality]
+    end
+
+    if params[:marital_status] != nil
+      @user.marital_status = params[:marital_status]
+    end
+
+    if params[:occupation] != nil
+      @user.occupation = params[:occupation]
+    end
+
+    if params[:birthplace] != nil
+      @user.birthplace = params[:birthplace]
+    end
+
+    if params[:place_of_residence] != nil
+      @user.place_of_residence = params[:place_of_residence]
+    end
+
+    if params[:home] != nil
+      @user.home = params[:home]
+    end
+
+    if params[:religion] != nil
+      @user.religion = params[:religion]
+    end
+
+    if params[:sexual_preference] != nil
+      @user.sexual_preference = params[:sexual_preference]
+    end
+
+    if params[:number_of_sexual_partners] != nil
+      @user.number_of_sexual_partners = params[:number_of_sexual_partners]
+    end
+
+    if params[:person_in_charge] != nil
+      @user.person_in_charge = params[:person_in_charge]
+    end
+
+
+    if validate_accepted_patient(current_user, @user)
+      @user.save
+
+      if @user.save
+        flash[:notice] = 'Usuario Actualizado correctamente'
+        redirect_to clinical_history_path(user: @user.id)
+      else
+        flash[:notice] = 'El usuario no ha podido ser actualizado de manera correcta'
+        redirect_to clinical_history_path(user: @user.id)
+      end
+
+    else
+      flash[:notice] = 'El usuario no se ha podido actualizar debido a una situación de falta de permisos.'
+      redirect_to users_path
+    end
+  end
+
   #################################################################################################
   ####### create user methods or invite #########
 
@@ -219,7 +302,12 @@ class UsersController < ApplicationController
     else
       @user_new = User.new
       @user_new.name = params[:name]
-      @user_new.email = params[:email]
+      if params[:email] == nil
+      @user_new.email = "contacto+"+"#{SecureRandom.hex(10)}"+"@idoctore.com"
+      else
+      @user_new.email =  params[:email]
+      end
+      @user_new.phone = params[:phone]
       @user_new.sex = params[:sex]
       @user_new.hashed_password = SecureRandom.hex(20)
       @user_new.role = "patient"

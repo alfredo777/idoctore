@@ -1,44 +1,39 @@
-<div class="head-ax">Signos Vitales</div>
-
+<div class="head-ax">Medidas antropometricas</div>
 <div class="body-ax">
   <p>
-  <strong>Peso en Kilogramos:</strong>
-  <%= vs.weight %>
-</p>
-
-<p>
-  <strong>Presión Sistólica:</strong>
-  <%= vs.blood_pressure_up %>
-</p>
-
-<p>
-  <strong>Presión Diastólica:</strong>
-  <%= vs.blood_pressure_down %>
-</p>
-
-<p>
-  <strong>Pulso por minuto:</strong>
-  <%= vs.pulse %>
-</p>
-
-<p>
-  <strong>Altura en centimetros:</strong>
-  <%= vs.height %>
-</p>
-
-<p>
-  <strong>Respiraciones por minuto:</strong>
-  <%= vs.breathing %>
-</p>
-
-<p>
-  <strong>Temperatura en centigrados:</strong>
-  <%= vs.temperature %>
-</p>
-<p>
-  <strong>Persona que tomo los signos:</strong>
-  <%=  link_to "#{vs.owner}", user_path(vs.owner_by), target: '_blank' if vs.owner_by != nil%>
-  <%=   "#{vs.owner}" if vs.owner_by == nil%>
-
-</p>
+    <strong>Peso en Kilogramos:</strong>
+    <%= vs.weight %>
+  </p>
+  <p>
+    <strong>Altura en centimetros:</strong>
+    <%= vs.height %>
+  </p>
+</div><br/>
+<div class="head-ax">Signos Vitales</div>
+<div class="body-ax">
+  <p>
+    <strong>Presión Sistólica:</strong>
+    <%= vs.blood_pressure_up %>
+  </p>
+  <p>
+    <strong>Presión Diastólica:</strong>
+    <%= vs.blood_pressure_down %>
+  </p>
+  <p>
+    <strong>Frecuencia cardiaca:</strong>
+    <%= vs.pulse %>
+  </p>
+  <p>
+    <strong>Frecuencia respiratoria:</strong>
+    <%= vs.breathing %>
+  </p>
+  <p>
+    <strong>Temperatura en centigrados:</strong>
+    <%= vs.temperature %>
+  </p>
+  <p>
+    <strong>Persona que tomo los signos:</strong>
+    <%=  link_to "#{vs.owner}", user_path(vs.owner_by), target: '_blank' if vs.owner_by != nil%>
+    <%=   "#{vs.owner}" if vs.owner_by == nil%>
+  </p>
 </div>

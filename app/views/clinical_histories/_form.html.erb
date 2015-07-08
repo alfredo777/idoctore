@@ -1,6 +1,6 @@
 <div class="row">
   <%= form_for @clinical_history do |f|%>
-  <div  class="large-6 columns">
+  <div  class="large-12 columns">
     <div class="head-ax">Paciente</div>
     <div class="body-ax">
       <fieldset>
@@ -9,74 +9,34 @@
         <%= f.hidden_field :doctor_id, value: current_user.id %>
       </fieldset>
     </div></br>
-        <%= render partial: '/vital_signs/remoted_signs', locals: {vs: @v} if @v != false %>
-        <%= f.hidden_field :vital_sign_id , value: @v.id if @v != false %>
-</div>
-
-  <div  class="large-6 columns">
-    <div class="head-ax">Padecimiento actual</div>
-    <div class="body-ax">
-      <%= f.text_area :suffering,  rows: 18 %>
-    </div></br>
-    <div class="head-ax"> Interrogatorio por aparatos y sistemas</div>
-    <div class="body-ax">
-      <%= f.text_area :interview,  rows: 17 %>
-    </div></br>
-  </div></br>
-
-  <div  class="large-12 columns">
-  </br>
-    <div class="head-ax"> Padecimientos familiares</div>
-    <div class="body-ax">
-      <fieldset id="familial_diseases">
-        <%= f.fields_for :familial_diseases do |fd| %>
-        <%= render partial: 'familial_disease_fields', locals: {:f => fd} %>
-        <%end%>
-        <%= link_to_add_association 'Agregar padecimiento familiar', f, :familial_diseases, :class => 'button succes small' %>
-      </fieldset>
-    </div>
   </div></br></br>
-
+  <%= render partial: 'clinical_histories/parts_form/ficha', locals: {f: f, user: @user} %>
+  <%= render partial: 'clinical_histories/parts_form/phisical_exploration', locals: {f: f, user: @user} %>
   <div  class="large-12 columns">
-  </br>
-    <div class="head-ax"> Exploración física</div>
-    <div class="body-ax">
-      <fieldset id="phisical_explorations">
-        <%= f.fields_for :phisical_explorations do |fd| %>
-        <%= render partial: 'phisical_explorations_fields', locals: {:f => fd} %>
-        <%end%>
-        <%= link_to_add_association 'Agregar zona de exploración', f, :phisical_explorations, :class => 'button succes small' %>
-      </fieldset>
-    </div>
-  </div></br></br>
-
-  <div  class="large-12 columns">
-  </br>
-    <div class="head-ax">Resultados previos y actuales de Aux. de diagnostico</div>
+    </br>
+    <div class="head-ax">Estudios de laboratorio, gabinete y otros</div>
     <div class="body-ax">
       <%= f.text_area :diagnostic_aux,  rows: 12  %>
     </div>
   </div></br></br>
-
   <div  class="large-12 columns">
-  </br>
-    <div class="head-ax">Terapéutica empleada y resultados obtenidos</div>
+    </br>
+    <div class="head-ax">Diagnósticos clínicos</div>
+    <div class="body-ax">
+      <%= f.text_area :diagnostic,  rows: 12  %>
+    </div>
+  </div></br></br>
+  <div  class="large-12 columns">
+    </br>
+    <div class="head-ax">Indicación terapéutica</div>
     <div class="body-ax">
       <%= f.text_area :terapeutic_use,  rows: 12  %>
     </div>
   </div></br></br>
-
+  
   <div  class="large-12 columns">
-  </br>
-    <div class="head-ax">Diagnóstico o problemas clínicos</div>
-    <div class="body-ax">
-        <%= f.text_area :diagnostic,  rows: 12  %>
-    </div>
-  </div></br></br>
-
-  <div  class="large-12 columns">
-  </br>
-  <%= f.submit 'Enviar', :class => 'button'%>
+    </br>
+    <%= f.submit 'Generar actualización de la historia clínica', :class => 'button right'%>
   </div>
   <%end%>
 </div>
@@ -89,6 +49,12 @@ $(".container").on('click',"a.remove_fields",function(){
 return confirm("Do you want to delete this?") ;
 });
 $("#phisical_explorations a.add_fields").
+data("association-insertion-position", 'after').
+data("association-insertion-node", 'this');
+$("#no_pathological_antecedents a.add_fields").
+data("association-insertion-position", 'after').
+data("association-insertion-node", 'this');
+$("#pathological_antecedents a.add_fields").
 data("association-insertion-position", 'after').
 data("association-insertion-node", 'this');
 });
