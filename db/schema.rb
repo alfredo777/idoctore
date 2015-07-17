@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708071717) do
+ActiveRecord::Schema.define(version: 20150717202527) do
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20150708071717) do
     t.boolean  "accepted"
     t.datetime "dateandour"
     t.string   "place"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assistant_permissionings", force: true do |t|
+    t.integer  "office_assistant_assigned_doctor_id"
+    t.boolean  "create_info_for_patient",             default: false
+    t.boolean  "create_patient",                      default: true
+    t.boolean  "update_patient",                      default: true
+    t.boolean  "update_doctor",                       default: false
+    t.boolean  "create_cite",                         default: true
+    t.boolean  "assign_patient",                      default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -135,6 +147,8 @@ ActiveRecord::Schema.define(version: 20150708071717) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pathology"
+    t.string   "genealogy"
   end
 
   create_table "hospitals", force: true do |t|
@@ -200,10 +214,10 @@ ActiveRecord::Schema.define(version: 20150708071717) do
 
   create_table "no_pathological_antecedents", force: true do |t|
     t.string   "name"
-    t.text     "note"
     t.integer  "clinical_history_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "evaluation"
   end
 
   create_table "notes", force: true do |t|
@@ -255,10 +269,10 @@ ActiveRecord::Schema.define(version: 20150708071717) do
 
   create_table "pathological_antecedents", force: true do |t|
     t.string   "name"
-    t.text     "note"
     t.integer  "clinical_history_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pathology"
   end
 
   create_table "payments", force: true do |t|
@@ -371,6 +385,7 @@ ActiveRecord::Schema.define(version: 20150708071717) do
     t.string   "sexual_preference"
     t.integer  "number_of_sexual_partners"
     t.string   "phone"
+    t.string   "blood_type"
   end
 
   create_table "vital_signs", force: true do |t|

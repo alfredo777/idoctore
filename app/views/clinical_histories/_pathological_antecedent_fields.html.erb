@@ -1,7 +1,7 @@
-<div class="large-12 nested-fields">
-  <div class="small-6  large-9 columns">
-    <%= f.text_field :name, placeholder: 'Nombre del padecimiento' %>
-    <%= f.text_area :note, placeholder: 'Anotación' %>
-    <%=  link_to_remove_association("Eliminar", f, :class => 'left button alert tiny',  data: {confirm: '¿Estas seguro de eliminarlo?'}) %>
-  </div>
-</div>
+<tr class="nested-fields">
+    <td><%= f.text_field :name, placeholder: 'Padecimiento patológico' %></td>
+    <td><%=  link_to_remove_association("Eliminar", f, :class => 'left label alert ',  data: {confirm: '¿Estas seguro de eliminarlo?'}) %></td>
+    <td><%=f.radio_button :pathology, 1, checked: true %></td>
+    <td><%=f.radio_button :pathology, 2%></td>
+    <td><%=f.radio_button :pathology, 3%></td>
+</tr>

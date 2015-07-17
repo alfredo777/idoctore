@@ -199,6 +199,10 @@ class UsersController < ApplicationController
       @user.person_in_charge = params[:person_in_charge]
     end
 
+    if params[:blood_type] != nil
+      @user.blood_type = params[:blood_type]
+    end
+
 
     if validate_accepted_patient(current_user, @user)
       @user.save

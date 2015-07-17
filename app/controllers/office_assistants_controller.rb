@@ -2,7 +2,7 @@ class OfficeAssistantsController < ApplicationController
   before_filter :loggin_filter, only: [:new ,:add_assistant_by_doctor, :remove_assistant ]
   before_filter :loggin_filter_in_assitant, only: [:doctors, :cites, :messages, :add_doctor_to_assistant, :remove_doctor, :doctor, :edit_doctor, :edit_assistant, :patients ]
   layout "assistants", only: [:doctors, :cites, :messages, :add_doctor_to_assistant, :remove_doctor, :doctor, :edit_doctor, :edit_assistant, :patients ]
-
+  helper_method :assistant_permissioning
   def login
     unless session[:assistant] == nil
       redirect_to assistans_doctor_path
@@ -26,6 +26,8 @@ class OfficeAssistantsController < ApplicationController
   def doctor
     require 'will_paginate/array'
     @user = User.find(params[:id])
+    @permissioning = assistant_permissioning(@user)
+
     session[:viweruser] = @user.id
     @user_signs = VitalSign.where(:owner_by => @user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
     @diagnostics = Diagnostic.where(:owner_by => @user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
@@ -56,6 +58,12 @@ class OfficeAssistantsController < ApplicationController
   end
   
   def new
+  end
+
+  def assistant_permissioning(user)
+    assistant = OfficeAssistant.find(session[:assistant])
+    assistant =  assistant.office_assistant_assigned_doctors.where(user_id: user.id)
+    assistant.map { |x| x.assistant_permissioning}
   end
 
   def find_user_to_action
@@ -166,6 +174,7 @@ class OfficeAssistantsController < ApplicationController
       redirect_to assistants_loggin_path
     end
   end
+
 
 private
 

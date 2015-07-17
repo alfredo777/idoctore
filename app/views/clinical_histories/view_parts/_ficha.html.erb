@@ -6,13 +6,17 @@
       <table>
         <thead>
           <tr>
-            <th width="750">Nombre</th>
+            <th width="30%">Nombre</th>
+            <th width="20%">Patología</th>
+            <th width="20%">Genealogía</th>
           </tr>
         </thead>
         <tbody>
           <% clinical_history.familial_diseases.each do |fd| %>
           <tr>
             <td><%= fd.name %></td>
+            <td><%= fd.pathology %></td>
+            <td><%= fd.genealogy %></td>
           </tr>
           <%end%>
         </tbody>
@@ -30,14 +34,14 @@
         <thead>
           <tr>
             <th width="200">Nombre</th>
-            <th width="200">Notas</th>
+            <th width="200">Evaluación</th>
           </tr>
         </thead>
         <tbody>
           <% clinical_history.no_pathological_antecedents.each do |fd| %>
           <tr>
             <td><%= fd.name %></td>
-            <td><%= fd.note %></td>
+            <td><%= fd.evaluation %></td>
           </tr>
           <%end%>
         </tbody>
@@ -55,14 +59,14 @@
         <thead>
           <tr>
             <th width="200">Nombre</th>
-            <th width="200">Notas</th>
+            <th width="200">Patología</th>
           </tr>
         </thead>
         <tbody>
-          <% clinical_history.no_pathological_antecedents.each do |fd| %>
+          <% clinical_history.pathological_antecedents.each do |fd| %>
           <tr>
             <td><%= fd.name %></td>
-            <td><%= fd.note %></td>
+            <td><%= fd.pathology %></td>
           </tr>
           <%end%>
         </tbody>

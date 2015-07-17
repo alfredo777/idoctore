@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <%= label_tag "clinical_history_no_pathological_antecedents_attributes_#{number}_name" do %>
+    <%= "#{value}"%>
+    <%end%>
+  </td>
+  <td><%= check_box_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][name]", "#{value}" %></td>
+  <td><%=radio_button_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][evaluation]", "mala"%></td>
+  <td><%=radio_button_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][evaluation]", "intermedia", checked: true%></td>
+  <td><%=radio_button_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][evaluation]", "buena"%></td>
+  <td><%=radio_button_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][evaluation]", "muy buena"%></td>
+</tr>

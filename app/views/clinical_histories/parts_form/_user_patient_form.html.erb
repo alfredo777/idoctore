@@ -11,6 +11,8 @@
   <%= select_tag 'ethnic_group', options_for_select([['Caucasico','caucasian'],['Latino Hispanico','latin_american'],['Latino Mestizo','mixed'],['Semita Judío','jewish'],['Semita Arabe','arab'],['Asiatico','asian'],['Afro Americano','african_american'],['Africano','african'],['Indigena','indian'],['Mulato','mulatto'],['Zambo','baboon'], ['Hindú', 'hindu']], "#{user.ethnic_group}")%>
   <%= label_tag 'Nacionalidad' %>
   <%= text_field_tag 'nationality', user.nationality, placeholder: 'Nacionalidad', required: true%>
+  <%= label_tag 'Grupo sanguineo' %>
+  <%= text_field_tag 'blood_type',user.blood_type ,placeholder: 'Tipo sanguineo', required: true %>
   <%= label_tag 'Estado civil' %>
   <%= select_tag 'marital_status', options_for_select([['Soltero(a)','single'],['Casado','married'],['Concuvinato','concubinage'], ['Viudo(a)','widower']], user.marital_status)%>
   <%= label_tag 'Ocupación' %>
@@ -21,7 +23,7 @@
   <%= text_field_tag 'place_of_residence', user.place_of_residence, placeholder: 'Lugar de recidenciato', required: true%>
   <%= label_tag 'Dirección de residencia'%>
   <%= text_field_tag 'home', user.home, placeholder: 'Dirección', required: true%>
-  <%= label_tag 'Persona a cargo del paciente'%>
+  <%= label_tag 'Persona acompañante o tutor legal'%>
   <%= text_field_tag 'person_in_charge', user.person_in_charge, placeholder: 'Nombre'%>
   <%= label_tag 'Religión (dato no obligatorio)'%>
   <%= select_tag 'religion', options_for_select([['Cristiano Católico','catolic'],['Cristiano Protestante','christian_protestant'],['Cristiano Tradicional','traditional_christian'],['Cristiano Evangélico','christian_gospel'],['Cristiano Pentecostal','christian_pentecostal'],['Cristiano Ortodoxo Griego','greek_orthodox_christian'],['Cristiano Ortodoxo Ruso','russian_orthodox_christian'],['Judío','jewish'], ['Judío Mesiánico','messianic_jew'] ,['Budista','buddhist'],['Musulman','muslim'],['Confucionismo','confucianism'],['Shintoista','shinto'],['Paganismo (Antigua Religión)','paganism'], ['Ateismo','atheism']], "#{user.religion}" )%>

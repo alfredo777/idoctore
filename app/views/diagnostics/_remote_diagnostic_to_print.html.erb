@@ -93,12 +93,12 @@
 				</div>
 				<% if !dt.required_therapies.empty? %>
 				<div id="therapies_<%=dt.id%>">
-					<h2><%= t('diagnostics.required_therapies') %></h2>
+					<h3><%= t('diagnostics.required_therapies') %></h2>
 					<p align='justify'><%= simple_format(dt.required_therapies)%></p>
 				</div>
 				<%end%>
 				<div id="suggested_treatments<%=dt.id%>">
-					<h2><%=  t('diagnostics.suggested_treatments')%></h2>
+					<h3><%=  t('diagnostics.suggested_treatments')%></h2>
 					<p align='justify'><%= simple_format(dt.suggested_treatments)%></p>
 				</div>
 			</div>

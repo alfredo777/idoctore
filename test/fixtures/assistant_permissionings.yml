@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  office_assitant_id: 1
+  create_info_for_pattient: false
+  cr: MyString
+
+two:
+  user_id: 1
+  office_assitant_id: 1
+  create_info_for_pattient: false
+  cr: MyString

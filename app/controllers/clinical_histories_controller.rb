@@ -5,7 +5,6 @@ class ClinicalHistoriesController < ApplicationController
     @user = User.find(params[:user])
 
     if @user.clinical_histories.count != 0
-
        history_familial_diseases = []
        history_phisical_explorations = []
 
@@ -15,7 +14,9 @@ class ClinicalHistoriesController < ApplicationController
          puts d.created_at
          if d.familial_diseases.count != 0
            d.familial_diseases.each do |fd|
+            if !fd.name.nil?
              history_familial_diseases.push(fd.name.downcase)
+            end
            end
          end
        end
@@ -24,7 +25,9 @@ class ClinicalHistoriesController < ApplicationController
          puts d.created_at
          if d.familial_diseases.count != 0
            d.phisical_explorations.each do |fd|
+            if !fd.body_part.nil?
              history_phisical_explorations.push(fd.body_part.downcase)
+            end
            end
          end
        end
@@ -37,6 +40,19 @@ class ClinicalHistoriesController < ApplicationController
        @last1 = @user.clinical_histories.last
 
     end
+
+    @vital_signs = @user.vital_signs
+    @dates_vital_signs = @user.vital_signs.map {|x| x.created_at.strftime("%m/%d/%y") }
+    weight = @user.vital_signs.map {|x| x.weight }
+    @weight = weight.select! { |x| !x.nil? }
+    blood_pressure_up = @user.vital_signs.map {|x| x.blood_pressure_up}
+    @blood_pressure_up = blood_pressure_up.select! { |x| !x.nil? }
+    blood_pressure_down = @user.vital_signs.map {|x| x.blood_pressure_down}
+    @blood_pressure_down = blood_pressure_down.select! { |x| !x.nil? }
+    temperature = @user.vital_signs.map {|x| x.temperature}
+    @temperature = temperature.select! {|x| !x.nil? }
+    height = @user.vital_signs.map {|x| x.height}
+    @height = height.select! { |x| !x.nil? }
     layout_cahnge
 
   end
@@ -88,7 +104,7 @@ class ClinicalHistoriesController < ApplicationController
 
 
   def clinical_history_params
-    params.require(:clinical_history).permit(:user_id, :suffering, :doctor_id ,:interview, :diagnostic_aux, :vital_sign_id ,:terapeutic_use, :diagnostic, familial_diseases_attributes: [:id, :name], phisical_explorations_attributes: [:body_part, :notes], pathological_antecedents_attributes: [:name, :note], no_pathological_antecedents_attributes: [:name, :note], vital_signs_attributes: [:user_id, :owner_by, :weight, :height, :blood_pressure_down, :blood_pressure_up, :pulse, :breathing, :temperature])
+    params.require(:clinical_history).permit(:user_id, :suffering, :doctor_id ,:interview, :diagnostic_aux, :vital_sign_id ,:terapeutic_use, :diagnostic, familial_diseases_attributes: [:name, :pathology, :genealogy], phisical_explorations_attributes: [:body_part, :notes], pathological_antecedents_attributes: [:name, :pathology], no_pathological_antecedents_attributes: [:name, :evaluation], vital_signs_attributes: [:user_id, :owner_by, :weight, :height, :blood_pressure_down, :blood_pressure_up, :pulse, :breathing, :temperature])
   end
 
   def layout_cahnge

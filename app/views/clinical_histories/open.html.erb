@@ -10,23 +10,38 @@
 	Historia clínica <%= @user.name %> del <%= @clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
 </div>
 <%end%>
-<%= render partial: 'clinical_histories/view_parts/ficha', locals: {clinical_history: @clinical_history}%>
-<%= render partial: 'clinical_histories/view_parts/phisical_exploration', locals: {clinical_history: @clinical_history, user: @user}%>
+<div class="button secondary" style="position:fixed;" id="print_clinical_history"><h3><i class="fa fa-print"></i></h1></div>
 <div class="row">
 	<div  class="large-12 columns">
-		<div class="head-ax">Estudios de laboratorio, gabinete y otros</div>
-		<div class="body-ax"><%= @clinical_history.diagnostic_aux %></div>
+		<div class="head-ax">Datos del paciente</div>
+		<div class="body-ax">
+			<%= render partial: '/clinical_histories/user_data', locals: {user: @user}%>
+		</div>
 	</div>
-</div></br>
-<div class="row">
-	<div  class="large-12 columns">
-		<div class="head-ax">Diagnóstico o problemas clínicos</div>
-		<div class="body-ax"><%= @clinical_history.diagnostic %></div>
+</div>
+<div id="clinical-history">
+	<div class="row">
+		<span class="label info" style="width:97%; margin-left:15px;">
+		Historia del paciente <%=@user.name %> actualización del <%= @clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %></span>
 	</div>
-</div></br>
-<div class="row">
-	<div  class="large-12 columns">
-		<div class="head-ax">Indicación terapéutica</div>
-		<div class="body-ax"><%= @clinical_history.terapeutic_use %></div>
-	</div>
-</div></br>
+	<%= render partial: 'clinical_histories/view_parts/ficha', locals: {clinical_history: @clinical_history}%>
+	<%= render partial: 'clinical_histories/view_parts/phisical_exploration', locals: {clinical_history: @clinical_history, user: @user}%>
+	<div class="row">
+		<div  class="large-12 columns">
+			<div class="head-ax">Estudios de laboratorio, gabinete y otros</div>
+			<div class="body-ax"><%= @clinical_history.diagnostic_aux %></div>
+		</div>
+	</div></br>
+	<div class="row">
+		<div  class="large-12 columns">
+			<div class="head-ax">Diagnóstico o problemas clínicos</div>
+			<div class="body-ax"><%= @clinical_history.diagnostic %></div>
+		</div>
+	</div></br>
+	<div class="row">
+		<div  class="large-12 columns">
+			<div class="head-ax">Indicación terapéutica</div>
+			<div class="body-ax"><%= @clinical_history.terapeutic_use %></div>
+		</div>
+	</div></br>
+</div>

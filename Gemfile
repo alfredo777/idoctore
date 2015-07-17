@@ -14,6 +14,7 @@ group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
   gem 'webmock'
   gem 'ultrahook'
+  gem 'spring', '~>1.3.3'
 end
 
 # Use SCSS for stylesheets
@@ -33,8 +34,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
 #foundation rails 
 gem 'foundation-rails', '~> 5.2.2.0'
 # load files

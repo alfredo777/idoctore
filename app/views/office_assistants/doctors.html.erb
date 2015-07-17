@@ -14,11 +14,12 @@
   </thead>
   <tbody>
     <% @assistant.users.each do |user|%>
+    <% permissioning = assistant_permissioning(user)[0] %>
     <tr>
       <td><%= render partial: '/users/avatars_mini', locals: {user: user, edit: false}%></td>
       <td><%= user.name %></td>
       <td><%= user.cadre_card %></td>
-      <td><center><%= link_to 'Datos', assistans_doctor_show_path(id: user.id )%> | <%= link_to 'Editar', edit_doctor_assistant_path(id: user.id)%> | <%= link_to 'Citas', assitants_cites_path(id: user.id)%> | <%= link_to 'Eliminar', remove_doctor_assistant_path(user_id: user.id), confirm: '¿Estas seguro de eliminar el médico?'%></center></td>
+      <td><center><%= link_to 'Datos', assistans_doctor_show_path(id: user.id ) %> <%  if permissioning.update_doctor %>| <%= link_to 'Editar', edit_doctor_assistant_path(id: user.id)%> <%end%><%  if permissioning.create_cite %>| <%= link_to 'Citas', assitants_cites_path(id: user.id)%> <%end%>| <%= link_to 'Eliminar', remove_doctor_assistant_path(user_id: user.id), confirm: '¿Estas seguro de eliminar el médico?'%></center></td>
     </tr>
     <%end%>
   </tbody>

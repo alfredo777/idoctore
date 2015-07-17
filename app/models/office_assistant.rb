@@ -8,8 +8,8 @@ class OfficeAssistant < ActiveRecord::Base
   after_create do
     password = encripted_password(self.password)
     if self.password != password
-      self.password = password
-      self.save
+       self.password = password
+       self.save
     end
   end
 

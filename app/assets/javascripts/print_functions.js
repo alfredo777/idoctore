@@ -13,3 +13,13 @@
          window.print();
 	     window.location = url;
  }
+
+$(document).ready(function(){
+$('#print_clinical_history').click(function(){
+   var url =  window.location.href;
+   var content = $('#clinical-history').html();
+   document.body.innerHTML = content;
+   window.print();
+   window.location = url;
+ });
+});

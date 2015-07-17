@@ -4,24 +4,15 @@
   <div class="body-ax">
     <fieldset id="familial_diseases">
       <h4>Antecedentes heredo familiares</h4>
-      <%= f.fields_for :familial_diseases  do |fd| %>
-      <%= render partial: 'familial_disease_fields', locals: {:f => fd} %>
-      <%end%>
-      <%= link_to_add_association 'Agregar padecimiento', f, :familial_diseases, :class => 'button succes small' %>
+      <%= render partial: 'clinical_histories/parts_form/formularios_ficha/familia_render', locals: {:f => f} %>
     </fieldset>
     <fieldset id="no_pathological_antecedents">
       <h4>Antecedentes personales no patológicos</h4>
-      <%= f.fields_for :no_pathological_antecedents  do |f| %>
-      <%= render partial: 'no_pathological_antecedents_fields', locals: {:f => f} %>
-      <%end%>
-      <%= link_to_add_association 'Agregar antecedente no patológico', f, :no_pathological_antecedents, :class => 'button succes small' %>
+      <%= render partial: "clinical_histories/parts_form/formularios_ficha/no_pathological_render", locals: {:f => f} %>
     </fieldset>
     <fieldset id="pathological_antecedents">
       <h4>Antecedentes personales patológicos</h4>
-      <%= f.fields_for :pathological_antecedents  do |f| %>
-      <%= render partial: 'pathological_antecedents_fields', locals: {:f => f} %>
-      <%end%>
-      <%= link_to_add_association 'Agregar antecedente patológico', f, :pathological_antecedents, :class => 'button succes small' %>
+      <%= render partial: "clinical_histories/parts_form/formularios_ficha/pathological_render", locals: {:f => f} %>
     </fieldset>
     <fieldset  >
       <h4>Padecimiento actual</h4>

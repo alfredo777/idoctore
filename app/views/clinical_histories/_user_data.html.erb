@@ -15,6 +15,8 @@
   <div class="left" style="width:33%;">
     <li class="fn"><%=  'Sexo' %></li>
     <h6 class="subheader"><%= t("sex.#{user.sex}") %></h6>
+    <li class="fn"><%=  'Grupo sanguineo' %></li>
+    <h6><%= user.blood_type %></h6>
     <li class="fn"><%=  'Raza' %></li>
     <h6 class="subheader"><%= t("ethnic_group.#{user.ethnic_group}") if !user.ethnic_group.nil? %></h6>
     <li class="fn"><%=  'Religión' %></li>

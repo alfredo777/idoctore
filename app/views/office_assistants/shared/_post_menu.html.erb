@@ -1,5 +1,6 @@
 <center><h4 class="purple-text">Menú de creación</h4></center>
 <ul class="button-group right">
+  <% if @permissioning[0].create_info_for_patient  %>
   <li>
     <div class="slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
       <%= link_to post_in_path(user.id, :type => 'diagnostic'), remote: true  do %>
@@ -37,12 +38,14 @@
     </div>
   </li>
   <li>
-  <a href="#" data-reveal-id="modal_select_clinical_history" >
-    <div class="btn purple-btn" class="left">
-      Historias Clínicas
-    </div>
-   </a>
+    <a href="#" data-reveal-id="modal_select_clinical_history" >
+      <div class="btn purple-btn" class="left">
+        Historias Clínicas
+      </div>
+    </a>
   </li>
+  <%end%>
+  <% if @permissioning[0].create_patient &&   @permissioning[0].update_patient %>
   <li>
     <%= link_to patients_assistant_path(user: user.id) do %>
     <div class="btn purple-btn" class="left">
@@ -50,6 +53,8 @@
     </div>
     <%end%>
   </li>
+  <%end%>
+  <% if @permissioning[0].create_cite %>
   <li>
     <%= link_to assitants_cites_path  do %>
     <div class="btn purple-btn" class="left">
@@ -57,17 +62,16 @@
     </div>
     <%end%>
   </li>
+  <%end%>
 </ul>
-
 <div id="modal_select_clinical_history" class="reveal-modal" data-reveal>
-
   <div class="row">
     <h2>Historia clínica</h2>
-   <%= form_tag(find_user_to_action_path) do -%>
-         <%= render partial: "/single_files/user_select", locals: {user: user}%></br></br>
-         <%= hidden_field_tag 'type_id', 'clinical_history' %>
-         <%= submit_tag 'Ir a la historía clínica del paciente', class: 'button right'%>
-   <%end%>
+    <%= form_tag(find_user_to_action_path) do -%>
+    <%= render partial: "/single_files/user_select", locals: {user: user}%></br></br>
+    <%= hidden_field_tag 'type_id', 'clinical_history' %>
+    <%= submit_tag 'Ir a la historía clínica del paciente', class: 'button right'%>
+    <%end%>
   </div>
   <a class="close-reveal-modal">&#215;</a>
 </div>

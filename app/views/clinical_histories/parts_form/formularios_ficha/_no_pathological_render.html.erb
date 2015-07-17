@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th width="20%">Nombre</th>
+      <th width="6%">Si/No</th>
+      <th width="6%">Malo</th>
+      <th width="6%">Promedio</th>
+      <th width="6%">Bueno</th>
+      <th width="6%">Muy bueno</th>
+    </tr>
+  </thead>
+  <tbody id="table_no_pathological_antecedents">
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+100 , value: "Vivienda" }%>
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+110 , value: "Higiene personal" }%>
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+120 , value: "Alimentación" }%>
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+130 , value: "Entretenimiento" }%>
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+140 , value: "Actividad física" }%>
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+150 , value: "Toxicomanías" }%>
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+160 , value: "Adicciones (tabaco, bebidas alcohólicas, café, medicamentos, otros)" }%>
+    <%= render partial: 'default_no_pathologic', locals: {number: SecureRandom.random_number(5)+170 , value: "Convivencia con animales domésticos" }%>
+    <%= f.fields_for :no_pathological_antecedents  do |f| %>
+    <%= render partial: 'no_pathological_antecedents_fields', locals: {:f => f} %>
+    <%end%>
+  </tbody>
+</table>
+<%= link_to_add_association 'Agregar antecedente no patológico', f, :no_pathological_antecedents, :class => 'button succes small' %>

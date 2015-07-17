@@ -40,6 +40,15 @@
     </div>
   </div>
 </div></br>
+<div class="row ">
+  <div  class="large-12 columns">
+    <div class="head-ax">Linia del tiempo del paciente </div>
+    <div class="body-ax">
+    <script type="text/javascript" src="/arefscriptstochat/chart_history_signs.js"></script>
+    <div id="history_signs" data-dates_vital_signs="<%= @dates_vital_signs %>" data-weight_vital_signs="<%= @weight %>"  data-height_vital_signs="<%= @height %>" data-temperature_vital_signs="<%= @temperature %>" data-sistolica="<%= @blood_pressure_up %>" data-diastolica ="<%= @blood_pressure_down %>"></div>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div  class="large-6 columns">
     <div class="head-ax">Historial</div>
