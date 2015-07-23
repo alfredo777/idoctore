@@ -42,17 +42,44 @@ class ClinicalHistoriesController < ApplicationController
     end
 
     @vital_signs = @user.vital_signs
-    @dates_vital_signs = @user.vital_signs.map {|x| x.created_at.strftime("%m/%d/%y") }
-    weight = @user.vital_signs.map {|x| x.weight }
-    @weight = weight.select! { |x| !x.nil? }
-    blood_pressure_up = @user.vital_signs.map {|x| x.blood_pressure_up}
-    @blood_pressure_up = blood_pressure_up.select! { |x| !x.nil? }
-    blood_pressure_down = @user.vital_signs.map {|x| x.blood_pressure_down}
-    @blood_pressure_down = blood_pressure_down.select! { |x| !x.nil? }
-    temperature = @user.vital_signs.map {|x| x.temperature}
-    @temperature = temperature.select! {|x| !x.nil? }
-    height = @user.vital_signs.map {|x| x.height}
-    @height = height.select! { |x| !x.nil? }
+
+    dates_vital_signs = []
+    weight = []
+    blood_pressure_up = []
+    blood_pressure_down = []
+    temperature = []
+    height = []
+
+    @user.vital_signs.each do |vs|
+
+      dates_vital_signs.push(vs.created_at.strftime("%m/%d/%y"))
+
+      if !vs.weight.nil?
+        weight.push(vs.weight)
+      end
+      if !vs.blood_pressure_up.nil?
+        blood_pressure_up.push(vs.blood_pressure_up)
+      end
+      if !vs.blood_pressure_down.nil?
+        blood_pressure_down.push(vs.blood_pressure_down)
+      end
+      if !vs.temperature.nil?
+        temperature.push(vs.temperature)
+      end
+      if !vs.height.nil?
+        height.push(vs.height)
+      end
+    end
+
+    @dates_vital_signs = dates_vital_signs
+    @weight = weight
+    @blood_pressure_up = blood_pressure_up
+    @blood_pressure_down = blood_pressure_down 
+    @temperature = temperature
+    @height = height
+
+   
+
     layout_cahnge
 
   end
