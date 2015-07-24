@@ -1,17 +1,17 @@
 --- 
 es: 
   diagnostics: 
-    chronic: Cronico
+    chronic: Crónico
     diagnostic_or_clinical_problem: "Diagnóstico o problema clínico"
-    diagnostics: Diagnósticos
+    diagnostics: Consultas
     end_diagnostic: "Finalizar Diagnóstico"
     inconsequential: "Sin consecuencias"
     interrogation: Entrevista
     list_of_laboratory_studies: "Listado de estudios de laboratorio"
-    outstanding: Relevante
+    outstanding: Agudo
     physical_examination: "Examen físico"
     required_therapies: "Terapias requeridas"
-    serious: Serio
+    serious: Emergencia
     suggested_treatments: "Tratamientos sugeridos"
     simple_link_required_therapies: Terapias
     simple_link_physical_examination: 'Examenes físicos'
@@ -24,7 +24,7 @@ es:
     print_options: 'Opcciones de impresión'
   forms_tabs: 
     analysis: Análisis
-    diagnosis: Diagnóstico
+    diagnosis: Consulta
     note: Nota
     vital_signs: "Signos Vitales"
   landing_page: 

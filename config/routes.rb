@@ -219,6 +219,9 @@ Rails.application.routes.draw do
   get 'office_assistants/edit_assistant', as: :edit_assistant
   post 'office_assistants/update_assistant', as: :update_assistant
   get 'office_assistants/patients', as: :patients_assistant
+  get 'office_assistants/migrate_patients', as: :migrate_patients
+  get 'office_assistants/be_migrate', as: :be_migrate_patients
+  post 'office_assistants/be_migrate'
   ######## status forms #########
 
   get 'user_static_forms/diagnostic', as: :diagnostic_static

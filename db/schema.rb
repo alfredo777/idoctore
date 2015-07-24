@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717202527) do
+ActiveRecord::Schema.define(version: 20150724031316) do
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(version: 20150717202527) do
     t.datetime "updated_at"
     t.integer  "diagnostic_id"
     t.integer  "user_id"
+    t.integer  "clinical_history_id"
   end
 
   create_table "notices", force: true do |t|

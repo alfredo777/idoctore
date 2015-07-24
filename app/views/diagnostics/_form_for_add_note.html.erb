@@ -1,21 +1,27 @@
 <h3>Formulario nota Clínica</h3>
-
 <%= form_tag('/diagnostics/add_note') do -%>
-<p  class="large-5"><%= label_tag 'Selecciona un Diagnóstico'%> <%= select_tag "diagnostic_id", options_from_collection_for_select(@user.diagnostics.last(20).reverse, "id", "created_at") %></p>
-<p  class="large-5"><%= label_tag 'Selecciona unos signos vitales'%> <%= select_tag "last_signs", options_from_collection_for_select(@user.vital_signs.last(3).reverse, "id", "created_at") %></p>
-<%= hidden_field_tag 'user_id', current_user.id %>
-<p class="left large-5 margin-regular"> <%= label_tag 'Ingresa una nota'%>  <%= text_area_tag 'content', nil, rows: 10, cols: 25, :class => 'valitx', 'data-message' => 'El campo nota no puede quedar vacio.', 'data-target' => 'message_error_note' %>
-<small id="message_error_note" class="error" style="margin-top: -16px; display:none;"></small>
-
-</p>
-
-<p class="left large-5 margin-regular"> <%= label_tag 'Ingresa un nuevo tratamiento'%>  <%= text_area_tag 'new_treatment', nil, rows: 10, cols: 25 %></p>
-
-<p class="large-10"><%= submit_tag 'Postear nota', :class => 'button right'%></p>
+  <div class="left row">
+    <div class="panel subheader">
+      <%= label_tag 'add_clinical'  do %>
+        Agregar esta nota a la historia clínica: <%= check_box_tag 'add_clinical', true, true%>
+      <%end%>
+      <%= label_tag 'add_to_diagnostic'  do %>
+        Agregar esta nota a el último diagnóstico: <%= check_box_tag 'add_to_diagnostic', true, true%>
+      <%end%>
+    </div>
+  </div>
+  <%= hidden_field_tag 'diagnostic_id', @user.diagnostics.last[:id] if  @user.diagnostics.count != 0 %>
+  <%= hidden_field_tag 'last_signs', @user.vital_signs.last[:id] if  @user.vital_signs.count != 0%>
+  <%= hidden_field_tag 'clinical_history_id', @user.clinical_histories.last[:id] if  @user.clinical_histories.count != 0 %>
+  <%= hidden_field_tag 'user_id', current_user.id  %>
+  <p class="left large-5 margin-regular"> <%= label_tag 'Ingresa una nota'%>  <%= text_area_tag 'content', nil, rows: 10, cols: 25, :class => 'valitx', 'data-message' => 'El campo nota no puede quedar vacio.', 'data-target' => 'message_error_note' %>
+    <small id="message_error_note" class="error" style="margin-top: -16px; display:none;"></small>
+  </p>
+  <p class="left large-5 margin-regular"> <%= label_tag 'Ingresa un nuevo tratamiento'%>  <%= text_area_tag 'new_treatment', nil, rows: 10, cols: 25 %></p>
+  <p class="large-10"><%= submit_tag 'Postear nota', :class => 'button right'%></p>
 <%end%>
-
 <script>
-	$(document).ready(function(){
-		VAlForValitx('content');
-	});
+$(document).ready(function(){
+VAlForValitx('content');
+});
 </script>

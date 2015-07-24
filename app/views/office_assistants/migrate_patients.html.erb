@@ -1,0 +1,14 @@
+<div class="act_head_lef_assistent">
+  Migrar pacientes de un médico a otro
+</div>
+<div class="row" style="margin-top:20px;">
+  <%= form_tag(be_migrate_patients_path) do -%>
+  <div class="panel">
+    Al usted migrar los pacientes de un médico a otro usted agregará estos pacientes a otro médico, si seleccióna eliminar el médico uste quitara al médico despues de la migración.
+    <b>    Eliminar el médico despues de exportar pacientes <%= check_box_tag "delete_doctor_1", true ,checked: true %></b>
+  </div>
+  <%= render partial: '/office_assistants/selects/select_user', locals: {userx: @assistant, param_to_send: "doctor1", title: "Doctor con los pacientes a exportar"} %>
+  <%= render partial: '/office_assistants/selects/select_user', locals: {userx: @assistant, param_to_send: "doctor2",title: "Doctor con los pacientes a inportar"} %>
+  <%= submit_tag "Realizar migración de pacientes",  class: 'btn purple-btn large-btn right' %>
+  <%end%>
+</div>

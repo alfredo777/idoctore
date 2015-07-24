@@ -58,7 +58,19 @@ class DiagnosticsController < ApplicationController
   end
 
   def add_note
-    @note = Note.create(content: params[:content], last_analysis: params[:last_analysis], last_signs: params[:last_signs] , new_treatment: params[:new_treatment], diagnostic_id: params[:diagnostic_id], user_id: params[:user_id])
+
+    if "#{params[:add_to_diagnostic]}" == "true"  && "#{params[:add_clinical]}" == "true"
+      @note = Note.create(content: params[:content], last_analysis: params[:last_analysis], last_signs: params[:last_signs] , new_treatment: params[:new_treatment], diagnostic_id: params[:diagnostic_id], user_id: params[:user_id], clinical_history_id: params[:clinical_history_id])
+    end
+    
+    if "#{params[:add_to_diagnostic]}" == "true"  && "#{params[:add_clinical]}" == "false"
+      @note = Note.create(content: params[:content], last_analysis: params[:last_analysis], last_signs: params[:last_signs] , new_treatment: params[:new_treatment], diagnostic_id: params[:diagnostic_id], user_id: params[:user_id])
+    end
+
+    if "#{params[:add_clinical]}" == "true" && "#{params[:add_to_diagnostic]}" == "false"
+     @note = Note.create(content: params[:content], last_analysis: params[:last_analysis], new_treatment: params[:new_treatment], clinical_history_id: params[:clinical_history_id], user_id: params[:user_id])
+    end
+
     if @note.save
       redirect_to :back
       flash[:notice] = 'Se ha agregado la nota al axpediente'

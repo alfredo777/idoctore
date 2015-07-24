@@ -1,6 +1,7 @@
 class Note < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :diagnostic
+  belongs_to :clinical_history
 
 	def vital_signs
 		if VitalSign.exists?(self.last_signs)

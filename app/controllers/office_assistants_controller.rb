@@ -1,7 +1,7 @@
 class OfficeAssistantsController < ApplicationController
   before_filter :loggin_filter, only: [:new ,:add_assistant_by_doctor, :remove_assistant ]
   before_filter :loggin_filter_in_assitant, only: [:doctors, :cites, :messages, :add_doctor_to_assistant, :remove_doctor, :doctor, :edit_doctor, :edit_assistant, :patients ]
-  layout "assistants", only: [:doctors, :cites, :messages, :add_doctor_to_assistant, :remove_doctor, :doctor, :edit_doctor, :edit_assistant, :patients ]
+  layout "assistants", only: [:doctors, :cites, :messages, :add_doctor_to_assistant, :remove_doctor, :doctor, :edit_doctor, :edit_assistant, :patients, :migrate_patients ]
   helper_method :assistant_permissioning
   def login
     unless session[:assistant] == nil
@@ -77,6 +77,33 @@ class OfficeAssistantsController < ApplicationController
     @assitant = OfficeAssistant.find(session[:assistant])
   end
 
+  def be_migrate
+    d1 = params[:doctor1].to_a
+    d2 = params[:doctor2].to_a
+    puts params
+    puts d1[0][0]
+    puts d2[0][0]
+
+    user = User.find(d1[0][0])
+    if d2[0][0] == d1[0][0]
+      flash[:notice] = "No puedes exportar al mismo pacientes sus usuarios"
+      redirect_to :back
+      else 
+      user.patients.each do |p|
+        dp = DoctorPatient.create(doctor_id: d2[0][0].to_i, patient_id: p.id, accepted_request: true )
+      end
+      if params[:delete_doctor_1] == true
+      @office_assistant =  OfficeAssistantAssignedDoctor.find_by_user_id_and_office_assistant_id( d1[0][0].to_i, session[:assistant])
+      @office_assistant.destroy
+      flash[:notice] = "Se ha realizado la exportación de usuarios y se ha removido el médico"
+      else
+      flash[:notice] = "Se ha realizado la exportación de usuarios"
+      end
+      redirect_to assistans_doctor_path
+    end
+
+  end
+
   def update_assistant
      @assitant = OfficeAssistant.find(session[:assistant])
      if params[:name] != nil
@@ -101,6 +128,10 @@ class OfficeAssistantsController < ApplicationController
   def patients
     @user = User.find(params[:user])
     @user_patients = @user.patients.paginate(:page => params[:page], :per_page => 30)
+  end
+
+  def migrate_patients
+    @assistant =  OfficeAssistant.find(session[:assistant])
   end
 
   def add_assistant_by_doctor

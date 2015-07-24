@@ -3,12 +3,17 @@
     IDoctore -> Asistentes
   </div>
   <div class="asistant-data" >
-   Name:  </br> <%= current_assistant.name %>  </br>
-   Mail:  </br> <%= current_assistant.email %></br>
+   Name:  </br> <%= truncate(current_assistant.name, length: 33) %>  </br>
+   Mail:  </br> <%= truncate(current_assistant.email, length: 27) %></br>
   </div>
   <%= link_to assistans_doctor_path do %>
   <div class="button_menu_left">
    &#8362; Doctores
+  </div>
+  <%end%>
+  <%= link_to migrate_patients_path do %>
+  <div class="button_menu_left">
+   &#8362; Migrar pasientes
   </div>
   <%end%>
   <%= link_to edit_assistant_path do %>

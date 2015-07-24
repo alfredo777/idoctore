@@ -4,7 +4,7 @@
     <%= "#{value}"%>
     <%end%>
   </td>
-  <td><%= check_box_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][name]", "#{value}" %></td>
+  <td><%= check_box_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][name]", "#{value}", checked: true %></td>
   <td><%=radio_button_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][evaluation]", "mala"%></td>
   <td><%=radio_button_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][evaluation]", "intermedia", checked: true%></td>
   <td><%=radio_button_tag "clinical_history[no_pathological_antecedents_attributes][#{number}][evaluation]", "buena"%></td>

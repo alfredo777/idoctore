@@ -60,13 +60,13 @@ $(function () {
                 name: 'Sin Consecuencias',
                 data: [inconsequentialx]
             }, {
-                name: 'Relevante',
+                name: 'Agudos',
                 data: [outstandingx]
             }, {
-                name: 'Serio',
+                name: 'Emergencias',
                 data: [seriousx]
             }, {
-            	name: 'Cronico',
+            	name: 'Crónicos',
                 data: [cronicx]
 
             }]

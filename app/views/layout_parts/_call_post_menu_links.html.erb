@@ -32,10 +32,11 @@
       <%= image_tag('menu/diagnostic.png', width: 60, height: 60)%>
     </div>
     <center>
-    <p>Diagnóstico</p>
+    <p>Consulta</p>
     </center>
   </div>
   <%end%>
+  <% if user.id != current_user.id %>
   <%= link_to post_in_path(user.id, :type => 'note'), remote: true  do %>
   <div style="40px !important;" class="left">
     <div class="stock_menu slide-p" onclick="javascript:$.pageslide({ direction: 'left', href:'#left_hide' })">
@@ -45,6 +46,7 @@
     <p>Nota</p>
     </center>
   </div>
+  <%end%>
   <%end%>
   <%= link_to post_in_path(user.id, :type => 'upload_file'), remote: true  do %>
   <div style="40px !important;" class="left">

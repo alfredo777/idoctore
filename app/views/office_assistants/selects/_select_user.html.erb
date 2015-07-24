@@ -1,0 +1,15 @@
+  
+<div style="width:45%; margin:2%;" class="left"><h5 ><%= title %></h5>
+
+<div id="user_x_id" name="user_x_id" class="drop_select">
+  <%  userx.users.each do |user| %>
+  <%= label_tag "#{param_to_send}_#{user.id}"  do %>
+  <div class="select_by_id" >
+    <%= render partial: '/users/avatars_mini', locals: {user: user, edit: false}%>
+    <%= user.name %>
+    <%= check_box_tag "#{param_to_send}[#{user.id}]", user.id  %>
+  </div>
+  <%end%>
+  <%end%>
+</div>
+</div>

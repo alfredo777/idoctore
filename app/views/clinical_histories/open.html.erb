@@ -44,4 +44,12 @@
 			<div class="body-ax"><%= @clinical_history.terapeutic_use %></div>
 		</div>
 	</div></br>
+		<div class="row">
+		<div  class="large-12 columns">
+			<div class="head-ax">Notás de la historia clínica</div>
+				<% if @clinical_history.notes != nil %>
+				<%= render partial: '/diagnostics/show_note', locals:{dt: @clinical_history} %>
+				<%end%>
+		</div>
+	</div></br>
 </div>

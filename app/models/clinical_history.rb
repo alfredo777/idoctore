@@ -7,6 +7,7 @@ class ClinicalHistory < ActiveRecord::Base
   has_many :no_pathological_antecedents
   has_many :pathological_antecedents
   has_many :vital_signs
+  has_many :notes
 	accepts_nested_attributes_for :familial_diseases, :reject_if => :all_blank, :allow_destroy => true
 	accepts_nested_attributes_for :phisical_explorations, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :pathological_antecedents, :reject_if => :all_blank, :allow_destroy => true
