@@ -63,11 +63,11 @@ class DiagnosticsController < ApplicationController
       @note = Note.create(content: params[:content], last_analysis: params[:last_analysis], last_signs: params[:last_signs] , new_treatment: params[:new_treatment], diagnostic_id: params[:diagnostic_id], user_id: params[:user_id], clinical_history_id: params[:clinical_history_id])
     end
     
-    if "#{params[:add_to_diagnostic]}" == "true"  && "#{params[:add_clinical]}" == "false"
+    if "#{params[:add_to_diagnostic]}" == "true" 
       @note = Note.create(content: params[:content], last_analysis: params[:last_analysis], last_signs: params[:last_signs] , new_treatment: params[:new_treatment], diagnostic_id: params[:diagnostic_id], user_id: params[:user_id])
     end
 
-    if "#{params[:add_clinical]}" == "true" && "#{params[:add_to_diagnostic]}" == "false"
+    if "#{params[:add_clinical]}" == "true" 
      @note = Note.create(content: params[:content], last_analysis: params[:last_analysis], new_treatment: params[:new_treatment], clinical_history_id: params[:clinical_history_id], user_id: params[:user_id])
     end
 
