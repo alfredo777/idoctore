@@ -5,10 +5,8 @@
     <%end%>
   </td>
   <td><%= check_box_tag "clinical_history[familial_diseases_attributes][#{number}][name]", "#{value}" %></td>
-  <!--
   <td><%=radio_button_tag "clinical_history[familial_diseases_attributes][#{number}][pathology]", 1, checked: true%></td>
   <td><%=radio_button_tag "clinical_history[familial_diseases_attributes][#{number}][pathology]", 2%></td>
   <td><%=radio_button_tag "clinical_history[familial_diseases_attributes][#{number}][pathology]", 3%></td>
-  -->
   <td><%= select_tag "clinical_history[familial_diseases_attributes][#{number}][genealogy]", options_for_select([['Padre', 'father'], ['Madre', 'mother'], ['Abuelo paterno','paternal grandfather'], ['Abuelo materno','maternal grandfather'], ['Abuela paterna','paternal grandmother'] ,['Abuela materna','maternal grandmother']],"mother")%></td>
 </tr>

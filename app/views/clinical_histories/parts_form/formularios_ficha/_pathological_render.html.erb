@@ -1,52 +1,72 @@
 <table>
-  <thead>
-    <tr>
-      <th width="40%">Nombre</th>
-      <th width="6%">Si/No</th>
-      <!--
-      <th width="6%">1º</th>
-      <th width="6%">2º</th>
-      <th width="6%">3º</th>
-      -->
-    </tr>
-  </thead>
-  <tbody id="table_pathological_antecedents">
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+100 , value: "Alergias" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+110 , value: "Caries" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+120 , value: "Amigdalitis de repetición" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+130 , value: "Respiración oral" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+140 , value: "Tos persistente" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+150 , value: "Asma" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+160 , value: "Tuberculosis" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+170 , value: "Cardiopatías" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+180 , value: "Diarreas frecuentes" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+190 , value: "Parasitosis intestinal" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+200 , value: "Hepatitis" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+210 , value: "Convulsiones" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+220 , value: "Meningitis" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+230 , value: "Traumatismo severo" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+240 , value: "Mutilaciones" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+250 , value: "Malformaciones" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+260 , value: "Estrabismo" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+270 , value: "Toxicomanías" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+280 , value: "Alcoholismo" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+290 , value: "Tabaquismo" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+300 , value: "Sarampión" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+310 , value: "Rubeola" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+320 , value: "Varicela" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+330 , value: "Parotiditis" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+340 , value: "Polio" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+350 , value: "Difteria" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+360 , value: "Tosferina" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+380 , value: "Parasitosis" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+390 , value: "Hepatitis" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+400 , value: "Amigdalitis a repetición" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+410 , value: "Reflujo gastroesofágico" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+420 , value: "Intolerancia a la lactosa" }%>
-    <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+430 , value: "Niega antecedentes" }%>
-    <%= f.fields_for :pathological_antecedents  do |f| %>
-    <%= render partial: 'pathological_antecedents_fields', locals: {:f => f} %>
-    <%end%>
-  </tbody>
+    <thead>
+        <tr>
+            <th width="40%">Nombre</th>
+            <th width="6%">Si/No</th>
+            <th width="6%">1º</th>
+            <th width="6%">2º</th>
+            <th width="6%">3º</th>
+        </tr>
+    </thead>
+    <tbody id="table_pathological_antecedents">
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+280 , value: "Alcoholismo" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+100 , value: "Alergias" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+120 , value: "Amigdalitis de repetición" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+520 , value: "Artritis/Reumatismo" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+150 , value: "Asma" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+110 , value: "Caries" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+470 , value: "Cáncer" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+170 , value: "Cardiopatías" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+530 , value: "Conducto Ventricular Aberrante (AVC)" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+210 , value: "Convulsiones" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+180 , value: "Diarreas frecuentes" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+440 , value: "Diabetes Melitus (DM)" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+350 , value: "Difteria" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+550 , value: "Discracias sanguíneas" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+500 , value: "Enfermedades Digestivas" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+600 , value: "Enfermedades Ginecológicas" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+480 , value: "Enfermedad del hígado y las vías biliares" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+490 , value: "Enfermedades Renales" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+460 , value: "Enfermedades Psiquiátricas" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+510 , value: "Enfermedades Neorológicas" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+540 , value: "Enfermedade de la tiroides" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+260 , value: "Estrabismo" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+200 , value: "Hepatitis" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+430 , value: "Hipertensión Arterial (HTA)" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+560 , value: "Infección Venosa" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+420 , value: "Intolerancia a la lactosa" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+250 , value: "Malformaciones" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+220 , value: "Meningitis" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+240 , value: "Mutilaciones" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+450 , value: "Neumonia" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+380 , value: "Parasitosis" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+190 , value: "Parasitosis intestinal" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+330 , value: "Parotiditis" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+340 , value: "Polio" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+130 , value: "Respiración oral" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+410 , value: "Reflujo gastroesofágico" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+310 , value: "Rubeola" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+300 , value: "Sarampión" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+590 , value: "SIDA" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+290 , value: "Tabaquismo" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+360 , value: "Tosferina" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+140 , value: "Tos persistente" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+270 , value: "Toxicomanías" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+230 , value: "Traumatismo severo" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+160 , value: "Tuberculosis" }%>
+        
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+320 , value: "Varicela" }%>
+        
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+570 , value: "Virus del papiloma humano (VPH)" }%>
+        <%= render partial: 'default_pathologic', locals: {number: SecureRandom.random_number(2)+8090 , value: "Niega antecedentes" }%>
+        <%= f.fields_for :pathological_antecedents  do |f| %>
+        <%= render partial: 'pathological_antecedents_fields', locals: {:f => f} %>
+        <%end%>
+    </tbody>
 </table>
 <%= link_to_add_association 'Agregar antecedente patológico', f, :pathological_antecedents, :class => 'button succes small' %>
+
+<div class="row">
+<%= label_tag "Anotaciones del area:" %>
+<%= f.text_area :note_family, placeholder: "Agrega una anotación del area",  rows: 13%>
+</div>

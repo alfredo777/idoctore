@@ -14,22 +14,22 @@
   <%= render partial: 'clinical_histories/parts_form/phisical_exploration', locals: {f: f, user: @user} %>
   <div  class="large-12 columns">
     </br>
-    <div class="head-ax">Estudios de laboratorio, gabinete y otros</div>
-    <div class="body-ax">
+    <div class="head-ax"><span style="margin-right:-80px;"> Estudios de laboratorio, gabinete y otros </span><a class="right uppart" data-target="lab" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
+    <div class="body-ax" id="lab" style="display:none;">
       <%= f.text_area :diagnostic_aux,  rows: 12  %>
     </div>
   </div></br></br>
   <div  class="large-12 columns">
     </br>
-    <div class="head-ax">Diagnósticos clínicos</div>
-    <div class="body-ax">
+    <div class="head-ax"><span style="margin-right:-80px;"> Diagnósticos clínicos </span><a class="right uppart" data-target="diag" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
+    <div class="body-ax" id="diag" style="display:none;">
       <%= f.text_area :diagnostic,  rows: 12  %>
     </div>
   </div></br></br>
   <div  class="large-12 columns">
     </br>
-    <div class="head-ax">Indicación terapéutica</div>
-    <div class="body-ax">
+    <div class="head-ax"><span style="margin-right:-80px;"> Indicación terapéutica </span><a class="right uppart" data-target="tera" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
+    <div class="body-ax" id="tera" style="display:none;">
       <%= f.text_area :terapeutic_use,  rows: 12  %>
     </div>
   </div></br></br>

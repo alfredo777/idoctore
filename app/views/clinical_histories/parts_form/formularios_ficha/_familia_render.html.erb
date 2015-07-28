@@ -3,11 +3,9 @@
     <tr>
       <th width="20%">Nombre</th>
       <th width="6%">Si/No</th>
-      <!--
       <th width="6%">1º</th>
       <th width="6%">2º</th>
       <th width="6%">3º</th>
-      -->
       <th width="6%">Genealogía</th>
     </tr>
   </thead>
@@ -36,3 +34,7 @@
   </tbody>
 </table>
 <%= link_to_add_association 'Agregar padecimiento familiar específico ', f, :familial_diseases, :class => 'button succes small' %>
+<div class="row">
+<%= label_tag "Anotaciones del area:" %>
+<%= f.text_area :note_pathology, placeholder: "Agrega una anotación del area",  rows: 13%>
+</div>
