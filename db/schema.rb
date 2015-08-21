@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728023434) do
+ActiveRecord::Schema.define(version: 20150820164021) do
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -109,6 +109,15 @@ ActiveRecord::Schema.define(version: 20150728023434) do
     t.text     "justify"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "dental_records", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "clinical_history_id"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "doctor_id"
   end
 
   create_table "diagnostics", force: true do |t|
@@ -318,6 +327,20 @@ ActiveRecord::Schema.define(version: 20150728023434) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "creator_id"
+  end
+
+  create_table "tooths", force: true do |t|
+    t.integer  "number"
+    t.boolean  "top"
+    t.boolean  "bottom"
+    t.boolean  "left"
+    t.boolean  "right"
+    t.integer  "dental_record_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "center"
+    t.string   "problem"
+    t.text     "note"
   end
 
   create_table "user_activities", force: true do |t|

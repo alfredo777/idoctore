@@ -55,7 +55,8 @@ $(function(){ $(document).foundation(); });
     $(this).hide();
     $('#'+target).show();
    });
-
+   
+   
  });
 
 function getLocation() {

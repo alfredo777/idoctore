@@ -1,0 +1,6 @@
+<% theets.each_with_index do |t, index| %>
+<% if index == 0 %>
+<div class="row"></div>
+<%end%>
+<%= render partial: "teeths/single_preview", locals: {number: t, i: index} %>
+<%end%>

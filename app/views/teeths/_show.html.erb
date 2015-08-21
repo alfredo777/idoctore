@@ -1,0 +1,16 @@
+<h3>Adulto</h3>
+<div class="mount-around" style="width:700px;">
+  <% dental_record.tooths.each_with_index do |tooth, index|%>
+  <% if index.to_i < 32 %>
+  <%= render partial: "teeths/tooth_show", locals: { tooth: tooth} %>
+  <%end%>
+  <%end%>
+</div>
+<h3>Infante</h3>
+<div class="mount-around" style="width:460px;">
+  <% dental_record.tooths.each_with_index do |tooth, index|%>
+  <% if index.to_i > 31 %>
+  <%= render partial: "teeths/tooth_show", locals: { tooth: tooth} %>
+  <%end%>
+  <%end%>
+</div>

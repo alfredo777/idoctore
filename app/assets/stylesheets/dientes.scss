@@ -1,0 +1,131 @@
+.top-part {
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-top: 50px solid rgba(79, 145, 145, 0.5);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.center-part {
+  width: 50px;
+  height: 50px;
+  background: rgba(79, 145, 145, 0.5);
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  border-radius: 50px;
+  margin-left: 10px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px; 
+  color: #fff; 
+  z-index: 999999999;
+}
+
+.bottom-part {
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 50px solid rgba(79, 145, 145, 0.5);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 5px;
+
+}
+
+.left-part {
+  width: 0;
+  height: 0;
+  border-bottom: 35px solid transparent;
+  border-top: 35px solid transparent;
+  border-left: 50px solid rgba(79, 145, 145, 0.5);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin-top: -110px;
+  margin-left: -45px;
+  cursor: pointer;
+
+}
+
+.right-part {
+  width: 0;
+  height: 0;
+  border-bottom: 35px solid transparent;
+  border-top: 35px solid transparent;
+  border-right: 50px solid rgba(79, 145, 145, 0.5);
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin-top: -70px;
+  margin-left: 65px;
+  cursor: pointer;
+}
+
+.single-tooth{
+  width: 40px;
+  height: 50px;
+  border:  solid rgba(56, 213, 255, 0.2) 4px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+.problem{
+  width: 40px;
+  height: 50px;
+  border:  solid #FFBF00 4px !important;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+.tooth-options {
+  width: 800px;
+  background: #fff;
+  margin-left:120px;
+  margin-top: -190px;
+  color: #8C1955;
+  padding: 40px;
+  border: 8px solid rgba(56, 213, 255, 0.2);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.mount-around{
+  padding: 10px;
+  border: 10px solid #e1e1e1;
+  height: 140px;
+  background: rgba(221, 41, 33, 0.5);
+  -webkit-border-radius: 30px;
+  -webkit-border-bottom-right-radius: 50px;
+  -webkit-border-bottom-left-radius: 50px;
+  -moz-border-radius: 30px;
+  -moz-border-radius-bottomright: 50px;
+  -moz-border-radius-bottomleft: 50px;
+  border-radius: 30px;
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+

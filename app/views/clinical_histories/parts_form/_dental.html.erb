@@ -1,0 +1,7 @@
+<div id="dental_records" >
+<%= f.fields_for :dental_records  do |fd| %>
+    <%= render partial: 'dental_records_fields', locals: {:f => fd} %>
+<%end%>
+<%= link_to_add_association 'Agregar Registro dental', f, :dental_records, :class => 'button succes small' %>
+</div>
+

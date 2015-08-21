@@ -1,0 +1,13 @@
+<div class="row">
+  <%= form_for(@dental_record) do |f| %>
+  <div class="panel">
+  <%= render partial: "/single_files/user_select_especific", locals: {user: @user, apoint: "dental_record"}%>
+  </div>
+  <br/><br/>  
+  <%= render partial: "teeths/new", locals: {dental_record: @dental_record} %>
+  <%= f.hidden_field :doctor_id, value: current_user.id %>
+  <br/><br/><br/><br/>
+  <%= f.text_area :note, rows: 10, placeholder: "Agregar una nota al registro dental" %>
+  <%= f.submit 'Enviar', class: "button" %>
+  <% end %>
+</div>

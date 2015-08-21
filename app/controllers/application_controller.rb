@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_patients_p
   helper_method :viewver_user
   helper_method :current_assistant
+  helper_method :thoots_list
+  helper_method :thoots_list_child
 
   def current_user
     if  User.exists?(session[:user])
@@ -85,6 +87,14 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def thoots_list
+   { adult: [ :top => [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28], :bottom => [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38]]}
+  end
+
+  def thoots_list_child
+    { child: [ top: [55,54,53,52,51,61,62,63,64,65], bottom: [85,84,83,82,81,71,72,73,74,75]]}
+  end
+
   def status_if_request_patient_doctor_exist(im, other)
     case current_user.role
     when'patient'
@@ -147,7 +157,7 @@ class ApplicationController < ActionController::Base
     puts "********************** #{@browser} / Mobile: #{@mobile} ************************" 
        @mobile
     end
-
+   
   private
 
   def decripted_code(codex = '', decript = 11)

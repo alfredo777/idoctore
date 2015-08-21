@@ -1,0 +1,43 @@
+<% if  session[:assistant] == nil %>
+<% if !agent %>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;">Registro dental - <%= link_to "#{@user.name}", user_path(@user.id) %>
+  </p>
+</div>
+<%else%>
+<div class="mobile_head">
+  Registro dental
+</div>
+<%end%>
+<%else%>
+<div class="act_head_lef_assistent">
+  Registro dental - <%= "#{@user.name}" %>
+</div>
+<%end%>
+<div class="margin-regular">
+  <center>
+  <table>
+    <thead>
+      <tr>
+        <th>Registro dental</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dental_records.each do |dental_record| %>
+      <tr>
+        <td>
+           <div class="" >
+          <%= link_to dental_record_path(dental_record.id) do %>
+             Registro dental del <%= dental_record.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
+          <%end%>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <ul class="pagination">
+    <%= will_paginate @dental_records %>
+  </ul>
+  </center>
+</div>

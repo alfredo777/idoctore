@@ -8,6 +8,7 @@
       <th width="150">Ver diagnósticos</th>
       <th width="150">Ver análisis</th>
       <th width="150">Ver signos vitales</th>
+      <th width="150">Registro dental</th>
       <th width="150">Opciones</th>
     </tr>
   </thead>
@@ -68,6 +69,11 @@
       <td>
         <center>
         <%= link_to 'Ver  →', vital_signs_inx_path(user.id) %>
+        </center>
+      </td>
+      <td>
+        <center>
+        <%= link_to 'Ver  →', dental_records_path(id: user.id) %>
         </center>
       </td>
       <td><%= link_to 'Eliminar Relación', local_delete_relation_path(other: user.id)%></td>

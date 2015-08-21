@@ -1,0 +1,45 @@
+<div class="single-tooth left" data-target="toot-container-<%=number%>"><%=number%></div>
+<div id="toot-container-<%=number%>" class="tooth-options left" style="display:none; z-index:1; position:absolute;">
+  <p class="right closer-t" data-target="toot-container-<%=number%>" style="font-size:25px;">X</p>
+  <div style="margin-left: 20px; margin-top:-15px; margin-bottom:35px;">
+    <div style="width:25%;" class="left">
+      <%= label_tag "dental_record_tooths_attributes_#{number}_top" do %>
+      <div class="checkt top-part" ></div>
+      <%end%>
+      <%= label_tag "dental_record_tooths_attributes_#{number}_center" do %>
+      <div class="checkt center-part" ><%= number %></div>
+      <%end%>
+      <%= label_tag "dental_record_tooths_attributes_#{number}_bottom" do %>
+      <div class="checkt bottom-part" ></div>
+      <%end%>
+      <%= label_tag "dental_record_tooths_attributes_#{number}_left" do %>
+      <div class="checkt left-part" ></div>
+      <%end%>
+      <%= label_tag "dental_record_tooths_attributes_#{number}_right" do %>
+      <div class="checkt right-part" ></div>
+      <%end%>
+    </div>
+    <div class="left" style="width:75%;">
+      <h2>Opcciones</h2>
+      <div class="top-xxd">
+        <p>Nota</p>
+        <%= text_area_tag "dental_record[tooths_attributes][#{number}][note]", "", placeholder: "Notas" %>
+        <div style="display:none;">
+        <%= number_field_tag "dental_record[tooths_attributes][#{number}][number]", number %>
+        </div>
+
+      </div>
+      <div class="top-xxd">
+        <p>Observación</p>
+        <%= select_tag "dental_record[tooths_attributes][#{number}][problem]", options_for_select(["sin observación ","ausente", "cariado", "extracción indicada", "no erupcionado", "reincidencias de caries", "restaurado", "selladores indicados", "selladores indicados", "supernumerario", "fracturado", "mobilidad ", "prótesis removible", "prótesis fija"]) %>
+      </div>
+    </div>
+  </div>
+  <div style="display:none;">
+    <div class="left" style="width:60px; margin:10px;"><p>Sup</p><%= check_box_tag "dental_record[tooths_attributes][#{number}][top]" %></div>
+    <div class="left" style="width:60px; margin:10px;"><p>Iz</p><%= check_box_tag "dental_record[tooths_attributes][#{number}][left]"%></div>
+    <div class="left" style="width:60px; margin:10px;"><p>De</p><%= check_box_tag "dental_record[tooths_attributes][#{number}][right]"%></div>
+    <div class="left" style="width:60px; margin:10px;"><p>Inf</p><%= check_box_tag "dental_record[tooths_attributes][#{number}][bottom]" %></div>
+    <div class="left" style="width:60px; margin:10px;"><p>Cent</p><%= check_box_tag "dental_record[tooths_attributes][#{number}][center]"%></div>
+  </div>
+</div>

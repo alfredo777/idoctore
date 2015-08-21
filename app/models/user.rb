@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
    has_many :clinical_histories
    has_many :office_assistant_assigned_doctors
    has_many :office_assistants, through: :office_assistant_assigned_doctors
-
+   has_many :dental_records
+   
    ##### validamos por email #####
    
    validates_uniqueness_of :email

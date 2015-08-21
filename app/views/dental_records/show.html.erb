@@ -1,0 +1,35 @@
+<% if !agent %>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;">Registro dental -  <%= link_to "#{@dental_record.user.name}", dental_records_path(id: @dental_record.user.id) %>
+ -  <%= @dental_record.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
+  </p>
+</div>
+<%else%>
+<div class="mobile_head">
+  Registro dental - <%= @dental_record.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
+</div>
+<%end%>
+<div class="row" style="background:#fff; padding:40px; margin-top:-20px;">
+<h3>Usuario</h3>
+<p>
+  <%= link_to "#{@dental_record.user.name}", user_path(@dental_record.user.id) %>
+</p>
+
+<h3>Doctor</h3>
+<p>
+  <%= link_to "#{@dental_record.doctor.name}", user_path(@dental_record.doctor.id) %>
+</p>
+
+
+<h3>Nota</h3>
+<p>
+  <%= @dental_record.note %>
+</p>
+<% if @dental_record.clinical_history != nil %>
+<h3>Historía Clínica</h3>
+<p>
+  <%= link_to "#{ @dental_record.clinical_history.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')}", open_clinical_history_path(history: @dental_record.clinical_history.id, user: @dental_record.user.id) %>
+</p>
+<%end%>
+<%= render partial: "teeths/show", locals: {dental_record: @dental_record}%>
+</div>

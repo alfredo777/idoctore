@@ -68,6 +68,16 @@
     </center>
   </div>
   <%end%>
+  <%= link_to new_dental_record_path(id: user.id) do %>
+    <div style="40px !important;" class="left">
+    <div class="stock_menu" >
+      <%= image_tag('menu/tooth.png', width: 60, height: 60)%>
+    </div>
+    <center>
+    <p>Dental</p>
+    </center>
+    </div>
+  <%end%>
   <%end%>
 <% if agent %>
 </center>

@@ -1,0 +1,41 @@
+ <% if current_user.id ==  user.id %>
+<div class="select_close" data-target="user_x_id">
+<div id="select_close_id" ><%= label_tag 'Selecciona tu paciente' if current_user.id ==  user.id %>
+<p class="right" style="margin-top:-20px;" class="ligrow">▼</p>
+</div>
+</div>
+<div id="user_x_id" name="user_x_id" class="drop_select" style="display:none;"> 
+  <%  current_patients_p.each do |user| %>
+  <div id="<%=  user.id %>" class="select_by_id" >
+    <%= render partial: '/users/avatars_mini', locals: {user: user, edit: false}%>
+  <%= user.name %>
+  </div>
+  <%end%>
+</div>
+<%= hidden_field_tag "#{apoint}[user_id]" %>
+
+<%end%>
+<% if current_user.id !=  user.id %>
+<%= image_tag(user.avatar.modern) if user.avatar != nil  %>
+<%= "Paciente: #{user.name}" if current_user.id !=  user.id  %>
+<%= hidden_field_tag "#{apoint}[user_id]", user.id   if current_user.id !=  user.id %>
+<%end%>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+     $('.select_close').click(function(){
+      var target = $(this).data('target');
+      $('#'+target).slideToggle();
+      $('.select_close').hide();
+     });
+      $('.select_by_id').click(function(){
+       var  xid = $(this).attr('id');
+       var  hmlxff = $(this).html();
+       $('#'+'<%="#{apoint}_user_id" %>').val(xid);
+       $('#select_close_id').html(hmlxff + '<p class="right" style="margin-top:10px;" class="ligrow">▼</p>');
+       $('#user_x_id').hide();
+       $('.select_close').show();
+       $('#select_close_id').css({'margin-top':'-12px'});
+      });
+    });
+</script>

@@ -264,6 +264,12 @@ Rails.application.routes.draw do
   get 'clinical_histories/open', :as => :open_clinical_history
   get 'clinical_histories/identification', as: :identification
 
+
+  ######### dental record #########
+
+  resources :dental_records
+
+
   ############ payments ##########
   post 'payments/send_payment'
   get  'payments/send_payment'

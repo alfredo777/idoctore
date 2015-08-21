@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  top: false
+  bottom: false
+  left: false
+  right: false
+  dental_record_id: 1
+
+two:
+  number: 1
+  top: false
+  bottom: false
+  left: false
+  right: false
+  dental_record_id: 1

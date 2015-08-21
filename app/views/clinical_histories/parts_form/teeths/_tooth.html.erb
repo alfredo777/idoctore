@@ -1,0 +1,6 @@
+<% theets.each_with_index do |t, index| %>
+<% if index == 0 %>
+<div class="row"></div>
+<%end%>
+<%= render partial: "/clinical_histories/parts_form/teeths/preview_create", locals: {number: t, i: index, random: random} %>
+<%end%>

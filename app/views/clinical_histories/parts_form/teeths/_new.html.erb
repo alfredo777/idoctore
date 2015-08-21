@@ -1,0 +1,22 @@
+<div class="row">
+  <h3 style="margin-left: 20px;">Adulto</h3>
+  <div class="mount-around" style="width:700px;">
+  <% thoots_list.to_hash.each do |th| %>
+    <% th[1][0].each do |t01| %>
+      <% @theets =  t01[1] %>
+      <%= render partial: '/clinical_histories/parts_form/teeths/tooth', locals: { theets: @theets, random: random } %>
+    <%end%>
+  <%end%>
+  </div>
+</div>
+<div class="row">
+  <h3 style="margin-left: 20px;">Niño</h3>
+  <div class="mount-around" style="width:460px;">
+  <% thoots_list_child.to_hash.each do |th| %>
+    <% th[1][0].each do |t01| %>
+      <% @theets =  t01[1] %>
+      <%= render partial: '/clinical_histories/parts_form/teeths/tooth', locals: { theets: @theets, random: random } %>
+    <%end%>
+  <%end%>
+  </div>
+</div>

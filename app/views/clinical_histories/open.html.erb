@@ -44,12 +44,27 @@
 			<div class="body-ax"><%= @clinical_history.terapeutic_use %></div>
 		</div>
 	</div></br>
-		<div class="row">
+	<% if @clinical_history.dental_records.count != 0 %>
+	<div class="row">
+		<div  class="large-12 columns">
+			<div class="head-ax">Indicación terapéutica</div>
+			<% @dental_record = @clinical_history.dental_records.last %>
+			<div class="body-ax">	
+			<h3>Nota</h3>
+			<p>
+			  <%= @dental_record.note %>
+			</p>
+			<%= render partial: "teeths/show", locals: {dental_record: @dental_record}%>
+			</div>
+		</div>
+	</div></br>
+	<%end%>
+	<div class="row">
 		<div  class="large-12 columns">
 			<div class="head-ax">Notás de la historia clínica</div>
-				<% if @clinical_history.notes != nil %>
-				<%= render partial: '/diagnostics/show_note', locals:{dt: @clinical_history} %>
-				<%end%>
+			<% if @clinical_history.notes != nil %>
+			<%= render partial: '/diagnostics/show_note', locals:{dt: @clinical_history} %>
+			<%end%>
 		</div>
 	</div></br>
 </div>
