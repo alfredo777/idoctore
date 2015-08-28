@@ -131,7 +131,7 @@ class ClinicalHistoriesController < ApplicationController
 
 
   def clinical_history_params
-    params.require(:clinical_history).permit(:user_id, :suffering, :doctor_id ,:interview, :diagnostic_aux, :vital_sign_id ,:terapeutic_use, :diagnostic, :note_pathology, :note_no_pathology, :note_family, :habitus_exterior ,familial_diseases_attributes: [:name, :pathology, :genealogy], phisical_explorations_attributes: [:body_part, :notes], pathological_antecedents_attributes: [:name, :pathology], no_pathological_antecedents_attributes: [:name, :evaluation], vital_signs_attributes: [:user_id, :owner_by, :weight, :height, :blood_pressure_down, :blood_pressure_up, :pulse, :breathing, :temperature], dental_records_attributes: [:user_id, :note, :doctor_id, tooths_attributes: [:number, :top, :bottom, :left, :right, :center, :problem, :note]])
+    params.require(:clinical_history).permit(:user_id, :suffering, :doctor_id ,:interview, :diagnostic_aux, :vital_sign_id ,:terapeutic_use, :diagnostic, :note_pathology, :note_no_pathology, :note_family, :habitus_exterior, :climatic_symptoms, :mental_symptoms ,familial_diseases_attributes: [:name, :pathology, :genealogy], phisical_explorations_attributes: [:body_part, :notes], pathological_antecedents_attributes: [:name, :pathology], no_pathological_antecedents_attributes: [:name, :evaluation], vital_signs_attributes: [:user_id, :owner_by, :weight, :height, :blood_pressure_down, :blood_pressure_up, :pulse, :breathing, :temperature], dental_records_attributes: [:user_id, :note, :doctor_id, tooths_attributes: [:number, :top, :bottom, :left, :right, :center, :problem, :note]])
   end
 
   def layout_cahnge

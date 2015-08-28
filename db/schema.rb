@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820164021) do
+ActiveRecord::Schema.define(version: 20150828144401) do
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20150820164021) do
     t.text     "note_no_pathology"
     t.text     "note_family"
     t.text     "habitus_exterior"
+    t.text     "mental_symptoms"
+    t.text     "climatic_symptoms"
   end
 
   create_table "clinical_history_to_diagnostics", force: true do |t|

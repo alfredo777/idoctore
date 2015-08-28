@@ -1,5 +1,9 @@
 <div class="row">
   <div  class="large-12 columns">
+    <div class="head-ax">Habitus Exterior</div>
+    <div class="body-ax">
+      <%= clinical_history.habitus_exterior if clinical_history.habitus_exterior != nil %>
+    </div>
     <div class="head-ax">Antecedentes heredo familiares</div>
     <div class="body-ax">
       <center>
@@ -75,6 +79,22 @@
     </div>
   </div>
 </div></br>
+<% if  clinical_history.mental_symptoms != nil %>
+<div class="row">
+  <div  class="small-12 columns">
+    <div class="head-ax">Sintomas mentales</div>
+    <div class="body-ax"><%= clinical_history.mental_symptoms %></div>
+  </div>
+</div></br>
+<%end%>
+<% if  clinical_history.climatic_symptoms != nil %>
+<div class="row">
+  <div  class="small-12 columns">
+    <div class="head-ax">Sintomas clímaticos</div>
+    <div class="body-ax"><%= clinical_history.climatic_symptoms %></div>
+  </div>
+</div></br>
+<%end%>
 <div class="row">
   <div  class="large-12 columns">
     <div class="head-ax">Padecimiento actual</div>
