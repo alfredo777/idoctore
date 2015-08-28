@@ -56,9 +56,10 @@ data("association-insertion-node", '#table_family_diases');
 $(".container").on('click',"a.remove_fields",function(){
 return confirm("¿Deseas eliminar este campo?") ;
 });
+
 $("#phisical_explorations a.add_fields").
 data("association-insertion-position", 'after').
-data("association-insertion-node", 'this');
+data("association-insertion-node", '#table_phisical_explorations');
 
 $("#no_pathological_antecedents a.add_fields").
 data("association-insertion-position", 'after').

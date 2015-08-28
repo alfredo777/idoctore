@@ -11,21 +11,31 @@
         </fieldset>
         <fieldset id="phisical_explorations">
             <h4>Exploración por areas</h4>
-            <%= render partial: 'default_explore', locals: {body_part: 'cabeza', menssage: "Exploración de cabeza", random_number: SecureRandom.random_number(5)+1029494}%>
-            <%= render partial: 'default_explore', locals: {body_part: 'cuello', menssage: "Exploración de cuello", random_number: SecureRandom.random_number(5)+10049494}%>
-            <%= render partial: 'default_explore', locals: {body_part: 'torax', menssage: "Exploración de torax", random_number: SecureRandom.random_number(5)+1004201}%>
-            <%= render partial: 'default_explore', locals: {body_part: 'abdomen', menssage: "Exploración de abdomen", random_number: SecureRandom.random_number(5)+104902403}%>
-            <% if user.sex == 'female' %>
-            <%= render partial: 'default_explore', locals: {body_part: 'gineco', menssage: "Exploración de gineco obstétrica", random_number: SecureRandom.random_number(5)+1420902204}%>
-            <%end%>
-            <% if user.sex == 'male' %>
-            <%= render partial: 'default_explore', locals: {body_part: 'genitales', menssage: "Exploración de genitales", random_number: SecureRandom.random_number(5)+14209005}%>
-            <%end%>
-            <%= f.fields_for :phisical_explorations do |fd| %>
-            
-            <%= render partial: 'phisical_explorations_fields', locals: {:f => fd} %>
-            <%end%>
-            <%= link_to_add_association 'Agregar zona de exploración', f, :phisical_explorations, :class => 'button succes small', id: 'exploration-zone' %>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="200px">Parte del cuerpo</th>
+                        <th width="500px">Nota</th>
+                        <th width="100px">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody id="table_phisical_explorations">
+                    <%= render partial: 'default_explore', locals: {body_part: 'cabeza', menssage: "Exploración de cabeza", random_number: SecureRandom.random_number(5)+1029494}%>
+                    <%= render partial: 'default_explore', locals: {body_part: 'cuello', menssage: "Exploración de cuello", random_number: SecureRandom.random_number(5)+10049494}%>
+                    <%= render partial: 'default_explore', locals: {body_part: 'torax', menssage: "Exploración de torax", random_number: SecureRandom.random_number(5)+1004201}%>
+                    <%= render partial: 'default_explore', locals: {body_part: 'abdomen', menssage: "Exploración de abdomen", random_number: SecureRandom.random_number(5)+104902403}%>
+                    <% if user.sex == 'female' %>
+                    <%= render partial: 'default_explore', locals: {body_part: 'gineco', menssage: "Exploración de gineco obstétrica", random_number: SecureRandom.random_number(5)+1420902204}%>
+                    <%end%>
+                    <% if user.sex == 'male' %>
+                    <%= render partial: 'default_explore', locals: {body_part: 'genitales', menssage: "Exploración de genitales", random_number: SecureRandom.random_number(5)+14209005}%>
+                    <%end%>
+                    <%= f.fields_for :phisical_explorations do |fd| %>
+                    <%= render partial: 'phisical_explorations_fields', locals: {:f => fd} %>
+                    <%end%>
+                </tbody>
+            </table>
+            <%= link_to_add_association 'Agregar zona de exploración', f, :phisical_explorations, :class => 'button succes small' %>
         </fieldset>
     </div>
 </div>

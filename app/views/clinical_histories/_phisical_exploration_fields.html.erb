@@ -1,7 +1,11 @@
-<div class="large-12 nested-fields">
-	<div class="small-6  large-9 columns">
+<tr class="nested-fields">
+  <td>
 		<%= f.text_field :body_part, placeholder: 'Parte del cuerpo' %>
+  </td>
+  <td>
 		<%= f.text_area :notes, placeholder: 'Anotación' %>
+  </td>
+  <td>
 		<%=  link_to_remove_association("Eliminar", f, :class => 'left button alert tiny',  data: {confirm: '¿Estas seguro de eliminarlo?'}) %>
-	</div>
-</div>
+  </td>
+</tr> 
