@@ -9,16 +9,17 @@ class PaymentsController < ApplicationController
    @user = UserRegister.find(session[:registeruser])
    #cards: [params[:conektaTokenId]]
    #cards: ["tok_test_visa_4242"]
+   @token_tree = params[:conektaTokenId] 
    if @user.nil?
     session[:registeruser] = nil
     session[:steap] = nil
     redirect_to :back
    else
     customer = Conekta::Customer.create({
-		  name: @user.name.to_s,
+		  name:  @user.name.to_s,
 		  email: @user.email.to_s,
 		  phone: @user.phone.to_s,
-      cards: ["tok_test_visa_4242"]
+      cards: @token_tree
 
 		})
     puts customer 
