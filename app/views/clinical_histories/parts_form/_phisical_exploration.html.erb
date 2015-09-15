@@ -2,12 +2,14 @@
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Exploración física </span><a class="right uppart" data-target="phisical" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
     <div class="body-ax" id="phisical" style="display:none;">
-        <fieldset id="phisical_explorations">
+        <fieldset >
             <h4>Signos vitales y Medidas antropometricas</h4>
-            <%= f.fields_for :vital_signs do |f| %>
-            <%= render partial: 'vital_sign_fields', locals: {f: f, user: @user}%>
-            <%end%>
-            <%= link_to_add_association 'Agregar Signos vitales y Medidas antropometricas', f, :vital_signs, :class => 'button succes small', id: 'exploration-zone' %>
+            <div id="phisical_vital_signs">
+                <%= f.fields_for :vital_signs do |f| %>
+                <%= render partial: 'vital_sign_fields', locals: {f: f, user: @user}%>
+                <%end%>
+                <%= link_to_add_association 'Agregar Signos vitales y Medidas antropometricas', f, :vital_signs, :class => 'button succes small' %>
+            </div>
         </fieldset>
         <fieldset id="phisical_explorations">
             <h4>Exploración por areas</h4>

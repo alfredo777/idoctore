@@ -89,6 +89,6 @@ class DentalRecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dental_record_params
-      params.require(:dental_record).permit(:user_id, :clinical_history_id, :doctor_id, :note, tooths_attributes: [:number, :top, :bottom, :left, :right, :center, :problem, :note])
+      params.require(:dental_record).permit(:user_id, :clinical_history_id, :doctor_id, :note, tooths_attributes: [:number, :top, :bottom, :left, :right, :center, :problem, :note, :class_action_top, :class_action_bottom, :class_action_left, :class_action_center, :class_action_right])
     end
 end

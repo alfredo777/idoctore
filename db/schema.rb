@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828144401) do
+ActiveRecord::Schema.define(version: 20150903171844) do
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -343,6 +343,11 @@ ActiveRecord::Schema.define(version: 20150828144401) do
     t.boolean  "center"
     t.string   "problem"
     t.text     "note"
+    t.string   "class_action_top"
+    t.string   "class_action_bottom"
+    t.string   "class_action_left"
+    t.string   "class_action_right"
+    t.string   "class_action_center"
   end
 
   create_table "user_activities", force: true do |t|

@@ -15,11 +15,11 @@ $(document).ready(function(){
     $('.single-tooth').click(function(){
       var target = $(this).data('target');
       $('.tooth-options').hide();
-      $('#'+target).toggle('fast');
+      $('#'+target).show('fast');
     });
      $('.closer-t').click(function(){
       var target = $(this).data('target');
-      $('#'+target).toggle('fast');
+      $('#'+target).hide('fast');
     });
 
     $('.top-part').click(function(){

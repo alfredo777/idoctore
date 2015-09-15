@@ -1,23 +1,43 @@
 <div class="single-tooth left" data-target="toot-container-<%=number%>"><%=number%></div>
-<div id="toot-container-<%=number%>" class="tooth-options left" style="display:none; z-index:1; position:absolute;">
-  <p class="right closer-t" data-target="toot-container-<%=number%>" style="font-size:25px;">X</p>
+<div id="toot-container-<%=number%>" class="tooth-options left" style="display:none;">
+  <p class="right closer-t" data-target="toot-container-<%=number%>" style="font-size:25px; cursor:pointer;">X</p>
   <div style="margin-left: 20px; margin-top:-15px; margin-bottom:35px;">
     <div style="width:25%;" class="left">
       <%= label_tag "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_top" do %>
-      <div class="checkt top-part" ></div>
+      <div class="checkt top-part" id='<%="x_dental_record_tooths_attributes_#{number}_top"%>' data-open='<%="tooth_#{number}_top"%>'></div>
       <%end%>
       <%= label_tag "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_center" do %>
-      <div class="checkt center-part" ><%= number %></div>
+      <div class="checkt center-part" id='<%= "x_dental_record_tooths_attributes_#{number}_center" %>' data-open='<%="tooth_#{number}_center"%>'  ><%= number %></div>
       <%end%>
       <%= label_tag "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_bottom" do %>
-      <div class="checkt bottom-part" ></div>
+      <div class="checkt bottom-part" id='<%="x_dental_record_tooths_attributes_#{number}_bottom"%>' data-open='<%="tooth_#{number}_bottom"%>' ></div>
       <%end%>
       <%= label_tag "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_left" do %>
-      <div class="checkt left-part" ></div>
+      <div class="checkt left-part" id='<%="x_dental_record_tooths_attributes_#{number}_left"%>' data-open='<%="tooth_#{number}_left"%>'></div>
       <%end%>
       <%= label_tag "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_right" do %>
-      <div class="checkt right-part" ></div>
+      <div class="checkt right-part" id='<%= "x_dental_record_tooths_attributes_#{number}_right" %>' data-open='<%="tooth_#{number}_right"%>' ></div>
       <%end%>
+
+      <%= render partial: "/teeths/tooth_color", locals: {idfield: "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_class_action_top",  iddivision: "x_dental_record_tooths_attributes_#{number}_top", callid: "tooth_#{number}_top", classx: "top-part", number: number }%>
+
+      <%= render partial: "/teeths/tooth_color", locals: {idfield: "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_class_action_center",  iddivision: "x_dental_record_tooths_attributes_#{number}_center", callid: "tooth_#{number}_center", classx: "center-part", number: number }%>
+
+      <%= render partial: "/teeths/tooth_color", locals: {idfield: "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_class_action_bottom",  iddivision: "x_dental_record_tooths_attributes_#{number}_bottom", callid: "tooth_#{number}_bottom", classx: "bottom-part", number: number }%>
+
+      <%= render partial: "/teeths/tooth_color", locals: {idfield: "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_class_action_left",  iddivision: "x_dental_record_tooths_attributes_#{number}_left", callid: "tooth_#{number}_left", classx: "left-part", number: number }%>
+
+      <%= render partial: "/teeths/tooth_color", locals: {idfield: "clinical_history_dental_records_attributes_#{random}_tooths_attributes_#{number}_class_action_right",  iddivision: "x_dental_record_tooths_attributes_#{number}_right", callid: "tooth_#{number}_right", classx: "right-part", number: number }%>
+
+    </div>
+
+
+    <div style="display:none;">
+      <%= text_field_tag "clinical_history[dental_records_attributes][#{random}][tooths_attributes][#{number}][class_action_top]" %>
+      <%= text_field_tag "clinical_history[dental_records_attributes][#{random}][tooths_attributes][#{number}][class_action_bottom]" %>
+      <%= text_field_tag "clinical_history[dental_records_attributes][#{random}][tooths_attributes][#{number}][class_action_left]" %>
+      <%= text_field_tag "clinical_history[dental_records_attributes][#{random}][tooths_attributes][#{number}][class_action_right]" %>
+      <%= text_field_tag "clinical_history[dental_records_attributes][#{random}][tooths_attributes][#{number}][class_action_center]" %>
     </div>
     <div class="left" style="width:75%;">
       <h2>Opcciones</h2>

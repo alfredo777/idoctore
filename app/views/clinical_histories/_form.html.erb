@@ -57,6 +57,10 @@ $(".container").on('click',"a.remove_fields",function(){
 return confirm("¿Deseas eliminar este campo?") ;
 });
 
+$("#vital_signs a.add_fields").
+data("association-insertion-position", 'after').
+data("association-insertion-node", '#phisical_vital_signs');
+
 $("#phisical_explorations a.add_fields").
 data("association-insertion-position", 'after').
 data("association-insertion-node", '#table_phisical_explorations');

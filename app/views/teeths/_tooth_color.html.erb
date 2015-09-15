@@ -1,0 +1,29 @@
+<div class="teeth-color" id="<%= callid %>" style="display:none;">
+  <div class="call_color left" style="margin-left:-65px;">
+    <center>
+    <div class="color-red-part-tooth" data-target="<%= idfield%>" data-division="<%= iddivision %>" id="<%=classx%>-<%= number %>-red"></div><div>Cariado</div>
+    </center>
+  </div>
+  <div class="call_color left">
+    <center>
+    <div class="color-blue-part-tooth" data-target="<%= idfield%>" data-division="<%= iddivision %>" id="<%=classx%>-<%= number %>-blue"></div><div> Reparado</div>
+    </center>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.color-red-part-tooth#<%=classx%>-<%= number %>-red').click(function(){
+    var t = $(this).data('target');
+    var d = $(this).data('division');
+    $('#'+d).removeClass("<%=classx%>"+'-blue');
+    $('#'+d).addClass("<%=classx%>"+'-red');
+    $('#'+t).val("<%=classx%>"+'-red');
+  });
+  $('.color-blue-part-tooth#<%=classx%>-<%= number %>-blue').click(function(){
+    var t = $(this).data('target');
+    var d = $(this).data('division');
+    $('#'+d).removeClass("<%=classx%>"+'-red');
+    $('#'+d).addClass("<%=classx%>"+'-blue');
+    $('#'+t).val("<%=classx%>"+'-blue');
+  });
+</script>

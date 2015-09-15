@@ -1,17 +1,17 @@
 <% if tooth.top || tooth.center || tooth.bottom || tooth.left || tooth.right %>
-<div class="single-tooth problem left" data-target="toot-container-<%=tooth.number%>"><%=tooth.number%></div>
+<a data-reveal-id="toot-container-<%=tooth.number%>" href="#" ><div class="single-tooth  problem left" ><%= tooth.number%></div></a>
 <%else%>
-<div class="single-tooth  left" data-target="toot-container-<%=tooth.number%>"><%=tooth.number%></div>
-<%end%>
-<div id="toot-container-<%=tooth.number%>" class="tooth-options left" style="display:none; z-index:1; position:absolute;">
-  <p class="right closer-t" data-target="toot-container-<%=tooth.number%>" style="font-size:25px; margin-top:-20px; cursor:pointer;">X</p>
+<a data-reveal-id="toot-container-<%=tooth.number%>" href="#" ><div class="single-tooth left" ><%= tooth.number%></div></a><%end%>
+
+<div id="toot-container-<%=tooth.number%>" class="reveal-modal" data-reveal>
+  <a class="close-reveal-modal">&#215;</a>
   <div style="margin-left: 20px; margin-top:-15px; margin-bottom:35px;">
     <div style="width:25%;" class="left">
-      <div class="checkt top-part" style="<%= 'border-top: 50px solid #FACC2E;' if tooth.top %>"></div>
-      <div class="checkt center-part"  style="<%= 'background: #FACC2E;' if tooth.center %>"><%= tooth.number %></div>
-      <div class="checkt bottom-part" style="<%= 'border-bottom: 50px solid #FACC2E;' if tooth.bottom %>" ></div>
-      <div class="checkt left-part" style="<%= 'border-left: 50px solid #FACC2E;' if tooth.left %>" ></div>
-      <div class="checkt right-part" style="<%= 'border-right: 50px solid #FACC2E;' if tooth.right %>" ></div>
+      <div class="checkt top-part <%= 'top-part-blue' if tooth.class_action_top == 'top-part-blue' %> <%= 'top-part-red' if tooth.class_action_top == 'top-part-red' %>" style="<%= 'border-top: 50px solid #FACC2E;' if tooth.top &&  tooth.class_action_top.nil? %>"></div>
+      <div class="checkt center-part <%= 'center-part-blue' if tooth.class_action_center == 'center-part-blue' %> <%= 'center-part-red' if tooth.class_action_center == 'center-part-red' %>"  style="<%= 'background: #FACC2E;' if tooth.center  && tooth.class_action_center.nil? %>"><%= tooth.number %></div>
+      <div class="checkt bottom-part <%= 'bottom-part-blue' if tooth.class_action_bottom == 'bottom-part-blue' %> <%= 'bottom-part-red' if tooth.class_action_bottom == 'bottom-part-red' %>" style="<%= 'border-bottom: 50px solid #FACC2E;' if tooth.bottom && tooth.class_action_bottom.nil?  %>" ></div>
+      <div class="checkt left-part <%= 'left-part-blue' if tooth.class_action_left == 'left-part-blue' %> <%= 'left-part-red' if tooth.class_action_left == 'left-part-red' %>" style="<%= 'border-left: 50px solid #FACC2E;' if tooth.left  && tooth.class_action_left.nil?  %>" ></div>
+      <div class="checkt right-part <%= 'right-part-blue' if tooth.class_action_right == 'right-part-blue' %> <%= 'right-part-red' if tooth.class_action_right == 'right-part-red' %>" style="<%= 'border-right: 50px solid #FACC2E;' if tooth.right  && tooth.class_action_right.nil? %>" ></div>
     </div>
     <div class="left" style="width:75%; margin-top:-10px;">
       <h2>Observaciones</h2>
