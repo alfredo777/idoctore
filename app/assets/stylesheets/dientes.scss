@@ -246,6 +246,101 @@
   background: #fff;
 }
 
+.problem-red{
+  width: 40px;
+  height: 50px;
+  border:  solid  rgba(164, 32, 44, 0.9) 4px !important;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+.problem-blue{
+  width: 40px;
+  height: 50px;
+  border:  solid  rgba(60, 88, 230, 0.9) 4px !important;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+
+.problem-black{
+  width: 40px;
+  height: 50px;
+  border:  solid  #000 6px !important;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+.problem-purple{
+  width: 40px;
+  height: 50px;
+  border:  solid  #BF00FF 6px !important;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+
+.problem-green{
+  width: 40px;
+  height: 50px;
+  border:  solid  #D0FA58 6px !important;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+
+
+.problem-lightblue{
+  width: 40px;
+  height: 50px;
+  border:  solid  #58D3F7 6px !important;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;  
+  cursor: pointer;  
+  margin:0.5px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+
 .tooth-options {
   width: 100%;
   padding: 5%;
@@ -300,5 +395,41 @@
     cursor:pointer;
     background: rgba(60, 88, 230, 0.7);
   }
-  
 }
+
+.strikethrough {
+  position: relative;
+}
+.strikethrough:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 5px rgba(164, 32, 44, 0.9) solid !important;
+  border-color: inherit;
+  -webkit-transform:rotate(-25deg);
+  -moz-transform:rotate(-25deg);
+  -ms-transform:rotate(-25deg);
+  -o-transform:rotate(-25deg);
+  transform:rotate(-25deg);
+}
+
+.strikethroughblue {
+  position: relative;
+}
+.strikethroughblue:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 50%;
+  right: 0;
+  border-top: 5px rgba(60, 88, 230, 0.9) solid !important;
+  border-color: inherit;
+  -webkit-transform:rotate(-25deg);
+  -moz-transform:rotate(-25deg);
+  -ms-transform:rotate(-25deg);
+  -o-transform:rotate(-25deg);
+  transform:rotate(-25deg);
+}
+

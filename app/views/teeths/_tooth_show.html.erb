@@ -1,7 +1,5 @@
-<% if tooth.top || tooth.center || tooth.bottom || tooth.left || tooth.right %>
-<a data-reveal-id="toot-container-<%=tooth.number%>" href="#" ><div class="single-tooth  problem left" ><%= tooth.number%></div></a>
-<%else%>
-<a data-reveal-id="toot-container-<%=tooth.number%>" href="#" ><div class="single-tooth left" ><%= tooth.number%></div></a><%end%>
+
+<a data-reveal-id="toot-container-<%=tooth.number%>" href="#" ><div class="single-tooth  <%= 'problem' if tooth.top || tooth.center || tooth.bottom || tooth.left || tooth.right %> <%= 'strikethrough' if tooth.problem == 'cariado' || tooth.problem == 'reincidencias de caries'  %> <%= 'problem-red' if tooth.problem == 'extracción indicada' %>  <%= 'problem-blue' if tooth.problem == 'restaurado' %> <%= 'problem-black' if tooth.problem == 'ausente' %> <%= 'problem-purple' if tooth.problem == 'fracturado' %> <%= 'problem-green' if tooth.problem == 'no erupcionado' %> <%= 'strikethroughblue' if tooth.problem == 'selladores indicados' %> <%= 'problem-lightblue' if tooth.problem == 'prótesis fija' %> <%= 'problem-lightblue' if tooth.problem == 'prótesis removible' %> left" ><%= tooth.number%></div></a>
 
 <div id="toot-container-<%=tooth.number%>" class="reveal-modal" data-reveal>
   <a class="close-reveal-modal">&#215;</a>
