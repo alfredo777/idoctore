@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dentalrecord_id: 1
+  note: MyText
+  new_treatment: MyText
+
+two:
+  dentalrecord_id: 1
+  note: MyText
+  new_treatment: MyText

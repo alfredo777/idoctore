@@ -1,0 +1,13 @@
+<% if current_user.role == 'doctor' %>
+<h4>Notal dental</h4>
+<%= form_tag '/dental_notes/create' do -%>
+<fieldset>
+  <%= hidden_field_tag 'dental_record', @dental_record.id %>
+  <%= hidden_field_tag 'doctor_id', current_user.id %>
+  <%= text_area_tag 'note', '', placeholder: 'Agrega la nota'%>
+  <%= text_area_tag 'new_treatment', '',placeholder: 'Agrega el nuevo tratamiento' %>
+  <%= submit_tag 'Agregar nota', class: 'button right' %>
+</fieldset>
+<%end%>
+
+<%end%>

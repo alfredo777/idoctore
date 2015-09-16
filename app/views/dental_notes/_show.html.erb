@@ -1,0 +1,18 @@
+<% dental_record.dental_notes.reverse.each do |note|%>
+<fieldset>
+  <div class="row" style="text-align:justify; padding:10px;">
+    <div style="text-align:right; widht:30%; float:left;">
+      <h5>Dr. <%= note.doctor.name %></h5>
+    </div>
+    <div style="text-align:right; widht:30%; float:right;">
+      <%= note.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %>
+    </div>
+  </div>
+  <div  class="row" style="text-align:justify; padding:10px;">
+  <label><h4>Nota</h4></label>
+  <%= note.note %>
+  <label><h4>Tratamiento</h4></label>
+  <%= note.new_treatment %>
+  </div>
+</fieldset>
+<%end%>

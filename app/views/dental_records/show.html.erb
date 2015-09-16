@@ -32,4 +32,10 @@
 </p>
 <%end%>
 <%= render partial: "teeths/show", locals: {dental_record: @dental_record}%>
+
+<%= render partial: '/dental_notes/form', locals: {dental_record: @dental_record }%> 
+
+<%= render partial: '/dental_notes/show', locals: {dental_record: @dental_record }%> 
+
+
 </div>

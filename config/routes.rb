@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+
   ######## home page #######
 
   root 'static_views#home'
@@ -269,6 +270,8 @@ Rails.application.routes.draw do
 
   resources :dental_records
 
+  get 'dental_notes/create'
+  post 'dental_notes/create'
 
   ############ payments ##########
   post 'payments/send_payment'
