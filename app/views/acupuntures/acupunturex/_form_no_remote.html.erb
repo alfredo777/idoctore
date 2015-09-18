@@ -16,7 +16,7 @@
 <%= hidden_field_tag 'doctor_id', current_user.id %>
 <%= hidden_field_tag 'findid', "#{session[:findidpoints]}" %>
 <%= text_area_tag 'note', '', placeholder: 'Ingresa una nota' %>
-<%= text_area_tag 'remotex', "false" %>
+<%= hidden_field_tag 'remotex', "false" %>
 </div>
 <%end%>
 <div class="row">
