@@ -1,0 +1,5 @@
+$("#<%=@id %>").attr("id","<%=@id_modify%>");
+$("#light-<%=@id %>").attr("id","light-<%=@id_modify%>");
+$("#container-img").addClass('acupunture-in-use');
+$("#container-img").removeClass('acupunture');
+$("#light-<%=@id_modify%>").html('<%= escape_javascript(render(partial: "/acupuntures/form", locals: {number: @numerit, id_general: @id_modify, x_axis: @x_axis, y_axis: @y_axis}))%>');

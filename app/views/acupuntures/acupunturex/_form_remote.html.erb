@@ -1,0 +1,15 @@
+<%= form_tag create_acupunture_path, remote: true do -%>
+<button type="submit" class="right button success" id="submite-remote-acupunture">
+Guardar y Finalizar  <i class="fa fa-floppy-o"></i>
+</button>
+<div class="row panel subheader">
+  <%= render partial: "/single_files/user_select", locals: {user: user}%>
+  <%= hidden_field_tag 'doctor_id', current_user.id %>
+  <%= hidden_field_tag 'findid', "#{session[:findidpoints]}" %>
+  <%= text_area_tag 'note', '', placeholder: 'Ingresa una nota' %>
+  <%= hidden_field_tag 'remotex', "true" %>
+</div>
+<%end%>
+<div class="row">
+<div id="container-img" class="acupunture act-calculus" ></div>
+</div>

@@ -1,0 +1,30 @@
+<% if !agent %>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;">Lista de acupuntura</p>
+</div>
+<%else%>
+<div class="mobile_head">
+  Lista de acupuntura
+</div>
+<%end%>
+<center>
+<div class="row">
+  <table width="40%" >
+    <thead>
+      <tr>
+        <th width="30%">Dato de acupuntura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @acupunctures.each do |ac| %>
+      <tr>
+        <td> <%= link_to "Registro de acupuntura creado el #{ac.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M')}", acupuntures_view_path(id: ac.id) %></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+  <ul class="pagination">
+    <%= will_paginate @acupunctures %>
+  </ul>
+</div>
+</center>

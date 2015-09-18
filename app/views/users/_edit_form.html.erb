@@ -11,10 +11,10 @@
 <%= label_tag 'Fecha de nacimiento (día/mes/año)-(01/01/2014)' %>
 <%= date_field_tag 'birthday', @user.birthday %>
 <!--<div class="row">
-	<div class="small-2  left" ><%= label_tag 'Hombre' %>
-	<%= radio_button_tag 'sex', 'male' %></div>
-	<div class="small-2  left" ><%= label_tag 'Mujer'%>
-	<%= radio_button_tag 'sex', 'female' %></div>
+  <div class="small-2  left" ><%= label_tag 'Hombre' %>
+  <%= radio_button_tag 'sex', 'male' %></div>
+  <div class="small-2  left" ><%= label_tag 'Mujer'%>
+  <%= radio_button_tag 'sex', 'female' %></div>
 </div>-->
 <% if current_user.role == 'doctor' %>
 <%= label_tag 'Cédula profesional' %>
@@ -35,6 +35,31 @@
 <%= label_tag 'Logo derecho' %>
 <%= image_tag("#{current_user.right_logo.diagnostic }", :id => 'right', class: 'th') if current_user.right_logo?  %>
 <%= file_field_tag 'right_logo'  %>
+<h3>Selección de modulos</h3>
+<div>
+  <div style="width:180px;">
+    <%= label_tag 'dental_module' do %>
+    Módulo para dentistas <%= check_box_tag 'dental_module', true , @user.dental_module %>
+    <%end%>
+    <%= label_tag 'acupulture_module' do %>
+    Módulo para acupuntura <%= check_box_tag 'acupulture_module', true , @user.acupulture_module %>
+    <%end%>
+  </div>
+</div>
+<h3>Selección de modulos en historia clínica</h3>
+<div>
+  <div style="width:150px;">
+    <%= label_tag 'homeopatic_clinical_history' do %>
+    Homeopatía <%= check_box_tag 'homeopatic_clinical_history', true ,@user.homeopatic_clinical_history %>
+    <%end%>
+    <%= label_tag 'acupulture_clinical_history' do %>
+    Acupuntura <%= check_box_tag 'acupulture_clinical_history', true,@user.acupulture_clinical_history %>
+    <%end%>
+    <%= label_tag 'dental_clinical_history' do %>
+    Dental <%= check_box_tag 'dental_clinical_history', true ,@user.dental_clinical_history %>
+    <%end%>
+  </div>
+</div>
 <%end%>
 <br/>
 <h3>Cambiar password</h3>

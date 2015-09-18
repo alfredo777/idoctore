@@ -6,7 +6,7 @@ class DentalRecordsController < ApplicationController
   # GET /dental_records.json
   def index
     @user = User.find(params[:id])
-    @dental_records = @user.dental_records.paginate(:page => params[:page], :per_page => 30)
+    @dental_records = @user.dental_records.paginate(:page => params[:page], :per_page => 30).order('created_at DESC')
     if validate_accepted_patient(current_user, @user) == false
     flash[:notice] = "No puedes ingresar al paciente porque no es tu paciente"
     redirect_to :back
@@ -46,14 +46,14 @@ class DentalRecordsController < ApplicationController
     @dental_record = DentalRecord.new(dental_record_params)
     puts @dental_record
     puts params[:user_id]
-    respond_to do |format|
-      if @dental_record.save
-        format.html { redirect_to @dental_record, notice: 'Dental record was successfully created.' }
-        format.json { render :show, status: :created, location: @dental_record }
-      else
-        format.html { render :new }
-        format.json { render json: @dental_record.errors, status: :unprocessable_entity }
+    if @dental_record.save
+      respond_to do |format|
+          format.html { redirect_to @dental_record, notice: 'El registro dental ha sido agregado correctamente' }
+          format.json { render :show, status: :created, location: @dental_record }
       end
+      else
+        flash[:notice] = 'El registro dental no se ha agregado por falta de usuario' 
+        redirect_to :back
     end
   end
 

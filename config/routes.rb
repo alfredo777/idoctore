@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   ######## home page #######
 
   root 'static_views#home'
@@ -272,6 +271,23 @@ Rails.application.routes.draw do
 
   get 'dental_notes/create'
   post 'dental_notes/create'
+
+  ######## acupunture ######
+
+  get 'acupuntures/create', as: :create_acupunture
+  post 'acupuntures/create'
+
+  get 'acupuntures/create_point', as: :create_point
+  post 'acupuntures/create_point'
+  
+
+  get 'acupuntures/index', as: :acupuntures
+
+  get 'acupuntures/view', as: :acupuntures_view
+
+  get 'acupuntures/new', as: :acupuntures_new
+
+  get 'acupuntures/generate_point'
 
   ############ payments ##########
   post 'payments/send_payment'

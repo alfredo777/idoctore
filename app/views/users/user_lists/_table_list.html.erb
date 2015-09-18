@@ -8,7 +8,12 @@
       <th width="150">Ver diagnósticos</th>
       <th width="150">Ver análisis</th>
       <th width="150">Ver signos vitales</th>
+      <% if current_user.dental_module  %>
       <th width="150">Registro dental</th>
+      <% end %>
+      <% if current_user.acupulture_module  %>
+      <th width="150">Registro de acupultura</th>
+      <% end %>
       <th width="150">Opciones</th>
     </tr>
   </thead>
@@ -71,11 +76,20 @@
         <%= link_to 'Ver  →', vital_signs_inx_path(user.id) %>
         </center>
       </td>
+      <% if current_user.dental_module  %>
       <td>
         <center>
         <%= link_to 'Ver  →', dental_records_path(id: user.id) %>
         </center>
       </td>
+      <%end%>
+      <% if current_user.acupulture_module  %>
+      <td>
+        <center>
+        <%= link_to 'Ver  →', acupuntures_path(id: user.id) %>
+        </center>
+      </td>
+      <%end%>
       <td><%= link_to 'Eliminar Relación', local_delete_relation_path(other: user.id)%></td>
       <%else%>
       <%end%>

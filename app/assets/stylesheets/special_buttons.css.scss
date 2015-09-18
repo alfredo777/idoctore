@@ -24,14 +24,19 @@
   background:#ffffff;
   border-radius: 50%;
   margin:5px;
-  border: solid 5px #eee;
+  border: solid 3px #eee;
   float:left;
   padding:-2px;
   width:59px;
-
+  & img{
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
+  }
+  
   & :hover {
-     background: #D0D0D0;
+     background: rgba(51, 237, 65, 0.5);
      border-radius: 50%;
+     border: solid 3px rgba(51, 237, 65, 0.5);
      cursor: pointer !important;
 
   }

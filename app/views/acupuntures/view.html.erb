@@ -1,0 +1,17 @@
+<% if !agent %>
+<div class="menu-select">
+  <p style="font-size:30px; margin-top:20px;">Vista de acupuntura del día <%= @acupuncture.created_at.strftime('%d'+'/'+'%m'+'/'+'%Y'+' a las '+'%H'+':'+'%M') %> <%= link_to 'Regresar', acupuntures_path(id:  @acupuncture.user.id)%></p>
+</div>
+<%else%>
+<div class="mobile_head">
+  Vista de cupuntura 
+</div>
+<%end%>
+<div class="row">
+  <div class="panel">
+  <b>Paciente:  </b> <%= @acupuncture.user.name %></br>
+  <b>Doctor:  </b> <%= @acupuncture.doctor.name %></br>
+  </div>
+  <%= render partial: '/acupuntures/show', locals: {acupuncture: @acupuncture, clinical: false}%>
+</div>
+

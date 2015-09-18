@@ -1,0 +1,24 @@
+<%= form_tag "#{create_point_path}", remote: true do -%>
+<div class="pointopen-head">Nuevo punto</div>
+<div class="pointopen-cointainer">
+  <%= hidden_field_tag 'x_axis', x_axis %>
+  <%= hidden_field_tag 'y_axis', y_axis %>
+  <%= text_field_tag 'name', '', placeholder: 'Nombre' %>
+  <%= text_area_tag 'note', '', placeholder: 'Nota', rows: 7 %>
+  <%= hidden_field_tag 'findid', session[:findidpoints] %>
+  <%= hidden_field_tag 'divx', "#{@id_modify}" %>
+</div>
+<div class="pointopen-footer"> <%=submit_tag 'Guardar', class: 'button tiny success'%> <a  class="cancel-point button tiny alert" data-close1="<%=@id_modify%>" data-close2="light-<%=@id_modify%>">Cancelar</a>  </div>
+<script type="text/javascript">
+  $('.cancel-point').click(function(){
+    var c1 = $(this).data('close1');
+    var c2 = $(this).data('close2');
+    $('#'+c1).remove();
+    $('#'+c2).remove();
+    setTimeout(function(){ 
+    $("#container-img").removeClass('acupunture-in-use');
+    $("#container-img").addClass('acupunture');
+    }, 500);
+  });
+</script>
+<%end%>

@@ -1,0 +1,78 @@
+.point{
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  position: absolute;
+  border-radius: 50%;
+  border: solid 4px  rgba(226, 165, 48, 0.9);
+  background:   rgba(92, 57, 184, 0.3);
+
+}
+
+.title-pointe{
+  width: 120px;
+  position: absolute;
+}
+
+.acupunture{
+  background-image: image-url('human/man.jpg'); 
+  width:100%;
+  height:700px; 
+  cursor: cell;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.acupunture-in-use{
+  background-image: image-url('human/man.jpg'); 
+  width:100%;
+  height:700px; 
+  cursor: cell;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;  
+  & button{
+    border: none;
+  }
+}
+.pointopen{
+  border: solid 5px  rgba(28, 68, 92, 0.6); 
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  background: #fff;
+}
+
+.pointopen-head{
+  background: rgba(28, 68, 92, 0.6);
+  color: #fff;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+}
+
+.pointopen-footer{
+  bottom: 0;
+  position: absolute;
+  background: rgba(28, 68, 92, 0.6);
+  color: #fff;
+  width: 100%;
+  height: 30px;
+  text-align: right;
+  & a{
+    color: #fff;
+    &:hover{
+      color: #F0C161;
+    }
+  }
+}
+
+.acupunture-in-view-man{
+  background-image: image-url('human/man.jpg'); 
+  width:100%;
+  height:700px; 
+  background-size: 100% 100%;
+  background-repeat: no-repeat;  
+  & button{
+    border: none;
+  }
+}

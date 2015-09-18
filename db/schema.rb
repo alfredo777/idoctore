@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916194421) do
+ActiveRecord::Schema.define(version: 20150918003811) do
+
+  create_table "acupunctures", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "doctor_id"
+    t.integer  "clinical_history_id"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "findid"
+  end
+
+  create_table "acupunture_points", force: true do |t|
+    t.string   "x_axis"
+    t.string   "y_axis"
+    t.string   "name"
+    t.text     "note"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "findid"
+    t.integer  "acupuncture_id"
+  end
 
   create_table "admin_in_organizations", force: true do |t|
     t.integer  "organization_id"
@@ -393,12 +415,12 @@ ActiveRecord::Schema.define(version: 20150916194421) do
     t.string   "email"
     t.date     "register"
     t.string   "confirmed_token"
-    t.boolean  "confirmed",                 default: false
+    t.boolean  "confirmed",                   default: false
     t.text     "description"
     t.string   "role"
     t.text     "resume"
     t.datetime "last_loggin"
-    t.boolean  "admin",                     default: false
+    t.boolean  "admin",                       default: false
     t.date     "birthday"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -410,11 +432,11 @@ ActiveRecord::Schema.define(version: 20150916194421) do
     t.string   "college"
     t.string   "cadre_card"
     t.text     "street_addres"
-    t.boolean  "payment_method",            default: false
+    t.boolean  "payment_method",              default: false
     t.string   "cupon"
     t.date     "validity"
     t.text     "specialism"
-    t.boolean  "suspend",                   default: false
+    t.boolean  "suspend",                     default: false
     t.string   "left_logo"
     t.string   "right_logo"
     t.string   "ethnic_group"
@@ -430,7 +452,13 @@ ActiveRecord::Schema.define(version: 20150916194421) do
     t.integer  "number_of_sexual_partners"
     t.string   "phone"
     t.string   "blood_type"
-    t.boolean  "view_doctor_content",       default: true
+    t.boolean  "view_doctor_content",         default: true
+    t.boolean  "dental_clinical_history",     default: false
+    t.boolean  "dental_module",               default: false
+    t.boolean  "homeopatic_clinical_history", default: false
+    t.boolean  "acupulture_clinical_history", default: false
+    t.boolean  "acupulture_module",           default: false
+    t.boolean  "normative_clinical_history",  default: true
   end
 
   create_table "vital_signs", force: true do |t|

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acupunture_id: 1
+  x_axis: MyString
+  y_axis: MyString
+  name: MyString
+  note: MyText
+  color: MyString
+
+two:
+  acupunture_id: 1
+  x_axis: MyString
+  y_axis: MyString
+  name: MyString
+  note: MyText
+  color: MyString

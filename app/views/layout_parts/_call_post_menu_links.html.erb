@@ -68,15 +68,29 @@
     </center>
   </div>
   <%end%>
-  <%= link_to new_dental_record_path(id: user.id) do %>
-    <div style="40px !important;" class="left">
-    <div class="stock_menu" >
-      <%= image_tag('menu/tooth.png', width: 60, height: 60)%>
-    </div>
-    <center>
-    <p>Dental</p>
-    </center>
-    </div>
+  <% if current_user.dental_module %>
+    <%= link_to new_dental_record_path(id: user.id) do %>
+      <div style="40px !important;" class="left">
+      <div class="stock_menu" >
+        <%= image_tag('menu/tooth.png', width: 60, height: 60)%>
+      </div>
+      <center>
+      <p>Dental</p>
+      </center>
+      </div>
+    <%end%>
+  <%end%>
+    <% if current_user.acupulture_module %>
+    <%= link_to acupuntures_new_path(id: user.id) do %>
+      <div style="40px !important;" class="left">
+      <div class="stock_menu" >
+        <%= image_tag('menu/ying_yang.png', width: 60, height: 60)%>
+      </div>
+      <center>
+      <p>Acupuntura</p>
+      </center>
+      </div>
+    <%end%>
   <%end%>
   <%end%>
 <% if agent %>

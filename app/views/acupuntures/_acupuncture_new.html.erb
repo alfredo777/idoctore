@@ -1,0 +1,5 @@
+<% if !remotex %>
+<%= render partial: '/acupuntures/acupunturex/form_no_remote', locals: {user: user}%>
+<%else%>
+<%= render partial: '/acupuntures/acupunturex/form_remote', locals: {user: user}%>
+<%end%>

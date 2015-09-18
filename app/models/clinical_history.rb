@@ -9,6 +9,7 @@ class ClinicalHistory < ActiveRecord::Base
   has_many :vital_signs
   has_many :notes
   has_many :dental_records
+  has_many :acupunctures
 	accepts_nested_attributes_for :familial_diseases, :reject_if => :all_blank, :allow_destroy => true
 	accepts_nested_attributes_for :phisical_explorations, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :pathological_antecedents, :reject_if => :all_blank, :allow_destroy => true

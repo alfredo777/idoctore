@@ -1,0 +1,48 @@
+<h4>Puntos</h4>
+<table width="100%" >
+  <thead>
+    <tr>
+      <th width="20%">Punto</th>
+      <th width="80%">Nota</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% acupuncture.acupunture_points.each do |acp|%>
+    <tr>
+      <td><%= acp.name %></td>
+      <td><%= acp.note %></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<div class="acupunture-in-view-man">
+  <% if acupuncture.clinical_history_id != nil  %>
+   <% if clinical == true %>
+   <% error_size = 17 %> 
+   <% error_size_c = 7 %> 
+   <%else%>
+   <% error_size = -20 %> 
+   <% error_size_c = 0 %> 
+   <%end%>
+   <% else %>
+   <% error_size = 0 %> 
+   <% error_size_c = 0 %> 
+  <%end%>
+  <% acupuncture.acupunture_points.each do |acp|%>
+  <% if acupuncture.clinical_history_id != nil  %>
+  <% if clinical != true %>
+  <% axisopy = acp.y_axis.to_i + 15 %>
+  <% axisopX = acp.x_axis.to_i + 15 %>
+  <%else%>
+  <% axisopy = acp.y_axis.to_i + -5 %>
+  <% axisopX = acp.x_axis.to_i + 15 %>
+  <%end%>
+  <%else%>
+  <% axisopy = acp.y_axis.to_i + -5 %>
+  <% axisopX = acp.x_axis.to_i + 15 %>
+  <%end%>
+  <div class="point" style="margin-top:<%=acp.y_axis.to_i + error_size_c %>px; margin-left:<%=acp.x_axis.to_i - error_size %>px;"></div>
+  <div class="title-pointe" style="margin-top:<%=axisopy%>px; margin-left:<%=axisopX%>px;"><%=acp.name%></div>
+  <%end%>
+</div>

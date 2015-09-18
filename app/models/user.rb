@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
    has_many :office_assistant_assigned_doctors
    has_many :office_assistants, through: :office_assistant_assigned_doctors
    has_many :dental_records
+   has_many :acupunctures
    
    ##### validamos por email #####
    

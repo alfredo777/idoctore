@@ -87,6 +87,14 @@ class ClinicalHistoriesController < ApplicationController
   def create
     @clinical_history = ClinicalHistory.create(clinical_history_params)
 
+    if current_user.acupulture_clinical_history
+      @acupunture = Acupuncture.find(session[:acupuncture])
+      @acupunture.clinical_history_id = @clinical_history.id
+      @acupunture.save
+      session[:acupuncture] = nil
+
+    end
+
      if @clinical_history.save
         flash[:notice] = "Se ha creado correctamente la historia clínia"
         redirect_to clinical_history_path(user: @clinical_history.user_id)
@@ -106,6 +114,12 @@ class ClinicalHistoriesController < ApplicationController
       @v = @user.vital_signs.last
     end
     @clinical_history = ClinicalHistory.new
+    if current_user.acupulture_clinical_history
+      session[:acupuncture] = nil
+      rnd = SecureRandom.hex(23)
+      session[:findidpoints] = rnd
+    end
+
     layout_cahnge
   end
 

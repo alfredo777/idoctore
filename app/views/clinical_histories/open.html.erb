@@ -44,6 +44,20 @@
 			<div class="body-ax"><%= @clinical_history.terapeutic_use %></div>
 		</div>
 	</div></br>
+	<% if @clinical_history.acupunctures.count != 0 %>
+	<div class="row">
+		<div  class="large-12 columns">
+			<div class="head-ax">Acupunturas</div>
+
+			<div class="body-ax">	
+			<% @clinical_history.acupunctures.each do |acu| %>
+			<%= render partial: '/acupuntures/show', locals: {acupuncture: acu, clinical: true}%>
+			<%end%>
+			</div>
+		</div>
+	</div></br>
+	<%end%>
+
 	<% if @clinical_history.dental_records.count != 0 %>
 	<div class="row">
 		<div  class="large-12 columns">

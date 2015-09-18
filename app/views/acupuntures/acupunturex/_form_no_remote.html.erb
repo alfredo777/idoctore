@@ -1,0 +1,27 @@
+<%= form_tag create_acupunture_path do -%>
+<% if !agent %>
+<div class="menu-select">
+  <button type="submit" class="right button success">
+  Guardar  <i class="fa fa-floppy-o"></i>
+  </button>
+  <p style="font-size:30px; margin-top:20px;">Acupuntura</p>
+</div>
+<%else%>
+<div class="mobile_head">
+  Acupuntura
+</div>
+<%end%>
+<div class="row panel subheader">
+<%= render partial: "/single_files/user_select", locals: {user: user}%>
+<%= hidden_field_tag 'doctor_id', current_user.id %>
+<%= hidden_field_tag 'findid', "#{session[:findidpoints]}" %>
+<%= text_area_tag 'note', '', placeholder: 'Ingresa una nota' %>
+<%= text_area_tag 'remotex', "false" %>
+</div>
+<%end%>
+<div class="row">
+<div id="container-img" class="acupunture" ></div>
+</div>
+<!--
+<div id="log"></div>
+-->

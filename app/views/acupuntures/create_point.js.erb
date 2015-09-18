@@ -1,0 +1,15 @@
+alert("<%=@notice%>");
+<% if @error %>
+$("#<%=@id_to_close%>").remove();
+$("#<%=@id_to_close_2%>").remove();
+setTimeout(function(){
+$("#container-img").removeClass('acupunture-in-use');
+$("#container-img").addClass('acupunture');
+}, 500);
+<%else%>
+$("#<%=@id_to_close%>").slideToggle();
+setTimeout(function(){
+$("#container-img").removeClass('acupunture-in-use');
+$("#container-img").addClass('acupunture');
+}, 500);
+<%end%>

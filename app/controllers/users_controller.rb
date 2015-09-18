@@ -124,6 +124,48 @@ class UsersController < ApplicationController
     if params[:phone] != nil
       @user.phone = params[:phone]
     end
+
+    if params[:view_doctor_content] != nil
+      @user.view_doctor_content = params[:view_doctor_content]
+      else
+      @user.view_doctor_content = false
+    end
+
+    if params[:dental_clinical_history] != nil
+      @user.dental_clinical_history = params[:dental_clinical_history]
+      else
+      @user.dental_clinical_history =  false
+    end
+
+    if params[:dental_module] != nil
+      @user.dental_module = params[:dental_module]
+      else
+      @user.dental_module = false
+    end
+
+    if params[:homeopatic_clinical_history] != nil
+      @user.homeopatic_clinical_history = params[:homeopatic_clinical_history]
+      else
+      @user.homeopatic_clinical_history = false
+    end
+
+    if params[:acupulture_clinical_history] != nil
+      @user.acupulture_clinical_history = params[:acupulture_clinical_history]
+      else
+      @user.acupulture_clinical_history = false
+    end
+
+    if params[:acupulture_module] != nil
+      @user.acupulture_module = params[:acupulture_module]
+      else
+      @user.acupulture_module = false
+    end
+
+    if params[:normative_clinical_history] != nil
+      @user.normative_clinical_history = params[:normative_clinical_history]
+      else
+      @user.normative_clinical_history = false
+    end
     
     @user.save
     flash[:notice] = 'Se ha actualizado el usuario.'

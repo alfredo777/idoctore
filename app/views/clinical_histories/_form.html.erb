@@ -1,5 +1,12 @@
 <div class="row">
   <%= form_for @clinical_history do |f|%>
+  <div  class="large-12 columns" style="position:fixed; margin-top:-220px; margin-left: -140px;">
+    </br>
+    <button type="submit" class="right button success" >
+    Finalizar  <i class="fa fa-floppy-o"></i>
+    </button>
+  </div>
+  
   <div  class="large-12 columns">
     <div class="head-ax">Paciente</div>
     <div class="body-ax">
@@ -33,7 +40,7 @@
       <%= f.text_area :terapeutic_use,  rows: 12  %>
     </div>
   </div></br></br>
-
+  <% if current_user.dental_clinical_history %>
   <div  class="large-12 columns">
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Especialidad Dental </span><a class="right uppart" data-target="dent" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
@@ -41,11 +48,16 @@
       <%= render partial: 'clinical_histories/parts_form/dental', locals: {f: f, user: @user} %>
     </div>
   </div></br></br>
-  
+  <%end%>
+  <%end%>
+  <% if current_user.acupulture_clinical_history %>
   <div  class="large-12 columns">
     </br>
-    <%= f.submit 'Generar actualización de la historia clínica', :class => 'button right'%>
-  </div>
+    <div class="head-ax"><span style="margin-right:-80px;"> Especialidad de Acupuntura </span><a class="right uppart" data-target="acun" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
+    <div class="body-ax" id="acun" style="display:none;">
+      <%= render partial: '/acupuntures/acupuncture_new', locals: {user: @user, remotex: true } %>
+    </div>
+  </div></br></br>
   <%end%>
 </div>
 <script type="text/javascript">
@@ -56,26 +68,20 @@ data("association-insertion-node", '#table_family_diases');
 $(".container").on('click',"a.remove_fields",function(){
 return confirm("¿Deseas eliminar este campo?") ;
 });
-
 $("#vital_signs a.add_fields").
 data("association-insertion-position", 'after').
 data("association-insertion-node", '#phisical_vital_signs');
-
 $("#phisical_explorations a.add_fields").
 data("association-insertion-position", 'after').
 data("association-insertion-node", '#table_phisical_explorations');
-
 $("#no_pathological_antecedents a.add_fields").
 data("association-insertion-position", 'after').
 data("association-insertion-node", '#table_no_pathological_antecedents');
-
 $("#pathological_antecedents a.add_fields").
 data("association-insertion-position", 'after').
 data("association-insertion-node", '#table_pathological_antecedents');
-
 $("#dental_records a.add_fields").
 data("association-insertion-position", 'after').
 data("association-insertion-node", '#dental_records');
-
 });
 </script>
