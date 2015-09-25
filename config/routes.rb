@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+
+
   ######## home page #######
 
   root 'static_views#home'
@@ -288,6 +289,14 @@ Rails.application.routes.draw do
   get 'acupuntures/new', as: :acupuntures_new
 
   get 'acupuntures/generate_point'
+
+  ########### help ######
+
+
+  get 'help/index', as: :help
+  get 'help/search_help', as: :search_help
+  post 'help/search_help'
+  get 'help/contact', as: :contact_help
 
   ############ payments ##########
   post 'payments/send_payment'

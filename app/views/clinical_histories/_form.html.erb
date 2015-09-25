@@ -33,13 +33,9 @@
       <%= f.text_area :diagnostic,  rows: 12  %>
     </div>
   </div></br></br>
-  <div  class="large-12 columns">
-    </br>
-    <div class="head-ax"><span style="margin-right:-80px;"> Indicación terapéutica </span><a class="right uppart" data-target="tera" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
-    <div class="body-ax" id="tera" style="display:none;">
-      <%= f.text_area :terapeutic_use,  rows: 12  %>
-    </div>
-  </div></br></br>
+  <% if current_user.homeopatic_clinical_history %>
+  <%= render partial:  'clinical_histories/parts_form/homeopatic', locals: {f: f, user: @user} %>
+  <%end%>
   <% if current_user.dental_clinical_history %>
   <div  class="large-12 columns">
     </br>
@@ -49,13 +45,20 @@
     </div>
   </div></br></br>
   <%end%>
-  <%end%>
   <% if current_user.acupulture_clinical_history %>
   <div  class="large-12 columns">
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Especialidad de Acupuntura </span><a class="right uppart" data-target="acun" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
     <div class="body-ax" id="acun" style="display:none;">
       <%= render partial: '/acupuntures/acupuncture_new', locals: {user: @user, remotex: true } %>
+    </div>
+  </div></br></br>
+  <%end%>
+  <div  class="large-12 columns">
+    </br>
+    <div class="head-ax"><span style="margin-right:-80px;"> Indicación terapéutica </span><a class="right uppart" data-target="tera" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
+    <div class="body-ax" id="tera" style="display:none;">
+      <%= f.text_area :terapeutic_use,  rows: 12  %>
     </div>
   </div></br></br>
   <%end%>

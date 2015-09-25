@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150918003811) do
+ActiveRecord::Schema.define(version: 20150925002853) do
 
   create_table "acupunctures", force: true do |t|
     t.integer  "user_id"
@@ -102,6 +102,20 @@ ActiveRecord::Schema.define(version: 20150918003811) do
     t.text     "habitus_exterior"
     t.text     "mental_symptoms"
     t.text     "climatic_symptoms"
+    t.text     "sweting"
+    t.text     "appetite"
+    t.text     "thirst"
+    t.text     "desires_food_or_food_refusal"
+    t.text     "sleep"
+    t.text     "sexuality"
+    t.text     "skin_and_appendages"
+    t.text     "musculoskeletal_apparatus"
+    t.text     "endocrine_system"
+    t.text     "hematopoietic_system"
+    t.text     "digestive_system"
+    t.text     "genitourinary_system"
+    t.text     "nervous_system"
+    t.text     "cardiovascular_system"
   end
 
   create_table "clinical_history_to_diagnostics", force: true do |t|

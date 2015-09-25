@@ -1,0 +1,15 @@
+{
+  "videos":[
+    {"name": "Expediente", "url": "lorem", "description":"lorem"},
+    {"name": "Historia clínica", "url": "lorem", "description":"lorem"},
+    {"name": "Historia clínica dental", "url": "lorem", "description":"lorem"},
+    {"name": "Historia clínica homeopática ", "url": "lorem", "description":"lorem"},
+    {"name": "Historia clínica de acupuntura ", "url": "lorem", "description":"lorem"},
+    {"name": "Acupuntura ", "url": "lorem", "description":"lorem"},
+    {"name": "Dental ", "url": "lorem", "description":"lorem"},
+    {"name": "Consulta ", "url": "lorem", "description":"lorem"},
+    {"name": "Notas", "url": "lorem", "description":"lorem"},
+    {"name": "Agenda", "url": "lorem", "description":"lorem"},
+    {"name": "Signos Vitales", "url": "lorem", "description":"lorem"}
+  ]
+}

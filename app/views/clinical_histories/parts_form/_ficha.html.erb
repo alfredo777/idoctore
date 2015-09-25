@@ -18,16 +18,6 @@
       <h4>Antecedentes personales patológicos</h4>
       <%= render partial: "clinical_histories/parts_form/formularios_ficha/pathological_render", locals: {:f => f} %>
     </fieldset>
-    <fieldset>
-      <h4> Sintomas mentales (no obligatorio - preguntas básicas) </h4>
-      <p>¿Qué actitud toma frente a los problemas?, ¿Qué le hace llorar?, ¿Como responde al consuelo?, ¿Cómo tolera la espera?, ¿Temores actuales o de la niñez ?, ¿Cuándo se vuelve celoso?, ¿Qué tan satisfecho se encuentra con su vida profesional o trabajo elegido?, ¿Qué tipo de transtornos puede presentar después de enojo, tristeza, pena de amor, mortificación, malas noticias o cómo reacciona ante ellos?</p>
-      <%= f.text_area :mental_symptoms,  rows: 13, placeholder: "¿Qué actitud toma frente a los problemas?, ¿Qué le hace llorar?, ¿Como responde al consuelo?, ¿Cómo tolera la espera?, ¿Temores actuales o de la niñez ?, ¿Cuándo se vuelve celoso?, ¿Qué tan satisfecho se encuentra con su vida profesional o trabajo elegido?, ¿Qué tipo de transtornos puede presentar después de enojo, tristeza, pena de amor, mortificación, malas noticias o cómo reacciona ante ellos?" %>
-    </fieldset>
-    <fieldset>
-      <h4> Sintomas climáticos (no obligatorio - preguntas básicas) </h4>
-      <p>¿Cómo reacciona al frío, calor, clima seco, húmedo, sol, cambios de temperatura, corrientes de aire?, ¿Cómo se siente a la orilla del mar o una montaña?, ¿Cuál clima prefiere?, ¿Se considera una persona friolenta o calurosa?</p>
-      <%= f.text_area :climatic_symptoms,  rows: 13, placeholder: "¿Cómo reacciona al frío, calor, clima seco, húmedo, sol, cambios de temperatura, corrientes de aire?, ¿Cómo se siente a la orilla del mar o una montaña?, ¿Cuál clima prefiere?, ¿Se considera una persona friolenta o calurosa?" %>
-    </fieldset>
     <fieldset  >
       <h4>Padecimiento actual</h4>
       <%= f.text_area :suffering,  rows: 13 %>

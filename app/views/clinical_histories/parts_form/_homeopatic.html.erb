@@ -1,0 +1,50 @@
+<div  class="large-12 columns">
+  </br>
+  <div class="head-ax"><span style="margin-right:-80px;"> Especialida homeopática </span><a class="right uppart" data-target="homeopatic" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
+  <div class="body-ax" id="homeopatic" style="display:none;">
+    <fieldset>
+      <h4> Sintomas mentales </h4>
+      <p>¿Qué actitud toma frente a los problemas?, ¿Qué le hace llorar?, ¿Como responde al consuelo?, ¿Cómo tolera la espera?, ¿Temores actuales o de la niñez ?, ¿Cuándo se vuelve celoso?, ¿Qué tan satisfecho se encuentra con su vida profesional o trabajo elegido?, ¿Qué tipo de transtornos puede presentar después de enojo, tristeza, pena de amor, mortificación, malas noticias o cómo reacciona ante ellos?</p>
+      <%= f.text_area :mental_symptoms,  rows: 13, placeholder: "¿Qué actitud toma frente a los problemas?, ¿Qué le hace llorar?, ¿Como responde al consuelo?, ¿Cómo tolera la espera?, ¿Temores actuales o de la niñez ?, ¿Cuándo se vuelve celoso?, ¿Qué tan satisfecho se encuentra con su vida profesional o trabajo elegido?, ¿Qué tipo de transtornos puede presentar después de enojo, tristeza, pena de amor, mortificación, malas noticias o cómo reacciona ante ellos?" %>
+    </fieldset>
+    <fieldset>
+      <h4> Sintomas climáticos </h4>
+      <p>¿Cómo reacciona al frío, calor, clima seco, húmedo, sol, cambios de temperatura, corrientes de aire?, ¿Cómo se siente a la orilla del mar o una montaña?, ¿Cuál clima prefiere?, ¿Se considera una persona friolenta o calurosa?</p>
+      <%= f.text_area :climatic_symptoms,  rows: 13, placeholder: "¿Cómo reacciona al frío, calor, clima seco, húmedo, sol, cambios de temperatura, corrientes de aire?, ¿Cómo se siente a la orilla del mar o una montaña?, ¿Cuál clima prefiere?, ¿Se considera una persona friolenta o calurosa?" %>
+    </fieldset>
+    <fieldset>
+      <p>Sudoración</p>
+      <%= f.text_area :sweting, placeholder: "Sudoración" %>
+      <p>Apetito</p>
+      <%= f.text_area :appetite, placeholder: "Apetito" %>
+      <p>Sed</p>
+      <%= f.text_area :thirst, placeholder: "Sed" %>
+      <p>Deseos y aversiones a los alimentos</p>
+      <%= f.text_area :desires_food_or_food_refusal, placeholder: "Deseos y aversiones a los alimentos" %>
+      <p>Sexualidad</p>
+      <%= f.text_area :sexuality, placeholder: "Sexualidad" %>
+    </fieldset>
+
+    <fieldset>
+    <h4> Sintomas generales con exploración física por aparatos y sistemas </h4>
+     <p>Piel y faneras</p>
+     <%= f.text_area :skin_and_appendages, placeholder: "Piel y faneras" %>
+     <p>Aparato músculo esquelético</p>
+     <%= f.text_area :musculoskeletal_apparatus, placeholder: "Aparato músculo esquelético" %>
+     <p>Sistema endocrino</p>
+     <%= f.text_area :endocrine_system, placeholder: "Sistema endocrino" %>
+     <p>Sistema hematopoyético</p>
+     <%= f.text_area :hematopoietic_system, placeholder: "Sistema hematopoyético" %>
+     <p>Sistema digestivo</p>
+     <%= f.text_area :digestive_system, placeholder: "Sistema digestivo" %>
+     <p>Sistema genitourinario</p>
+     <%= f.text_area :genitourinary_system, placeholder: "Sistema genitourinario" %>
+     <p>Sistema nervioso</p>
+     <%= f.text_area :nervous_system, placeholder: "Sistema nervioso" %>
+     <p>Sistema cardiovascular</p>
+     <%= f.text_area :cardiovascular_system, placeholder: "Sistema cardiovascular" %>
+    </fieldset>
+  </div>
+</div>
+
+</br></br>
