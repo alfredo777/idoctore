@@ -48,7 +48,6 @@
 	<div class="row">
 		<div  class="large-12 columns">
 			<div class="head-ax">Acupunturas</div>
-
 			<div class="body-ax">	
 			<% @clinical_history.acupunctures.each do |acu| %>
 			<%= render partial: '/acupuntures/show', locals: {acupuncture: acu, clinical: true}%>
@@ -61,7 +60,7 @@
 	<% if @clinical_history.dental_records.count != 0 %>
 	<div class="row">
 		<div  class="large-12 columns">
-			<div class="head-ax">Indicación terapéutica</div>
+			<div class="head-ax">Dental</div>
 			<% @dental_record = @clinical_history.dental_records.last %>
 			<div class="body-ax">	
 			<h3>Nota</h3>
@@ -72,6 +71,47 @@
 			</div>
 		</div>
 	</div></br>
+	<%end%>
+
+	<% if !@clinical_history.mental_symptoms.nil?%>
+	<div class="row">
+		<div  class="large-12 columns">
+			<div class="head-ax">Homeopatía</div>
+			<div class="body-ax">	
+			<h4>Sintomas mentales</h4>
+		  <%= @clinical_history.mental_symptoms %>
+		  <h4>Sintomas climáticos</h4>
+		  <%= @clinical_history.climatic_symptoms %>
+		  <h4>Sudoración</h4>
+		  <%= @clinical_history.sweting %>
+		  <h4>Apetito</h4>
+		  <%= @clinical_history.appetite %>
+		  <h4>Sed</h4>
+		  <%= @clinical_history.thirst %>
+		  <h4>Deseos y aversiones a los alimentos</h4>
+		  <%= @clinical_history.desires_food_or_food_refusal %>
+		  <h4>Sexualidad</h4>
+		  <%= @clinical_history.sexuality %>
+		  <h4>Piel y faneras</h4>
+		  <%= @clinical_history.skin_and_appendages %>
+		  <h4>Aparato músculo esquelético</h4>
+		  <%= @clinical_history.musculoskeletal_apparatus %>
+		  <h4>Sistema endocrino</h4>
+		  <%= @clinical_history.endocrine_system %>
+		  <h4>Sistema hematopoyético</h4>
+		  <%= @clinical_history.hematopoietic_system %>
+		  <h4>Sistema digestivo</h4>
+		  <%= @clinical_history.digestive_system %>
+		  <h4>Sistema genitourinario</h4>
+		  <%= @clinical_history.genitourinary_system %>
+		  <h4>Sistema nervioso</h4>
+		  <%= @clinical_history.nervous_system %>
+		  <h4>Sistema cardiovascular</h4>
+		  <%= @clinical_history.cardiovascular_system %>
+		  </div>
+		</div>
+	</div>
+
 	<%end%>
 	<div class="row">
 		<div  class="large-12 columns">
