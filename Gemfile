@@ -14,7 +14,7 @@ group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
   gem 'webmock'
   gem 'ultrahook'
-  gem 'spring', '~>1.3.3'
+  gem 'spring',  '~> 1.4.0'
 end
 
 # Use SCSS for stylesheets
