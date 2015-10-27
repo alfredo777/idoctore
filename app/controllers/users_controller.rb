@@ -88,7 +88,7 @@ class UsersController < ApplicationController
 
     if !params[:password].nil? && !params[:password].empty?
       if params[:password] == params[:confirm_password]
-        @user.hashed_password = params[:password]
+        @user.hashed_password = Digest::SHA2.hexdigest("#{params[:password]}")
       end
     end
 
