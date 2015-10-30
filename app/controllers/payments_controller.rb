@@ -19,7 +19,7 @@ class PaymentsController < ApplicationController
 		  name:  @user.name.to_s,
 		  email: @user.email.to_s,
 		  phone: @user.phone.to_s,
-      cards: @token_tree
+      cards: [@token_tree]
 
 		})
     puts customer 
