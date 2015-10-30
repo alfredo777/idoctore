@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925002853) do
+ActiveRecord::Schema.define(version: 20151030174626) do
 
   create_table "acupunctures", force: true do |t|
     t.integer  "user_id"
@@ -417,9 +417,9 @@ ActiveRecord::Schema.define(version: 20150925002853) do
     t.integer  "steap_proces"
     t.string   "sex"
     t.boolean  "terms"
-    t.integer  "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "phone"
   end
 
   create_table "users", force: true do |t|
