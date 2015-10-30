@@ -21,7 +21,7 @@ class RegisterUserController < ApplicationController
     @user.sex = params[:sex]
     @user.terms = params[:terms]
     @user.cadre_card = params[:cadre_card]
-    @user.phone = params[:phone].to_i
+    @user.phone = params[:phone].to_s
     @user.save
     session[:registeruser] = @user.id
     session[:steap] = 2
