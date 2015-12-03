@@ -7,7 +7,7 @@
     </button>
   </div>
   
-  <div  class="large-12 columns">
+  <div  class="large-12 ">
     <div class="head-ax">Paciente</div>
     <div class="body-ax">
       <fieldset>
@@ -19,48 +19,48 @@
   </div></br></br>
   <%= render partial: 'clinical_histories/parts_form/ficha', locals: {f: f, user: @user} %>
   <%= render partial: 'clinical_histories/parts_form/phisical_exploration', locals: {f: f, user: @user} %>
-  <div  class="large-12 columns">
+  <div  class="large-12 ">
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Estudios de laboratorio, gabinete y otros </span><a class="right uppart" data-target="lab" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
     <div class="body-ax" id="lab" style="display:none;">
       <%= f.text_area :diagnostic_aux,  rows: 12  %>
     </div>
-  </div></br></br>
-  <div  class="large-12 columns">
+  </div>
+  <div  class="large-12 ">
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Diagnósticos clínicos </span><a class="right uppart" data-target="diag" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
     <div class="body-ax" id="diag" style="display:none;">
       <%= f.text_area :diagnostic,  rows: 12  %>
     </div>
-  </div></br></br>
+  </div>
   <% if current_user.homeopatic_clinical_history %>
   <%= render partial:  'clinical_histories/parts_form/homeopatic', locals: {f: f, user: @user} %>
   <%end%>
   <% if current_user.dental_clinical_history %>
-  <div  class="large-12 columns">
+  <div  class="large-12 ">
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Especialidad Dental </span><a class="right uppart" data-target="dent" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
     <div class="body-ax" id="dent" style="display:none;">
       <%= render partial: 'clinical_histories/parts_form/dental', locals: {f: f, user: @user} %>
     </div>
-  </div></br></br>
+  </div>
   <%end%>
   <% if current_user.acupulture_clinical_history %>
-  <div  class="large-12 columns">
+  <div  class="large-12 ">
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Especialidad de Acupuntura </span><a class="right uppart" data-target="acun" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
     <div class="body-ax" id="acun" style="display:none;">
       <%= render partial: '/acupuntures/acupuncture_new', locals: {user: @user, remotex: true } %>
     </div>
-  </div></br></br>
+  </div>
   <%end%>
-  <div  class="large-12 columns">
+  <div  class="large-12 ">
     </br>
     <div class="head-ax"><span style="margin-right:-80px;"> Indicación terapéutica </span><a class="right uppart" data-target="tera" ><h6 style="color:#ffffff;">Abrir <i class="fa fa-chevron-down"></i></h6></a></div>
     <div class="body-ax" id="tera" style="display:none;">
       <%= f.text_area :terapeutic_use,  rows: 12  %>
     </div>
-  </div></br></br>
+  </div>
   <%end%>
 </div>
 <script type="text/javascript">
